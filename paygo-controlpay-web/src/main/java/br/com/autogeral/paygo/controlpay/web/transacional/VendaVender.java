@@ -29,5 +29,7 @@ package br.com.autogeral.paygo.controlpay.web.transacional;
  * @author Murilo de Moraes Tuvani
  */
 public class VendaVender {
+    
+    
 
 }
