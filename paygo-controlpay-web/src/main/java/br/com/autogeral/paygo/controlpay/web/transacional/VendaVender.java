@@ -24,12 +24,61 @@
 
 package br.com.autogeral.paygo.controlpay.web.transacional;
 
+import br.com.autogeral.paygo.controlpay.model.VendaVO;
+import br.com.autogeral.paygo.controlpay.web.ControlPayConfig;
+import br.com.autogeral.paygo.controlpay.model.VendaVenderResultadoVO;
+import br.com.autogeral.paygo.controlpay.web.WsHelper;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.methods.PostMethod;
+import org.apache.commons.httpclient.methods.RequestEntity;
+import org.apache.commons.httpclient.methods.StringRequestEntity;
+
 /**
  * 23/05/2019 17:56:32
  * @author Murilo de Moraes Tuvani
  */
 public class VendaVender {
     
+    private static final String PATH = "webapi/Venda/Vender/?key=";
     
-
+    /**
+     * Retorna a URL compra para o envio da requisição
+     * para o endpoint de transacao de venda
+     * @return 
+     */
+    private String getPath() {
+        ControlPayConfig config = ControlPayConfig.getConfig();
+        String servidor = config.getServidor();
+        if (!servidor.endsWith("/")) {
+            servidor += "/";
+        }
+        return servidor + PATH + config.getKey();
+    }
+    
+    public VendaVenderResultadoVO vender(VendaVO venda) throws IOException {
+        venda.setTerminalId(ControlPayConfig.getConfig().getTerminal());
+        
+        String json = WsHelper.getGson().toJson(venda);
+        RequestEntity requestEntity = new StringRequestEntity(
+                json,
+                "application/json",
+                "UTF-8");
+        
+        PostMethod method = new PostMethod(getPath());
+        method.addRequestHeader("Content-Type", "application/json");
+        method.setRequestEntity(requestEntity);
+        HttpClient client = new HttpClient();
+        int result = client.executeMethod(method);
+        
+        VendaVenderResultadoVO r = new VendaVenderResultadoVO();
+        if (result == 200) {
+            ByteArrayOutputStream baos = WsHelper.getResponseBody(method);
+            String responseBody = baos.toString();
+            System.out.println(responseBody);
+        }
+        return r;
+    }
+    
 }

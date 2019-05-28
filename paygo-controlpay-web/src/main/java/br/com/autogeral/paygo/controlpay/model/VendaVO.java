@@ -33,7 +33,7 @@ public class VendaVO {
     private int formaPagamentoId;
     private int terminalId;
     private String referencia;
-    private boolean aguardarTefIniciarTransacao;
+    private boolean aguardarTefIniciarTransacao = true;
     private String parcelamentoAdmin;
     private int quantidadeParcelas;
     private String adquirente;

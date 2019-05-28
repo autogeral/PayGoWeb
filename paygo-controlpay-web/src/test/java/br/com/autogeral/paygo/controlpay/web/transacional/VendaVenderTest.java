@@ -21,8 +21,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package br.com.autogeral.paygo.controlpay.web;
+package br.com.autogeral.paygo.controlpay.web.transacional;
 
+import br.com.autogeral.paygo.controlpay.model.VendaVO;
+import br.com.autogeral.paygo.controlpay.model.VendaVenderResultadoVO;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -34,9 +36,9 @@ import static org.junit.Assert.*;
  *
  * @author Murilo Moraes Tuvani
  */
-public class ControlPayConfigTest {
+public class VendaVenderTest {
     
-    public ControlPayConfigTest() {
+    public VendaVenderTest() {
     }
     
     @BeforeClass
@@ -56,50 +58,23 @@ public class ControlPayConfigTest {
     }
 
     /**
-     * Test of getConfig method, of class ControlPayConfig.
+     * Test of vender method, of class VendaVender.
      */
     @Test
-    public void testGetConfig() {
-        System.out.println("getConfig");
-        ControlPayConfig result = ControlPayConfig.getConfig();
-        assertNotNull(result);
-    }
-
-    /**
-     * Test of getKey method, of class ControlPayConfig.
-     */
-    @Test
-    public void testGetKey() {
-        System.out.println("getKey");
-        ControlPayConfig instance = ControlPayConfig.getConfig();
-        assertNotNull(instance);
-        String result = instance.getKey();
-        assertNotNull(result);
-    }
-
-    /**
-     * Test of getServidor method, of class ControlPayConfig.
-     */
-    @Test
-    public void testGetServidor() {
-        System.out.println("getServidor");
-        ControlPayConfig instance = ControlPayConfig.getConfig();
-        assertNotNull(instance);
-        String result = instance.getServidor();
-        assertNotNull(result);
-        assertTrue(result.contains("azurewebsites.net"));
-    }
-
-    /**
-     * Test of getTerminal method, of class ControlPayConfig.
-     */
-    @Test
-    public void testGetTerminal() {
-        System.out.println("getTerminal");
-        ControlPayConfig instance = ControlPayConfig.getConfig();
-        assertNotNull(instance);
-        int result = instance.getTerminal();
-        assertNotNull(result);
+    public void testVender() throws Exception {
+        System.out.println("vender");
+        VendaVO venda = new VendaVO();
+        venda.setReferencia("Venda123");
+        venda.setFormaPagamentoId(21);
+        venda.setAdquirente("");
+        venda.setQuantidadeParcelas(2);
+        venda.setValorTotalVendido(100);
+        VendaVender instance = new VendaVender();
+        VendaVenderResultadoVO expResult = null;
+        VendaVenderResultadoVO result = instance.vender(venda);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
     
 }

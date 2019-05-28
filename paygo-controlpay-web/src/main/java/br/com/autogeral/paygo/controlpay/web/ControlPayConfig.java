@@ -38,7 +38,7 @@ public class ControlPayConfig {
     private static ControlPayConfig config;
     private String key;
     private String servidor;
-    private String terminal;
+    private int terminal;
     
     private ControlPayConfig() {}
 
@@ -61,7 +61,7 @@ public class ControlPayConfig {
                 prop.load(reader);
                 config.key = prop.getProperty("key");
                 config.servidor = prop.getProperty("servidor");
-                config.terminal = prop.getProperty("terminal");
+                config.terminal = Integer.parseInt(prop.getProperty("terminal"));
             } catch (IOException ex) {
                 ex.printStackTrace(System.out);
             }
@@ -89,7 +89,7 @@ public class ControlPayConfig {
      * Numero do terminal fornecedido pela PayGo / ControlPay
      * @return 
      */
-    public String getTerminal() {
+    public int getTerminal() {
         return terminal;
     }
 

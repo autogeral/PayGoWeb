@@ -23,6 +23,7 @@
  */
 package br.com.autogeral.paygo.controlpay.model;
 
+import br.com.autogeral.paygo.controlpay.web.WsHelper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.junit.After;
@@ -37,23 +38,6 @@ import static org.junit.Assert.*;
  * @author Murilo Moraes Tuvani
  */
 public class VendaVOTest {
-
-    private static Gson gson;
-    
-    public VendaVOTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-        gson = new GsonBuilder()
-                .serializeNulls()
-                .setDateFormat("yyyy-MM-dd HH:mm:ss.SSS")
-                .create();
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
     
     @Test
     public void test01_parseSimples() {
@@ -65,7 +49,7 @@ public class VendaVOTest {
         instance.setQuantidadeParcelas(1);
         instance.setValorTotalVendido(1234567.89d);
         String expResult = "{\"formaPagamentoId\":100,\"terminalId\":999,\"referencia\":\"VENDA123456789\",\"aguardarTefIniciarTransacao\":false,\"parcelamentoAdmin\":null,\"quantidadeParcelas\":1,\"adquirente\":\"ABC\",\"valorTotalVendido\":1234567.89}";
-        String result = gson.toJson(instance);
+        String result = WsHelper.getGson().toJson(instance);
         System.out.println(result);
         assertEquals(expResult, result);
     }
