@@ -51,6 +51,9 @@ public class VendaVender {
     private String getPath() {
         ControlPayConfig config = ControlPayConfig.getConfig();
         String servidor = config.getServidor();
+        if (!servidor.startsWith("http")) {
+            servidor = "https://" + servidor;
+        }
         if (!servidor.endsWith("/")) {
             servidor += "/";
         }
@@ -73,11 +76,13 @@ public class VendaVender {
         int result = client.executeMethod(method);
         
         VendaVenderResultadoVO r = new VendaVenderResultadoVO();
-        if (result == 200) {
+        r.setHttpStatus(result);
+        
+//        if (result == 200) {
             ByteArrayOutputStream baos = WsHelper.getResponseBody(method);
             String responseBody = baos.toString();
             System.out.println(responseBody);
-        }
+//        }
         return r;
     }
     

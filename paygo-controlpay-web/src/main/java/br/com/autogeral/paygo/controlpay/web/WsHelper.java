@@ -53,9 +53,14 @@ public class WsHelper {
         bis.close();
         return baos;
     }
-
-    public static <T> T unmarshal(ByteArrayOutputStream baos, Class<T> aClass) {
-        T object = getGson().fromJson(baos.toString(), aClass);
+    
+    public static String marshal(Object object) {
+        String json = getGson().toJson(object);
+        return json;
+    }
+    
+    public static <T> T unmarshal(String json, Class<T> aClass) {
+        T object = getGson().fromJson(json, aClass);
         return object;
     }
 

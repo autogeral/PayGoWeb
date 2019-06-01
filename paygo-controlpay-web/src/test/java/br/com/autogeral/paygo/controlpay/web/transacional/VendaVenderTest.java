@@ -66,15 +66,15 @@ public class VendaVenderTest {
         VendaVO venda = new VendaVO();
         venda.setReferencia("Venda123");
         venda.setFormaPagamentoId(21);
-        venda.setAdquirente("");
-        venda.setQuantidadeParcelas(2);
-        venda.setValorTotalVendido(100);
+//        venda.setFormaPagamentoId(20);
+        venda.setAdquirente("REDE");
+//        venda.setAdquirente("BIN");
+        venda.setQuantidadeParcelas(1);
+        venda.setValorTotalVendido(1);
         VendaVender instance = new VendaVender();
         VendaVenderResultadoVO expResult = null;
         VendaVenderResultadoVO result = instance.vender(venda);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }

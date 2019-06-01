@@ -35,22 +35,22 @@ import static org.junit.Assert.*;
  * @author Murilo Moraes Tuvani
  */
 public class IntecaoVendaVOTest {
-    
+
     public IntecaoVendaVOTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -59,5 +59,5 @@ public class IntecaoVendaVOTest {
     public void testSomeMethod() {
         
     }
-    
+
 }
