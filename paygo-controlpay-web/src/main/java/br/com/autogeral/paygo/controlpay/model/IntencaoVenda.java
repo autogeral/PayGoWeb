@@ -55,7 +55,7 @@ public class IntencaoVenda {
     private List<PagamentoExterno> pagamentosExternos;
     private IntencaoVendaStatus intencaoVendaStatus;
     private String cliente;
-    private List<Produto> produtos;
+    private List<ProdutoVenda> produtos;
     private String pedido;
 
     public int getId() {
@@ -234,11 +234,11 @@ public class IntencaoVenda {
         this.cliente = cliente;
     }
 
-    public List<Produto> getProdutos() {
+    public List<ProdutoVenda> getProdutos() {
         return produtos;
     }
 
-    public void setProdutos(List<Produto> produtos) {
+    public void setProdutos(List<ProdutoVenda> produtos) {
         this.produtos = produtos;
     }
 

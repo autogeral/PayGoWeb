@@ -21,36 +21,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package br.com.autogeral.paygo.controlpay.model;
 
 /**
  * 02/06/2019 21:48:13
+ *
  * @author Murilo Moraes Tuvani
  */
 public class Produto {
 
-    private int produtoItemId;
-    private int id;
     private String nome;
-    private double quantidade;
-    private double valor;
-
-    public int getProdutoItemId() {
-        return produtoItemId;
-    }
-
-    public void setProdutoItemId(int produtoItemId) {
-        this.produtoItemId = produtoItemId;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    private String descricao;
+    private String controlaQuantidade;
+    private String solicitaValor;
+    private String produtoTipo;
+    private ProdutoStatus produtoStatus;
+    private String fotoNome;
+    private String fotBase64;
 
     public String getNome() {
         return nome;
@@ -60,21 +47,67 @@ public class Produto {
         this.nome = nome;
     }
 
-    public double getQuantidade() {
-        return quantidade;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setQuantidade(double quantidade) {
-        this.quantidade = quantidade;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public double getValor() {
-        return valor;
+    public String getControlaQuantidade() {
+        return controlaQuantidade;
     }
 
-    public void setValor(double valor) {
-        this.valor = valor;
+    public void setControlaQuantidade(String controlaQuantidade) {
+        this.controlaQuantidade = controlaQuantidade;
+    }
+
+    public String getSolicitaValor() {
+        return solicitaValor;
+    }
+
+    public void setSolicitaValor(String solicitaValor) {
+        this.solicitaValor = solicitaValor;
+    }
+
+    public String getProdutoTipo() {
+        return produtoTipo;
+    }
+
+    public void setProdutoTipo(String produtoTipo) {
+        this.produtoTipo = produtoTipo;
+    }
+
+    public ProdutoStatus getProdutoStatus() {
+        return produtoStatus;
+    }
+
+    public void setProdutoStatus(ProdutoStatus produtoStatus) {
+        this.produtoStatus = produtoStatus;
+    }
+
+    public String getFotoNome() {
+        return fotoNome;
+    }
+
+    public void setFotoNome(String fotoNome) {
+        this.fotoNome = fotoNome;
+    }
+
+    public String getFotBase64() {
+        return fotBase64;
+    }
+
+    public void setFotBase64(String fotBase64) {
+        this.fotBase64 = fotBase64;
+    }
+
+    @Override
+    public String toString() {
+        return "Produto{nome=" + nome + ", descricao=" + descricao + ", controlaQuantidade=" + controlaQuantidade + ", solicitaValor=" + solicitaValor + ", produtoTipo=" + produtoTipo + ", fotoNome=" + fotoNome + ", fotBase64=" + fotBase64 + '}';
     }
     
     
+
 }

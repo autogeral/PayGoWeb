@@ -34,9 +34,9 @@ import static org.junit.Assert.*;
  *
  * @author Murilo Moraes Tuvani
  */
-public class IntecaoVendaVOTest {
+public class IntecaoVendaTest {
 
-    public IntecaoVendaVOTest() {
+    public IntecaoVendaTest() {
     }
 
     @BeforeClass

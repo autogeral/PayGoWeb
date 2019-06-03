@@ -37,7 +37,7 @@ import static org.junit.Assert.*;
  *
  * @author Murilo Moraes Tuvani
  */
-public class VendaVOTest {
+public class VendaTest {
     
     @Test
     public void test01_parseSimples() {

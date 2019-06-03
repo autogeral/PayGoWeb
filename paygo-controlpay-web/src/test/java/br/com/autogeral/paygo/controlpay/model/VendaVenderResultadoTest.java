@@ -43,9 +43,9 @@ import static org.junit.Assert.*;
  *
  * @author Murilo Moraes Tuvani
  */
-public class VendaVenderResultadoVOTest {
+public class VendaVenderResultadoTest {
     
-    public VendaVenderResultadoVOTest() {
+    public VendaVenderResultadoTest() {
     }
     
     @BeforeClass
