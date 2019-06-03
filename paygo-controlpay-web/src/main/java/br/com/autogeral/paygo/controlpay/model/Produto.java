@@ -25,51 +25,9 @@
 package br.com.autogeral.paygo.controlpay.model;
 
 /**
- * 28/05/2019 09:27:07
+ * 02/06/2019 21:48:13
  * @author Murilo Moraes Tuvani
  */
-public class FormaPagamento {
-    
-    private int id;
-    private String nome;
-    private String modalidade;
-    private FluxoPagamento fluxoPagamento;
+public class Produto {
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getModalidade() {
-        return modalidade;
-    }
-
-    public void setModalidade(String modalidade) {
-        this.modalidade = modalidade;
-    }
-
-    public FluxoPagamento getFluxoPagamento() {
-        return fluxoPagamento;
-    }
-
-    public void setFluxoPagamento(FluxoPagamento fluxoPagamento) {
-        this.fluxoPagamento = fluxoPagamento;
-    }
-
-    @Override
-    public String toString() {
-        return "FormaPagamento: {id=" + id + ", nome=" + nome + ", modalidade=" + modalidade + ", fluxoPagamento=" + fluxoPagamento + '}';
-    }
-    
 }

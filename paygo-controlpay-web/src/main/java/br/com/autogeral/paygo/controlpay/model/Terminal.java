@@ -21,19 +21,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package br.com.autogeral.paygo.controlpay.model;
 
 /**
- * 28/05/2019 09:27:07
+ * 02/06/2019 21:32:46
+ *
  * @author Murilo Moraes Tuvani
  */
-public class FormaPagamento {
-    
+public class Terminal {
+
     private int id;
     private String nome;
-    private String modalidade;
-    private FluxoPagamento fluxoPagamento;
 
     public int getId() {
         return id;
@@ -51,25 +49,9 @@ public class FormaPagamento {
         this.nome = nome;
     }
 
-    public String getModalidade() {
-        return modalidade;
-    }
-
-    public void setModalidade(String modalidade) {
-        this.modalidade = modalidade;
-    }
-
-    public FluxoPagamento getFluxoPagamento() {
-        return fluxoPagamento;
-    }
-
-    public void setFluxoPagamento(FluxoPagamento fluxoPagamento) {
-        this.fluxoPagamento = fluxoPagamento;
-    }
-
     @Override
     public String toString() {
-        return "FormaPagamento: {id=" + id + ", nome=" + nome + ", modalidade=" + modalidade + ", fluxoPagamento=" + fluxoPagamento + '}';
+        return "terminal: {\"id\": " + id + ", \"nome\":" + nome + '}';
     }
-    
+
 }

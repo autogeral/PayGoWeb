@@ -25,15 +25,16 @@
 package br.com.autogeral.paygo.controlpay.model;
 
 /**
- * 28/05/2019 09:27:07
+ * 02/06/2019 21:34:37
  * @author Murilo Moraes Tuvani
  */
-public class FormaPagamento {
-    
+public class PagamentoExterno {
+
     private int id;
-    private String nome;
-    private String modalidade;
-    private FluxoPagamento fluxoPagamento;
+    private int tipo;
+    private int origem;
+    private int tipoParcelamento;
+    private PagamentoExternoStatus pagamentoExternoStatus;
 
     public int getId() {
         return id;
@@ -43,33 +44,41 @@ public class FormaPagamento {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public int getTipo() {
+        return tipo;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
     }
 
-    public String getModalidade() {
-        return modalidade;
+    public int getOrigem() {
+        return origem;
     }
 
-    public void setModalidade(String modalidade) {
-        this.modalidade = modalidade;
+    public void setOrigem(int origem) {
+        this.origem = origem;
     }
 
-    public FluxoPagamento getFluxoPagamento() {
-        return fluxoPagamento;
+    public int getTipoParcelamento() {
+        return tipoParcelamento;
     }
 
-    public void setFluxoPagamento(FluxoPagamento fluxoPagamento) {
-        this.fluxoPagamento = fluxoPagamento;
+    public void setTipoParcelamento(int tipoParcelamento) {
+        this.tipoParcelamento = tipoParcelamento;
+    }
+
+    public PagamentoExternoStatus getPagamentoExternoStatus() {
+        return pagamentoExternoStatus;
+    }
+
+    public void setPagamentoExternoStatus(PagamentoExternoStatus pagamentoExternoStatus) {
+        this.pagamentoExternoStatus = pagamentoExternoStatus;
     }
 
     @Override
     public String toString() {
-        return "FormaPagamento: {id=" + id + ", nome=" + nome + ", modalidade=" + modalidade + ", fluxoPagamento=" + fluxoPagamento + '}';
+        return "pagamentoExterno: {id=" + id + ", tipo=" + tipo + ", origem=" + origem + ", tipoParcelamento=" + tipoParcelamento + ", pagamentoExternoStatus=" + pagamentoExternoStatus + '}';
     }
     
 }

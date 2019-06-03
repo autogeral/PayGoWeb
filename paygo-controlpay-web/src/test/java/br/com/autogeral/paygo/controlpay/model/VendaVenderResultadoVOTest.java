@@ -24,9 +24,13 @@
 package br.com.autogeral.paygo.controlpay.model;
 
 import br.com.autogeral.paygo.controlpay.web.WsHelper;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -63,14 +67,75 @@ public class VendaVenderResultadoVOTest {
     public void test_serializacao() throws ParseException {
         System.out.println("serializacao");
         VendaVenderResultadoVO vv = new VendaVenderResultadoVO();
-        Date data = (new SimpleDateFormat("HH:mm:ss dd/MM/yyyy")).parse("19:30:25 26/11/1980");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss.SSSS");
+        NumberFormat decimalFormat = NumberFormat.getNumberInstance(new Locale("pt", "BR"));
+        decimalFormat.setMinimumFractionDigits(2);
+        decimalFormat.setMaximumFractionDigits(2);
+        
+        Date data = sdf.parse("17/11/2016 17:40:37.9417");
         vv.setData(data);
         IntecaoVendaVO iv = new IntecaoVendaVO();
         vv.setIntencaoVenda(iv);
+        iv.setId(68240);
+        iv.setReferencia("Venda1234");
+        iv.setToken("855002");
         
+        data = sdf.parse("30/05/2019 16:51:05.0000");
+        iv.setData(data);
+        iv.setHora(data);
+        
+        double valor = 1d;
+        iv.setValorOriginal(valor);
+        iv.setValorDescontoFormat(decimalFormat.format(valor));
+        
+        iv.setValorFinal(valor);
+        iv.setValorFinalFormat(decimalFormat.format(valor));
+
+        valor = 0;
+        iv.setValorAcrescimo(valor);
+        iv.setValorAcrescimoFormat(decimalFormat.format(valor));
+
+        iv.setValorDesconto(valor);
+        iv.setValorDescontoFormat(decimalFormat.format(valor));
+        
+        iv.setQuantidadeParcelas(1);
+        FormaPagamento fp = new FormaPagamento();
+        fp.setId(22);
+        fp.setNome("TEF");
+        fp.setModalidade("Débito");
+        
+        FluxoPagamento fxp = new FluxoPagamento();
+        fxp.setId(21);
+        fxp.setNome("TEF");
+        fp.setFluxoPagamento(fxp);
+        iv.setFormaPagamento(fp);
+        
+        Terminal terminal = new Terminal();
+        terminal.setId(868);
+        terminal.setNome("Terminal 01");
+        iv.setTerminal(terminal);
+        
+        PagamentoExterno pe = new PagamentoExterno();
+        pe.setId(49946);
+        pe.setTipo(5);
+        pe.setOrigem(5);
+        pe.setTipoParcelamento(2);
+        PagamentoExternoStatus peStatus = new PagamentoExternoStatus();
+        peStatus.setId(10);
+        peStatus.setNome("Em Operação");
+        pe.setPagamentoExternoStatus(peStatus);
+        
+        List<PagamentoExterno> pes = new ArrayList<>();
+        pes.add(pe);
+        iv.setPagamentosExternos(pes);
+        
+        IntencaoVendaStatus ivs = new IntencaoVendaStatus();
+        ivs.setId(6);
+        ivs.setNome("Em Pagamento");
+        iv.setIntencaoVendaStatus(ivs);
         
         String result = WsHelper.marshal(vv);
-        
+        System.out.println(result);
         String expResult = "{}";
         assertEquals(expResult, result);
     }
