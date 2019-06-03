@@ -102,4 +102,22 @@ public class ControlPayConfigTest {
         assertNotNull(result);
     }
     
+    @Test
+    public void testGetCpfCnpj() {
+        System.out.println("getCpfCnpj");
+        ControlPayConfig instance = ControlPayConfig.getConfig();
+        assertNotNull(instance);
+        String result = instance.getCpfCnpj();
+        assertNotNull(result);
+    }
+    
+    @Test
+    public void testSenha() {
+        System.out.println("getSenha");
+        ControlPayConfig instance = ControlPayConfig.getConfig();
+        assertNotNull(instance);
+        String result = instance.getSenha();
+        assertNotNull(result);
+    }
+    
 }

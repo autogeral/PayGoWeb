@@ -28,7 +28,7 @@ package br.com.autogeral.paygo.controlpay.model;
  * 23/05/2019 18:02:54
  * @author Murilo de Moraes Tuvani
  */
-public class VendaVO {
+public class Venda {
     
     private int formaPagamentoId;
     private int terminalId;

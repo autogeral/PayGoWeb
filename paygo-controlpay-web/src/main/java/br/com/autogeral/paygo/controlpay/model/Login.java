@@ -25,56 +25,28 @@
 package br.com.autogeral.paygo.controlpay.model;
 
 /**
- * 02/06/2019 21:48:13
+ * 03/06/2019 13:44:08
  * @author Murilo Moraes Tuvani
  */
-public class Produto {
+public class Login {
 
-    private int produtoItemId;
-    private int id;
-    private String nome;
-    private double quantidade;
-    private double valor;
+    private String cpfCnpj;
+    private String senha;
 
-    public int getProdutoItemId() {
-        return produtoItemId;
+    public String getCpfCnpj() {
+        return cpfCnpj;
     }
 
-    public void setProdutoItemId(int produtoItemId) {
-        this.produtoItemId = produtoItemId;
+    public void setCpfCnpj(String cpfCnpj) {
+        this.cpfCnpj = cpfCnpj;
     }
 
-    public int getId() {
-        return id;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public double getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(double quantidade) {
-        this.quantidade = quantidade;
-    }
-
-    public double getValor() {
-        return valor;
-    }
-
-    public void setValor(double valor) {
-        this.valor = valor;
-    }
-    
     
 }

@@ -24,10 +24,40 @@
 
 package br.com.autogeral.paygo.controlpay.model;
 
+import java.util.Date;
+
 /**
- * 27/05/2019 22:32:20
+ * 27/05/2019 22:32:38
  * @author Murilo Moraes Tuvani
  */
-public class IntenacaoVendaVO {
+public class VendaVenderResultado {
+
+    private int httpStatus;
+    private Date data;
+    private IntencaoVenda intencaoVenda;
+
+    public int getHttpStatus() {
+        return httpStatus;
+    }
+
+    public void setHttpStatus(int httpStatus) {
+        this.httpStatus = httpStatus;
+    }
+
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
+
+    public IntencaoVenda getIntencaoVenda() {
+        return intencaoVenda;
+    }
+
+    public void setIntencaoVenda(IntencaoVenda intencaoVenda) {
+        this.intencaoVenda = intencaoVenda;
+    }
 
 }

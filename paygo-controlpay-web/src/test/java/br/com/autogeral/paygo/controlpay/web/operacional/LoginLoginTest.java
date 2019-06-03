@@ -22,42 +22,29 @@
  * THE SOFTWARE.
  */
 
-package br.com.autogeral.paygo.controlpay.model;
+package br.com.autogeral.paygo.controlpay.web.operacional;
 
-import java.util.Date;
+import br.com.autogeral.paygo.controlpay.model.Login;
+import java.io.IOException;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
- * 27/05/2019 22:32:38
+ * 03/06/2019 13:41:24
  * @author Murilo Moraes Tuvani
  */
-public class VendaVenderResultadoVO {
-
-    private int httpStatus;
-    private Date data;
-    private IntecaoVendaVO intencaoVenda;
-
-    public int getHttpStatus() {
-        return httpStatus;
+public class LoginLoginTest {
+    
+    @Test
+    public void test_login () throws IOException {
+        LoginLogin ll = new LoginLogin();
+        Login login = ll.autenticar();
+        assertNotNull(login);
+        assertNotNull(login.getCpfCnpj());
+        assertNotNull(login.getSenha());
+        
     }
-
-    public void setHttpStatus(int httpStatus) {
-        this.httpStatus = httpStatus;
-    }
-
-    public Date getData() {
-        return data;
-    }
-
-    public void setData(Date data) {
-        this.data = data;
-    }
-
-    public IntecaoVendaVO getIntencaoVenda() {
-        return intencaoVenda;
-    }
-
-    public void setIntencaoVenda(IntecaoVendaVO intencaoVenda) {
-        this.intencaoVenda = intencaoVenda;
-    }
+    
+    
 
 }

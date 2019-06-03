@@ -25,56 +25,18 @@
 package br.com.autogeral.paygo.controlpay.model;
 
 /**
- * 02/06/2019 21:48:13
+ * 03/06/2019 14:14:53
  * @author Murilo Moraes Tuvani
  */
-public class Produto {
+public class Message {
 
-    private int produtoItemId;
-    private int id;
-    private String nome;
-    private double quantidade;
-    private double valor;
+    private String message;
 
-    public int getProdutoItemId() {
-        return produtoItemId;
+    public String getMessage() {
+        return message;
     }
 
-    public void setProdutoItemId(int produtoItemId) {
-        this.produtoItemId = produtoItemId;
+    public void setMessage(String message) {
+        this.message = message;
     }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public double getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(double quantidade) {
-        this.quantidade = quantidade;
-    }
-
-    public double getValor() {
-        return valor;
-    }
-
-    public void setValor(double valor) {
-        this.valor = valor;
-    }
-    
-    
 }

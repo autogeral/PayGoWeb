@@ -24,8 +24,6 @@
 package br.com.autogeral.paygo.controlpay.model;
 
 import br.com.autogeral.paygo.controlpay.web.WsHelper;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -37,21 +35,21 @@ import static org.junit.Assert.*;
  *
  * @author Murilo Moraes Tuvani
  */
-public class VendaVOTest {
-    
+public class LoginTest {
+
+    /**
+     * Test of getCpfCnpj method, of class Login.
+     */
     @Test
-    public void test01_parseSimples() {
-        Venda instance = new Venda();
-        instance.setTerminalId(999);
-        instance.setReferencia("VENDA123456789");
-        instance.setAdquirente("ABC");
-        instance.setFormaPagamentoId(100);
-        instance.setQuantidadeParcelas(1);
-        instance.setValorTotalVendido(1234567.89d);
-        String expResult = "{\"formaPagamentoId\":100,\"terminalId\":999,\"referencia\":\"VENDA123456789\",\"aguardarTefIniciarTransacao\":false,\"parcelamentoAdmin\":null,\"quantidadeParcelas\":1,\"adquirente\":\"ABC\",\"valorTotalVendido\":1234567.89}";
-        String result = WsHelper.getGson().toJson(instance);
-        System.out.println(result);
+    public void test_serialize() {
+        System.out.println("test_serialize");
+        Login instance = new Login();
+        instance.setCpfCnpj("01234567000189");
+        instance.setSenha("123");
+        
+        String result = WsHelper.marshal(instance);
+        String expResult = "{\"cpfCnpj\":\"01234567000189\",\"senha\":\"123\"}";
         assertEquals(expResult, result);
     }
-
+    
 }

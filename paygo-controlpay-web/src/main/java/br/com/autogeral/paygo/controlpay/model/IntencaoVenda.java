@@ -31,7 +31,7 @@ import java.util.List;
  *
  * @author Murilo de Moraes Tuvani
  */
-public class IntecaoVendaVO {
+public class IntencaoVenda {
 
     private int id;
     private String referencia;

@@ -24,9 +24,9 @@
 
 package br.com.autogeral.paygo.controlpay.web.transacional;
 
-import br.com.autogeral.paygo.controlpay.model.VendaVO;
+import br.com.autogeral.paygo.controlpay.model.Venda;
 import br.com.autogeral.paygo.controlpay.web.ControlPayConfig;
-import br.com.autogeral.paygo.controlpay.model.VendaVenderResultadoVO;
+import br.com.autogeral.paygo.controlpay.model.VendaVenderResultado;
 import br.com.autogeral.paygo.controlpay.web.WsHelper;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -60,7 +60,7 @@ public class VendaVender {
         return servidor + PATH + config.getKey();
     }
     
-    public VendaVenderResultadoVO vender(VendaVO venda) throws IOException {
+    public VendaVenderResultado vender(Venda venda) throws IOException {
         venda.setTerminalId(ControlPayConfig.getConfig().getTerminal());
         
         String json = WsHelper.getGson().toJson(venda);
@@ -75,7 +75,7 @@ public class VendaVender {
         HttpClient client = new HttpClient();
         int result = client.executeMethod(method);
         
-        VendaVenderResultadoVO r = new VendaVenderResultadoVO();
+        VendaVenderResultado r = new VendaVenderResultado();
         r.setHttpStatus(result);
         
 //        if (result == 200) {

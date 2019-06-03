@@ -24,12 +24,16 @@
 
 package br.com.autogeral.paygo.controlpay.web;
 
+import br.com.autogeral.util.gson.LocalDateGson;
+import br.com.autogeral.util.gson.LocalTimeGson;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import org.apache.commons.httpclient.HttpMethod;
 
 /**
@@ -68,7 +72,9 @@ public class WsHelper {
         if (gson == null) {
             gson = new GsonBuilder()
                     .serializeNulls()
-                    .setDateFormat("yyyy-MM-dd HH:mm:ss.SSS")
+                    .registerTypeAdapter(LocalDate.class, new LocalDateGson())
+                    .registerTypeAdapter(LocalTime.class, new LocalTimeGson())
+                    .setDateFormat("dd-MM-yyyy HH:mm:ss.SSSS")
                     .create();
         }
         return gson;

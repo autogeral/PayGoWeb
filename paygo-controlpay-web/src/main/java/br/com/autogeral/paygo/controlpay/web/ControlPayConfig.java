@@ -39,6 +39,8 @@ public class ControlPayConfig {
     private String key;
     private String servidor;
     private int terminal;
+    private String cpfCnpj;
+    private String senha;
     
     private ControlPayConfig() {}
 
@@ -62,6 +64,8 @@ public class ControlPayConfig {
                 config.key = prop.getProperty("key");
                 config.servidor = prop.getProperty("servidor");
                 config.terminal = Integer.parseInt(prop.getProperty("terminal"));
+                config.cpfCnpj = prop.getProperty("cpfCnpj");
+                config.senha = prop.getProperty("senha");
             } catch (IOException ex) {
                 ex.printStackTrace(System.out);
             }
@@ -91,6 +95,24 @@ public class ControlPayConfig {
      */
     public int getTerminal() {
         return terminal;
+    }
+
+    /**
+     * Número do CPF ou CNPJ para autenticacao no web service</br>
+     * Para uso em LoginLogin</br>
+     * @return 
+     */
+    public String getCpfCnpj() {
+        return cpfCnpj;
+    }
+
+    /**
+     * Senha para autenticacao no web service</br>
+     * Para uso em LoginLogin</br>
+     * @return 
+     */
+    public String getSenha() {
+        return senha;
     }
 
 }

@@ -23,8 +23,8 @@
  */
 package br.com.autogeral.paygo.controlpay.web.transacional;
 
-import br.com.autogeral.paygo.controlpay.model.VendaVO;
-import br.com.autogeral.paygo.controlpay.model.VendaVenderResultadoVO;
+import br.com.autogeral.paygo.controlpay.model.Venda;
+import br.com.autogeral.paygo.controlpay.model.VendaVenderResultado;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -63,7 +63,7 @@ public class VendaVenderTest {
     @Test
     public void testVender() throws Exception {
         System.out.println("vender");
-        VendaVO venda = new VendaVO();
+        Venda venda = new Venda();
         venda.setReferencia("Venda123");
         venda.setFormaPagamentoId(21);
 //        venda.setFormaPagamentoId(20);
@@ -72,8 +72,8 @@ public class VendaVenderTest {
         venda.setQuantidadeParcelas(1);
         venda.setValorTotalVendido(1);
         VendaVender instance = new VendaVender();
-        VendaVenderResultadoVO expResult = null;
-        VendaVenderResultadoVO result = instance.vender(venda);
+        VendaVenderResultado expResult = null;
+        VendaVenderResultado result = instance.vender(venda);
         assertEquals(expResult, result);
     }
     

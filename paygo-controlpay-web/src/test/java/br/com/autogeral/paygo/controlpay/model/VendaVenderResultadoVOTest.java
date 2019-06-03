@@ -28,6 +28,7 @@ import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -66,7 +67,7 @@ public class VendaVenderResultadoVOTest {
     @Test
     public void test_serializacao() throws ParseException {
         System.out.println("serializacao");
-        VendaVenderResultadoVO vv = new VendaVenderResultadoVO();
+        VendaVenderResultado vv = new VendaVenderResultado();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss.SSSS");
         NumberFormat decimalFormat = NumberFormat.getNumberInstance(new Locale("pt", "BR"));
         decimalFormat.setMinimumFractionDigits(2);
@@ -74,7 +75,7 @@ public class VendaVenderResultadoVOTest {
         
         Date data = sdf.parse("17/11/2016 17:40:37.9417");
         vv.setData(data);
-        IntecaoVendaVO iv = new IntecaoVendaVO();
+        IntencaoVenda iv = new IntencaoVenda();
         vv.setIntencaoVenda(iv);
         iv.setId(68240);
         iv.setReferencia("Venda1234");
@@ -203,7 +204,15 @@ public class VendaVenderResultadoVOTest {
                 + "    \"pedido\": null\n"
                 + "  }\n"
                 + "}";
-        VendaVenderResultadoVO vv = WsHelper.unmarshal(response, VendaVenderResultadoVO.class);
+        VendaVenderResultado vv = WsHelper.unmarshal(response, VendaVenderResultado.class);
+        Date dataRequiscao = vv.getData();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(dataRequiscao);
+        assertEquals(2016, cal.get(Calendar.YEAR));
+        assertEquals(Calendar.NOVEMBER, cal.get(Calendar.MONTH));
+        assertEquals(17, cal.get(Calendar.DAY_OF_MONTH));
+        
+        assertNotNull(vv.getIntencaoVenda());
     }
 
 }
