@@ -58,7 +58,8 @@ public class LoginLogin {
         method.setRequestEntity(requestEntity);
         HttpClient client = new HttpClient();
         int result = client.executeMethod(method);
-        
+
+        System.out.println("Códiog HTTP : " + result);
         ByteArrayOutputStream baos = WsHelper.getResponseBody(method);
         String responseBody = baos.toString();
         System.out.println(responseBody);

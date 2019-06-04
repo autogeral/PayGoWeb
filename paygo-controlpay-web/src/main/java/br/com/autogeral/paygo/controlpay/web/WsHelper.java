@@ -24,6 +24,8 @@
 
 package br.com.autogeral.paygo.controlpay.web;
 
+import br.com.autogeral.paygo.controlpay.model.Venda;
+import br.com.autogeral.paygo.controlpay.model.VendaGsonAdapter;
 import br.com.autogeral.util.gson.LocalDateGson;
 import br.com.autogeral.util.gson.LocalTimeGson;
 import com.google.gson.Gson;
@@ -70,8 +72,21 @@ public class WsHelper {
 
     public static Gson getGson() {
         if (gson == null) {
+//            ExclusionStrategy strategy  = new ExclusionStrategy() {
+//                @Override
+//                public boolean shouldSkipField(FieldAttributes f) {
+//                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//                }
+//
+//                @Override
+//                public boolean shouldSkipClass(Class<?> clazz) {
+//                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//                }
+//            };
             gson = new GsonBuilder()
                     .serializeNulls()
+//                    .addSerializationExclusionStrategy(strategy)
+                    .registerTypeAdapter(Venda.class, new VendaGsonAdapter())
                     .registerTypeAdapter(LocalDate.class, new LocalDateGson())
                     .registerTypeAdapter(LocalTime.class, new LocalTimeGson())
                     .setDateFormat("dd-MM-yyyy HH:mm:ss.SSSS")
@@ -79,5 +94,5 @@ public class WsHelper {
         }
         return gson;
     }
-
+    
 }

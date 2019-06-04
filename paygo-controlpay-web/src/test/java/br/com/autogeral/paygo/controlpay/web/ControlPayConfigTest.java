@@ -98,7 +98,7 @@ public class ControlPayConfigTest {
         System.out.println("getTerminal");
         ControlPayConfig instance = ControlPayConfig.getConfig();
         assertNotNull(instance);
-        int result = instance.getTerminal();
+        String result = instance.getTerminal();
         assertNotNull(result);
     }
     

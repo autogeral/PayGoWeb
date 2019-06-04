@@ -21,64 +21,31 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package br.com.autogeral.paygo.controlpay.model;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
+import java.lang.reflect.Type;
 
 /**
- * 03/06/2019 15:38:05
+ * 03/06/2019 21:05:57
+ *
  * @author Murilo Moraes Tuvani
  */
-public class ProdutoVenda {
+public class VendaGsonAdapter implements JsonSerializer<Venda> {
 
-    @Expose(serialize = false, deserialize = false)
-    private int produtoItemId;
-    @SerializedName("Id")
-    private int id;
-    private String nome;
-    private double quantidade;
-    private double valor;
-
-    public int getProdutoItemId() {
-        return produtoItemId;
-    }
-
-    public void setProdutoItemId(int produtoItemId) {
-        this.produtoItemId = produtoItemId;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public double getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(double quantidade) {
-        this.quantidade = quantidade;
-    }
-
-    public double getValor() {
-        return valor;
-    }
-
-    public void setValor(double valor) {
-        this.valor = valor;
+    @Override
+    public JsonElement serialize(Venda venda, Type typeOfSrc, JsonSerializationContext context) {
+        JsonObject jObj = (JsonObject) new GsonBuilder()
+                          .serializeNulls()
+                          .create().toJsonTree(venda);
+        if (!venda.getProdutosVendidos().isEmpty()) {
+            jObj.remove("valorTotalVendido");
+        }
+        return jObj;
     }
 
 }

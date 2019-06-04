@@ -24,6 +24,9 @@
 
 package br.com.autogeral.paygo.controlpay.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 23/05/2019 18:02:54
  * @author Murilo de Moraes Tuvani
@@ -31,13 +34,14 @@ package br.com.autogeral.paygo.controlpay.model;
 public class Venda {
     
     private int formaPagamentoId;
-    private int terminalId;
+    private String terminalId;
     private String referencia;
     private boolean aguardarTefIniciarTransacao = true;
     private String parcelamentoAdmin;
     private int quantidadeParcelas;
     private String adquirente;
     private double valorTotalVendido;
+    private List<ProdutoVenda> produtosVendidos = new ArrayList<>();
 
     public int getFormaPagamentoId() {
         return formaPagamentoId;
@@ -47,11 +51,11 @@ public class Venda {
         this.formaPagamentoId = formaPagamentoId;
     }
 
-    public int getTerminalId() {
+    public String getTerminalId() {
         return terminalId;
     }
 
-    public void setTerminalId(int terminalId) {
+    public void setTerminalId(String terminalId) {
         this.terminalId = terminalId;
     }
 
@@ -101,6 +105,14 @@ public class Venda {
 
     public void setValorTotalVendido(double valorTotalVendido) {
         this.valorTotalVendido = valorTotalVendido;
+    }
+
+    public List<ProdutoVenda> getProdutosVendidos() {
+        return produtosVendidos;
+    }
+
+    public void setProdutosVendidos(List<ProdutoVenda> produtosVendidos) {
+        this.produtosVendidos = produtosVendidos;
     }
     
 }

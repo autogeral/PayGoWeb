@@ -40,15 +40,19 @@ import static org.junit.Assert.*;
 public class VendaTest {
     
     @Test
-    public void test01_parseSimples() {
+    public void test01_serialize() {
         Venda instance = new Venda();
-        instance.setTerminalId(999);
-        instance.setReferencia("VENDA123456789");
-        instance.setAdquirente("ABC");
-        instance.setFormaPagamentoId(100);
+        instance.setAdquirente("");
+        instance.setFormaPagamentoId(21);
         instance.setQuantidadeParcelas(1);
-        instance.setValorTotalVendido(1234567.89d);
-        String expResult = "{\"formaPagamentoId\":100,\"terminalId\":999,\"referencia\":\"VENDA123456789\",\"aguardarTefIniciarTransacao\":false,\"parcelamentoAdmin\":null,\"quantidadeParcelas\":1,\"adquirente\":\"ABC\",\"valorTotalVendido\":1234567.89}";
+
+        ProdutoVenda pv = new ProdutoVenda();
+        pv.setValor(1);
+        pv.setQuantidade(1);
+        instance.getProdutosVendidos().add(pv);
+        
+        String a =         "{\"formaPagamentoId\":21,\"terminalId\":null,\"referencia\":null,\"aguardarTefIniciarTransacao\":true,\"parcelamentoAdmin\":null,\"quantidadeParcelas\":1,\"adquirente\":\"\",\"produtosVendidos\":[{\"produtoItemId\":0,\"Id\":0,\"nome\":null,\"quantidade\":1.0,\"valor\":1.0}]}" ;
+        String expResult = "{\"formaPagamentoId\":21,\"terminalId\":null,\"referencia\":null,\"aguardarTefIniciarTransacao\":true,\"parcelamentoAdmin\":null,\"quantidadeParcelas\":1,\"adquirente\":\"\",\"produtosVendidos\":[{\"Id\":\"\",\"Valor\":\"1.00\",\"Quantidade\":\"1\"}]}";
         String result = WsHelper.getGson().toJson(instance);
         System.out.println(result);
         assertEquals(expResult, result);
