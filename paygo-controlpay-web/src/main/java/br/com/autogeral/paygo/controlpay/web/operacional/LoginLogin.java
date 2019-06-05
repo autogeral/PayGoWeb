@@ -24,6 +24,7 @@
 
 package br.com.autogeral.paygo.controlpay.web.operacional;
 
+import br.com.autogeral.paygo.controlpay.model.Data;
 import br.com.autogeral.paygo.controlpay.model.Login;
 import br.com.autogeral.paygo.controlpay.web.ControlPayConfig;
 import br.com.autogeral.paygo.controlpay.web.WsHelper;
@@ -42,7 +43,7 @@ public class LoginLogin {
     
     private static final String PATH = "webapi/Login/Login/";
 
-    public Login autenticar() throws IOException {
+    public Data autenticar() throws IOException {
         Login l = new Login();
         ControlPayConfig config = ControlPayConfig.getConfig();
         l.setCpfCnpj(config.getCpfCnpj());
@@ -60,11 +61,14 @@ public class LoginLogin {
         int result = client.executeMethod(method);
 
         System.out.println("Códiog HTTP : " + result);
-        ByteArrayOutputStream baos = WsHelper.getResponseBody(method);
-        String responseBody = baos.toString();
-        System.out.println(responseBody);
+        
+        WsHelper.printHeaders(method);
+        json = method.getResponseBodyAsString();
+        System.out.println(json);
+        Data data = WsHelper.unmarshal(json, Data.class);
+        data.setHttpStatus(result);
 
-        return l;
+        return data;
     }
     
     private String getPath() {

@@ -24,7 +24,7 @@
 
 package br.com.autogeral.paygo.controlpay.web.operacional;
 
-import br.com.autogeral.paygo.controlpay.model.Login;
+import br.com.autogeral.paygo.controlpay.model.Data;
 import java.io.IOException;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -38,11 +38,8 @@ public class LoginLoginTest {
     @Test
     public void test_login () throws IOException {
         LoginLogin ll = new LoginLogin();
-        Login login = ll.autenticar();
-        assertNotNull(login);
-        assertNotNull(login.getCpfCnpj());
-        assertNotNull(login.getSenha());
-        
+        Data data = ll.autenticar();
+        assertNotNull(data);
     }
     
     

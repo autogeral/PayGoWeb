@@ -36,7 +36,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import org.apache.commons.httpclient.Header;
 import org.apache.commons.httpclient.HttpMethod;
+import org.apache.commons.httpclient.methods.PostMethod;
 
 /**
  * 27/05/2019 22:26:21
@@ -93,6 +95,12 @@ public class WsHelper {
                     .create();
         }
         return gson;
+    }
+
+    public static void printHeaders(HttpMethod method) {
+        for (Header header : method.getRequestHeaders()) {
+            System.out.println("Header : " + header.getName() + "\tValue : " + header.getValue());
+        }
     }
     
 }

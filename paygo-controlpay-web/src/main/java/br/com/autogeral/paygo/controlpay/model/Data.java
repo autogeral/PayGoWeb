@@ -32,8 +32,26 @@ package br.com.autogeral.paygo.controlpay.model;
  */
 public class Data {
     
+    private transient int httpStatus;
+    private String message;
     private Pessoa pessoa;
     private Produto produto;
+
+    public int getHttpStatus() {
+        return httpStatus;
+    }
+
+    public void setHttpStatus(int httpStatus) {
+        this.httpStatus = httpStatus;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
     public Pessoa getPessoa() {
         return pessoa;
