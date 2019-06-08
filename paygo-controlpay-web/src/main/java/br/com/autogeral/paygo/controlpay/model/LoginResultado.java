@@ -33,12 +33,21 @@ import java.time.format.DateTimeFormatter;
  */
 public class LoginResultado {
     
+    private transient int httpStatus;
     private LocalDateTime data;
     private LoginPessoa pessoa;
     private String operador;
     private AplicacaoVersao android;
     private AplicacaoVersao ios;
     private AplicacaoVersao app;
+
+    public int getHttpStatus() {
+        return httpStatus;
+    }
+
+    public void setHttpStatus(int status) {
+        this.httpStatus = status;
+    }
 
     public LocalDateTime getData() {
         return data;

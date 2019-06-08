@@ -24,10 +24,54 @@
 
 package br.com.autogeral.paygo.controlpay.web.operacional;
 
+import br.com.autogeral.paygo.controlpay.model.Data;
+import br.com.autogeral.paygo.controlpay.model.LoginResultado;
+import br.com.autogeral.paygo.controlpay.web.ControlPayConfig;
+import br.com.autogeral.paygo.controlpay.web.WsHelper;
+import java.io.IOException;
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.methods.PostMethod;
+
 /**
  * 03/06/2019 15:32:56
  * @author Murilo Moraes Tuvani
  */
 public class TerminalGetByPessoaId {
+    
+    private static final String PATH = "webapi/Terminal/GetByPessoaId?key=";
+    
+    /**
+     * Retorna a URL compra para o envio da requisição
+     * para o endpoint de transacao de venda
+     * @return 
+     */
+    private String getPath(int pessoaId) {
+        ControlPayConfig config = ControlPayConfig.getConfig();
+        String servidor = config.getServidor();
+        if (!servidor.startsWith("http")) {
+            servidor = "https://" + servidor;
+        }
+        if (!servidor.endsWith("/")) {
+            servidor += "/";
+        }
+        return servidor + PATH + config.getKey() + "&pessoaId=" + pessoaId;
+    }
+    
+    public Data execute(LoginResultado login) throws IOException {
+        int pessoaId = login.getPessoa().getId();
+        PostMethod method = new PostMethod(getPath(pessoaId));
+        method.addRequestHeader("Content-Type", "application/json");
+        HttpClient client = new HttpClient();
+
+        int result = client.executeMethod(method);
+        
+        WsHelper.printHeaders(method);
+        String json = method.getResponseBodyAsString();
+        System.out.println(json);
+        Data data = WsHelper.unmarshal(json, Data.class);
+        data.setHttpStatus(result);
+        
+        return data;
+    }
 
 }

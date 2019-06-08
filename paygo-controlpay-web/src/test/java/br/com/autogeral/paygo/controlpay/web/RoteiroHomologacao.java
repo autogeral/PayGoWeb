@@ -22,26 +22,38 @@
  * THE SOFTWARE.
  */
 
-package br.com.autogeral.paygo.controlpay.web.operacional;
+package br.com.autogeral.paygo.controlpay.web;
 
+import br.com.autogeral.paygo.controlpay.model.Data;
 import br.com.autogeral.paygo.controlpay.model.LoginResultado;
+import br.com.autogeral.paygo.controlpay.web.operacional.LoginLogin;
+import br.com.autogeral.paygo.controlpay.web.operacional.TerminalGetByPessoaId;
 import java.io.IOException;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
- * 03/06/2019 13:41:24
+ * 07/06/2019 22:12:24
  * @author Murilo Moraes Tuvani
  */
-public class LoginLoginTest {
-    
-    @Test
-    public void test_login () throws IOException {
-        LoginLogin ll = new LoginLogin();
-        LoginResultado data = ll.autenticar();
-        assertNotNull(data);
+public class RoteiroHomologacao {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        try {
+            LoginLogin ll = new LoginLogin();
+            LoginResultado loginData = ll.autenticar();
+            TerminalGetByPessoaId lgb = new TerminalGetByPessoaId();
+            Data teminaisData = lgb.execute(loginData);
+            
+            
+        } catch (IOException ex) {
+            Logger.getLogger(RoteiroHomologacao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
     }
-    
-    
 
 }
