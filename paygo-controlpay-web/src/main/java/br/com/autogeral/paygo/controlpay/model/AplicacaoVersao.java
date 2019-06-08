@@ -25,18 +25,25 @@
 package br.com.autogeral.paygo.controlpay.model;
 
 /**
- * 03/06/2019 14:14:53
+ * 07/06/2019 08:41:11
  * @author Murilo Moraes Tuvani
  */
-public class Message {
+public class AplicacaoVersao {
 
-    private String message;
+    private String versaoApp;
 
-    public String getMessage() {
-        return message;
+    public String getVersaoApp() {
+        return versaoApp;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setVersaoApp(String versaoApp) {
+        this.versaoApp = versaoApp;
     }
+
+    @Override
+    public String toString() {
+        return "AplicacaoVersao{versaoApp=" + versaoApp + '}';
+    }
+    
+    
 }

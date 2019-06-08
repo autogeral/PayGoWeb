@@ -44,14 +44,14 @@ public class LocalDateTimeGson implements JsonDeserializer<LocalDateTime>, JsonS
     @Override
     public LocalDateTime deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         String content = json.getAsJsonPrimitive().getAsString();
-        DateTimeFormatter formater = DateTimeFormatter.ofPattern("HH:mm:ss.SSSS");
+        DateTimeFormatter formater = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss.SSSS");
         LocalDateTime localTime = LocalDateTime.from(formater.parse(content));
         return localTime;
     }
 
     @Override
     public JsonElement serialize(LocalDateTime src, Type typeOfSrc, JsonSerializationContext context) {
-        DateTimeFormatter formater = DateTimeFormatter.ofPattern("HH:mm:ss.SSSS");
+        DateTimeFormatter formater = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss.SSSS");
         String content = src.format(formater);
         JsonElement element = new JsonPrimitive(content);
         return element;

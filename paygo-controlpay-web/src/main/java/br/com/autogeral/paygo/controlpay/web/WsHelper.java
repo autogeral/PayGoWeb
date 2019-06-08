@@ -27,6 +27,7 @@ package br.com.autogeral.paygo.controlpay.web;
 import br.com.autogeral.paygo.controlpay.model.Venda;
 import br.com.autogeral.paygo.controlpay.model.VendaGsonAdapter;
 import br.com.autogeral.util.gson.LocalDateGson;
+import br.com.autogeral.util.gson.LocalDateTimeGson;
 import br.com.autogeral.util.gson.LocalTimeGson;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -35,10 +36,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import org.apache.commons.httpclient.Header;
 import org.apache.commons.httpclient.HttpMethod;
-import org.apache.commons.httpclient.methods.PostMethod;
 
 /**
  * 27/05/2019 22:26:21
@@ -91,6 +92,7 @@ public class WsHelper {
                     .registerTypeAdapter(Venda.class, new VendaGsonAdapter())
                     .registerTypeAdapter(LocalDate.class, new LocalDateGson())
                     .registerTypeAdapter(LocalTime.class, new LocalTimeGson())
+                    .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeGson())
                     .setDateFormat("dd-MM-yyyy HH:mm:ss.SSSS")
                     .create();
         }
