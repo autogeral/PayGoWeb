@@ -24,70 +24,51 @@
 
 package br.com.autogeral.paygo.controlpay.model;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 /**
- * Uma classe apenas para colocar outros dados dentro</br>
- * para satisfazer a API</br>
- * 03/06/2019 18:33:17
+ * 10/06/2019 08:30:31
  * @author Murilo Moraes Tuvani
  */
-public class Data {
-    
-    private transient int httpStatus;
-    private LocalDateTime data;
-    private String message;
-    private Pessoa pessoa;
-    private Produto produto;
-    private List<Terminal> terminais;
+public class Parametro {
 
-    public int getHttpStatus() {
-        return httpStatus;
+    private int id;
+    private String nome;
+    private String descricao;
+    private String valor;
+
+    public int getId() {
+        return id;
     }
 
-    public void setHttpStatus(int httpStatus) {
-        this.httpStatus = httpStatus;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public LocalDateTime getData() {
-        return data;
+    public String getNome() {
+        return nome;
     }
 
-    public void setData(LocalDateTime data) {
-        this.data = data;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getMessage() {
-        return message;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public Pessoa getPessoa() {
-        return pessoa;
+    public String getValor() {
+        return valor;
     }
 
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
+    public void setValor(String valor) {
+        this.valor = valor;
     }
 
-    public Produto getProduto() {
-        return produto;
+    @Override
+    public String toString() {
+        return "Parametro{id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", valor=" + valor + '}';
     }
-
-    public void setProduto(Produto produto) {
-        this.produto = produto;
-    }
-
-    public List<Terminal> getTerminais() {
-        return terminais;
-    }
-
-    public void setTerminais(List<Terminal> terminais) {
-        this.terminais = terminais;
-    }
-    
 }

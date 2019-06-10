@@ -24,70 +24,52 @@
 
 package br.com.autogeral.paygo.controlpay.model;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 /**
- * Uma classe apenas para colocar outros dados dentro</br>
- * para satisfazer a API</br>
- * 03/06/2019 18:33:17
+ * 10/06/2019 08:35:11
  * @author Murilo Moraes Tuvani
  */
-public class Data {
-    
-    private transient int httpStatus;
-    private LocalDateTime data;
-    private String message;
-    private Pessoa pessoa;
-    private Produto produto;
-    private List<Terminal> terminais;
+public class TerminalFisico {
 
-    public int getHttpStatus() {
-        return httpStatus;
+    private int id;
+    private String nome;
+    private String instalacaoId;
+    private LoginPessoa pessoa;
+
+    public int getId() {
+        return id;
     }
 
-    public void setHttpStatus(int httpStatus) {
-        this.httpStatus = httpStatus;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public LocalDateTime getData() {
-        return data;
+    public String getNome() {
+        return nome;
     }
 
-    public void setData(LocalDateTime data) {
-        this.data = data;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getMessage() {
-        return message;
+    public String getInstalacaoId() {
+        return instalacaoId;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setInstalacaoId(String instalacaoId) {
+        this.instalacaoId = instalacaoId;
     }
 
-    public Pessoa getPessoa() {
+    public LoginPessoa getPessoa() {
         return pessoa;
     }
 
-    public void setPessoa(Pessoa pessoa) {
+    public void setPessoa(LoginPessoa pessoa) {
         this.pessoa = pessoa;
     }
 
-    public Produto getProduto() {
-        return produto;
-    }
-
-    public void setProduto(Produto produto) {
-        this.produto = produto;
-    }
-
-    public List<Terminal> getTerminais() {
-        return terminais;
-    }
-
-    public void setTerminais(List<Terminal> terminais) {
-        this.terminais = terminais;
+    @Override
+    public String toString() {
+        return "TerminalFisico{id=" + id + ", nome=" + nome + ", instalacaoId=" + instalacaoId + ", pessoa=" + pessoa + '}';
     }
     
 }

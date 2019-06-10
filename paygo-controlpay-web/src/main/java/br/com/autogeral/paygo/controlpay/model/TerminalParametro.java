@@ -24,70 +24,43 @@
 
 package br.com.autogeral.paygo.controlpay.model;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 /**
- * Uma classe apenas para colocar outros dados dentro</br>
- * para satisfazer a API</br>
- * 03/06/2019 18:33:17
+ * 10/06/2019 08:30:01
  * @author Murilo Moraes Tuvani
  */
-public class Data {
-    
-    private transient int httpStatus;
-    private LocalDateTime data;
-    private String message;
-    private Pessoa pessoa;
-    private Produto produto;
-    private List<Terminal> terminais;
+public class TerminalParametro {
 
-    public int getHttpStatus() {
-        return httpStatus;
+    private int id;
+    private String valor;
+    private Parametro parametro;
+
+    public int getId() {
+        return id;
     }
 
-    public void setHttpStatus(int httpStatus) {
-        this.httpStatus = httpStatus;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public LocalDateTime getData() {
-        return data;
+    public String getValor() {
+        return valor;
     }
 
-    public void setData(LocalDateTime data) {
-        this.data = data;
+    public void setValor(String valor) {
+        this.valor = valor;
     }
 
-    public String getMessage() {
-        return message;
+    public Parametro getParametro() {
+        return parametro;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setParametro(Parametro parametro) {
+        this.parametro = parametro;
     }
 
-    public Pessoa getPessoa() {
-        return pessoa;
-    }
-
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
-    }
-
-    public Produto getProduto() {
-        return produto;
-    }
-
-    public void setProduto(Produto produto) {
-        this.produto = produto;
-    }
-
-    public List<Terminal> getTerminais() {
-        return terminais;
-    }
-
-    public void setTerminais(List<Terminal> terminais) {
-        this.terminais = terminais;
+    @Override
+    public String toString() {
+        return "TerminalParametro{id=" + id + ", valor=" + valor + ", parametro=" + parametro + '}';
     }
     
 }

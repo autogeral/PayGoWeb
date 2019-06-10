@@ -24,10 +24,6 @@
 package br.com.autogeral.paygo.controlpay.model;
 
 import br.com.autogeral.paygo.controlpay.web.WsHelper;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -37,31 +33,32 @@ import static org.junit.Assert.*;
  */
 public class PessoaTest {
 
-    private static final String ID = "0";
-    private static final String PESSOA_JURIDICA = "true";
-    private static final String NOME_RAZAO_SOCIAL = "Nome ou Razão Social";
-    private static final String SOBRENOME_NOMEFANTASIA = "Sobrenome ou Nome fantasia";
-    private static final String CPF_CNPJ = "12345678909";
-    private static final String E_MAIL = "cadastro@mailinator.com";
-    private static final String TELEFONE_1 = "(11)1111-1111";
-    private static final String TELEFONE_2 = "(22)2222-2222";
-    private static final String URL_FOTO = "UrlDaFoto.com";
+    public static final String PESSOA_ID = "1234";
+    public static final String PESSOA_JURIDICA = "true";
+    public static final String NOME_RAZAO_SOCIAL = "Nome ou Razão Social";
+    public static final String SOBRENOME_NOMEFANTASIA = "Sobrenome ou Nome fantasia";
+    public static final String CPF_CNPJ = "12345678901234";
+    public static final String CPF_CNPJ_FORMATADO = "12.345.678/9012-34";
+    public static final String E_MAIL = "cadastro@mailinator.com";
+    public static final String TELEFONE_1 = "(11)1111-1111";
+    public static final String TELEFONE_2 = "(22)2222-2222";
+    public static final String URL_FOTO = "UrlDaFoto.com";
 
-    private static final String TIPO_LOGRADOURO = "Rua";
-    private static final String LOGRADOURO = "Nome da rua";
-    private static final String NUMERO = "111";
-    private static final String COMPLEMENTO = "apto 11";
-    private static final String CEP = "00000-000";
-    private static final String BAIRRO = "Nome do bairro";
-    private static final String CIDADE = "Cidade";
-    private static final String UF = "SP";
-    private static final String FOTO_NOME = "Nome da foto";
-    private static final String FOTO_BASE_64 = "UrlDaFotoBase64";
+    public static final String TIPO_LOGRADOURO = "Rua";
+    public static final String LOGRADOURO = "Nome da rua";
+    public static final String NUMERO = "111";
+    public static final String COMPLEMENTO = "apto 11";
+    public static final String CEP = "00000-000";
+    public static final String BAIRRO = "Nome do bairro";
+    public static final String CIDADE = "Cidade";
+    public static final String UF = "SP";
+    public static final String FOTO_NOME = "Nome da foto";
+    public static final String FOTO_BASE_64 = "UrlDaFotoBase64";
 
     @Test
     public void test_serialize() {
         Pessoa p = new Pessoa();
-        p.setId(ID);
+        p.setId(PESSOA_ID);
         p.setPessoaJuridica(PESSOA_JURIDICA);
         p.setNomeRazaoSocial(NOME_RAZAO_SOCIAL);
         p.setSobrenomeNomeFantasia(SOBRENOME_NOMEFANTASIA);
@@ -95,11 +92,11 @@ public class PessoaTest {
     public void test_parse_data() {
         String toParse = "{\n"
                 + "    \"pessoa\":{\n"
-                + "  \"Id\": \"0\",\n"
+                + "  \"Id\": \"" + PESSOA_ID + "\",\n"
                 + "  \"PessoaJuridica\": \"true\",\n"
                 + "  \"NomeRazaoSocial\": \"Nome ou Razão Social\",\n"
                 + "  \"SobrenomeNomeFantasia\": \"Sobrenome ou Nome fantasia\",\n"
-                + "  \"CpfCnpj\": \"12345678909\",\n"
+                + "  \"CpfCnpj\": \"" + CPF_CNPJ + "\",\n"
                 + "  \"Email\": \"cadastro@mailinator.com\",\n"
                 + "  \"Telefone1\": \"(11)1111-1111\",\n"
                 + "  \"Telefone2\": \"(22)2222-2222\",\n"
@@ -129,11 +126,11 @@ public class PessoaTest {
     @Test
     public void test_parse() {
         String toParse = "{\n"
-                + "  \"Id\": \"0\",\n"
+                + "  \"Id\": \"" + PESSOA_ID + "\",\n"
                 + "  \"PessoaJuridica\": \"true\",\n"
                 + "  \"NomeRazaoSocial\": \"Nome ou Razão Social\",\n"
                 + "  \"SobrenomeNomeFantasia\": \"Sobrenome ou Nome fantasia\",\n"
-                + "  \"CpfCnpj\": \"12345678909\",\n"
+                + "  \"CpfCnpj\": \"" + CPF_CNPJ + "\",\n"
                 + "  \"Email\": \"cadastro@mailinator.com\",\n"
                 + "  \"Telefone1\": \"(11)1111-1111\",\n"
                 + "  \"Telefone2\": \"(22)2222-2222\",\n"
@@ -158,7 +155,7 @@ public class PessoaTest {
 
     private void testeParsePessoaPadrao(Pessoa p) {
         assertNotNull(p);
-        assertEquals(ID, p.getId());
+        assertEquals(PESSOA_ID, p.getId());
         assertEquals(PESSOA_JURIDICA, p.getPessoaJuridica());
         assertEquals(NOME_RAZAO_SOCIAL, p.getNomeRazaoSocial());
         assertEquals(SOBRENOME_NOMEFANTASIA, p.getSobrenomeNomeFantasia());
