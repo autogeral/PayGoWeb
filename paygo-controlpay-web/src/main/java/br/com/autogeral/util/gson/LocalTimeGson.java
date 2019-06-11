@@ -44,7 +44,7 @@ public class LocalTimeGson implements JsonDeserializer<LocalTime>, JsonSerialize
     @Override
     public LocalTime deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         String content = json.getAsJsonPrimitive().getAsString();
-        DateTimeFormatter formater = DateTimeFormatter.ofPattern("HH:mm:ss.SSSS");
+        DateTimeFormatter formater = DateTimeFormatter.ofPattern("HH:mm:ss");
         LocalTime localTime = LocalTime.from(formater.parse(content));
         return localTime;
     }

@@ -47,12 +47,11 @@ public class VendaTest {
         instance.setQuantidadeParcelas(1);
 
         ProdutoVenda pv = new ProdutoVenda();
-        pv.setValor(1);
-        pv.setQuantidade(1);
+        pv.setValor("1,00");
+        pv.setQuantidade("1");
         instance.getProdutosVendidos().add(pv);
         
-        String a =         "{\"formaPagamentoId\":21,\"terminalId\":null,\"referencia\":null,\"aguardarTefIniciarTransacao\":true,\"parcelamentoAdmin\":null,\"quantidadeParcelas\":1,\"adquirente\":\"\",\"produtosVendidos\":[{\"produtoItemId\":0,\"Id\":0,\"nome\":null,\"quantidade\":1.0,\"valor\":1.0}]}" ;
-        String expResult = "{\"formaPagamentoId\":21,\"terminalId\":null,\"referencia\":null,\"aguardarTefIniciarTransacao\":true,\"parcelamentoAdmin\":null,\"quantidadeParcelas\":1,\"adquirente\":\"\",\"produtosVendidos\":[{\"Id\":\"\",\"Valor\":\"1.00\",\"Quantidade\":\"1\"}]}";
+        String expResult = "{\"formaPagamentoId\":21,\"terminalId\":null,\"referencia\":null,\"aguardarTefIniciarTransacao\":true,\"parcelamentoAdmin\":null,\"quantidadeParcelas\":1,\"adquirente\":\"\",\"produtosVendidos\":[{\"Id\":0,\"nome\":null,\"Quantidade\":\"1\",\"Valor\":\"1,00\"}]}";
         String result = WsHelper.getGson().toJson(instance);
         System.out.println(result);
         assertEquals(expResult, result);

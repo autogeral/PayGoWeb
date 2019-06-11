@@ -24,11 +24,10 @@
 
 package br.com.autogeral.paygo.controlpay.web.transacional;
 
+import br.com.autogeral.paygo.controlpay.model.Data;
 import br.com.autogeral.paygo.controlpay.model.Venda;
 import br.com.autogeral.paygo.controlpay.web.ControlPayConfig;
-import br.com.autogeral.paygo.controlpay.model.VendaVenderResultado;
 import br.com.autogeral.paygo.controlpay.web.WsHelper;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.PostMethod;
@@ -60,7 +59,7 @@ public class VendaVender {
         return servidor + PATH + config.getKey();
     }
     
-    public VendaVenderResultado vender(Venda venda) throws IOException {
+    public Data vender(Venda venda) throws IOException {
         venda.setTerminalId(ControlPayConfig.getConfig().getTerminal());
         
         String json = WsHelper.getGson().toJson(venda);
@@ -74,16 +73,12 @@ public class VendaVender {
         method.setRequestEntity(requestEntity);
         HttpClient client = new HttpClient();
         int result = client.executeMethod(method);
-        
-        VendaVenderResultado r = new VendaVenderResultado();
-        r.setHttpStatus(result);
-        
-//        if (result == 200) {
-            ByteArrayOutputStream baos = WsHelper.getResponseBody(method);
-            String responseBody = baos.toString();
-            System.out.println(responseBody);
-//        }
-        return r;
+
+        String responseBody = method.getResponseBodyAsString();
+        System.out.println(responseBody);
+        Data data = WsHelper.unmarshal(json, Data.class);
+        data.setHttpStatus(result);
+        return data;
     }
     
 }

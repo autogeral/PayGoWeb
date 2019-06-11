@@ -33,13 +33,15 @@ import com.google.gson.annotations.SerializedName;
  */
 public class ProdutoVenda {
 
-    @Expose(serialize = false, deserialize = false)
-    private int produtoItemId;
+    @Expose(serialize = false, deserialize = true)
+    private transient int produtoItemId;
     @SerializedName("Id")
     private int id;
     private String nome;
-    private double quantidade;
-    private double valor;
+    @SerializedName("Quantidade")
+    private String quantidade;
+    @SerializedName("Valor")
+    private String valor;
 
     public int getProdutoItemId() {
         return produtoItemId;
@@ -65,19 +67,28 @@ public class ProdutoVenda {
         this.nome = nome;
     }
 
-    public double getQuantidade() {
+    public String getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(double quantidade) {
+    public void setQuantidade(String quantidade) {
         this.quantidade = quantidade;
     }
 
-    public double getValor() {
+    /**
+     * Valor esta como String para ser tratado no padro brasileiro</br>
+     * 
+     * @return 
+     */
+    public String getValor() {
         return valor;
     }
 
-    public void setValor(double valor) {
+    /**
+     * Valor esta como String para ser tratado no padro brasileiro</br>
+     * @param valor
+     */
+    public void setValor(String valor) {
         this.valor = valor;
     }
 

@@ -44,6 +44,10 @@ public class VendaGsonAdapter implements JsonSerializer<Venda> {
                           .create().toJsonTree(venda);
         if (!venda.getProdutosVendidos().isEmpty()) {
             jObj.remove("valorTotalVendido");
+            
+            for (ProdutoVenda pv : venda.getProdutosVendidos()) {
+                
+            }
         }
         return jObj;
     }

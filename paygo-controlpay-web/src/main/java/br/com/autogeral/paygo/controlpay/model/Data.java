@@ -38,6 +38,7 @@ public class Data {
     private transient int httpStatus;
     private LocalDateTime data;
     private String message;
+    private IntencaoVenda intencaoVenda;
     private Pessoa pessoa;
     private Produto produto;
     private List<Terminal> terminais;
@@ -64,6 +65,14 @@ public class Data {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public IntencaoVenda getIntencaoVenda() {
+        return intencaoVenda;
+    }
+
+    public void setIntencaoVenda(IntencaoVenda intencaoVenda) {
+        this.intencaoVenda = intencaoVenda;
     }
 
     public Pessoa getPessoa() {

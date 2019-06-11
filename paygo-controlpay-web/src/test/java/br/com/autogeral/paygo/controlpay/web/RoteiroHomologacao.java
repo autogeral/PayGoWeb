@@ -26,8 +26,10 @@ package br.com.autogeral.paygo.controlpay.web;
 
 import br.com.autogeral.paygo.controlpay.model.Data;
 import br.com.autogeral.paygo.controlpay.model.LoginResultado;
+import br.com.autogeral.paygo.controlpay.model.Venda;
 import br.com.autogeral.paygo.controlpay.web.operacional.LoginLogin;
 import br.com.autogeral.paygo.controlpay.web.operacional.TerminalGetByPessoaId;
+import br.com.autogeral.paygo.controlpay.web.transacional.VendaVender;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,7 +48,22 @@ public class RoteiroHomologacao {
             LoginLogin ll = new LoginLogin();
             LoginResultado loginData = ll.autenticar();
             TerminalGetByPessoaId lgb = new TerminalGetByPessoaId();
-            Data teminaisData = lgb.execute(loginData);
+            Data terminais = lgb.execute(loginData);
+
+            System.out.println("Status HTTP : " + terminais.getHttpStatus());
+            if (terminais.getHttpStatus() == 200 && !terminais.getTerminais().isEmpty()) {
+                int terminalId = terminais.getTerminais().get(0).getId();
+                Venda venda = new Venda();
+                venda.setTerminalId(Integer.toString(terminalId));
+                venda.setAdquirente("REDE");
+                venda.setFormaPagamentoId(21);
+                venda.setQuantidadeParcelas(2);
+                venda.setValorTotalVendido(40d);
+                VendaVender vv = new VendaVender();
+                Data vendaData = vv.vender(venda);
+            }
+            
+            
             
             
         } catch (IOException ex) {
