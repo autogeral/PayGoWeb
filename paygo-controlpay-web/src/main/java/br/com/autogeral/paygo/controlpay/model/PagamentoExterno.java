@@ -34,6 +34,9 @@ public class PagamentoExterno {
     private int tipo;
     private int origem;
     private int tipoParcelamento;
+    private String respostaAdquirente;
+    private String mensagemRespostaAdquirente;
+    private String comprovanteAdquirente;
     private PagamentoExternoStatus pagamentoExternoStatus;
 
     public int getId() {
@@ -74,6 +77,30 @@ public class PagamentoExterno {
 
     public void setPagamentoExternoStatus(PagamentoExternoStatus pagamentoExternoStatus) {
         this.pagamentoExternoStatus = pagamentoExternoStatus;
+    }
+
+    public String getRespostaAdquirente() {
+        return respostaAdquirente;
+    }
+
+    public void setRespostaAdquirente(String respostaAdquirente) {
+        this.respostaAdquirente = respostaAdquirente;
+    }
+
+    public String getMensagemRespostaAdquirente() {
+        return mensagemRespostaAdquirente;
+    }
+
+    public void setMensagemRespostaAdquirente(String mensagemRespostaAdquirente) {
+        this.mensagemRespostaAdquirente = mensagemRespostaAdquirente;
+    }
+
+    public String getComprovanteAdquirente() {
+        return comprovanteAdquirente;
+    }
+
+    public void setComprovanteAdquirente(String comprovanteAdquirente) {
+        this.comprovanteAdquirente = comprovanteAdquirente;
     }
 
     @Override

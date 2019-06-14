@@ -42,6 +42,7 @@ public class Data {
     private Pessoa pessoa;
     private Produto produto;
     private List<Terminal> terminais;
+    private List<IntencaoVenda> intencoesVendas;
 
     public int getHttpStatus() {
         return httpStatus;
@@ -98,5 +99,12 @@ public class Data {
     public void setTerminais(List<Terminal> terminais) {
         this.terminais = terminais;
     }
-    
+
+    public List<IntencaoVenda> getIntencoesVendas() {
+        return intencoesVendas;
+    }
+
+    public void setIntencoesVendas(List<IntencaoVenda> intencoesVendas) {
+        this.intencoesVendas = intencoesVendas;
+    }
 }

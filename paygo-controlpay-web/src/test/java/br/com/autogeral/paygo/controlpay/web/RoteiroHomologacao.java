@@ -25,10 +25,13 @@
 package br.com.autogeral.paygo.controlpay.web;
 
 import br.com.autogeral.paygo.controlpay.model.Data;
+import br.com.autogeral.paygo.controlpay.model.IntencaoVenda;
+import br.com.autogeral.paygo.controlpay.model.IntencaoVendaPesquisa;
 import br.com.autogeral.paygo.controlpay.model.LoginResultado;
 import br.com.autogeral.paygo.controlpay.model.Venda;
 import br.com.autogeral.paygo.controlpay.web.operacional.LoginLogin;
 import br.com.autogeral.paygo.controlpay.web.operacional.TerminalGetByPessoaId;
+import br.com.autogeral.paygo.controlpay.web.transacional.IntencaoVendaGet;
 import br.com.autogeral.paygo.controlpay.web.transacional.VendaVender;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -61,6 +64,13 @@ public class RoteiroHomologacao {
                 venda.setValorTotalVendido(40d);
                 VendaVender vv = new VendaVender();
                 Data vendaData = vv.vender(venda);
+                
+                if (vendaData != null && vendaData.getIntencaoVenda() != null) {
+                    IntencaoVenda iv = vendaData.getIntencaoVenda();
+                    IntencaoVendaGet ivg = new IntencaoVendaGet();
+                    IntencaoVendaPesquisa ivp = new IntencaoVendaPesquisa(iv);
+                    vendaData = ivg.get(ivp);
+                }
             }
             
             
