@@ -32,7 +32,6 @@ import java.time.LocalTime;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import org.junit.Test;
@@ -741,33 +740,53 @@ public class DataTest {
     }
     
     @Test
-    public void test_intencao_venda() {
+    public void test_parse_data_intencao_venda() {
+        String PARSE_DATA_INTENCAO_VENDA_DATA_REQUEST = "17/11/2016 17:40:37.9417";
+        String PARSE_DATA_INTENCAO_VENDA_ID = "23451";
+        String PARSE_DATA_INTENCAO_VENDA_TOKEN = "243564";
+        String PARSE_DATA_INTENCAO_VENDA_DATA = "17/11/2016 17:40:21.0000";
+        String PARSE_DATA_INTENCAO_VENDA_HORA = "17:40:21";
+        String PARSE_DATA_INTENCAO_VENDA_DATA_QUANTIDADE = "1";
+        String PARSE_DATA_INTENCAO_VENDA_DATA_VALOR_ORIGINAL = "1";
+        String PARSE_DATA_INTENCAO_VENDA_DATA_VALOR_ORIGINAL_FORMAT = "1,00";
+        String PARSE_DATA_INTENCAO_VENDA_DATA_VALOR_FINAL = "1";
+        String PARSE_DATA_INTENCAO_VENDA_DATA_FORMA_PAGAMENTO_ID = "21";
+        String PARSE_DATA_INTENCAO_VENDA_DATA_FORMA_PAGAMENTO_NOME = "TEF";
+        String PARSE_DATA_INTENCAO_VENDA_DATA_FORMA_PAGAMENTO_MODALIDADE = "Crédito";
+        int PARSE_DATA_INTENCAO_VENDA_DATA_FORMA_PAGAMENTO_FLUXO_ID = 21;
+        String PARSE_DATA_INTENCAO_VENDA_DATA_FORMA_PAGAMENTO_FLUXO_NOME = "TEF";
+        int PARSE_DATA_INTENCAO_VENDA_PRODUTOS_ITEM_PRODUTO_ID = 13626;
+        int PARSE_DATA_INTENCAO_VENDA_PRODUTOS_ID = 2;
+        String PARSE_DATA_INTENCAO_VENDA_PRODUTOS_NOME = "Refeição";
+        String PARSE_DATA_INTENCAO_VENDA_PRODUTOS_QUANTIDADE = "1";
+        String PARSE_DATA_INTENCAO_VENDA_PRODUTOS_VALOR = "1,00";
+        
         String response = "{\n"
-                + "  \"data\": \"17/11/2016 17:40:37.9417\",\n"
+                + "  \"data\": \"" + PARSE_DATA_INTENCAO_VENDA_DATA_REQUEST + "\",\n"
                 + "  \"intencaoVenda\": {\n"
-                + "    \"id\": 23451,\n"
-                + "    \"token\": \"243564\",\n"
-                + "    \"data\": \"17/11/2016 17:40:21.0000\",\n"
-                + "    \"hora\": \"17:40:21\",\n"
-                + "    \"quantidade\": 1,\n"
-                + "    \"valorOriginal\": 1,\n"
-                + "    \"valorOriginalFormat\": \"1,00\",\n"
+                + "    \"id\": " + PARSE_DATA_INTENCAO_VENDA_ID + ",\n"
+                + "    \"token\": \"" + PARSE_DATA_INTENCAO_VENDA_TOKEN + "\",\n"
+                + "    \"data\": \"" + PARSE_DATA_INTENCAO_VENDA_DATA + "\",\n"
+                + "    \"hora\": \"" + PARSE_DATA_INTENCAO_VENDA_HORA + "\",\n"
+                + "    \"quantidade\": " + PARSE_DATA_INTENCAO_VENDA_DATA_QUANTIDADE + ",\n"
+                + "    \"valorOriginal\": " + PARSE_DATA_INTENCAO_VENDA_DATA_VALOR_ORIGINAL + ",\n"
+                + "    \"valorOriginalFormat\": \"" + PARSE_DATA_INTENCAO_VENDA_DATA_VALOR_ORIGINAL_FORMAT + "\",\n"
                 + "    \"valorAcrescimo\": 0,\n"
                 + "    \"valorAcrescimoFormat\": \"0,00\",\n"
                 + "    \"valorDesconto\": 0,\n"
                 + "    \"valorDescontoFormat\": \"0,00\",\n"
-                + "    \"valorFinal\": 1,\n"
+                + "    \"valorFinal\": " + PARSE_DATA_INTENCAO_VENDA_DATA_VALOR_FINAL + ",\n"
                 + "    \"valorFinalFormat\": \"1,00\",\n"
                 + "    \"gate2allToken\": null,\n"
                 + "    \"quantidadeParcelas\": 1,\n"
                 + "    \"urlPagamento\": null,\n"
                 + "    \"formaPagamento\": {\n"
-                + "      \"id\": 21,\n"
-                + "      \"nome\": \"TEF\",\n"
-                + "      \"modalidade\": \"Crédito\",\n"
+                + "      \"id\": " + PARSE_DATA_INTENCAO_VENDA_DATA_FORMA_PAGAMENTO_ID + ",\n"
+                + "      \"nome\": \"" + PARSE_DATA_INTENCAO_VENDA_DATA_FORMA_PAGAMENTO_NOME + "\",\n"
+                + "      \"modalidade\": \"" + PARSE_DATA_INTENCAO_VENDA_DATA_FORMA_PAGAMENTO_MODALIDADE + "\",\n"
                 + "      \"fluxoPagamento\": {\n"
-                + "        \"id\": 21,\n"
-                + "        \"nome\": \"TEF\"\n"
+                + "        \"id\": " + PARSE_DATA_INTENCAO_VENDA_DATA_FORMA_PAGAMENTO_FLUXO_ID + ",\n"
+                + "        \"nome\": \"" + PARSE_DATA_INTENCAO_VENDA_DATA_FORMA_PAGAMENTO_FLUXO_NOME + "\"\n"
                 + "      }\n"
                 + "    },\n"
                 + "    \"terminal\": {\n"
@@ -793,25 +812,37 @@ public class DataTest {
                 + "    \"cliente\": null,\n"
                 + "    \"produtos\": [\n"
                 + "      {\n"
-                + "        \"itemProdutoId\": 13626,\n"
-                + "        \"id\": 2,\n"
-                + "        \"nome\": \"Refeição\",\n"
-                + "        \"quantidade\": 1,\n"
-                + "        \"valor\": \"1,00\"\n"
+                + "        \"itemProdutoId\": " + PARSE_DATA_INTENCAO_VENDA_PRODUTOS_ITEM_PRODUTO_ID + ",\n"
+                + "        \"id\": " + PARSE_DATA_INTENCAO_VENDA_PRODUTOS_ID + ",\n"
+                + "        \"nome\": \"" + PARSE_DATA_INTENCAO_VENDA_PRODUTOS_NOME + "\",\n"
+                + "        \"quantidade\": " + PARSE_DATA_INTENCAO_VENDA_PRODUTOS_QUANTIDADE + ",\n"
+                + "        \"valor\": \"" + PARSE_DATA_INTENCAO_VENDA_PRODUTOS_VALOR + "\"\n"
                 + "      }\n"
                 + "    ],\n"
                 + "    \"pedido\": null\n"
                 + "  }\n"
                 + "}";
+        
         Data vv = WsHelper.unmarshal(response, Data.class);
         LocalDateTime dataRequiscao = vv.getData();
-//        Calendar cal = Calendar.getInstance();
-//        cal.setTime(dataRequiscao);
-//        assertEquals(2016, cal.get(Calendar.YEAR));
-//        assertEquals(Calendar.NOVEMBER, cal.get(Calendar.MONTH));
-//        assertEquals(17, cal.get(Calendar.DAY_OF_MONTH));
-        
         assertNotNull(vv.getIntencaoVenda());
+        
+        assertNotNull(vv.getIntencaoVenda().getFormaPagamento());
+        assertEquals(PARSE_DATA_INTENCAO_VENDA_DATA_FORMA_PAGAMENTO_NOME, vv.getIntencaoVenda().getFormaPagamento().getNome());
+        assertEquals(PARSE_DATA_INTENCAO_VENDA_DATA_FORMA_PAGAMENTO_MODALIDADE, vv.getIntencaoVenda().getFormaPagamento().getModalidade());
+        
+        assertNotNull(vv.getIntencaoVenda().getFormaPagamento().getFluxoPagamento());
+        assertEquals(PARSE_DATA_INTENCAO_VENDA_DATA_FORMA_PAGAMENTO_FLUXO_ID, vv.getIntencaoVenda().getFormaPagamento().getFluxoPagamento().getId());
+        assertEquals(PARSE_DATA_INTENCAO_VENDA_DATA_FORMA_PAGAMENTO_FLUXO_NOME, vv.getIntencaoVenda().getFormaPagamento().getFluxoPagamento().getNome());
+        
+        assertNotNull(vv.getIntencaoVenda().getProdutos());
+        assertTrue(vv.getIntencaoVenda().getProdutos().size() == 1);
+//        assertEquals(PARSE_DATA_INTENCAO_VENDA_PRODUTOS_ITEM_PRODUTO_ID, vv.getIntencaoVenda().getProdutos().get(0).getProdutoItemId());
+        ProdutoVenda vp = vv.getIntencaoVenda().getProdutos().get(0);
+        assertEquals(PARSE_DATA_INTENCAO_VENDA_PRODUTOS_ID, vp.getId());
+        assertEquals(PARSE_DATA_INTENCAO_VENDA_PRODUTOS_NOME, vp.getNome());
+        assertEquals(PARSE_DATA_INTENCAO_VENDA_PRODUTOS_QUANTIDADE, vp.getQuantidade());
+        assertEquals(PARSE_DATA_INTENCAO_VENDA_PRODUTOS_VALOR, vp.getValor());
     }
     
 }

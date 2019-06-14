@@ -34,13 +34,14 @@ import com.google.gson.annotations.SerializedName;
 public class ProdutoVenda {
 
     @Expose(serialize = false, deserialize = true)
+    @SerializedName("itemProdutoId")
     private transient int produtoItemId;
-    @SerializedName("Id")
+    @SerializedName(value = "id", alternate = {"Id"})
     private int id;
     private String nome;
-    @SerializedName("Quantidade")
+    @SerializedName(value = "quantidade", alternate = {"Quantidade", "Qtd"})
     private String quantidade;
-    @SerializedName("Valor")
+    @SerializedName(value = "valor", alternate = {"Valor"})
     private String valor;
 
     public int getProdutoItemId() {
