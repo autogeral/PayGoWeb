@@ -79,6 +79,10 @@ public class ControlPayConfig {
     public String getKey() {
         return key;
     }
+    
+    public void setKey(String newKey) {
+        this.key = newKey;
+    }
 
     /**
      * O servidor para o qual deve-se enviar as requisições

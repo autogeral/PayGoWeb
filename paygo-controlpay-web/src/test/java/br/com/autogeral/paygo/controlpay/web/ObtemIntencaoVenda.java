@@ -55,6 +55,8 @@ public class ObtemIntencaoVenda {
                         }
                     }
                 }
+            } else {
+                System.out.println("Nenhum intencao de venda encontrada");
             }
         } catch (IOException ex) {
             Logger.getLogger(ObtemIntencaoVenda.class.getName()).log(Level.SEVERE, null, ex);

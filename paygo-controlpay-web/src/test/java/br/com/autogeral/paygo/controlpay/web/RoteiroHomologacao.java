@@ -50,27 +50,32 @@ public class RoteiroHomologacao {
         try {
             LoginLogin ll = new LoginLogin();
             LoginResultado loginData = ll.autenticar();
-            TerminalGetByPessoaId lgb = new TerminalGetByPessoaId();
-            Data terminais = lgb.execute(loginData);
+            if (loginData.getHttpStatus() == 200) {
+                ControlPayConfig.getConfig().setKey(loginData.getPessoa().getKey());
+                TerminalGetByPessoaId lgb = new TerminalGetByPessoaId();
+                Data terminais = lgb.execute(loginData);
 
-            System.out.println("Status HTTP : " + terminais.getHttpStatus());
-            if (terminais.getHttpStatus() == 200 && !terminais.getTerminais().isEmpty()) {
-                int terminalId = terminais.getTerminais().get(0).getId();
-                Venda venda = new Venda();
-                venda.setTerminalId(Integer.toString(terminalId));
-                venda.setAdquirente("REDE");
-                venda.setFormaPagamentoId(21);
-                venda.setQuantidadeParcelas(2);
-                venda.setValorTotalVendido(40d);
-                VendaVender vv = new VendaVender();
-                Data vendaData = vv.vender(venda);
-                
-                if (vendaData != null && vendaData.getIntencaoVenda() != null) {
-                    IntencaoVenda iv = vendaData.getIntencaoVenda();
-                    IntencaoVendaGet ivg = new IntencaoVendaGet();
-                    IntencaoVendaPesquisa ivp = new IntencaoVendaPesquisa(iv);
-                    vendaData = ivg.get(ivp);
+                System.out.println("Status HTTP : " + terminais.getHttpStatus());
+                if (terminais.getHttpStatus() == 200 && !terminais.getTerminais().isEmpty()) {
+                    int terminalId = terminais.getTerminais().get(0).getId();
+                    Venda venda = new Venda();
+                    venda.setTerminalId(Integer.toString(terminalId));
+                    venda.setAdquirente("REDE");
+                    venda.setFormaPagamentoId(21);
+                    venda.setQuantidadeParcelas(2);
+                    venda.setValorTotalVendido(40d);
+                    VendaVender vv = new VendaVender();
+                    Data vendaData = vv.vender(venda);
+
+                    if (vendaData != null && vendaData.getIntencaoVenda() != null) {
+                        IntencaoVenda iv = vendaData.getIntencaoVenda();
+                        IntencaoVendaGet ivg = new IntencaoVendaGet();
+                        IntencaoVendaPesquisa ivp = new IntencaoVendaPesquisa(iv);
+                        vendaData = ivg.get(ivp);
+                    }
                 }
+            } else {
+                System.out.println("Nao conseguiu se logar");
             }
             
             

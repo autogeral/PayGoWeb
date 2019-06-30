@@ -24,6 +24,8 @@
 
 package br.com.autogeral.paygo.controlpay.web;
 
+import br.com.autogeral.paygo.controlpay.model.IntencaoVenda;
+import br.com.autogeral.paygo.controlpay.model.IntencaoVendaAdapter;
 import br.com.autogeral.paygo.controlpay.model.IntencaoVendaPesquisa;
 import br.com.autogeral.paygo.controlpay.model.IntencaoVendaPesquisaGsonAdapter;
 import br.com.autogeral.paygo.controlpay.model.Venda;
@@ -91,6 +93,7 @@ public class WsHelper {
             gson = new GsonBuilder()
                     .serializeNulls()
 //                    .addSerializationExclusionStrategy(strategy)
+//                    .registerTypeAdapter(IntencaoVenda.class, new IntencaoVendaAdapter())
                     .registerTypeAdapter(IntencaoVendaPesquisa.class, new IntencaoVendaPesquisaGsonAdapter())
                     .registerTypeAdapter(Venda.class, new VendaGsonAdapter())
                     .registerTypeAdapter(LocalDate.class, new LocalDateGson())
