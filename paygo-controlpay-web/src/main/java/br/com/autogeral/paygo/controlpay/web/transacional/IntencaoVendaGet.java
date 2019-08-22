@@ -69,7 +69,7 @@ public class IntencaoVendaGet {
 
         String responseBody = method.getResponseBodyAsString();
         System.out.println(responseBody);
-        Data data = WsHelper.unmarshal(json, Data.class);
+        Data data = WsHelper.unmarshal(responseBody, Data.class);
         data.setHttpStatus(result);
         return data;
     }
