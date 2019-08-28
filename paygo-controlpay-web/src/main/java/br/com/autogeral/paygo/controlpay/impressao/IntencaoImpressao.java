@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2019 Murilo Moraes Tuvani.
+ * Copyright 2019 kaique.mota.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,11 +21,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
-package br.com.autogeral.paygo.controlpay.web.transacional;
+package br.com.autogeral.paygo.controlpay.impressao;
 
 import br.com.autogeral.paygo.controlpay.model.Data;
+
 import br.com.autogeral.paygo.controlpay.model.IntencaoVendaPesquisa;
+import br.com.autogeral.paygo.controlpay.model.Venda;
 import br.com.autogeral.paygo.controlpay.web.ControlPayConfig;
 import br.com.autogeral.paygo.controlpay.web.WsHelper;
 import java.io.IOException;
@@ -35,13 +36,13 @@ import org.apache.commons.httpclient.methods.RequestEntity;
 import org.apache.commons.httpclient.methods.StringRequestEntity;
 
 /**
- * 13/06/2019 23:08:41
- * @author Murilo Moraes Tuvani
+ *
+ * @author kaique.mota
  */
-public class IntencaoVendaGet {
-    
-    private static final String PATH = "/webapi/IntencaoVenda/GetByFiltros?key=";
-    
+public class IntencaoImpressao {
+
+    private static final String PATH = "webapi/IntencaoImpressao/Insert?key=";
+
     private String getPath() {
         ControlPayConfig config = ControlPayConfig.getConfig();
         String servidor = config.getServidor();
@@ -53,15 +54,19 @@ public class IntencaoVendaGet {
         }
         return servidor + PATH + config.getKey();
     }
-    
-    public Data get(IntencaoVendaPesquisa ivp) throws IOException {
-        ivp.setAguardarTefIniciarTransacao(true);
-        String json = WsHelper.getGson().toJson(ivp);
+
+    public Data impri(Venda v) throws IOException {
+        v.setAguardarClienteIniciarImpressao(true);
+        v.setTerminalId(ControlPayConfig.getConfig().getTerminal());
+        v.setImpressoraId(301);
+        v.setConteudo("ssssssssssss");
+
+        String json = WsHelper.getGson().toJson(v);
         RequestEntity requestEntity = new StringRequestEntity(
                 json,
                 "application/json",
                 "UTF-8");
-        
+
         PostMethod method = new PostMethod(getPath());
         method.addRequestHeader("Content-Type", "application/json");
         method.setRequestEntity(requestEntity);

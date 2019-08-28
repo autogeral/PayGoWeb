@@ -99,7 +99,9 @@ public class WsHelper {
                     .registerTypeAdapter(LocalDate.class, new LocalDateGson())
                     .registerTypeAdapter(LocalTime.class, new LocalTimeGson())
                     .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeGson())
+                   
                     .setDateFormat("dd-MM-yyyy HH:mm:ss.SSSS")
+                    .setPrettyPrinting()
                     .create();
         }
         return gson;

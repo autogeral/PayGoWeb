@@ -42,15 +42,29 @@ public class Venda {
     private String adquirente;
     private double valorTotalVendido;
     private List<ProdutoVenda> produtosVendidos = new ArrayList<>();
+    private boolean aguardarClienteIniciarImpressao = true;
+    private int impressoraId ;
+    private String conteudo ;
 
+    
+    public String getConteudo() {
+        return conteudo;
+    }
+    public void setConteudo(String conteudo) {
+        this.conteudo = conteudo;
+    }
     public int getFormaPagamentoId() {
         return formaPagamentoId;
     }
-
+    public boolean isAguardarClienteIniciarImpressao() {
+        return aguardarClienteIniciarImpressao;
+    }
+    public void setAguardarClienteIniciarImpressao(boolean aguardarClienteIniciarImpressao) {
+        this.aguardarClienteIniciarImpressao = aguardarClienteIniciarImpressao;
+    }
     public void setFormaPagamentoId(int formaPagamentoId) {
         this.formaPagamentoId = formaPagamentoId;
     }
-
     public String getTerminalId() {
         return terminalId;
     }
@@ -114,5 +128,13 @@ public class Venda {
     public void setProdutosVendidos(List<ProdutoVenda> produtosVendidos) {
         this.produtosVendidos = produtosVendidos;
     }
+      public int getImpressoraId() {
+        return impressoraId;
+    }
+
+    public void setImpressoraId(int impressoraId) {
+        this.impressoraId = impressoraId;
+    }
+    
     
 }

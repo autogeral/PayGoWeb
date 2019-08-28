@@ -30,6 +30,7 @@ import br.com.autogeral.paygo.controlpay.web.ControlPayConfig;
 import br.com.autogeral.paygo.controlpay.web.WsHelper;
 import java.io.IOException;
 import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 
 /**
@@ -59,7 +60,7 @@ public class TerminalGetByPessoaId {
     
     public Data execute(LoginResultado login) throws IOException {
         int pessoaId = login.getPessoa().getId();
-        PostMethod method = new PostMethod(getPath(pessoaId));
+        GetMethod method = new GetMethod (getPath(pessoaId));
         method.addRequestHeader("Content-Type", "application/json");
         HttpClient client = new HttpClient();
 
@@ -67,8 +68,8 @@ public class TerminalGetByPessoaId {
         
         WsHelper.printHeaders(method);
         String json = method.getResponseBodyAsString();
-        System.out.println(json);
-        Data data = WsHelper.unmarshal(json, Data.class);
+     System.out.println(json);
+         Data data = WsHelper.unmarshal(json, Data.class);
         data.setHttpStatus(result);
         
         return data;

@@ -29,5 +29,68 @@ package br.com.autogeral.paygo.controlpay.model;
  * @author Murilo Moraes Tuvani
  */
 public class Impressora {
+    
+    private int impressoraId;
+    private  String  referencia ;
+    private String terminal;
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    public String getTerminal() {
+        return terminal;
+    }
+
+    public void setTerminal(String terminal) {
+        this.terminal = terminal;
+    }
+
+   
+    private  String conteudo ;
+    private boolean aguardarClienteIniciarImpressao = true;
+    
+    
+    public int getImpressoraId() {
+        return impressoraId;
+    }
+
+    public void setImpressoraId(int impressoraId) {
+        this.impressoraId = impressoraId;
+    }
+
+    public String getReferencia() {
+        return referencia;
+    }
+
+    public void setReferencia(String referencia) {
+        this.referencia = referencia;
+    }
+
+    public String getConteudo() {
+        return conteudo;
+    }
+
+    public void setConteudo(String conteudo) {
+        this.conteudo = conteudo;
+    }
+
+    public boolean isAguardarClienteIniciarImpressao() {
+        return aguardarClienteIniciarImpressao;
+    }
+
+    public void setAguardarClienteIniciarImpressao(boolean aguardarClienteIniciarImpressao) {
+        this.aguardarClienteIniciarImpressao = aguardarClienteIniciarImpressao;
+    }
+    
+    
+    
 
 }

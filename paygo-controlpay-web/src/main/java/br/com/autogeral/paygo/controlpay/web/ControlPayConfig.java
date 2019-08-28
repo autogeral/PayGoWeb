@@ -41,6 +41,10 @@ public class ControlPayConfig {
     private String terminal;
     private String cpfCnpj;
     private String senha;
+    private String senhaTecnica;
+
+ 
+    
     
     private ControlPayConfig() {}
 
@@ -66,6 +70,7 @@ public class ControlPayConfig {
                 config.terminal = prop.getProperty("terminal");
                 config.cpfCnpj = prop.getProperty("cpfCnpj");
                 config.senha = prop.getProperty("senha");
+                config.senhaTecnica= prop.getProperty("senhaTecnica");
             } catch (IOException ex) {
                 ex.printStackTrace(System.out);
             }
@@ -117,6 +122,14 @@ public class ControlPayConfig {
      */
     public String getSenha() {
         return senha;
+    }
+    
+    public String getSenhaTecnica() {
+        return senhaTecnica;
+    }
+
+    public void setSenhaTecnica(String senhaTecnica) {
+        this.senhaTecnica = senhaTecnica;
     }
 
 }

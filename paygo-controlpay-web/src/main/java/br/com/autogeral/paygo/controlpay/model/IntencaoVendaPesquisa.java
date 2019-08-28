@@ -33,11 +33,41 @@ public class IntencaoVendaPesquisa {
     private final int intencaoVendaId;
     private final int formaPagamentoId;
     private final String referencia;
+    private String senhaTecnica;
+    private boolean aguardarTefIniciarTransacao =true;
     
+    private String terminalId ;
+
+
+  
+    
+    //
     public IntencaoVendaPesquisa(IntencaoVenda iv) {
         this.intencaoVendaId = iv.getId();
         this.formaPagamentoId = (iv.getFormaPagamento() != null && iv.getFormaPagamento().getId() > 0 ? iv.getFormaPagamento().getId() : 0);
         this.referencia = (iv.getReferencia() != null ? iv.getReferencia() : null);
+        
+       
+    }
+
+  
+    public String getTerminalId() {
+        return terminalId;
+    }
+
+    public void setTerminalId(String terminalId) {
+        this.terminalId = terminalId;
+    }
+
+   
+   
+
+    public boolean isAguardarTefIniciarTransacao() {
+        return aguardarTefIniciarTransacao;
+    }
+
+    public void setAguardarTefIniciarTransacao(boolean aguardarTefIniciarTransacao) {
+        this.aguardarTefIniciarTransacao = aguardarTefIniciarTransacao;
     }
 
     public int getIntencaoVendaId() {
@@ -51,5 +81,14 @@ public class IntencaoVendaPesquisa {
     public String getReferencia() {
         return referencia;
     }
+      public String getSenhaTecnica() {
+        return senhaTecnica;
+    }
+
+    public void setSenhaTecnica(String senhaTecnica) {
+        this.senhaTecnica = senhaTecnica;
+    }
+
+  
 
 }

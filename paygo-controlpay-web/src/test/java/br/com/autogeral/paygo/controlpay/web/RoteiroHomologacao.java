@@ -21,9 +21,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package br.com.autogeral.paygo.controlpay.web;
-
+import br.com.autogeral.paygo.controlpay.model.AuxiliarTeste;
+import br.com.autogeral.paygo.controlpay.impressao.IntencaoImpressao;
 import br.com.autogeral.paygo.controlpay.model.Data;
 import br.com.autogeral.paygo.controlpay.model.IntencaoVenda;
 import br.com.autogeral.paygo.controlpay.model.IntencaoVendaPesquisa;
@@ -39,6 +39,7 @@ import java.util.logging.Logger;
 
 /**
  * 07/06/2019 22:12:24
+ *
  * @author Murilo Moraes Tuvani
  */
 public class RoteiroHomologacao {
@@ -48,6 +49,8 @@ public class RoteiroHomologacao {
      */
     public static void main(String[] args) {
         try {
+            AuxiliarTeste aux = new AuxiliarTeste();
+            IntencaoImpressao ii = new IntencaoImpressao();
             LoginLogin ll = new LoginLogin();
             LoginResultado loginData = ll.autenticar();
             if (loginData.getHttpStatus() == 200) {
@@ -57,35 +60,43 @@ public class RoteiroHomologacao {
 
                 System.out.println("Status HTTP : " + terminais.getHttpStatus());
                 if (terminais.getHttpStatus() == 200 && !terminais.getTerminais().isEmpty()) {
-                    int terminalId = terminais.getTerminais().get(0).getId();
+                    int terminalId = terminais.getTerminais().get(2).getId();
                     Venda venda = new Venda();
                     venda.setTerminalId(Integer.toString(terminalId));
-                    venda.setAdquirente("REDE");
+                    venda.setAdquirente("cielo");
                     venda.setFormaPagamentoId(21);
-                    venda.setQuantidadeParcelas(2);
-                    venda.setValorTotalVendido(40d);
+                    venda.setQuantidadeParcelas(1);
+                    venda.setValorTotalVendido(30);
                     VendaVender vv = new VendaVender();
                     Data vendaData = vv.vender(venda);
+                    Data imprimi = ii.impri(venda);
+                    
+                    System.out.println("Terminal Verdadeiro" + venda.getTerminalId());
+                    System.out.println("Terminal Verdadeiro" + venda.getTerminalId());
+                    System.out.println("Terminal Verdadeiro" + venda.getTerminalId());
+                    System.out.println("Terminal Verdadeiro" + venda.getTerminalId());
+                    System.out.println("Terminal Verdadeiro" + venda.getTerminalId());
 
                     if (vendaData != null && vendaData.getIntencaoVenda() != null) {
                         IntencaoVenda iv = vendaData.getIntencaoVenda();
                         IntencaoVendaGet ivg = new IntencaoVendaGet();
                         IntencaoVendaPesquisa ivp = new IntencaoVendaPesquisa(iv);
                         vendaData = ivg.get(ivp);
+                        
+                        aux.getTerminalId() = venda.getTerminalId();
+                        
+                        
+
                     }
                 }
             } else {
                 System.out.println("Nao conseguiu se logar");
             }
-            
-            
-            
-            
+
         } catch (IOException ex) {
             Logger.getLogger(RoteiroHomologacao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
     }
 
 }

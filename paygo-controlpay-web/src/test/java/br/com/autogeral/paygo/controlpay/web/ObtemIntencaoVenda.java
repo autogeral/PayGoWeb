@@ -42,13 +42,21 @@ public class ObtemIntencaoVenda {
     public static void main(String[] args) {
         try {
             IntencaoVenda iv = new IntencaoVenda();
-            iv.setId(68926);
+            iv.setId(72228);
             IntencaoVendaGet ivg = new IntencaoVendaGet();
             IntencaoVendaPesquisa ivp = new IntencaoVendaPesquisa(iv);
             Data data = ivg.get(ivp);
+                
+            
+               System.out.println(""+data.getData());
+               System.out.println("fICOU ATNES DA DATA");
+               System.out.println(""+data.getIntencoesVendas());
+                
             if (data.getIntencoesVendas() != null) {
                 for (IntencaoVenda ivl : data.getIntencoesVendas()) {
                     if (ivl.getPagamentosExternos() != null) {
+                        System.out.println("Printa externo"+ivl.getPagamentosExternos());
+                        
                         for (PagamentoExterno pe : ivl.getPagamentosExternos()) {
                             String comprovante = pe.getComprovanteAdquirente();
                             System.out.println(comprovante);

@@ -28,6 +28,8 @@ import br.com.autogeral.paygo.controlpay.model.Data;
 import br.com.autogeral.paygo.controlpay.model.Venda;
 import br.com.autogeral.paygo.controlpay.web.ControlPayConfig;
 import br.com.autogeral.paygo.controlpay.web.WsHelper;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.PostMethod;
@@ -41,6 +43,7 @@ import org.apache.commons.httpclient.methods.StringRequestEntity;
 public class VendaVender {
     
     private static final String PATH = "webapi/Venda/Vender/?key=";
+    
     
     /**
      * Retorna a URL compra para o envio da requisição
@@ -61,7 +64,7 @@ public class VendaVender {
     
     public Data vender(Venda venda) throws IOException {
         venda.setTerminalId(ControlPayConfig.getConfig().getTerminal());
-        
+   
         String json = WsHelper.getGson().toJson(venda);
         RequestEntity requestEntity = new StringRequestEntity(
                 json,
@@ -73,10 +76,10 @@ public class VendaVender {
         method.setRequestEntity(requestEntity);
         HttpClient client = new HttpClient();
         int result = client.executeMethod(method);
-
+       
         String responseBody = method.getResponseBodyAsString();
         System.out.println(responseBody);
-        Data data = WsHelper.unmarshal(json, Data.class);
+        Data data = WsHelper.unmarshal(responseBody, Data.class);
         data.setHttpStatus(result);
         return data;
     }

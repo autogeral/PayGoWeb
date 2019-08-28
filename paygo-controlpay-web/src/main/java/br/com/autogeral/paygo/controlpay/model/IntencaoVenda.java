@@ -59,6 +59,8 @@ public class IntencaoVenda {
     private List<ProdutoVenda> produtos;
     private String pedido;
 
+    
+    
     public int getId() {
         return id;
     }

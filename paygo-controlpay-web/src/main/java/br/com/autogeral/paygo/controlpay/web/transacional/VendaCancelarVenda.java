@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2019 Murilo de Moraes Tuvani.
+ * Copyright 2019 kaique.mota.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,13 +21,68 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package br.com.autogeral.paygo.controlpay.web.transacional;
+import br.com.autogeral.paygo.controlpay.model.Data;
+import br.com.autogeral.paygo.controlpay.model.IntencaoVendaPesquisa;
+import br.com.autogeral.paygo.controlpay.web.ControlPayConfig;
+import br.com.autogeral.paygo.controlpay.web.WsHelper;
+import java.io.IOException;
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.methods.PostMethod;
+import org.apache.commons.httpclient.methods.RequestEntity;
+import org.apache.commons.httpclient.methods.StringRequestEntity;
 
 /**
- * 23/05/2019 17:55:58
- * @author Murilo de Moraes Tuvani
+ *
+ * @author kaique.mota
  */
 public class VendaCancelarVenda {
+    
+     private static final String PATH = "/webapi/Venda/CancelarVenda?key=";
+    
+    private String getPath() {
+        ControlPayConfig config = ControlPayConfig.getConfig();
+        String servidor = config.getServidor();
+        if (!servidor.startsWith("http")) {
+            servidor = "https://" + servidor;
+        }
+        if (!servidor.endsWith("/")) {
+            servidor += "/";
+        }
+        return servidor + PATH + config.getKey();
+    }
+    
+    
+    public Data canc (IntencaoVendaPesquisa clc) throws IOException {
+        
+        clc.setTerminalId(ControlPayConfig.getConfig().getTerminal());
+        clc.setAguardarTefIniciarTransacao(true);
+        clc.setSenhaTecnica(ControlPayConfig.getConfig().getSenhaTecnica());
+ 
+        
+        String json = WsHelper.getGson().toJson(clc);
+        
+        RequestEntity requestEntity = new StringRequestEntity(
+                json,
+                "application/json",
+                "UTF-8");
+        
+        PostMethod method = new PostMethod(getPath());
+        method.addRequestHeader("Content-Type", "application/json");
+        method.setRequestEntity(requestEntity);
+        HttpClient client = new HttpClient();
+        int result = client.executeMethod(method);
+
+        String responseBody = method.getResponseBodyAsString();
+        System.out.println(responseBody);
+        Data data = WsHelper.unmarshal(json, Data.class);
+        data.setHttpStatus(result);
+        return data;
+    }
+    
+  
+  
+   
+
 
 }
