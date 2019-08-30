@@ -38,10 +38,12 @@ import static org.junit.Assert.*;
  * @author Murilo Moraes Tuvani
  */
 public class VendaTest {
-    
+
     @Test
     public void test01_serialize() {
         Venda instance = new Venda();
+
+        instance.setTerminalId("898");
         instance.setAdquirente("");
         instance.setFormaPagamentoId(21);
         instance.setQuantidadeParcelas(1);
@@ -50,7 +52,7 @@ public class VendaTest {
         pv.setValor("1,00");
         pv.setQuantidade("1");
         instance.getProdutosVendidos().add(pv);
-        
+
         String expResult = "{\"formaPagamentoId\":21,\"terminalId\":null,\"referencia\":null,\"aguardarTefIniciarTransacao\":true,\"parcelamentoAdmin\":null,\"quantidadeParcelas\":1,\"adquirente\":\"\",\"produtosVendidos\":[{\"Id\":0,\"nome\":null,\"Quantidade\":\"1\",\"Valor\":\"1,00\"}]}";
         String result = WsHelper.getGson().toJson(instance);
         System.out.println(result);

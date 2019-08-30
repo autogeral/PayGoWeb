@@ -22,6 +22,7 @@
  * THE SOFTWARE.
  */
 package br.com.autogeral.paygo.controlpay.web;
+//import br.com.autogeral.paygo.controlpay.model.AuxiliarTeste;
 import br.com.autogeral.paygo.controlpay.model.AuxiliarTeste;
 import br.com.autogeral.paygo.controlpay.impressao.IntencaoImpressao;
 import br.com.autogeral.paygo.controlpay.model.Data;
@@ -34,6 +35,8 @@ import br.com.autogeral.paygo.controlpay.web.operacional.TerminalGetByPessoaId;
 import br.com.autogeral.paygo.controlpay.web.transacional.IntencaoVendaGet;
 import br.com.autogeral.paygo.controlpay.web.transacional.VendaVender;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -66,26 +69,31 @@ public class RoteiroHomologacao {
                     venda.setAdquirente("cielo");
                     venda.setFormaPagamentoId(21);
                     venda.setQuantidadeParcelas(1);
-                    venda.setValorTotalVendido(30);
+                    venda.setValorTotalVendido(45);
                     VendaVender vv = new VendaVender();
                     Data vendaData = vv.vender(venda);
                     Data imprimi = ii.impri(venda);
-                    
-                    System.out.println("Terminal Verdadeiro" + venda.getTerminalId());
-                    System.out.println("Terminal Verdadeiro" + venda.getTerminalId());
-                    System.out.println("Terminal Verdadeiro" + venda.getTerminalId());
-                    System.out.println("Terminal Verdadeiro" + venda.getTerminalId());
-                    System.out.println("Terminal Verdadeiro" + venda.getTerminalId());
+
+                    System.out.println("Terminal Verdadeiro " + venda.getTerminalId());
+                    System.out.println("Terminal Verdadeiro " + venda.getTerminalId());
+                    System.out.println("Terminal Verdadeiro " + venda.getTerminalId());
+                    System.out.println("Terminal Verdadeiro " + venda.getTerminalId());
+                    System.out.println("Terminal Verdadeiro " + venda.getTerminalId());
 
                     if (vendaData != null && vendaData.getIntencaoVenda() != null) {
                         IntencaoVenda iv = vendaData.getIntencaoVenda();
                         IntencaoVendaGet ivg = new IntencaoVendaGet();
                         IntencaoVendaPesquisa ivp = new IntencaoVendaPesquisa(iv);
                         vendaData = ivg.get(ivp);
-                        
-                        aux.getTerminalId() = venda.getTerminalId();
-                        
-                        
+
+                        //Pegando dados para a classe auxiliar.
+                        List<String> listaComprovantes = new ArrayList<>();
+
+                        vendaData.getIntencoesVendas().stream().forEach(intencaoVenda -> {
+                            intencaoVenda.getPagamentosExternos().stream().forEach(pagamento -> listaComprovantes.add(pagamento.getComprovanteAdquirente()
+                            ));
+                        });
+                        System.out.println(listaComprovantes);
 
                     }
                 }

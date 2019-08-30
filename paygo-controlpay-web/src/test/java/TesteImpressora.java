@@ -8,6 +8,15 @@ import javax.print.DocPrintJob;
 import javax.print.PrintException;
 import javax.print.PrintService;
 import javax.print.SimpleDoc;
+import br.com.autogeral.paygo.controlpay.model.AuxiliarTeste;
+import br.com.autogeral.paygo.controlpay.model.Data;
+import br.com.autogeral.paygo.controlpay.model.IntencaoVenda;
+import br.com.autogeral.paygo.controlpay.model.IntencaoVendaPesquisa;
+import br.com.autogeral.paygo.controlpay.web.transacional.IntencaoVendaGet;
+import br.com.autogeral.paygo.controlpay.impressao.IntencaoImpressao;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /*
  * The MIT License
@@ -38,18 +47,35 @@ import javax.print.SimpleDoc;
  */
 public class TesteImpressora {
 
-    public static void main(String[] args) throws PrintException {
+    public static void main(String[] args) throws PrintException, IOException {
 
         PrintService services[] = PrinterJob.lookupPrintServices();
         for (PrintService service : services) {
             System.out.println("Printer service name : " + service.getName());
             if (service.getName().startsWith("MP-")) {
-
                 DocPrintJob dpj = service.createPrintJob();
+
+                
+             
+             AuxiliarTeste aux = new AuxiliarTeste();
+             IntencaoVenda iv = new IntencaoVenda();
+            iv.setId(72293);
+            IntencaoVendaGet ivg = new IntencaoVendaGet();
+            IntencaoVendaPesquisa ivp = new IntencaoVendaPesquisa(iv);
+            Data data = ivg.get(ivp);
+          
+            
+                   List<String> listaComprovantes = new ArrayList<>();
+
+                        data.getIntencoesVendas().stream().forEach(intencaoVenda -> {
+                            intencaoVenda.getPagamentosExternos().stream().forEach(pagamento -> listaComprovantes.add(pagamento.getComprovanteAdquirente()
+                            ));
+                        });
+                        System.out.println(listaComprovantes);
                 InputStream stream = new ByteArrayInputStream(
                         ("   \n"
                                 + "              MASTERCARD               \n"
-                                + "           552289******3640            \n"
+                                + "           55220 89******3640            \n"
                                 + "                            AUT=134424 \n"
                                 + "010000244470001/POS=01000119 \n"
                                 + "DOC=530537    28/08/19 13:44     ONL-C \n"

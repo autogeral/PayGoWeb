@@ -56,6 +56,7 @@ public class IntencaoImpressao {
     }
 
     public Data impri(Venda v) throws IOException {
+        
         v.setAguardarClienteIniciarImpressao(true);
         v.setTerminalId(ControlPayConfig.getConfig().getTerminal());
         v.setImpressoraId(301);
@@ -77,6 +78,8 @@ public class IntencaoImpressao {
         System.out.println(responseBody);
         Data data = WsHelper.unmarshal(responseBody, Data.class);
         data.setHttpStatus(result);
+        
+        
         return data;
     }
 

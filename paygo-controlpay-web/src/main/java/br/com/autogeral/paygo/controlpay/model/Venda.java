@@ -21,7 +21,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package br.com.autogeral.paygo.controlpay.model;
 
 import java.util.ArrayList;
@@ -29,10 +28,12 @@ import java.util.List;
 
 /**
  * 23/05/2019 18:02:54
+ *
  * @author Murilo de Moraes Tuvani
  */
 public class Venda {
-    
+
+   
     private int formaPagamentoId;
     private String terminalId;
     private String referencia;
@@ -43,28 +44,34 @@ public class Venda {
     private double valorTotalVendido;
     private List<ProdutoVenda> produtosVendidos = new ArrayList<>();
     private boolean aguardarClienteIniciarImpressao = true;
-    private int impressoraId ;
-    private String conteudo ;
+    private int impressoraId;
+    private String conteudo;
 
-    
+   
     public String getConteudo() {
         return conteudo;
     }
+
     public void setConteudo(String conteudo) {
         this.conteudo = conteudo;
     }
+
     public int getFormaPagamentoId() {
         return formaPagamentoId;
     }
+
     public boolean isAguardarClienteIniciarImpressao() {
         return aguardarClienteIniciarImpressao;
     }
+
     public void setAguardarClienteIniciarImpressao(boolean aguardarClienteIniciarImpressao) {
         this.aguardarClienteIniciarImpressao = aguardarClienteIniciarImpressao;
     }
+
     public void setFormaPagamentoId(int formaPagamentoId) {
         this.formaPagamentoId = formaPagamentoId;
     }
+
     public String getTerminalId() {
         return terminalId;
     }
@@ -128,13 +135,13 @@ public class Venda {
     public void setProdutosVendidos(List<ProdutoVenda> produtosVendidos) {
         this.produtosVendidos = produtosVendidos;
     }
-      public int getImpressoraId() {
+
+    public int getImpressoraId() {
         return impressoraId;
     }
 
     public void setImpressoraId(int impressoraId) {
         this.impressoraId = impressoraId;
     }
-    
-    
+
 }

@@ -21,12 +21,18 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package br.com.autogeral.paygo.controlpay.model;
 
 /**
  *
  * @author kaique.mota
  */
-public class AuxiliarTeste {
-    
+import br.com.autogeral.paygo.controlpay.impressao.VendaPrint;
+        
+public class TesteImpressora2 {
+    public static void main(String[] args) {
+        
+        VendaPrint vp = new VendaPrint();
+        
+        vp.execute();
+    }
 }

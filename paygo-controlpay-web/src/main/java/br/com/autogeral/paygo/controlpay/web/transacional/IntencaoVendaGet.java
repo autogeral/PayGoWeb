@@ -21,7 +21,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package br.com.autogeral.paygo.controlpay.web.transacional;
 
 import br.com.autogeral.paygo.controlpay.model.Data;
@@ -36,12 +35,13 @@ import org.apache.commons.httpclient.methods.StringRequestEntity;
 
 /**
  * 13/06/2019 23:08:41
+ *
  * @author Murilo Moraes Tuvani
  */
 public class IntencaoVendaGet {
-    
+
     private static final String PATH = "/webapi/IntencaoVenda/GetByFiltros?key=";
-    
+
     private String getPath() {
         ControlPayConfig config = ControlPayConfig.getConfig();
         String servidor = config.getServidor();
@@ -53,7 +53,7 @@ public class IntencaoVendaGet {
         }
         return servidor + PATH + config.getKey();
     }
-    
+
     public Data get(IntencaoVendaPesquisa ivp) throws IOException {
         ivp.setAguardarTefIniciarTransacao(true);
         String json = WsHelper.getGson().toJson(ivp);
@@ -61,7 +61,7 @@ public class IntencaoVendaGet {
                 json,
                 "application/json",
                 "UTF-8");
-        
+
         PostMethod method = new PostMethod(getPath());
         method.addRequestHeader("Content-Type", "application/json");
         method.setRequestEntity(requestEntity);

@@ -21,7 +21,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package br.com.autogeral.paygo.controlpay.web;
 
 import br.com.autogeral.paygo.controlpay.model.Data;
@@ -30,33 +29,42 @@ import br.com.autogeral.paygo.controlpay.model.IntencaoVendaPesquisa;
 import br.com.autogeral.paygo.controlpay.model.PagamentoExterno;
 import br.com.autogeral.paygo.controlpay.web.transacional.IntencaoVendaGet;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  * 13/06/2019 23:19:24
+ *
  * @author Murilo Moraes Tuvani
  */
 public class ObtemIntencaoVenda {
-    
+
     public static void main(String[] args) {
         try {
             IntencaoVenda iv = new IntencaoVenda();
-            iv.setId(72228);
+            iv.setId(72293);
             IntencaoVendaGet ivg = new IntencaoVendaGet();
             IntencaoVendaPesquisa ivp = new IntencaoVendaPesquisa(iv);
             Data data = ivg.get(ivp);
-                
-            
-               System.out.println(""+data.getData());
-               System.out.println("fICOU ATNES DA DATA");
-               System.out.println(""+data.getIntencoesVendas());
-                
+            List<String> listaComprovantes = new ArrayList<>();
+
+            data.getIntencoesVendas().stream().forEach(intencaoVenda -> {
+                intencaoVenda.getPagamentosExternos().stream().forEach(pagamento -> listaComprovantes.add(pagamento.getComprovanteAdquirente()
+                ));
+            });
+            System.out.println(listaComprovantes);
+
+            System.out.println("" + data.getData());
+            System.out.println("fICOU ATNES DA DATA");
+            System.out.println("" + data.getIntencoesVendas());
+
             if (data.getIntencoesVendas() != null) {
                 for (IntencaoVenda ivl : data.getIntencoesVendas()) {
                     if (ivl.getPagamentosExternos() != null) {
-                        System.out.println("Printa externo"+ivl.getPagamentosExternos());
-                        
+                        System.out.println("Printa externo" + ivl.getPagamentosExternos());
+
                         for (PagamentoExterno pe : ivl.getPagamentosExternos()) {
                             String comprovante = pe.getComprovanteAdquirente();
                             System.out.println(comprovante);
