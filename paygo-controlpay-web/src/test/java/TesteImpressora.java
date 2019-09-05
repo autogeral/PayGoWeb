@@ -8,15 +8,17 @@ import javax.print.DocPrintJob;
 import javax.print.PrintException;
 import javax.print.PrintService;
 import javax.print.SimpleDoc;
-import br.com.autogeral.paygo.controlpay.model.AuxiliarTeste;
 import br.com.autogeral.paygo.controlpay.model.Data;
 import br.com.autogeral.paygo.controlpay.model.IntencaoVenda;
 import br.com.autogeral.paygo.controlpay.model.IntencaoVendaPesquisa;
 import br.com.autogeral.paygo.controlpay.web.transacional.IntencaoVendaGet;
-import br.com.autogeral.paygo.controlpay.impressao.IntencaoImpressao;
+import com.sun.prism.RTTexture;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * The MIT License
@@ -47,56 +49,100 @@ import java.util.List;
  */
 public class TesteImpressora {
 
-    public static void main(String[] args) throws PrintException, IOException {
+    
 
+        
+    private void imprimir(PrintService service, String conteudo) {        
+        InputStream stream = new ByteArrayInputStream(conteudo.getBytes());
+        DocPrintJob dpj = service.createPrintJob();
+        DocFlavor flavor = DocFlavor.INPUT_STREAM.AUTOSENSE;
+        Doc doc = new SimpleDoc(stream, flavor, null);
+        try {
+            dpj.print(doc, null);
+        } catch (PrintException ex) {
+            Logger.getLogger(TesteImpressora.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void acionarGuilhotina() {
+        javax.print.PrintService services[] = PrinterJob.lookupPrintServices();
+        String impressora = System.getProperty("compra.print.termica.impressoraNome", "MP-4200 TH");
+        for (javax.print.PrintService service : services) {
+            if (impressora.equals(service.getName())) {
+                PrintService printer = service;
+                try {
+                    DocPrintJob dpj = printer.createPrintJob();
+                    InputStream stream = new ByteArrayInputStream(("\n\n\n\n" + (char) 27 + (char) 109 + "\n").getBytes());
+                    DocFlavor flavor = DocFlavor.INPUT_STREAM.AUTOSENSE;
+                    Doc doc = new SimpleDoc(stream, flavor, null);
+                    dpj.print(doc, null);
+                } catch (PrintException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) throws PrintException, IOException {
+        TesteImpressora ti = new TesteImpressora();
         PrintService services[] = PrinterJob.lookupPrintServices();
         for (PrintService service : services) {
             System.out.println("Printer service name : " + service.getName());
             if (service.getName().startsWith("MP-")) {
-                DocPrintJob dpj = service.createPrintJob();
+                
+
+
+                IntencaoVenda iv = new IntencaoVenda();
+                iv.setId(72293);
+                IntencaoVendaGet ivg = new IntencaoVendaGet();
+                IntencaoVendaPesquisa ivp = new IntencaoVendaPesquisa(iv);
+                Data data = ivg.get(ivp);
+
+                List<String> listaComprovantes = new ArrayList<>();
+
+                data.getIntencoesVendas().stream().forEach(intencaoVenda -> {
+                    intencaoVenda.getPagamentosExternos().stream().forEach(pagamento -> listaComprovantes.add(pagamento.getComprovanteAdquirente()
+                    ));
+                });
+                System.out.println("Printando os itens : ");
+                
+                Optional<String> opString = listaComprovantes.stream().filter(c -> c.isEmpty()).findAny();
+                
+                if(opString.isPresent()){
+                    listaComprovantes.remove(opString.get());
+                }
+                
+                listaComprovantes.stream().forEach(c -> {
+                    ti.imprimir(service, c);
+                    ti.acionarGuilhotina();
+                });
+                
+                System.out.println("Printando a lista : ");
+                System.out.println(listaComprovantes);
+//                byte[] bytes = convertObjectToByteArray(listaComprovantes);
 
                 
-             
-             AuxiliarTeste aux = new AuxiliarTeste();
-             IntencaoVenda iv = new IntencaoVenda();
-            iv.setId(72293);
-            IntencaoVendaGet ivg = new IntencaoVendaGet();
-            IntencaoVendaPesquisa ivp = new IntencaoVendaPesquisa(iv);
-            Data data = ivg.get(ivp);
-          
-            
-                   List<String> listaComprovantes = new ArrayList<>();
-
-                        data.getIntencoesVendas().stream().forEach(intencaoVenda -> {
-                            intencaoVenda.getPagamentosExternos().stream().forEach(pagamento -> listaComprovantes.add(pagamento.getComprovanteAdquirente()
-                            ));
-                        });
-                        System.out.println(listaComprovantes);
-                InputStream stream = new ByteArrayInputStream(
-                        ("   \n"
-                                + "              MASTERCARD               \n"
-                                + "           55220 89******3640            \n"
-                                + "                            AUT=134424 \n"
-                                + "010000244470001/POS=01000119 \n"
-                                + "DOC=530537    28/08/19 13:44     ONL-C \n"
-                                + "VENDA A CREDITO \n"
-                                + "VALOR:                   R$      30,00 \n"
-                                + "    TRANSACAO AUTORIZADA COM SENHA     \n"
-                                + "           MURILO M TUVANI             \n"
-                                + "   A0000000041010-3663E4C609AF1DF2     \n"
-                                + "              MASTERCARD               \n"
-                                + "---------------------------------------- \n"
-                                + "61853 0000000033 PGREF:0000530537 \n"
-                                + "NOME FANTASIA: AUTO GERAL AUTOPECAS LTDA \n"
-                                + "CNPJ: 05.437.537/0001-37 \n"
-                                + "   *** AMBIENTE DE TESTES - APP02 ***\n\n\n\n" + (char) 27 + (char) 109 + "\n").getBytes());
-                DocFlavor flavor = DocFlavor.INPUT_STREAM.AUTOSENSE;
-                Doc doc = new SimpleDoc(stream, flavor, null);
-                dpj.print(doc, null);
 
             }
-        }
+        
+     
 
     }
 
-}
+//    public static byte[] convertObjectToByteArray(Object object) {
+//        byte[] bytes = null;
+//        try {
+//            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+//            ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
+//            objectOutputStream.writeObject(object);
+//            objectOutputStream.flush();
+//            objectOutputStream.close();
+//            byteArrayOutputStream.close();
+//            bytes = byteArrayOutputStream.toByteArray();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        return bytes;
+//    }
+
+}   }

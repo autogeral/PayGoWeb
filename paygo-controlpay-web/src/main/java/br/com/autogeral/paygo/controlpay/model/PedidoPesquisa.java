@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2019 Murilo Moraes Tuvani.
+ * Copyright 2019 kaique.mota.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,20 +24,19 @@
 package br.com.autogeral.paygo.controlpay.model;
 
 /**
- * 28/05/2019 09:27:07
  *
- * @author Murilo Moraes Tuvani
+ * @author kaique.mota
  */
-public class FormaPagamento {
+public class PedidoPesquisa {
 
-    private int id;
+    private int pedidoId;
 
-    public int getId() {
-        return id;
+    public int getPedidoId() {
+        return pedidoId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setPedidoId(int pedidoId) {
+        this.pedidoId = pedidoId;
     }
 
 }

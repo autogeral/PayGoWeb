@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2019 Murilo Moraes Tuvani.
+ * Copyright 2019 kaique.mota.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,23 +21,26 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package br.com.autogeral.paygo.controlpay.model;
+package br.com.autogeral.paygo.controlpay.web;
+
+import br.com.autogeral.paygo.controlpay.model.Data;
+import br.com.autogeral.paygo.controlpay.model.PedidoPesquisa;
+import br.com.autogeral.paygo.controlpay.web.transacional.PedidoGetByFiltros;
+import java.io.IOException;
 
 /**
- * 28/05/2019 09:27:07
  *
- * @author Murilo Moraes Tuvani
+ * @author kaique.mota
  */
-public class FormaPagamento {
-
-    private int id;
-
-    public int getId() {
-        return id;
+public class PesquisarPedidos {
+    
+   public static void main(String[] args) throws IOException {
+        
+        PedidoGetByFiltros pgf = new PedidoGetByFiltros();
+        PedidoPesquisa pp = new PedidoPesquisa ();
+        
+        pp.setPedidoId(2304);
+   
+        Data ped = pgf.get(pp);
     }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
 }

@@ -49,7 +49,7 @@ public class ProdutoTest {
         p.setNome(PRODUTO_NOME);
         p.setDescricao(PRODUTO_DESCRICAO);
         p.setControlaQuantidade(CONTROLE_QUALIDADE);
-        p.setSolicitaValor(SOLICITA_VALOR);
+      //  p.setSolicitaValor(SOLICITA_VALOR);
         p.setProdutoTipo(PRODUTO_TIPO);
         ProdutoStatus ps = new ProdutoStatus();
         ps.setId(PRODUTO_STATUS_ID);
@@ -118,7 +118,7 @@ public class ProdutoTest {
         assertEquals(PRODUTO_NOME, p.getNome());
         assertEquals(PRODUTO_DESCRICAO, p.getDescricao());
         assertEquals(CONTROLE_QUALIDADE, p.getControlaQuantidade());
-        assertEquals(SOLICITA_VALOR, p.getSolicitaValor());
+     //   assertEquals(SOLICITA_VALOR, p.getSolicitaValor());
         assertEquals(PRODUTO_TIPO, p.getProdutoTipo());
         
         assertNotNull(p.getProdutoStatus());

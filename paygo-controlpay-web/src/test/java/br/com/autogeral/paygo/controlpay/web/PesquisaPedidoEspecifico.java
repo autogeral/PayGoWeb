@@ -21,18 +21,27 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+package br.com.autogeral.paygo.controlpay.web;
+
+import br.com.autogeral.paygo.controlpay.model.Data;
+import br.com.autogeral.paygo.controlpay.model.PedidoPesquisa;
+import br.com.autogeral.paygo.controlpay.web.transacional.PedidoGetById;
+import java.io.IOException;
 
 /**
  *
  * @author kaique.mota
  */
-import br.com.autogeral.paygo.controlpay.impressao.VendaPrint;
+public class PesquisaPedidoEspecifico {
+
+   
+  public static void main(String[] args) throws IOException {
         
-public class TesteImpressora2 {
-    public static void main(String[] args) {
+        PedidoGetById pgbi = new PedidoGetById();
+        PedidoPesquisa pp = new PedidoPesquisa ();
         
-        VendaPrint vp = new VendaPrint();
-        
-        vp.execute();
+        pp.setPedidoId(2303);
+   
+        Data ped = pgbi.pesquisar(pp);
     }
 }

@@ -22,8 +22,8 @@
  * THE SOFTWARE.
  */
 package br.com.autogeral.paygo.controlpay.web.transacional;
+import br.com.autogeral.paygo.controlpay.model.PedidoPesquisa;
 import br.com.autogeral.paygo.controlpay.model.Data;
-import br.com.autogeral.paygo.controlpay.model.IntencaoVendaPesquisa;
 import br.com.autogeral.paygo.controlpay.web.ControlPayConfig;
 import br.com.autogeral.paygo.controlpay.web.WsHelper;
 import java.io.IOException;
@@ -36,10 +36,9 @@ import org.apache.commons.httpclient.methods.StringRequestEntity;
  *
  * @author kaique.mota
  */
-public class VendaCancelarVenda {
-    
-     private static final String PATH = "/webapi/Venda/CancelarVenda?key=";
-    
+public class PedidoGetByFiltros {
+        private static final String PATH = "/webapi/Pedido/GetByFiltros?key=";
+
     private String getPath() {
         ControlPayConfig config = ControlPayConfig.getConfig();
         String servidor = config.getServidor();
@@ -51,22 +50,15 @@ public class VendaCancelarVenda {
         }
         return servidor + PATH + config.getKey();
     }
-    
-    
-    public Data canc (IntencaoVendaPesquisa clc) throws IOException {
-        
-        clc.setTerminalId(ControlPayConfig.getConfig().getTerminal());
-        clc.setAguardarTefIniciarTransacao(true);
-        clc.setSenhaTecnica(ControlPayConfig.getConfig().getSenhaTecnica());
- 
-        
-        String json = WsHelper.getGson().toJson(clc);
-        
+
+    public Data get(PedidoPesquisa pp) throws IOException {
+       
+        String json = WsHelper.getGson().toJson(pp);
         RequestEntity requestEntity = new StringRequestEntity(
                 json,
                 "application/json",
                 "UTF-8");
-        
+
         PostMethod method = new PostMethod(getPath());
         method.addRequestHeader("Content-Type", "application/json");
         method.setRequestEntity(requestEntity);
@@ -75,10 +67,10 @@ public class VendaCancelarVenda {
 
         String responseBody = method.getResponseBodyAsString();
         System.out.println(responseBody);
-        Data data = WsHelper.unmarshal(json, Data.class);
+        Data data = WsHelper.unmarshal(responseBody, Data.class);
         data.setHttpStatus(result);
         return data;
     }
-}
+
     
-  
+}

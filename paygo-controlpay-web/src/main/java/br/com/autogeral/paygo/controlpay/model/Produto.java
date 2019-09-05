@@ -30,14 +30,32 @@ package br.com.autogeral.paygo.controlpay.model;
  */
 public class Produto {
 
-    private String nome;
-    private String descricao;
-    private String controlaQuantidade;
-    private String solicitaValor;
-    private String produtoTipo;
-    private ProdutoStatus produtoStatus;
-    private String fotoNome;
-    private String fotBase64;
+    private int id;
+    transient private String nome;
+    transient private String descricao;
+    transient private String controlaQuantidade;
+    private int valor;
+    transient private String produtoTipo;
+    transient private ProdutoStatus produtoStatus;
+    transient private String fotoNome;
+    transient private String fotBase64;
+    private int quantidade;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
 
     public String getNome() {
         return nome;
@@ -63,14 +81,15 @@ public class Produto {
         this.controlaQuantidade = controlaQuantidade;
     }
 
-    public String getSolicitaValor() {
-        return solicitaValor;
+    public int getValor() {
+        return valor;
     }
 
-    public void setSolicitaValor(String solicitaValor) {
-        this.solicitaValor = solicitaValor;
+    public void setValor(int valor) {
+        this.valor = valor;
     }
 
+  
     public String getProdutoTipo() {
         return produtoTipo;
     }
@@ -105,9 +124,9 @@ public class Produto {
 
     @Override
     public String toString() {
-        return "Produto{nome=" + nome + ", descricao=" + descricao + ", controlaQuantidade=" + controlaQuantidade + ", solicitaValor=" + solicitaValor + ", produtoTipo=" + produtoTipo + ", fotoNome=" + fotoNome + ", fotBase64=" + fotBase64 + '}';
+        return "Produto{" + "id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", controlaQuantidade=" + controlaQuantidade + ", valor=" + valor + ", produtoTipo=" + produtoTipo + ", produtoStatus=" + produtoStatus + ", fotoNome=" + fotoNome + ", fotBase64=" + fotBase64 + ", quantidade=" + quantidade + '}';
     }
-    
+
     
 
 }

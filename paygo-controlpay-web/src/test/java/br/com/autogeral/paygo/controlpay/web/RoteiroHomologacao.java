@@ -23,12 +23,16 @@
  */
 package br.com.autogeral.paygo.controlpay.web;
 //import br.com.autogeral.paygo.controlpay.model.AuxiliarTeste;
+
 import br.com.autogeral.paygo.controlpay.model.AuxiliarTeste;
 import br.com.autogeral.paygo.controlpay.impressao.IntencaoImpressao;
 import br.com.autogeral.paygo.controlpay.model.Data;
+import br.com.autogeral.paygo.controlpay.model.FormaPagamento;
 import br.com.autogeral.paygo.controlpay.model.IntencaoVenda;
 import br.com.autogeral.paygo.controlpay.model.IntencaoVendaPesquisa;
 import br.com.autogeral.paygo.controlpay.model.LoginResultado;
+import br.com.autogeral.paygo.controlpay.model.Pedido;
+import br.com.autogeral.paygo.controlpay.model.Produto;
 import br.com.autogeral.paygo.controlpay.model.Venda;
 import br.com.autogeral.paygo.controlpay.web.operacional.LoginLogin;
 import br.com.autogeral.paygo.controlpay.web.operacional.TerminalGetByPessoaId;
@@ -52,8 +56,10 @@ public class RoteiroHomologacao {
      */
     public static void main(String[] args) {
         try {
+
             AuxiliarTeste aux = new AuxiliarTeste();
             IntencaoImpressao ii = new IntencaoImpressao();
+            Pedido p = new Pedido();
             LoginLogin ll = new LoginLogin();
             LoginResultado loginData = ll.autenticar();
             if (loginData.getHttpStatus() == 200) {
@@ -63,13 +69,13 @@ public class RoteiroHomologacao {
 
                 System.out.println("Status HTTP : " + terminais.getHttpStatus());
                 if (terminais.getHttpStatus() == 200 && !terminais.getTerminais().isEmpty()) {
-                    int terminalId = terminais.getTerminais().get(2).getId();
+                    int terminalId = terminais.getTerminais().get(0).getId();
                     Venda venda = new Venda();
                     venda.setTerminalId(Integer.toString(terminalId));
                     venda.setAdquirente("cielo");
                     venda.setFormaPagamentoId(21);
                     venda.setQuantidadeParcelas(1);
-                    venda.setValorTotalVendido(45);
+                    venda.setValorTotalVendido(100);
                     VendaVender vv = new VendaVender();
                     Data vendaData = vv.vender(venda);
                     Data imprimi = ii.impri(venda);
