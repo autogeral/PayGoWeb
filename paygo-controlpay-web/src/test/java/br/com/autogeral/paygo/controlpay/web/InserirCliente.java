@@ -23,28 +23,57 @@
  */
 package br.com.autogeral.paygo.controlpay.web;
 
+import br.com.autogeral.paygo.controlpay.model.Cliente;
 import br.com.autogeral.paygo.controlpay.model.Data;
-import br.com.autogeral.paygo.controlpay.model.PagamentoExterno;
-import br.com.autogeral.paygo.controlpay.web.transacional.PagamentoExternoInserAdmin;
+import br.com.autogeral.paygo.controlpay.model.Endereco;
+import br.com.autogeral.paygo.controlpay.web.cliente.ClienteInsert;
 import java.io.IOException;
 
 /**
  *
  * @author kaique.mota
  */
-public class PagamentoInsertExterno {
-    
+public class InserirCliente {
+
     public static void main(String[] args) throws IOException {
+
+        Cliente c = new Cliente();
+        Endereco end = new Endereco();
+        ClienteInsert ci = new ClienteInsert();
+
+        c.setId(1);
+        c.setCpfcnpj("46962248806");
+        c.setNomeRazaoSocial("Cadastrode Cliente");
+        c.setEmail("kaique.motta@hotmail.com");
+        c.setReferencia("Cliente");
+        c.setPessoaJurica(false);
+        c.setPessoaId(1);
+     
+        c.setEndereco(end);
+        end.setTipoLogradouro("Rua");
+        end.setLogradouro("Manoel Lessa");
+        end.setNumero("100");
+        end.setComplemento("Casa 2");
+        end.setCep("18131-418");
+        end.setBairro("Vila Nova");
+        end.setCidade("São Roque");
+        end.setUf("SP");
+     
+
+        Data ins = ci.insert(c);
+     
+
         
-        
-        PagamentoExternoInserAdmin peia = new PagamentoExternoInserAdmin();
-        PagamentoExterno pe = new PagamentoExterno();
-        
-        
-        pe.setTerminalId(900);
-        Data paga = peia.pagamento(pe);
-        
-        
+       /*    pfg.setFormaPagamento(formaPagamento);
+        pfg.setQuantidadeMaximaParcelas(1);
+        pfg.setAdquirente("cielo");
+
+        p.getPedidoFormasPagamento().add(pfg);
+        //       p.setPedidoFormasPagamento(Arrays.asList(pfg));
+
+        Data ped = piv.inserirPedido(p);
     }
-    
+         */
+    }
+
 }

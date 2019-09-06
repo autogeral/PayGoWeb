@@ -23,28 +23,26 @@
  */
 package br.com.autogeral.paygo.controlpay.web;
 
+import br.com.autogeral.paygo.controlpay.model.ClienteCartao;
 import br.com.autogeral.paygo.controlpay.model.Data;
-import br.com.autogeral.paygo.controlpay.model.PagamentoExterno;
-import br.com.autogeral.paygo.controlpay.web.transacional.PagamentoExternoInserAdmin;
+import br.com.autogeral.paygo.controlpay.web.tokenizacao.ClienteCartaoById;
 import java.io.IOException;
 
 /**
  *
  * @author kaique.mota
  */
-public class PagamentoInsertExterno {
-    
+public class ConsutarCartaoId {
+
     public static void main(String[] args) throws IOException {
+        ClienteCartaoById ccbi = new ClienteCartaoById();
+        ClienteCartao cc = new ClienteCartao();
         
         
-        PagamentoExternoInserAdmin peia = new PagamentoExternoInserAdmin();
-        PagamentoExterno pe = new PagamentoExterno();
+        cc.setId(1);
         
         
-        pe.setTerminalId(900);
-        Data paga = peia.pagamento(pe);
-        
-        
+        Data consulta = ccbi.token(cc);
     }
-    
+
 }

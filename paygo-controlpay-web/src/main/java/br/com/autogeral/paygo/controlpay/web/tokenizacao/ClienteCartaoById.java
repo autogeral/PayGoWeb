@@ -21,10 +21,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package br.com.autogeral.paygo.controlpay.web.transacional;
+package br.com.autogeral.paygo.controlpay.web.tokenizacao;
 
+import br.com.autogeral.paygo.controlpay.model.ClienteCartao;
 import br.com.autogeral.paygo.controlpay.model.Data;
-import br.com.autogeral.paygo.controlpay.model.PagamentoExterno;
 import br.com.autogeral.paygo.controlpay.web.ControlPayConfig;
 import br.com.autogeral.paygo.controlpay.web.WsHelper;
 import java.io.IOException;
@@ -37,9 +37,9 @@ import org.apache.commons.httpclient.methods.StringRequestEntity;
  *
  * @author kaique.mota
  */
-public class PagamentoExternoInserAdmin {
-
-    private static final String PATH = "/webapi/PagamentoExterno/InsertPagamentoExternoTipoAdmin?key=";
+public class ClienteCartaoById {
+    
+    private static final String PATH = "/webapi/ClienteCartao/Insert?key=";
 
     private String getPath() {
         ControlPayConfig config = ControlPayConfig.getConfig();
@@ -53,11 +53,9 @@ public class PagamentoExternoInserAdmin {
         return servidor + PATH + config.getKey();
     }
 
-    public Data pagamento(PagamentoExterno pe) throws IOException {
-        pe.setSenhaTecnica(ControlPayConfig.getConfig().getSenhaTecnica());
-    
-
-        String json = WsHelper.getGson().toJson(pe);
+    public Data token(ClienteCartao cc) throws IOException {
+       
+        String json = WsHelper.getGson().toJson(cc);
         RequestEntity requestEntity = new StringRequestEntity(
                 json,
                 "application/json",
@@ -65,7 +63,7 @@ public class PagamentoExternoInserAdmin {
 
         PostMethod method = new PostMethod(getPath());
         method.addRequestHeader("Content-Type", "application/json");
-        method.setRequestEntity(requestEntity);
+        
         HttpClient client = new HttpClient();
         int result = client.executeMethod(method);
 
@@ -74,6 +72,7 @@ public class PagamentoExternoInserAdmin {
         Data data = WsHelper.unmarshal(responseBody, Data.class);
         data.setHttpStatus(result);
         return data;
-    }
 
+    }
+    
 }

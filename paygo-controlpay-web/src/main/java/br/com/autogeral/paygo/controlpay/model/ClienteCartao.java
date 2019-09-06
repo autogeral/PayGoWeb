@@ -21,30 +21,40 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package br.com.autogeral.paygo.controlpay.web;
-
-import br.com.autogeral.paygo.controlpay.model.Data;
-import br.com.autogeral.paygo.controlpay.model.PagamentoExterno;
-import br.com.autogeral.paygo.controlpay.web.transacional.PagamentoExternoInserAdmin;
-import java.io.IOException;
+package br.com.autogeral.paygo.controlpay.model;
 
 /**
  *
  * @author kaique.mota
  */
-public class PagamentoInsertExterno {
-    
-    public static void main(String[] args) throws IOException {
-        
-        
-        PagamentoExternoInserAdmin peia = new PagamentoExternoInserAdmin();
-        PagamentoExterno pe = new PagamentoExterno();
-        
-        
-        pe.setTerminalId(900);
-        Data paga = peia.pagamento(pe);
-        
-        
+public class ClienteCartao {
+
+    private int clienteId;
+    private int id;
+    private boolean preferencial;
+
+    public int getClienteId() {
+        return clienteId;
     }
-    
+
+    public void setClienteId(int clienteId) {
+        this.clienteId = clienteId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public boolean isPreferencial() {
+        return preferencial;
+    }
+
+    public void setPreferencial(boolean preferencial) {
+        this.preferencial = preferencial;
+    }
+
 }

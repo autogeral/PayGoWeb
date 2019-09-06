@@ -28,19 +28,87 @@ package br.com.autogeral.paygo.controlpay.model;
  * @author kaique.mota
  */
 public class Cliente {
+
     private int id;
-    private int cpfcnpj;
-    private int nomeRazaoSocial;
+    private String cpfcnpj;
+    private String nomeRazaoSocial;
     private String email;
     private String cliente;
-    private boolean pessoaJurica ;
+    private String referencia;
+    private boolean pessoaJurica;
     private int pessoaId;
-    private Endereco tipoLogradouro;
-    private Endereco logradouro;
-    private Endereco numero;
-    private Endereco complemento;
-    private Endereco cep;
-    private Endereco bairro;
-    private Endereco cidade;
-    private Endereco uf;
+    private Endereco endereco;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getCpfcnpj() {
+        return cpfcnpj;
+    }
+
+    public void setCpfcnpj(String cpfcnpj) {
+        this.cpfcnpj = cpfcnpj;
+    }
+
+    public String getNomeRazaoSocial() {
+        return nomeRazaoSocial;
+    }
+
+    public void setNomeRazaoSocial(String nomeRazaoSocial) {
+        this.nomeRazaoSocial = nomeRazaoSocial;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
+    }
+
+    public boolean isPessoaJurica() {
+        return pessoaJurica;
+    }
+
+    public void setPessoaJurica(boolean pessoaJurica) {
+        this.pessoaJurica = pessoaJurica;
+    }
+
+    public int getPessoaId() {
+        return pessoaId;
+    }
+
+    public void setPessoaId(int pessoaId) {
+        this.pessoaId = pessoaId;
+    }
+
+    public String getReferencia() {
+        return referencia;
+    }
+
+    public void setReferencia(String referencia) {
+        this.referencia = referencia;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
 }

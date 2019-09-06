@@ -69,7 +69,7 @@ public class RoteiroHomologacao {
 
                 System.out.println("Status HTTP : " + terminais.getHttpStatus());
                 if (terminais.getHttpStatus() == 200 && !terminais.getTerminais().isEmpty()) {
-                    int terminalId = terminais.getTerminais().get(0).getId();
+                    int terminalId = terminais.getTerminais().get(3).getId();
                     Venda venda = new Venda();
                     venda.setTerminalId(Integer.toString(terminalId));
                     venda.setAdquirente("cielo");
