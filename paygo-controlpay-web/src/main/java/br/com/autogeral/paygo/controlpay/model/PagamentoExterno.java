@@ -21,16 +21,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package br.com.autogeral.paygo.controlpay.model;
 
 /**
  * 02/06/2019 21:34:37
+ *
  * @author Murilo Moraes Tuvani
  */
 public class PagamentoExterno {
 
     private int id;
+    private int terminalId;
     private int tipo;
     private int origem;
     private int tipoParcelamento;
@@ -38,6 +39,7 @@ public class PagamentoExterno {
     private String mensagemRespostaAdquirente;
     private String comprovanteAdquirente;
     private PagamentoExternoStatus pagamentoExternoStatus;
+    private String senhaTecnica;
 
     public int getId() {
         return id;
@@ -45,6 +47,14 @@ public class PagamentoExterno {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getTerminalId() {
+        return terminalId;
+    }
+
+    public void setTerminalId(int terminalId) {
+        this.terminalId = terminalId;
     }
 
     public int getTipo() {
@@ -103,9 +113,17 @@ public class PagamentoExterno {
         this.comprovanteAdquirente = comprovanteAdquirente;
     }
 
+    public String getSenhaTecnica() {
+        return senhaTecnica;
+    }
+
+    public void setSenhaTecnica(String senhaTecnica) {
+        this.senhaTecnica = senhaTecnica;
+    }
+
     @Override
     public String toString() {
         return "pagamentoExterno: {id=" + id + ", tipo=" + tipo + ", origem=" + origem + ", tipoParcelamento=" + tipoParcelamento + ", pagamentoExternoStatus=" + pagamentoExternoStatus + '}';
     }
-    
+
 }
