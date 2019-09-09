@@ -35,14 +35,11 @@ import java.io.IOException;
 public class ConsutarCartaoId {
 
     public static void main(String[] args) throws IOException {
-        ClienteCartaoById ccbi = new ClienteCartaoById();
+        ClienteCartaoById clienteCartaoById = new ClienteCartaoById();
         ClienteCartao cc = new ClienteCartao();
-        
-        
-        cc.setId(1);
-        
-        
-        Data consulta = ccbi.token(cc);
+        cc.setClienteId(1);
+
+        Data consulta = clienteCartaoById.consulta(cc);
     }
 
 }

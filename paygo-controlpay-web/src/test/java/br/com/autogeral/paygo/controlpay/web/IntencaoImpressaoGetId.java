@@ -23,25 +23,27 @@
  */
 package br.com.autogeral.paygo.controlpay.web;
 
+import br.com.autogeral.paygo.controlpay.model.IntencaoImpressao;
+import br.com.autogeral.paygo.controlpay.impressao.IntencaoImpressaoId;
 import br.com.autogeral.paygo.controlpay.model.Data;
-import br.com.autogeral.paygo.controlpay.model.PedidoPesquisa;
-import br.com.autogeral.paygo.controlpay.web.pedido.PedidoGetById;
 import java.io.IOException;
 
 /**
  *
  * @author kaique.mota
  */
-public class PesquisaPedidoEspecifico {
+public class IntencaoImpressaoGetId {
 
-   
-  public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
+
         
-        PedidoGetById pgbi = new PedidoGetById();
-        PedidoPesquisa pp = new PedidoPesquisa ();
-        
-        pp.setPedidoId(2310);
-   
-        Data ped = pgbi.execute(pp);
+            IntencaoImpressaoId   intencaoImpressaoID = new IntencaoImpressaoId();
+            IntencaoImpressao   intencaoImpressao = new IntencaoImpressao();
+            
+            intencaoImpressao.setIntencaoImpressao(1);
+            
+            Data imprimirGetId = intencaoImpressaoID.imprimi(intencaoImpressao);
+            
     }
+
 }

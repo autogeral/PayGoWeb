@@ -25,7 +25,7 @@ package br.com.autogeral.paygo.controlpay.web;
 
 import br.com.autogeral.paygo.controlpay.model.Data;
 import br.com.autogeral.paygo.controlpay.model.PedidoPesquisa;
-import br.com.autogeral.paygo.controlpay.web.transacional.PedidoGetByFiltros;
+import br.com.autogeral.paygo.controlpay.web.pedido.PedidoGetByFiltros;
 import java.io.IOException;
 
 /**

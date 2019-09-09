@@ -21,34 +21,30 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package br.com.autogeral.paygo.controlpay.web.tokenizacao;
+package br.com.autogeral.paygo.controlpay.web.pedido;
 
-import br.com.autogeral.paygo.controlpay.model.ClienteCartao;
 import br.com.autogeral.paygo.controlpay.model.Data;
-import br.com.autogeral.paygo.controlpay.model.IntencaoImpressao;
+import br.com.autogeral.paygo.controlpay.model.PedidoPesquisa;
 import br.com.autogeral.paygo.controlpay.web.ControlPayConfig;
 import br.com.autogeral.paygo.controlpay.web.WsHelper;
 import java.io.IOException;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
-import org.apache.commons.httpclient.methods.PostMethod;
-import org.apache.commons.httpclient.methods.RequestEntity;
-import org.apache.commons.httpclient.methods.StringRequestEntity;
 
 /**
  *
  * @author kaique.mota
  */
-public class ClienteCartaoById {
+public class PedidoCancelar {
 
-    private static final String PATH = "webapi/ClienteCartao/GetByClienteId?key=";
+    private static final String PATH = "/webapi/Pedido/Cancelar?key=";
 
     /**
-     * API para consultar os cartões cadastrados para um cliente
+     * Retorna dados do pedido que foi Cancelado.
      *
      * @return
      */
-    private String getPath(int clienteId) {
+    private String getPath(int pedidoId) {
         ControlPayConfig config = ControlPayConfig.getConfig();
         String servidor = config.getServidor();
         if (!servidor.startsWith("http")) {
@@ -57,30 +53,25 @@ public class ClienteCartaoById {
         if (!servidor.endsWith("/")) {
             servidor += "/";
         }
-        return servidor + PATH + config.getKey() + "&clienteId=" + clienteId;
+        return servidor + PATH + config.getKey() + "&pedidoId=" + pedidoId;
     }
 
-    public Data consulta(ClienteCartao cc) throws IOException {
-        int clienteId = cc.getClienteId();
+    public Data cancelar(PedidoPesquisa pp) throws IOException {
 
-        
-        String json = WsHelper.getGson().toJson(cc);
-        RequestEntity requestEntity = new StringRequestEntity(
-                json,
-                "application/json",
-                "UTF-8");
-
-        PostMethod method = new PostMethod(getPath(clienteId));
+        int pedidoId = pp.getPedidoId();
+        GetMethod method = new GetMethod(getPath(pedidoId));
         method.addRequestHeader("Content-Type", "application/json");
-        method.setRequestEntity(requestEntity);
         HttpClient client = new HttpClient();
+
         int result = client.executeMethod(method);
 
-        String responseBody = method.getResponseBodyAsString();
-        System.out.println(responseBody);
-        Data data = WsHelper.unmarshal(responseBody, Data.class);
+        WsHelper.printHeaders(method);
+        String json = method.getResponseBodyAsString();
+        System.out.println(json);
+        Data data = WsHelper.unmarshal(json, Data.class);
         data.setHttpStatus(result);
-        return data;
 
+        return data;
     }
+
 }

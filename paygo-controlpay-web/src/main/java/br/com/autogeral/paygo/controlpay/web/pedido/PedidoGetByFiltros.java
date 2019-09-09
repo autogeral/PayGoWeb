@@ -21,15 +21,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package br.com.autogeral.paygo.controlpay.web.transacional;
-
-import br.com.autogeral.paygo.controlpay.model.Data;
+package br.com.autogeral.paygo.controlpay.web.pedido;
 import br.com.autogeral.paygo.controlpay.model.PedidoPesquisa;
+import br.com.autogeral.paygo.controlpay.model.Data;
 import br.com.autogeral.paygo.controlpay.web.ControlPayConfig;
 import br.com.autogeral.paygo.controlpay.web.WsHelper;
 import java.io.IOException;
 import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.RequestEntity;
 import org.apache.commons.httpclient.methods.StringRequestEntity;
@@ -38,9 +36,8 @@ import org.apache.commons.httpclient.methods.StringRequestEntity;
  *
  * @author kaique.mota
  */
-public class PedidoGetById {
-
-    private static final String PATH = "/webapi/Pedido/GetById?key=PedidoId=2303";
+public class PedidoGetByFiltros {
+        private static final String PATH = "/webapi/Pedido/GetByFiltros?key=";
 
     private String getPath() {
         ControlPayConfig config = ControlPayConfig.getConfig();
@@ -54,15 +51,17 @@ public class PedidoGetById {
         return servidor + PATH + config.getKey();
     }
 
-    public Data pesquisar(PedidoPesquisa pp) throws IOException {
+    public Data get(PedidoPesquisa pp) throws IOException {
+       
         String json = WsHelper.getGson().toJson(pp);
         RequestEntity requestEntity = new StringRequestEntity(
                 json,
                 "application/json",
                 "UTF-8");
 
-        GetMethod method = new GetMethod(getPath());
+        PostMethod method = new PostMethod(getPath());
         method.addRequestHeader("Content-Type", "application/json");
+        method.setRequestEntity(requestEntity);
         HttpClient client = new HttpClient();
         int result = client.executeMethod(method);
 
@@ -73,4 +72,5 @@ public class PedidoGetById {
         return data;
     }
 
+    
 }

@@ -21,8 +21,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package br.com.autogeral.paygo.controlpay.web.transacional;
-import br.com.autogeral.paygo.controlpay.model.PedidoPesquisa;
+package br.com.autogeral.paygo.controlpay.web.cliente;
+
+import br.com.autogeral.paygo.controlpay.model.Cliente;
 import br.com.autogeral.paygo.controlpay.model.Data;
 import br.com.autogeral.paygo.controlpay.web.ControlPayConfig;
 import br.com.autogeral.paygo.controlpay.web.WsHelper;
@@ -36,8 +37,9 @@ import org.apache.commons.httpclient.methods.StringRequestEntity;
  *
  * @author kaique.mota
  */
-public class PedidoGetByFiltros {
-        private static final String PATH = "/webapi/Pedido/GetByFiltros?key=";
+public class ClienteGetByPessoalId {
+
+    private static final String PATH = "/webapi/Cliente/GetByPessoaId?key=";
 
     private String getPath() {
         ControlPayConfig config = ControlPayConfig.getConfig();
@@ -51,13 +53,11 @@ public class PedidoGetByFiltros {
         return servidor + PATH + config.getKey();
     }
 
-    public Data get(PedidoPesquisa pp) throws IOException {
-       
-        String json = WsHelper.getGson().toJson(pp);
-        RequestEntity requestEntity = new StringRequestEntity(
-                json,
-                "application/json",
-                "UTF-8");
+    public Data insert(Cliente cli) throws IOException {
+
+        String json = WsHelper.getGson().toJson(cli);
+
+        RequestEntity requestEntity = new StringRequestEntity(json, "application/json", "UTF-8");
 
         PostMethod method = new PostMethod(getPath());
         method.addRequestHeader("Content-Type", "application/json");
@@ -67,10 +67,9 @@ public class PedidoGetByFiltros {
 
         String responseBody = method.getResponseBodyAsString();
         System.out.println(responseBody);
-        Data data = WsHelper.unmarshal(responseBody, Data.class);
+        Data data = WsHelper.unmarshal(json, Data.class);
         data.setHttpStatus(result);
         return data;
-    }
 
-    
+    }
 }
