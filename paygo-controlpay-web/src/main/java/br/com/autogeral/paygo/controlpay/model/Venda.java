@@ -35,6 +35,7 @@ public class Venda {
 
    
     private int formaPagamentoId;
+    private int pedidoId ;
     private String terminalId;
     private String referencia;
     private boolean aguardarTefIniciarTransacao = true;
@@ -47,29 +48,20 @@ public class Venda {
     private int impressoraId;
     private String conteudo;
 
-   
-    public String getConteudo() {
-        return conteudo;
-    }
-
-    public void setConteudo(String conteudo) {
-        this.conteudo = conteudo;
-    }
-
     public int getFormaPagamentoId() {
         return formaPagamentoId;
     }
 
-    public boolean isAguardarClienteIniciarImpressao() {
-        return aguardarClienteIniciarImpressao;
-    }
-
-    public void setAguardarClienteIniciarImpressao(boolean aguardarClienteIniciarImpressao) {
-        this.aguardarClienteIniciarImpressao = aguardarClienteIniciarImpressao;
-    }
-
     public void setFormaPagamentoId(int formaPagamentoId) {
         this.formaPagamentoId = formaPagamentoId;
+    }
+
+    public int getPedidoId() {
+        return pedidoId;
+    }
+
+    public void setPedidoId(int pedidoId) {
+        this.pedidoId = pedidoId;
     }
 
     public String getTerminalId() {
@@ -136,6 +128,14 @@ public class Venda {
         this.produtosVendidos = produtosVendidos;
     }
 
+    public boolean isAguardarClienteIniciarImpressao() {
+        return aguardarClienteIniciarImpressao;
+    }
+
+    public void setAguardarClienteIniciarImpressao(boolean aguardarClienteIniciarImpressao) {
+        this.aguardarClienteIniciarImpressao = aguardarClienteIniciarImpressao;
+    }
+
     public int getImpressoraId() {
         return impressoraId;
     }
@@ -143,5 +143,15 @@ public class Venda {
     public void setImpressoraId(int impressoraId) {
         this.impressoraId = impressoraId;
     }
+
+    public String getConteudo() {
+        return conteudo;
+    }
+
+    public void setConteudo(String conteudo) {
+        this.conteudo = conteudo;
+    }
+
+   
 
 }

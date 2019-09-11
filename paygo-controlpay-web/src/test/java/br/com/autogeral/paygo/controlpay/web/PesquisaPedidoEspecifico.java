@@ -40,7 +40,7 @@ public class PesquisaPedidoEspecifico {
         PedidoGetById pgbi = new PedidoGetById();
         PedidoPesquisa pp = new PedidoPesquisa ();
         
-        pp.setPedidoId(2310);
+        pp.setPedidoId(2365);
    
         Data ped = pgbi.execute(pp);
     }

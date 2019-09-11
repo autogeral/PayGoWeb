@@ -55,12 +55,12 @@ public class PedidoInsertVenda {
 
     public Data inserirPedido(Pedido p) throws IOException {
 
-        String json = WsHelper.getGson().toJson(p);
+        String json = WsHelper.getGsonWithoutNull().toJson(p);
         RequestEntity requestEntity = new StringRequestEntity(
                 json,
                 "application/json",
                 "UTF-8");
-
+        
         PostMethod method = new PostMethod(getPath());
         method.addRequestHeader("Content-Type", "application/json");
         method.setRequestEntity(requestEntity);
@@ -69,9 +69,10 @@ public class PedidoInsertVenda {
 
         String responseBody = method.getResponseBodyAsString();
         System.out.println(responseBody);
-        Data data = WsHelper.unmarshal(responseBody, Data.class);
-        data.setHttpStatus(result);
-        return data;
+        Data pedido = WsHelper.unmarshal(responseBody, Data.class);
+       
+        pedido.setHttpStatus(result);
+        return pedido;
     }
 
 }

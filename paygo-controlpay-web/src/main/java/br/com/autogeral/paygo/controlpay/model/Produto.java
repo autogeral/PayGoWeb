@@ -1,26 +1,3 @@
-/*
- * The MIT License
- *
- * Copyright 2019 Murilo Moraes Tuvani.
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
 package br.com.autogeral.paygo.controlpay.model;
 
 /**
@@ -30,16 +7,28 @@ package br.com.autogeral.paygo.controlpay.model;
  */
 public class Produto {
 
+    private String itemProdutoId;
     private int id;
-    transient private String nome;
-    transient private String descricao;
-    transient private String controlaQuantidade;
-    private int valor;
-    transient private String produtoTipo;
-    transient private ProdutoStatus produtoStatus;
-    transient private String fotoNome;
-    transient private String fotBase64;
+    private String nome;
+    private String descricao;
+    private String nomeExibe;
     private int quantidade;
+    private double valor;
+    private String valorFormat;
+    private boolean controlaQuantidade;
+    private String fotoThumbnail;
+    private String produtoTipo;
+    private ProdutoStatus produtoStatus;
+    private String fotoNome;
+    private String fotBase64;
+
+    public String getItemProdutoId() {
+        return itemProdutoId;
+    }
+
+    public void setItemProdutoId(String itemProdutoId) {
+        this.itemProdutoId = itemProdutoId;
+    }
 
     public int getId() {
         return id;
@@ -47,14 +36,6 @@ public class Produto {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
     }
 
     public String getNome() {
@@ -73,23 +54,54 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public String getControlaQuantidade() {
-        return controlaQuantidade;
+    public String getNomeExibe() {
+        return nomeExibe;
     }
 
-    public void setControlaQuantidade(String controlaQuantidade) {
-        this.controlaQuantidade = controlaQuantidade;
+    public void setNomeExibe(String nomeExibe) {
+        this.nomeExibe = nomeExibe;
     }
 
-    public int getValor() {
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public double getValor() {
         return valor;
     }
 
-    public void setValor(int valor) {
+    public void setValor(double valor) {
         this.valor = valor;
     }
 
-  
+    public String getValorFormat() {
+        return valorFormat;
+    }
+
+    public void setValorFormat(String valorFormat) {
+        this.valorFormat = valorFormat;
+    }
+
+    public boolean getControlaQuantidade() {
+        return controlaQuantidade;
+    }
+
+    public void setControlaQuantidade(boolean controlaQuantidade) {
+        this.controlaQuantidade = controlaQuantidade;
+    }
+
+    public String getFotoThumbnail() {
+        return fotoThumbnail;
+    }
+
+    public void setFotoThumbnail(String fotoThumbnail) {
+        this.fotoThumbnail = fotoThumbnail;
+    }
+
     public String getProdutoTipo() {
         return produtoTipo;
     }
@@ -124,9 +136,7 @@ public class Produto {
 
     @Override
     public String toString() {
-        return "Produto{" + "id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", controlaQuantidade=" + controlaQuantidade + ", valor=" + valor + ", produtoTipo=" + produtoTipo + ", produtoStatus=" + produtoStatus + ", fotoNome=" + fotoNome + ", fotBase64=" + fotBase64 + ", quantidade=" + quantidade + '}';
+        return "Produto{" + "itemProdutoId=" + itemProdutoId + ", id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", nomeExibe=" + nomeExibe + ", quantidade=" + quantidade + ", valor=" + valor + ", valorFormat=" + valorFormat + ", controlaQuantidade=" + controlaQuantidade + ", fotoThumbnail=" + fotoThumbnail + ", produtoTipo=" + produtoTipo + ", produtoStatus=" + produtoStatus + ", fotoNome=" + fotoNome + ", fotBase64=" + fotBase64 + '}';
     }
-
-    
 
 }

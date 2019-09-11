@@ -31,6 +31,13 @@ package br.com.autogeral.paygo.controlpay.model;
 public class FormaPagamento {
 
     private int id;
+    private String nome;
+    private String modalidade;
+    private boolean permiteParcelamento;
+    private boolean solicitaObs;
+    private int quantidadeMaximaParcelas;
+    private boolean isentoDeTarifa;
+    private FluxoPagamento fluxoPagamento;
 
     public int getId() {
         return id;
@@ -38,6 +45,62 @@ public class FormaPagamento {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getModalidade() {
+        return modalidade;
+    }
+
+    public void setModalidade(String modalidade) {
+        this.modalidade = modalidade;
+    }
+
+    public boolean isPermiteParcelamento() {
+        return permiteParcelamento;
+    }
+
+    public void setPermiteParcelamento(boolean permiteParcelamento) {
+        this.permiteParcelamento = permiteParcelamento;
+    }
+
+    public boolean isSolicitaObs() {
+        return solicitaObs;
+    }
+
+    public void setSolicitaObs(boolean solicitaObs) {
+        this.solicitaObs = solicitaObs;
+    }
+
+    public int getQuantidadeMaximaParcelas() {
+        return quantidadeMaximaParcelas;
+    }
+
+    public void setQuantidadeMaximaParcelas(int quantidadeMaximaParcelas) {
+        this.quantidadeMaximaParcelas = quantidadeMaximaParcelas;
+    }
+
+    public boolean isIsentoDeTarifa() {
+        return isentoDeTarifa;
+    }
+
+    public void setIsentoDeTarifa(boolean isentoDeTarifa) {
+        this.isentoDeTarifa = isentoDeTarifa;
+    }
+
+    public FluxoPagamento getFluxoPagamento() {
+        return fluxoPagamento;
+    }
+
+    public void setFluxoPagamento(FluxoPagamento fluxoPagamento) {
+        this.fluxoPagamento = fluxoPagamento;
     }
 
 }

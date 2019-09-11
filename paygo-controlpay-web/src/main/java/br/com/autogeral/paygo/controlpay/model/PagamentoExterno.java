@@ -31,22 +31,51 @@ package br.com.autogeral.paygo.controlpay.model;
 public class PagamentoExterno {
 
     private int id;
+    private String idPagamento;
+    private String nsuTid;
+    private String trnNsu;
+    private String autorizacao;
+    private String adquirente;
+    private String bandeira;
+    private String codigoRespostaAdquirente;
+    private String codigoRespostaExecTransac;
+    private String mensagemRespostaAdquirente;
+    private String idConfirmacao;
+    private String dataAdquirente;
+    private String dataAtualizacao;
+    private String respostaAdquirente;
     private int terminalId;
     private int tipo;
     private int origem;
     private int tipoParcelamento;
-    private String respostaAdquirente;
-    private String mensagemRespostaAdquirente;
     private String comprovanteAdquirente;
     private PagamentoExternoStatus pagamentoExternoStatus;
     private String senhaTecnica;
+    private String orderLIO;
 
+    public String getOrderLIO() {
+        return orderLIO;
+    }
+
+    public void setOrderLIO(String orderLIO) {
+        this.orderLIO = orderLIO;
+    }
+
+    
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getIdPagamento() {
+        return idPagamento;
+    }
+
+    public void setIdPagamento(String idPagamento) {
+        this.idPagamento = idPagamento;
     }
 
     public int getTerminalId() {
@@ -121,9 +150,90 @@ public class PagamentoExterno {
         this.senhaTecnica = senhaTecnica;
     }
 
-    @Override
-    public String toString() {
-        return "pagamentoExterno: {id=" + id + ", tipo=" + tipo + ", origem=" + origem + ", tipoParcelamento=" + tipoParcelamento + ", pagamentoExternoStatus=" + pagamentoExternoStatus + '}';
+    public String getNsuTid() {
+        return nsuTid;
     }
 
+    public void setNsuTid(String nsuTid) {
+        this.nsuTid = nsuTid;
+    }
+
+    public String getTrnNsu() {
+        return trnNsu;
+    }
+
+    public void setTrnNsu(String trnNsu) {
+        this.trnNsu = trnNsu;
+    }
+
+    public String getAutorizacao() {
+        return autorizacao;
+    }
+
+    public void setAutorizacao(String autorizacao) {
+        this.autorizacao = autorizacao;
+    }
+
+    public String getAdquirente() {
+        return adquirente;
+    }
+
+    public void setAdquirente(String adquirente) {
+        this.adquirente = adquirente;
+    }
+
+    public String getBandeira() {
+        return bandeira;
+    }
+
+    public void setBandeira(String bandeira) {
+        this.bandeira = bandeira;
+    }
+
+    public String getCodigoRespostaAdquirente() {
+        return codigoRespostaAdquirente;
+    }
+
+    public void setCodigoRespostaAdquirente(String codigoRespostaAdquirente) {
+        this.codigoRespostaAdquirente = codigoRespostaAdquirente;
+    }
+
+    public String getCodigoRespostaExecTransac() {
+        return codigoRespostaExecTransac;
+    }
+
+    public void setCodigoRespostaExecTransac(String codigoRespostaExecTransac) {
+        this.codigoRespostaExecTransac = codigoRespostaExecTransac;
+    }
+
+    public String getIdConfirmacao() {
+        return idConfirmacao;
+    }
+
+    public void setIdConfirmacao(String idConfirmacao) {
+        this.idConfirmacao = idConfirmacao;
+    }
+
+    public String getDataAdquirente() {
+        return dataAdquirente;
+    }
+
+    public void setDataAdquirente(String dataAdquirente) {
+        this.dataAdquirente = dataAdquirente;
+    }
+
+    public String getDataAtualizacao() {
+        return dataAtualizacao;
+    }
+
+    public void setDataAtualizacao(String dataAtualizacao) {
+        this.dataAtualizacao = dataAtualizacao;
+    }
+
+    @Override
+    public String toString() {
+        return "PagamentoExterno{" + "id=" + id + ", nsuTid=" + nsuTid + ", trnNsu=" + trnNsu + ", autorizacao=" + autorizacao + ", adquirente=" + adquirente + ", bandeira=" + bandeira + ", codigoRespostaAdquirente=" + codigoRespostaAdquirente + ", codigoRespostaExecTransac=" + codigoRespostaExecTransac + ", mensagemRespostaAdquirente=" + mensagemRespostaAdquirente + ", idConfirmacao=" + idConfirmacao + ", dataAdquirente=" + dataAdquirente + ", dataAtualizacao=" + dataAtualizacao + ", respostaAdquirente=" + respostaAdquirente + ", terminalId=" + terminalId + ", tipo=" + tipo + ", origem=" + origem + ", tipoParcelamento=" + tipoParcelamento + ", comprovanteAdquirente=" + comprovanteAdquirente + ", pagamentoExternoStatus=" + pagamentoExternoStatus + ", senhaTecnica=" + senhaTecnica + '}';
+    }
+
+    
 }

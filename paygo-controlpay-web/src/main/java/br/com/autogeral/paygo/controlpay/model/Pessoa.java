@@ -30,89 +30,98 @@ package br.com.autogeral.paygo.controlpay.model;
  */
 public class Pessoa {
 
-    private String Id;
-    private String PessoaJuridica;
-    private String NomeRazaoSocial;
-    private String SobrenomeNomeFantasia;
-    private String CpfCnpj;
-    private String Email;
-    private String Telefone1;
-    private String Telefone2;
-    private String Foto;
+    private int id;
+    private String pessoaJuridica;
+    private String nomeRazaoSocial;
+    private String sobrenomeNomeFantasia;
+    private String cpfCnpj;
+    private String cpfCnpjFormat;
+    private String email;
+    private String telefone1;
+    private String telefone2;
+    private String foto;
     private String fotoNome;
     private String fotoBase64;
-    private Endereco Endereco;
+    private Endereco endereco;
 
-    public String getId() {
-        return Id;
+    public int getId() {
+        return id;
     }
 
-    public void setId(String Id) {
-        this.Id = Id;
+    public void setId(int Id) {
+        this.id = Id;
     }
 
     public String getPessoaJuridica() {
-        return PessoaJuridica;
+        return pessoaJuridica;
     }
 
-    public void setPessoaJuridica(String PessoaJuridica) {
-        this.PessoaJuridica = PessoaJuridica;
+    public void setPessoaJuridica(String pessoaJuridica) {
+        this.pessoaJuridica = pessoaJuridica;
     }
 
     public String getNomeRazaoSocial() {
-        return NomeRazaoSocial;
+        return nomeRazaoSocial;
     }
 
-    public void setNomeRazaoSocial(String NomeRazaoSocial) {
-        this.NomeRazaoSocial = NomeRazaoSocial;
+    public void setNomeRazaoSocial(String nomeRazaoSocial) {
+        this.nomeRazaoSocial = nomeRazaoSocial;
     }
 
     public String getSobrenomeNomeFantasia() {
-        return SobrenomeNomeFantasia;
+        return sobrenomeNomeFantasia;
     }
 
-    public void setSobrenomeNomeFantasia(String SobrenomeNomeFantasia) {
-        this.SobrenomeNomeFantasia = SobrenomeNomeFantasia;
+    public void setSobrenomeNomeFantasia(String sobrenomeNomeFantasia) {
+        this.sobrenomeNomeFantasia = sobrenomeNomeFantasia;
     }
 
     public String getCpfCnpj() {
-        return CpfCnpj;
+        return cpfCnpj;
     }
 
-    public void setCpfCnpj(String CpfCnpj) {
-        this.CpfCnpj = CpfCnpj;
+    public void setCpfCnpj(String cpfCnpj) {
+        this.cpfCnpj = cpfCnpj;
+    }
+
+    public String getCpfCnpjFormat() {
+        return cpfCnpjFormat;
+    }
+
+    public void setCpfCnpjFormat(String cpfCnpjFormat) {
+        this.cpfCnpjFormat = cpfCnpjFormat;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
-    public void setEmail(String Email) {
-        this.Email = Email;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getTelefone1() {
-        return Telefone1;
+        return telefone1;
     }
 
-    public void setTelefone1(String Telefone1) {
-        this.Telefone1 = Telefone1;
+    public void setTelefone1(String telefone1) {
+        this.telefone1 = telefone1;
     }
 
     public String getTelefone2() {
-        return Telefone2;
+        return telefone2;
     }
 
-    public void setTelefone2(String Telefone2) {
-        this.Telefone2 = Telefone2;
+    public void setTelefone2(String telefone2) {
+        this.telefone2 = telefone2;
     }
 
     public String getFoto() {
-        return Foto;
+        return foto;
     }
 
-    public void setFoto(String Foto) {
-        this.Foto = Foto;
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
     public String getFotoNome() {
@@ -132,16 +141,11 @@ public class Pessoa {
     }
 
     public Endereco getEndereco() {
-        return Endereco;
+        return endereco;
     }
 
-    public void setEndereco(Endereco Endereco) {
-        this.Endereco = Endereco;
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
-    @Override
-    public String toString() {
-        return "Pessoa{" + "Id=" + Id + ", PessoaJuridica=" + PessoaJuridica + ", NomeRazaoSocial=" + NomeRazaoSocial + ", SobrenomeNomeFantasia=" + SobrenomeNomeFantasia + ", CpfCnpj=" + CpfCnpj + ", Email=" + Email + ", Telefone1=" + Telefone1 + ", Telefone2=" + Telefone2 + ", Foto=" + Foto + ", fotoNome=" + fotoNome + ", fotoBase64=" + fotoBase64 + ", Endereco=" + Endereco + '}';
-    }
-    
 }

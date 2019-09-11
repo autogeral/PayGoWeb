@@ -107,6 +107,22 @@ public class WsHelper {
         return gson;
     }
 
+   public static Gson getGsonWithoutNull(){
+       
+           Gson ggson = new GsonBuilder()
+                    .registerTypeAdapter(IntencaoVendaPesquisa.class, new IntencaoVendaPesquisaGsonAdapter())
+                    .registerTypeAdapter(Venda.class, new VendaGsonAdapter())
+                    .registerTypeAdapter(LocalDate.class, new LocalDateGson())
+                    .registerTypeAdapter(LocalTime.class, new LocalTimeGson())
+                    .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeGson())
+                   
+                    .setDateFormat("dd-MM-yyyy HH:mm:ss.SSSS")
+                    .setPrettyPrinting()
+                    .create();
+        
+        return ggson;
+   }
+    
     public static void printHeaders(HttpMethod method) {
         for (Header header : method.getRequestHeaders()) {
             System.out.println("Header : " + header.getName() + "\tValue : " + header.getValue());

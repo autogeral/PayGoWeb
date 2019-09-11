@@ -29,16 +29,18 @@ package br.com.autogeral.paygo.controlpay.model;
  */
 public class PedidoFormaPagamento {
 
-    private FormaPagamento formaPagamento;
+    private int id;
     private int quantidadeMaximaParcelas;
-    private String Adquirente;
+    private FormaPagamento formaPagamento;
+    private String adquirentePadrao;
+    private String adquirente;
 
-    public FormaPagamento getFormaPagamento() {
-        return formaPagamento;
+    public int getId() {
+        return id;
     }
 
-    public void setFormaPagamento(FormaPagamento formaPagamento) {
-        this.formaPagamento = formaPagamento;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getQuantidadeMaximaParcelas() {
@@ -49,12 +51,28 @@ public class PedidoFormaPagamento {
         this.quantidadeMaximaParcelas = quantidadeMaximaParcelas;
     }
 
-    public String getAdquirente() {
-        return Adquirente;
+    public FormaPagamento getFormaPagamento() {
+        return formaPagamento;
     }
 
-    public void setAdquirente(String Adquirente) {
-        this.Adquirente = Adquirente;
+    public void setFormaPagamento(FormaPagamento formaPagamento) {
+        this.formaPagamento = formaPagamento;
+    }
+
+    public String getAdquirentePadrao() {
+        return adquirentePadrao;
+    }
+
+    public void setAdquirentePadrao(String adquirentePadrao) {
+        this.adquirentePadrao = adquirentePadrao;
+    }
+
+    public String getAdquirente() {
+        return adquirente;
+    }
+
+    public void setAdquirente(String adquirente) {
+        this.adquirente = adquirente;
     }
 
 }

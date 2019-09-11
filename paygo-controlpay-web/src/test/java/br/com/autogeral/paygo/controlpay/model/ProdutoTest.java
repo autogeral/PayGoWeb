@@ -48,7 +48,7 @@ public class ProdutoTest {
         Produto p = new Produto();
         p.setNome(PRODUTO_NOME);
         p.setDescricao(PRODUTO_DESCRICAO);
-        p.setControlaQuantidade(CONTROLE_QUALIDADE);
+//        p.setControlaQuantidade(CONTROLE_QUALIDADE);
       //  p.setSolicitaValor(SOLICITA_VALOR);
         p.setProdutoTipo(PRODUTO_TIPO);
         ProdutoStatus ps = new ProdutoStatus();

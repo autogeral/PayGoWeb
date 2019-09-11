@@ -74,5 +74,24 @@ public class IntencaoVendaGet {
         data.setHttpStatus(result);
         return data;
     }
+/*
+      String json = WsHelper.getGsonWithoutNull().toJson(p);
+        RequestEntity requestEntity = new StringRequestEntity(
+                json,
+                "application/json",
+                "UTF-8");
+        
+        PostMethod method = new PostMethod(getPath());
+        method.addRequestHeader("Content-Type", "application/json");
+        method.setRequestEntity(requestEntity);
+        HttpClient client = new HttpClient();
+        int result = client.executeMethod(method);
 
+        String responseBody = method.getResponseBodyAsString();
+        System.out.println(responseBody);
+        Data pedido = WsHelper.unmarshal(responseBody, Data.class);
+       
+        pedido.setHttpStatus(result);
+        return pedido; 
+    */
 }

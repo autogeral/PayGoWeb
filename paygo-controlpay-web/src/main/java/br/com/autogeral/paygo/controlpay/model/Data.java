@@ -21,7 +21,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package br.com.autogeral.paygo.controlpay.model;
 
 import java.time.LocalDateTime;
@@ -29,12 +28,12 @@ import java.util.List;
 
 /**
  * Uma classe apenas para colocar outros dados dentro</br>
- * para satisfazer a API</br>
- * 03/06/2019 18:33:17
+ * para satisfazer a API</br> 03/06/2019 18:33:17
+ *
  * @author Murilo Moraes Tuvani
  */
 public class Data {
-    
+
     private transient int httpStatus;
     private LocalDateTime data;
     private String message;
@@ -43,6 +42,8 @@ public class Data {
     private Produto produto;
     private List<Terminal> terminais;
     private List<IntencaoVenda> intencoesVendas;
+    private List<Pedido> pedidos;
+    private Pedido pedido;
 
     public int getHttpStatus() {
         return httpStatus;
@@ -107,4 +108,21 @@ public class Data {
     public void setIntencoesVendas(List<IntencaoVenda> intencoesVendas) {
         this.intencoesVendas = intencoesVendas;
     }
+
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
+
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
+
 }

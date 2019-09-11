@@ -39,7 +39,10 @@ public class IntencaoVenda {
     private String token;
     private LocalDateTime data;
     private LocalTime hora;
+    private String dataAtualizacao;
     private int quantidade;
+    private String latitude;
+    private String longitude;
     private double valorOriginal;
     private String valorOriginalFormat;
     private double valorAcrescimo;
@@ -50,23 +53,34 @@ public class IntencaoVenda {
     private String valorFinalFormat;
     private String gate2allToken;
     private int quantidadeParcelas;
+    private String operador;
     private String urlPagamento;
     private FormaPagamento formaPagamento;
     private Terminal terminal;
+    private Pedido pedido;
     private List<PagamentoExterno> pagamentosExternos;
     private IntencaoVendaStatus intencaoVendaStatus;
-    private String cliente;
+    private Cliente cliente;
+    private Vendedor vendedor;
     private List<ProdutoVenda> produtos;
-    private String pedido;
+    private String recordsTotal;
+    private String recordsFiltered;
+    private String draw;
 
-    
-    
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getDraw() {
+        return draw;
+    }
+
+    public void setDraw(String draw) {
+        this.draw = draw;
     }
 
     public String getReferencia() {
@@ -101,12 +115,52 @@ public class IntencaoVenda {
         this.hora = hora;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Vendedor getVendedor() {
+        return vendedor;
+    }
+
+    public void setVendedor(Vendedor vendedor) {
+        this.vendedor = vendedor;
+    }
+
+    public String getDataAtualizacao() {
+        return dataAtualizacao;
+    }
+
+    public void setDataAtualizacao(String dataAtualizacao) {
+        this.dataAtualizacao = dataAtualizacao;
+    }
+
     public int getQuantidade() {
         return quantidade;
     }
 
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 
     public double getValorOriginal() {
@@ -213,6 +267,14 @@ public class IntencaoVenda {
         this.terminal = terminal;
     }
 
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
+
     public List<PagamentoExterno> getPagamentosExternos() {
         return pagamentosExternos;
     }
@@ -229,14 +291,6 @@ public class IntencaoVenda {
         this.intencaoVendaStatus = intencaoVendaStatus;
     }
 
-    public String getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(String cliente) {
-        this.cliente = cliente;
-    }
-
     public List<ProdutoVenda> getProdutos() {
         return produtos;
     }
@@ -245,17 +299,28 @@ public class IntencaoVenda {
         this.produtos = produtos;
     }
 
-    public String getPedido() {
-        return pedido;
+    public String getOperador() {
+        return operador;
     }
 
-    public void setPedido(String pedido) {
-        this.pedido = pedido;
+    public void setOperador(String operador) {
+        this.operador = operador;
     }
 
-    @Override
-    public String toString() {
-        return "intecaoVenda: {id=" + id + ", token=" + token + ", data=" + data + ", hora=" + hora + ", quantidade=" + quantidade + ", valorOriginal=" + valorOriginal + ", valorOriginalFormat=" + valorOriginalFormat + ", valorDesconto=" + valorDesconto + ", valorDescontoFormat=" + valorDescontoFormat + ", valorFinal=" + valorFinal + ", valorFinalFormat=" + valorFinalFormat + ", gate2allToken=" + gate2allToken + ", quantidadeParcelas=" + quantidadeParcelas + ", urlPagamento=" + urlPagamento + ", formaPagamento=" + formaPagamento + ", terminal=" + terminal + ", pagamentosExternos=" + pagamentosExternos + ", intencaoVendaStatus=" + intencaoVendaStatus + ", cliente=" + cliente + ", produtos=" + produtos + ", pedido=" + pedido + '}';
+    public String getRecordsTotal() {
+        return recordsTotal;
+    }
+
+    public void setRecordsTotal(String recordsTotal) {
+        this.recordsTotal = recordsTotal;
+    }
+
+    public String getRecordsFiltered() {
+        return recordsFiltered;
+    }
+
+    public void setRecordsFiltered(String recordsFiltered) {
+        this.recordsFiltered = recordsFiltered;
     }
 
 }
