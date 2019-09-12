@@ -25,7 +25,6 @@ package br.com.autogeral.paygo.controlpay.web.cliente;
 
 import br.com.autogeral.paygo.controlpay.model.Cliente;
 import br.com.autogeral.paygo.controlpay.model.Data;
-import br.com.autogeral.paygo.controlpay.model.Endereco;
 import br.com.autogeral.paygo.controlpay.web.ControlPayConfig;
 import br.com.autogeral.paygo.controlpay.web.WsHelper;
 import java.io.IOException;

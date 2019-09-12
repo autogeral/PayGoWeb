@@ -29,17 +29,19 @@ package br.com.autogeral.paygo.controlpay.model;
  */
 public class ClienteCartao {
 
-    private int clienteId;
     private int id;
     private boolean preferencial;
-
-    public int getClienteId() {
-        return clienteId;
-    }
-
-    public void setClienteId(int clienteId) {
-        this.clienteId = clienteId;
-    }
+    private Cliente cliente;
+    private String dataAtualizacao;
+    private String dataInsercao;
+    private String cartaoPan;
+    private String cartaoValidade;
+    private String bandeira;
+    private String cartaoToken;
+    private String gate2allToken;
+    private int status;
+    private String statusDescricao;
+    private String urlCapturarDadosCartao;
 
     public int getId() {
         return id;
@@ -55,6 +57,94 @@ public class ClienteCartao {
 
     public void setPreferencial(boolean preferencial) {
         this.preferencial = preferencial;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public String getDataAtualizacao() {
+        return dataAtualizacao;
+    }
+
+    public void setDataAtualizacao(String dataAtualizacao) {
+        this.dataAtualizacao = dataAtualizacao;
+    }
+
+    public String getDataInsercao() {
+        return dataInsercao;
+    }
+
+    public void setDataInsercao(String dataInsercao) {
+        this.dataInsercao = dataInsercao;
+    }
+
+    public String getCartaoPan() {
+        return cartaoPan;
+    }
+
+    public void setCartaoPan(String cartaoPan) {
+        this.cartaoPan = cartaoPan;
+    }
+
+    public String getCartaoValidade() {
+        return cartaoValidade;
+    }
+
+    public void setCartaoValidade(String cartaoValidade) {
+        this.cartaoValidade = cartaoValidade;
+    }
+
+    public String getBandeira() {
+        return bandeira;
+    }
+
+    public void setBandeira(String bandeira) {
+        this.bandeira = bandeira;
+    }
+
+    public String getCartaoToken() {
+        return cartaoToken;
+    }
+
+    public void setCartaoToken(String cartaoToken) {
+        this.cartaoToken = cartaoToken;
+    }
+
+    public String getGate2allToken() {
+        return gate2allToken;
+    }
+
+    public void setGate2allToken(String gate2allToken) {
+        this.gate2allToken = gate2allToken;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public String getStatusDescricao() {
+        return statusDescricao;
+    }
+
+    public void setStatusDescricao(String statusDescricao) {
+        this.statusDescricao = statusDescricao;
+    }
+
+    public String getUrlCapturarDadosCartao() {
+        return urlCapturarDadosCartao;
+    }
+
+    public void setUrlCapturarDadosCartao(String urlCapturarDadosCartao) {
+        this.urlCapturarDadosCartao = urlCapturarDadosCartao;
     }
 
 }

@@ -25,7 +25,6 @@ package br.com.autogeral.paygo.controlpay.impressao;
 
 import br.com.autogeral.paygo.controlpay.model.Data;
 
-import br.com.autogeral.paygo.controlpay.model.IntencaoVendaPesquisa;
 import br.com.autogeral.paygo.controlpay.model.Venda;
 import br.com.autogeral.paygo.controlpay.web.ControlPayConfig;
 import br.com.autogeral.paygo.controlpay.web.WsHelper;

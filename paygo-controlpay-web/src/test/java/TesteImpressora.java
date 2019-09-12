@@ -12,7 +12,6 @@ import br.com.autogeral.paygo.controlpay.model.Data;
 import br.com.autogeral.paygo.controlpay.model.IntencaoVenda;
 import br.com.autogeral.paygo.controlpay.model.IntencaoVendaPesquisa;
 import br.com.autogeral.paygo.controlpay.web.transacional.IntencaoVendaGet;
-import com.sun.prism.RTTexture;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -49,10 +48,7 @@ import java.util.logging.Logger;
  */
 public class TesteImpressora {
 
-    
-
-        
-    private void imprimir(PrintService service, String conteudo) {        
+    private void imprimir(PrintService service, String conteudo) {
         InputStream stream = new ByteArrayInputStream(conteudo.getBytes());
         DocPrintJob dpj = service.createPrintJob();
         DocFlavor flavor = DocFlavor.INPUT_STREAM.AUTOSENSE;
@@ -63,6 +59,7 @@ public class TesteImpressora {
             Logger.getLogger(TesteImpressora.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     public void acionarGuilhotina() {
         javax.print.PrintService services[] = PrinterJob.lookupPrintServices();
         String impressora = System.getProperty("compra.print.termica.impressoraNome", "MP-4200 TH");
@@ -88,11 +85,9 @@ public class TesteImpressora {
         for (PrintService service : services) {
             System.out.println("Printer service name : " + service.getName());
             if (service.getName().startsWith("MP-")) {
-                
-
 
                 IntencaoVenda iv = new IntencaoVenda();
-                iv.setId(72836);
+                iv.setId(73048);
                 IntencaoVendaGet ivg = new IntencaoVendaGet();
                 IntencaoVendaPesquisa ivp = new IntencaoVendaPesquisa(iv);
                 Data data = ivg.get(ivp);
@@ -104,29 +99,25 @@ public class TesteImpressora {
                     ));
                 });
                 System.out.println("Printando os itens : ");
-                
+
                 Optional<String> opString = listaComprovantes.stream().filter(c -> c.isEmpty()).findAny();
-                
-                if(opString.isPresent()){
+
+                if (opString.isPresent()) {
                     listaComprovantes.remove(opString.get());
                 }
-                
+
                 listaComprovantes.stream().forEach(c -> {
                     ti.imprimir(service, c);
                     ti.acionarGuilhotina();
                 });
-                
+
                 System.out.println("Printando a lista : ");
                 System.out.println(listaComprovantes);
 //                byte[] bytes = convertObjectToByteArray(listaComprovantes);
 
-                
-
             }
-        
-     
 
-    }
+        }
 
 //    public static byte[] convertObjectToByteArray(Object object) {
 //        byte[] bytes = null;
@@ -144,5 +135,5 @@ public class TesteImpressora {
 //
 //        return bytes;
 //    }
-
-}   }
+    }
+}

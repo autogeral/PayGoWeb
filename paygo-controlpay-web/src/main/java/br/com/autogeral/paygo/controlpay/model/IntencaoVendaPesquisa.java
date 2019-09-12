@@ -35,7 +35,6 @@ public class IntencaoVendaPesquisa {
     private final String referencia;
     private String senhaTecnica;
     private boolean aguardarTefIniciarTransacao =true;
-    
     private String terminalId ;
 
 

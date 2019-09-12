@@ -38,8 +38,8 @@ public class ClienteCartaoToken {
         ClienteCartao cc = new ClienteCartao();
         ClieneCartaoInsert cci = new ClieneCartaoInsert();
         
-        cc.setClienteId(1);
         cc.setId(1);
+      
         cc.setPreferencial(true);
         
         Data token = cci.token(cc);

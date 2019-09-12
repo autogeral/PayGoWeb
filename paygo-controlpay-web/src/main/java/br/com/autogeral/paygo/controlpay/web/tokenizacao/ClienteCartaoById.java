@@ -24,13 +24,11 @@
 package br.com.autogeral.paygo.controlpay.web.tokenizacao;
 
 import br.com.autogeral.paygo.controlpay.model.ClienteCartao;
-import br.com.autogeral.paygo.controlpay.model.Data;
-import br.com.autogeral.paygo.controlpay.model.IntencaoImpressao;
+import br.com.autogeral.paygo.controlpay.model.DataToken;
 import br.com.autogeral.paygo.controlpay.web.ControlPayConfig;
 import br.com.autogeral.paygo.controlpay.web.WsHelper;
 import java.io.IOException;
 import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.RequestEntity;
 import org.apache.commons.httpclient.methods.StringRequestEntity;
@@ -42,7 +40,7 @@ import org.apache.commons.httpclient.methods.StringRequestEntity;
 public class ClienteCartaoById {
 
     private static final String PATH = "webapi/ClienteCartao/GetByClienteId?key=";
-
+    
     /**
      * API para consultar os cartões cadastrados para um cliente
      *
@@ -60,8 +58,8 @@ public class ClienteCartaoById {
         return servidor + PATH + config.getKey() + "&clienteId=" + clienteId;
     }
 
-    public Data consulta(ClienteCartao cc) throws IOException {
-        int clienteId = cc.getClienteId();
+    public DataToken consulta(ClienteCartao cc) throws IOException {
+        int clienteId = cc.getCliente().getId();
 
         
         String json = WsHelper.getGson().toJson(cc);
@@ -78,7 +76,8 @@ public class ClienteCartaoById {
 
         String responseBody = method.getResponseBodyAsString();
         System.out.println(responseBody);
-        Data data = WsHelper.unmarshal(responseBody, Data.class);
+        DataToken data = WsHelper.unmarshal(responseBody, DataToken.class);
+        
         data.setHttpStatus(result);
         return data;
 

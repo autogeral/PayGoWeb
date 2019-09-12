@@ -21,11 +21,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package br.com.autogeral.paygo.controlpay.web;
 
-import br.com.autogeral.paygo.controlpay.model.IntencaoVenda;
-import br.com.autogeral.paygo.controlpay.model.IntencaoVendaAdapter;
 import br.com.autogeral.paygo.controlpay.model.IntencaoVendaPesquisa;
 import br.com.autogeral.paygo.controlpay.model.IntencaoVendaPesquisaGsonAdapter;
 import br.com.autogeral.paygo.controlpay.model.Venda;
@@ -47,12 +44,13 @@ import org.apache.commons.httpclient.HttpMethod;
 
 /**
  * 27/05/2019 22:26:21
+ *
  * @author Murilo Moraes Tuvani
  */
 public class WsHelper {
 
     private static Gson gson = null;
-    
+
     public static ByteArrayOutputStream getResponseBody(HttpMethod method) throws IOException {
         InputStream input = method.getResponseBodyAsStream();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -66,14 +64,19 @@ public class WsHelper {
         bis.close();
         return baos;
     }
-    
+
     public static String marshal(Object object) {
         String json = getGson().toJson(object);
         return json;
     }
-    
+
     public static <T> T unmarshal(String json, Class<T> aClass) {
         T object = getGson().fromJson(json, aClass);
+        return object;
+    }
+
+    public static <T> T unmarshalWithoutNull(String json, Class<T> aClass) {
+        T object = getGsonWithoutNull().fromJson(json, aClass);
         return object;
     }
 
@@ -92,14 +95,13 @@ public class WsHelper {
 //            };
             gson = new GsonBuilder()
                     .serializeNulls()
-//                    .addSerializationExclusionStrategy(strategy)
-//                    .registerTypeAdapter(IntencaoVenda.class, new IntencaoVendaAdapter())
+                    //                    .addSerializationExclusionStrategy(strategy)
+                    //                    .registerTypeAdapter(IntencaoVenda.class, new IntencaoVendaAdapter())
                     .registerTypeAdapter(IntencaoVendaPesquisa.class, new IntencaoVendaPesquisaGsonAdapter())
                     .registerTypeAdapter(Venda.class, new VendaGsonAdapter())
                     .registerTypeAdapter(LocalDate.class, new LocalDateGson())
                     .registerTypeAdapter(LocalTime.class, new LocalTimeGson())
                     .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeGson())
-                   
                     .setDateFormat("dd-MM-yyyy HH:mm:ss.SSSS")
                     .setPrettyPrinting()
                     .create();
@@ -107,26 +109,25 @@ public class WsHelper {
         return gson;
     }
 
-   public static Gson getGsonWithoutNull(){
-       
-           Gson ggson = new GsonBuilder()
-                    .registerTypeAdapter(IntencaoVendaPesquisa.class, new IntencaoVendaPesquisaGsonAdapter())
-                    .registerTypeAdapter(Venda.class, new VendaGsonAdapter())
-                    .registerTypeAdapter(LocalDate.class, new LocalDateGson())
-                    .registerTypeAdapter(LocalTime.class, new LocalTimeGson())
-                    .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeGson())
-                   
-                    .setDateFormat("dd-MM-yyyy HH:mm:ss.SSSS")
-                    .setPrettyPrinting()
-                    .create();
-        
+    public static Gson getGsonWithoutNull() {
+
+        Gson ggson = new GsonBuilder()
+                .registerTypeAdapter(IntencaoVendaPesquisa.class, new IntencaoVendaPesquisaGsonAdapter())
+                .registerTypeAdapter(Venda.class, new VendaGsonAdapter())
+                .registerTypeAdapter(LocalDate.class, new LocalDateGson())
+                .registerTypeAdapter(LocalTime.class, new LocalTimeGson())
+                .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeGson())
+                .setDateFormat("dd-MM-yyyy HH:mm:ss.SSSS")
+                .setPrettyPrinting()
+                .create();
+
         return ggson;
-   }
-    
+    }
+
     public static void printHeaders(HttpMethod method) {
         for (Header header : method.getRequestHeaders()) {
             System.out.println("Header : " + header.getName() + "\tValue : " + header.getValue());
         }
     }
-    
+
 }

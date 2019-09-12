@@ -44,6 +44,9 @@ public class PagamentoExterno {
     private String dataAdquirente;
     private String dataAtualizacao;
     private String respostaAdquirente;
+    private String nome ;
+    private Pessoa pessoa;
+    private Terminal terminal;
     private int terminalId;
     private int tipo;
     private int origem;
@@ -68,6 +71,30 @@ public class PagamentoExterno {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
+
+    public Terminal getTerminal() {
+        return terminal;
+    }
+
+    public void setTerminal(Terminal terminal) {
+        this.terminal = terminal;
     }
 
     public String getIdPagamento() {

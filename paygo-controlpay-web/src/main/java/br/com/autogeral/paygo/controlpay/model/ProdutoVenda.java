@@ -35,7 +35,7 @@ public class ProdutoVenda {
 
     @Expose(serialize = false, deserialize = true)
     @SerializedName("itemProdutoId")
-    private transient int produtoItemId;
+    private transient int itemProdutoId;
     @SerializedName(value = "id", alternate = {"Id"})
     private int id;
     private String nome;
@@ -44,13 +44,15 @@ public class ProdutoVenda {
     @SerializedName(value = "valor", alternate = {"Valor"})
     private String valor;
 
-    public int getProdutoItemId() {
-        return produtoItemId;
+    public int getItemProdutoId() {
+        return itemProdutoId;
     }
 
-    public void setProdutoItemId(int produtoItemId) {
-        this.produtoItemId = produtoItemId;
+    public void setItemProdutoId(int itemProdutoId) {
+        this.itemProdutoId = itemProdutoId;
     }
+
+ 
 
     public int getId() {
         return id;

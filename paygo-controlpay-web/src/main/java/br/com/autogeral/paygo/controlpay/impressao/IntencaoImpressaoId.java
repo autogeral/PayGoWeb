@@ -25,7 +25,6 @@ package br.com.autogeral.paygo.controlpay.impressao;
 
 import br.com.autogeral.paygo.controlpay.model.Data;
 import br.com.autogeral.paygo.controlpay.model.IntencaoImpressao;
-import br.com.autogeral.paygo.controlpay.model.PedidoPesquisa;
 import br.com.autogeral.paygo.controlpay.web.ControlPayConfig;
 import br.com.autogeral.paygo.controlpay.web.WsHelper;
 import java.io.IOException;

@@ -29,12 +29,31 @@ package br.com.autogeral.paygo.controlpay.model;
  */
 public class IntencaoImpressao {
 
+    private int id;
+    private String data;
     private int intencaoImpressao;
     private String referencia;
-    private String Conteudo;
+    private String conteudo;
     private int impressoraId;
     private String terminalId;
     private boolean aguardarClienteIniciarImpressao = true;
+    private Impressora impressora;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
 
     public int getIntencaoImpressao() {
         return intencaoImpressao;
@@ -53,11 +72,11 @@ public class IntencaoImpressao {
     }
 
     public String getConteudo() {
-        return Conteudo;
+        return conteudo;
     }
 
-    public void setConteudo(String Conteudo) {
-        this.Conteudo = Conteudo;
+    public void setConteudo(String conteudo) {
+        this.conteudo = conteudo;
     }
 
     public int getImpressoraId() {
@@ -82,6 +101,14 @@ public class IntencaoImpressao {
 
     public void setAguardarClienteIniciarImpressao(boolean aguardarClienteIniciarImpressao) {
         this.aguardarClienteIniciarImpressao = aguardarClienteIniciarImpressao;
+    }
+
+    public Impressora getImpressora() {
+        return impressora;
+    }
+
+    public void setImpressora(Impressora impressora) {
+        this.impressora = impressora;
     }
 
 }

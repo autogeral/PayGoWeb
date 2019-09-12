@@ -34,6 +34,7 @@ import java.util.List;
  */
 public class Data {
 
+    private int id;
     private transient int httpStatus;
     private LocalDateTime data;
     private String message;
@@ -43,7 +44,19 @@ public class Data {
     private List<Terminal> terminais;
     private List<IntencaoVenda> intencoesVendas;
     private List<Pedido> pedidos;
+    private PagamentoExterno pagamentoExterno;
     private Pedido pedido;
+    private ClienteCartao clienteCartao;
+    private Cliente cliente;
+    private IntencaoImpressao intencaoImpressao;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getHttpStatus() {
         return httpStatus;
@@ -51,14 +64,6 @@ public class Data {
 
     public void setHttpStatus(int httpStatus) {
         this.httpStatus = httpStatus;
-    }
-
-    public LocalDateTime getData() {
-        return data;
-    }
-
-    public void setData(LocalDateTime data) {
-        this.data = data;
     }
 
     public String getMessage() {
@@ -77,8 +82,40 @@ public class Data {
         this.intencaoVenda = intencaoVenda;
     }
 
+    public LocalDateTime getData() {
+        return data;
+    }
+
+    public void setData(LocalDateTime data) {
+        this.data = data;
+    }
+
+    public ClienteCartao getClienteCartao() {
+        return clienteCartao;
+    }
+
+    public void setClienteCartao(ClienteCartao clienteCartao) {
+        this.clienteCartao = clienteCartao;
+    }
+
+    public PagamentoExterno getPagamentoExterno() {
+        return pagamentoExterno;
+    }
+
+    public void setPagamentoExterno(PagamentoExterno pagamentoExterno) {
+        this.pagamentoExterno = pagamentoExterno;
+    }
+
     public Pessoa getPessoa() {
         return pessoa;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public void setPessoa(Pessoa pessoa) {

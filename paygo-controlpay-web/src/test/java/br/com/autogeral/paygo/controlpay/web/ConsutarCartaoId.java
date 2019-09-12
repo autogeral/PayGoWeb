@@ -23,8 +23,9 @@
  */
 package br.com.autogeral.paygo.controlpay.web;
 
+import br.com.autogeral.paygo.controlpay.model.Cliente;
 import br.com.autogeral.paygo.controlpay.model.ClienteCartao;
-import br.com.autogeral.paygo.controlpay.model.Data;
+import br.com.autogeral.paygo.controlpay.model.DataToken;
 import br.com.autogeral.paygo.controlpay.web.tokenizacao.ClienteCartaoById;
 import java.io.IOException;
 
@@ -37,9 +38,11 @@ public class ConsutarCartaoId {
     public static void main(String[] args) throws IOException {
         ClienteCartaoById clienteCartaoById = new ClienteCartaoById();
         ClienteCartao cc = new ClienteCartao();
-        cc.setClienteId(1);
+        Cliente cliente = new Cliente();
+        cliente.setId(1);
+        cc.setCliente(cliente);
 
-        Data consulta = clienteCartaoById.consulta(cc);
+        DataToken consulta = clienteCartaoById.consulta(cc);
     }
 
 }

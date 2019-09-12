@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2019 Murilo Moraes Tuvani.
+ * Copyright 2019 kaique.mota.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,30 +23,58 @@
  */
 package br.com.autogeral.paygo.controlpay.model;
 
+import java.util.List;
+
 /**
- * 10/06/2019 08:32:07
  *
- * @author Murilo Moraes Tuvani
+ * @author kaique.mota
  */
-public class Impressora {
+public class DataToken {
 
-    private String nome;
-    private ImpressoraTemplate impressoraTemplate;
+    private int draw;
+    private int recordsTotal;
+    private int recordsFiltered;
+    private List<ClienteCartao> data;
+    private transient int httpStatus;
 
-    public String getNome() {
-        return nome;
+    public int getDraw() {
+        return draw;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setDraw(int draw) {
+        this.draw = draw;
     }
 
-    public ImpressoraTemplate getImpressoraTemplate() {
-        return impressoraTemplate;
+    public int getRecordsTotal() {
+        return recordsTotal;
     }
 
-    public void setImpressoraTemplate(ImpressoraTemplate impressoraTemplate) {
-        this.impressoraTemplate = impressoraTemplate;
+    public void setRecordsTotal(int recordsTotal) {
+        this.recordsTotal = recordsTotal;
+    }
+
+    public int getRecordsFiltered() {
+        return recordsFiltered;
+    }
+
+    public void setRecordsFiltered(int recordsFiltered) {
+        this.recordsFiltered = recordsFiltered;
+    }
+
+    public List<ClienteCartao> getData() {
+        return data;
+    }
+
+    public void setData(List<ClienteCartao> data) {
+        this.data = data;
+    }
+
+    public int getHttpStatus() {
+        return httpStatus;
+    }
+
+    public void setHttpStatus(int httpStatus) {
+        this.httpStatus = httpStatus;
     }
 
 }

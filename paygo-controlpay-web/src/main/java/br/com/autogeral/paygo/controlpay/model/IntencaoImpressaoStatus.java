@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2019 Murilo Moraes Tuvani.
+ * Copyright 2019 kaique.mota.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,14 +24,21 @@
 package br.com.autogeral.paygo.controlpay.model;
 
 /**
- * 10/06/2019 08:32:07
  *
- * @author Murilo Moraes Tuvani
+ * @author kaique.mota
  */
-public class Impressora {
+public class IntencaoImpressaoStatus {
 
+    private int id;
     private String nome;
-    private ImpressoraTemplate impressoraTemplate;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -39,14 +46,6 @@ public class Impressora {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public ImpressoraTemplate getImpressoraTemplate() {
-        return impressoraTemplate;
-    }
-
-    public void setImpressoraTemplate(ImpressoraTemplate impressoraTemplate) {
-        this.impressoraTemplate = impressoraTemplate;
     }
 
 }

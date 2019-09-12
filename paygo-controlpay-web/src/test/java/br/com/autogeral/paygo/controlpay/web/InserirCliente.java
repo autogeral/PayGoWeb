@@ -41,8 +41,8 @@ public class InserirCliente {
         Endereco end = new Endereco();
         ClienteInsert ci = new ClienteInsert();
 
-        c.setId(1);
-        c.setCpfcnpj("46962248806");
+        c.setId(3);
+        c.setCpfcnpj("05437537000137");
         c.setNomeRazaoSocial("Cadastrode Cliente");
         c.setEmail("kaique.motta@hotmail.com");
         c.setReferencia("Cliente");

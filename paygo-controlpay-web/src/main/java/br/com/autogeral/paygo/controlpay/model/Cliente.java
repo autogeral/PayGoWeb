@@ -35,6 +35,7 @@ public class Cliente {
     private String email;
     private String cliente;
     private String referencia;
+    private String telefone;
     private boolean pessoaJurica;
     private int pessoaId;
     private Endereco endereco;
@@ -53,6 +54,14 @@ public class Cliente {
 
     public void setCpfcnpj(String cpfcnpj) {
         this.cpfcnpj = cpfcnpj;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     public String getNomeRazaoSocial() {
