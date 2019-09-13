@@ -148,4 +148,8 @@ public class Pessoa {
         this.endereco = endereco;
     }
 
+    void setId(String PESSOA_ID) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

@@ -24,6 +24,8 @@
 package br.com.autogeral.paygo.controlpay.model;
 
 import br.com.autogeral.paygo.controlpay.web.WsHelper;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -33,10 +35,12 @@ import static org.junit.Assert.*;
  */
 public class ProdutoTest {
 
+    
+   
     private static final String PRODUTO_NOME = "Produto A";
     private static final String PRODUTO_DESCRICAO = "Descrição do produto A";
-    private static final String CONTROLE_QUALIDADE = "false";
-    private static final String SOLICITA_VALOR = "true";
+    private static final boolean CONTROLE_QUALIDADE = false;
+    private static final boolean SOLICITA_VALOR = true;
     private static final String PRODUTO_TIPO = "10";
     private static final int PRODUTO_STATUS_ID = 5;
     private static final String PRODUTO_STATUS_NOME = "Ativo";
@@ -48,8 +52,8 @@ public class ProdutoTest {
         Produto p = new Produto();
         p.setNome(PRODUTO_NOME);
         p.setDescricao(PRODUTO_DESCRICAO);
-//        p.setControlaQuantidade(CONTROLE_QUALIDADE);
-      //  p.setSolicitaValor(SOLICITA_VALOR);
+        p.setControlaQuantidade(CONTROLE_QUALIDADE);
+        p.setSolicitaValor(SOLICITA_VALOR);
         p.setProdutoTipo(PRODUTO_TIPO);
         ProdutoStatus ps = new ProdutoStatus();
         ps.setId(PRODUTO_STATUS_ID);
@@ -57,10 +61,10 @@ public class ProdutoTest {
         p.setProdutoStatus(ps);
         p.setFotoNome(FOTO_NOME);
         p.setFotBase64(FOTO_BASE_64);
-        
+
         String result = WsHelper.marshal(p);
         System.out.println(result);
-        
+
     }
 
     /**
@@ -81,7 +85,7 @@ public class ProdutoTest {
                 + "	\"fotoNome\":\"\",\n"
                 + "	\"fotBase64\":\"\"\n"
                 + "}";
-        
+
         Produto p = WsHelper.unmarshal(toParse, Produto.class);
         testProdutoPadrao(p);
 
@@ -105,7 +109,7 @@ public class ProdutoTest {
                 + "	}\n"
                 + "}\n"
                 + "";
-        
+
         Data d = WsHelper.unmarshal(toParse, Data.class);
         assertNotNull(d);
         assertNotNull(d.getProduto());
@@ -118,15 +122,12 @@ public class ProdutoTest {
         assertEquals(PRODUTO_NOME, p.getNome());
         assertEquals(PRODUTO_DESCRICAO, p.getDescricao());
         assertEquals(CONTROLE_QUALIDADE, p.getControlaQuantidade());
-     //   assertEquals(SOLICITA_VALOR, p.getSolicitaValor());
+        assertEquals(SOLICITA_VALOR, p.isSolicitaValor());
         assertEquals(PRODUTO_TIPO, p.getProdutoTipo());
-        
         assertNotNull(p.getProdutoStatus());
         ProdutoStatus ps = p.getProdutoStatus();
-        
         assertEquals(PRODUTO_STATUS_ID, ps.getId());
         assertEquals(PRODUTO_STATUS_NOME, ps.getNome());
-        
         assertEquals(FOTO_NOME, p.getFotoNome());
         assertEquals(FOTO_BASE_64, p.getFotBase64());
     }

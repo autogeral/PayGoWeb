@@ -1,7 +1,7 @@
 package br.com.autogeral.paygo.controlpay.web;
 
-import br.com.autogeral.paygo.controlpay.web.transacional.VendaCancelarVenda;
 import br.com.autogeral.paygo.controlpay.model.Data;
+import br.com.autogeral.paygo.controlpay.web.transacional.VendaCancelarVenda;
 import br.com.autogeral.paygo.controlpay.model.IntencaoVenda;
 import br.com.autogeral.paygo.controlpay.model.IntencaoVendaPesquisa;
 import br.com.autogeral.paygo.controlpay.web.transacional.IntencaoVendaGet;
@@ -21,7 +21,7 @@ public class CancelamentoVenda {
 
             VendaCancelarVenda cl = new VendaCancelarVenda();
             IntencaoVenda iv = new IntencaoVenda();
-            iv.setId(73048);
+            iv.setId(73084);
             IntencaoVendaGet ivg = new IntencaoVendaGet();
             IntencaoVendaPesquisa ivp = new IntencaoVendaPesquisa(iv);
             Data data = cl.canc(ivp);

@@ -23,6 +23,8 @@
  */
 package br.com.autogeral.paygo.controlpay.model;
 
+import java.util.List;
+
 /**
  * 02/06/2019 21:32:46
  *
@@ -53,6 +55,7 @@ public class Terminal {
     private Impressora impressora;
     private LoginPessoa pessoa;
     private TerminalFisico terminalFisico;
+    private List <TerminalParametro> terminalParametros;
 
     public int getId() {
         return id;
@@ -237,6 +240,15 @@ public class Terminal {
     public void setTerminalFisico(TerminalFisico terminalFisico) {
         this.terminalFisico = terminalFisico;
     }
+
+    public List<TerminalParametro> getTerminalParametros() {
+        return terminalParametros;
+    }
+
+    public void setTerminalParametros(List<TerminalParametro> terminalParametros) {
+        this.terminalParametros = terminalParametros;
+    }
+    
 
     @Override
     public String toString() {

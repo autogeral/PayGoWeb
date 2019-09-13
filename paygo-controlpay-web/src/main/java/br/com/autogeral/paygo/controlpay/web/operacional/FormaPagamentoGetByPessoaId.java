@@ -21,13 +21,64 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package br.com.autogeral.paygo.controlpay.web.operacional;
 
+import br.com.autogeral.paygo.controlpay.model.Data;
+import br.com.autogeral.paygo.controlpay.model.Pessoa;
+import br.com.autogeral.paygo.controlpay.web.ControlPayConfig;
+import br.com.autogeral.paygo.controlpay.web.WsHelper;
+import java.io.IOException;
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.methods.GetMethod;
+
 /**
- * 03/06/2019 15:33:35
- * @author Murilo Moraes Tuvani
+ *
+ *
+ * @kaique.mota
+ */
+/**
+ * Esta API consulta as formas de pagamento disponíveis pela plataforma Control
+ * Pay. O ID da forma de pagamento deverá ser enviado no instante de realizar
+ * uma venda. Exemplos de formas de pagamento: TEF Crédito, TEF Débito,
+ * e-Commerce, etc. As mais comuns são: 21-TEF Crédito 22-TEF Débito 23-TEF
+ * Voucher 24-TEF Outros (Nada é enviado e o operador do caixa informará de
+ * acordo com as opções que o adquirente disponibilizar) 51-Cartão de crédito
+ * digitado (URL do gateways de pagamento é devolvdido para redirecionar o
+ * usuário)
+ *
+ * @return
  */
 public class FormaPagamentoGetByPessoaId {
 
+    private static final String PATH = "/webapi/FormaPagamento/GetByPessoaId?key=";
+
+    private String getPath(int pessoaId) {
+        ControlPayConfig config = ControlPayConfig.getConfig();
+        String servidor = config.getServidor();
+        if (!servidor.startsWith("http")) {
+            servidor = "https://" + servidor;
+        }
+        if (!servidor.endsWith("/")) {
+            servidor += "/";
+        }
+        return servidor + PATH + config.getKey() + "&pessoaId=" + pessoaId;
+    }
+
+    public Data pesquisa(Pessoa pessoa) throws IOException {
+
+        int pessoaId = pessoa.getId();
+        GetMethod method = new GetMethod(getPath(pessoaId));
+        method.addRequestHeader("Content-Type", "application/json");
+        HttpClient client = new HttpClient();
+
+        int result = client.executeMethod(method);
+
+        WsHelper.printHeaders(method);
+        String json = method.getResponseBodyAsString();
+        System.out.println(json);
+        Data data = WsHelper.unmarshal(json, Data.class);
+        data.setHttpStatus(result);
+
+        return data;
+    }
 }

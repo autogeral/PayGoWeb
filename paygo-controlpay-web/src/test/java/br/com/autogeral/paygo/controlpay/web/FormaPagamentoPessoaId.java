@@ -23,53 +23,24 @@
  */
 package br.com.autogeral.paygo.controlpay.web;
 
-import br.com.autogeral.paygo.controlpay.web.transacional.PedidoInsertVenda;
 import br.com.autogeral.paygo.controlpay.model.Data;
-import br.com.autogeral.paygo.controlpay.model.FormaPagamento;
-import br.com.autogeral.paygo.controlpay.model.Produto;
-import br.com.autogeral.paygo.controlpay.model.Pedido;
-import br.com.autogeral.paygo.controlpay.model.PedidoFormaPagamento;
+import br.com.autogeral.paygo.controlpay.model.Pessoa;
+import br.com.autogeral.paygo.controlpay.web.operacional.FormaPagamentoGetByPessoaId;
 import java.io.IOException;
 
 /**
  *
  * @author kaique.mota
  */
-public class InserirPedido {
-
+public class FormaPagamentoPessoaId {
     public static void main(String[] args) throws IOException {
-
-        Pedido p = new Pedido();
-        Produto pr = new Produto();
-
-        PedidoInsertVenda piv = new PedidoInsertVenda();
-
-        p.setPessoaVendedorId(1);
-        p.setReferencia("134");
-        p.setValorTotalPedido(300);
-
-        Produto produto = new Produto();
-        produto.setId(2075);
-        produto.setNome("TESTE");
-        produto.setQuantidade(1);
-        produto.setValor("300");
-        p.getProdutosPedido().add(produto);
-
-        FormaPagamento formaPagamento = new FormaPagamento();
-        PedidoFormaPagamento pfg = new PedidoFormaPagamento();
-        formaPagamento.setId(21);
-        pfg.setFormaPagamento(formaPagamento);
-        pfg.setQuantidadeMaximaParcelas(3);
-        pfg.setAdquirente("cielo");
-
-        p.getPedidoFormasPagamento().add(pfg);
-        //       p.setPedidoFormasPagamento(Arrays.asList(pfg));
-
-        Data ped = piv.inserirPedido(p);
-      
-//        Data data = new Data();
+        Pessoa pessoa = new Pessoa();
+        FormaPagamentoGetByPessoaId pagamentoPessoaId= new FormaPagamentoGetByPessoaId();
         
-//        data.getPedidoInsertVenda().add(ped);
+        
+        pessoa.setId(1);
+        
+        Data formaPagamento = pagamentoPessoaId.pesquisa(pessoa);
     }
-
+    
 }

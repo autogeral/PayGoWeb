@@ -13,15 +13,20 @@ public class Produto {
     private String descricao;
     private String nomeExibe;
     private int quantidade;
-    private double valor;
+    private String valor;
+    private boolean solicitaValor;
     private String valorFormat;
     private boolean controlaQuantidade;
     private String fotoThumbnail;
     private String produtoTipo;
+    private String  ean;
     private ProdutoStatus produtoStatus;
     private String fotoNome;
     private String fotBase64;
+    private String referencia;
+    private ProdutoCategoria produtoCategoria;
 
+    
     public String getItemProdutoId() {
         return itemProdutoId;
     }
@@ -46,8 +51,36 @@ public class Produto {
         this.nome = nome;
     }
 
+    public String getEan() {
+        return ean;
+    }
+
+    public void setEan(String ean) {
+        this.ean = ean;
+    }
+
+    public boolean isSolicitaValor() {
+        return solicitaValor;
+    }
+
+    public void setSolicitaValor(boolean solicitaValor) {
+        this.solicitaValor = solicitaValor;
+    }
+
     public String getDescricao() {
         return descricao;
+    }
+
+    public boolean isControlaQuantidade() {
+        return controlaQuantidade;
+    }
+
+    public String getReferencia() {
+        return referencia;
+    }
+
+    public void setReferencia(String referencia) {
+        this.referencia = referencia;
     }
 
     public void setDescricao(String descricao) {
@@ -70,11 +103,11 @@ public class Produto {
         this.quantidade = quantidade;
     }
 
-    public double getValor() {
+    public String getValor() {
         return valor;
     }
 
-    public void setValor(double valor) {
+    public void setValor(String valor) {
         this.valor = valor;
     }
 
@@ -132,6 +165,14 @@ public class Produto {
 
     public void setFotBase64(String fotBase64) {
         this.fotBase64 = fotBase64;
+    }
+
+    public ProdutoCategoria getProdutoCategoria() {
+        return produtoCategoria;
+    }
+
+    public void setProdutoCategoria(ProdutoCategoria produtoCategoria) {
+        this.produtoCategoria = produtoCategoria;
     }
 
     @Override

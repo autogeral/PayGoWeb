@@ -73,7 +73,7 @@ public class RoteiroHomologacao {
                     venda.setAdquirente("cielo");
                     venda.setReferencia("PEDIDO");
                     
-                    venda.setPedidoId(2392);
+                    venda.setPedidoId(2408);
                     venda.setFormaPagamentoId(21);
                     venda.setQuantidadeParcelas(1);
                     venda.setValorTotalVendido(300);
@@ -93,7 +93,7 @@ public class RoteiroHomologacao {
                         IntencaoVendaPesquisa ivp = new IntencaoVendaPesquisa(iv);
                         vendaData = ivg.get(ivp);
 
-                        //Pegando dados para a classe auxiliar.
+                  //Pegando dados para a classe auxiliar.
                         List<String> listaComprovantes = new ArrayList<>();
 
                         vendaData.getIntencoesVendas().stream().forEach(intencaoVenda -> {

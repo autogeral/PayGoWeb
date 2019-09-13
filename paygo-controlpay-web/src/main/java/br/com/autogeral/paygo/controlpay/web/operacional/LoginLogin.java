@@ -24,7 +24,6 @@
 
 package br.com.autogeral.paygo.controlpay.web.operacional;
 
-import br.com.autogeral.paygo.controlpay.model.Data;
 import br.com.autogeral.paygo.controlpay.model.Login;
 import br.com.autogeral.paygo.controlpay.model.LoginResultado;
 import br.com.autogeral.paygo.controlpay.web.ControlPayConfig;

@@ -22,6 +22,7 @@
  * THE SOFTWARE.
  */
 package br.com.autogeral.paygo.controlpay.web.transacional;
+
 import br.com.autogeral.paygo.controlpay.model.Data;
 import br.com.autogeral.paygo.controlpay.model.IntencaoVendaPesquisa;
 import br.com.autogeral.paygo.controlpay.web.ControlPayConfig;
@@ -37,9 +38,9 @@ import org.apache.commons.httpclient.methods.StringRequestEntity;
  * @author kaique.mota
  */
 public class VendaCancelarVenda {
-    
-     private static final String PATH = "/webapi/Venda/CancelarVenda?key=";
-    
+
+    private static final String PATH = "/webapi/Venda/CancelarVenda?key=";
+
     private String getPath() {
         ControlPayConfig config = ControlPayConfig.getConfig();
         String servidor = config.getServidor();
@@ -51,22 +52,20 @@ public class VendaCancelarVenda {
         }
         return servidor + PATH + config.getKey();
     }
-    
-    
-    public Data canc (IntencaoVendaPesquisa clc) throws IOException {
-        
+
+    public Data canc(IntencaoVendaPesquisa clc) throws IOException {
+
         clc.setTerminalId(ControlPayConfig.getConfig().getTerminal());
         clc.setAguardarTefIniciarTransacao(true);
         clc.setSenhaTecnica(ControlPayConfig.getConfig().getSenhaTecnica());
- 
-        
+
         String json = WsHelper.getGson().toJson(clc);
-        
+
         RequestEntity requestEntity = new StringRequestEntity(
                 json,
                 "application/json",
                 "UTF-8");
-        
+
         PostMethod method = new PostMethod(getPath());
         method.addRequestHeader("Content-Type", "application/json");
         method.setRequestEntity(requestEntity);
@@ -80,5 +79,3 @@ public class VendaCancelarVenda {
         return data;
     }
 }
-    
-  

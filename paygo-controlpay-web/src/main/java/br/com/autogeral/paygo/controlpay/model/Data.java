@@ -43,12 +43,15 @@ public class Data {
     private Produto produto;
     private List<Terminal> terminais;
     private List<IntencaoVenda> intencoesVendas;
+    private List<Produto> produtos;
     private List<Pedido> pedidos;
+    private List<FormaPagamento>formasPagamento;
     private PagamentoExterno pagamentoExterno;
     private Pedido pedido;
     private ClienteCartao clienteCartao;
     private Cliente cliente;
     private IntencaoImpressao intencaoImpressao;
+    
 
     public int getId() {
         return id;
@@ -68,6 +71,14 @@ public class Data {
 
     public String getMessage() {
         return message;
+    }
+
+    public IntencaoImpressao getIntencaoImpressao() {
+        return intencaoImpressao;
+    }
+
+    public void setIntencaoImpressao(IntencaoImpressao intencaoImpressao) {
+        this.intencaoImpressao = intencaoImpressao;
     }
 
     public void setMessage(String message) {
@@ -142,6 +153,24 @@ public class Data {
         return intencoesVendas;
     }
 
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
+    }
+
+    public List<FormaPagamento> getFormasPagamento() {
+        return formasPagamento;
+    }
+
+    public void setFormasPagamento(List<FormaPagamento> formasPagamento) {
+        this.formasPagamento = formasPagamento;
+    }
+
+
+ 
     public void setIntencoesVendas(List<IntencaoVenda> intencoesVendas) {
         this.intencoesVendas = intencoesVendas;
     }

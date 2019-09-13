@@ -46,10 +46,15 @@ public class LoginTest {
         Login instance = new Login();
         instance.setCpfCnpj("01234567000189");
         instance.setSenha("123");
-        
+
         String result = WsHelper.marshal(instance);
-        String expResult = "{\"cpfCnpj\":\"01234567000189\",\"senha\":\"123\"}";
+        String expResult = "{\n"
+                + "  \"cpfCnpj\": \"01234567000189\",\n"
+                + "  \"senha\": \"123\"\n"
+                + "}";
         assertEquals(expResult, result);
     }
     
+    
+
 }

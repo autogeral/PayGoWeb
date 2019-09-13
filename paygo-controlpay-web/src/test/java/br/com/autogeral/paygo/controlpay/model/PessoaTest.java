@@ -58,7 +58,7 @@ public class PessoaTest {
     @Test
     public void test_serialize() {
         Pessoa p = new Pessoa();
-//        p.setId(PESSOA_ID);
+        p.setId(1234);
         p.setPessoaJuridica(PESSOA_JURIDICA);
         p.setNomeRazaoSocial(NOME_RAZAO_SOCIAL);
         p.setSobrenomeNomeFantasia(SOBRENOME_NOMEFANTASIA);
