@@ -599,7 +599,7 @@ public class DataTest {
         assertEquals(PessoaTest.NOME_RAZAO_SOCIAL, p.getNomeRazaoSocial());
         assertEquals(PessoaTest.SOBRENOME_NOMEFANTASIA, p.getSobrenomeNomeFantasia());
         assertEquals(PessoaTest.CPF_CNPJ, p.getCpfCnpj());
-//        assertEquals(PessoaTest.CPF_CNPJ_FORMATADO, p.getCpfCnpj);
+        assertEquals(PessoaTest.CPF_CNPJ_FORMATADO, p.getCpfCnpj());
 
         assertNotNull(t0.getTerminalFisico());
 
@@ -644,7 +644,7 @@ public class DataTest {
         assertEquals(PessoaTest.NOME_RAZAO_SOCIAL, p.getNomeRazaoSocial());
         assertEquals(PessoaTest.SOBRENOME_NOMEFANTASIA, p.getSobrenomeNomeFantasia());
         assertEquals(PessoaTest.CPF_CNPJ, p.getCpfCnpj());
-//        assertEquals(PessoaTest.CPF_CNPJ_FORMATADO, p.getCpfCnpj);
+        assertEquals(PessoaTest.CPF_CNPJ_FORMATADO, p.getCpfCnpj());
 
         assertNotNull(t1.getTerminalFisico());
 
@@ -670,7 +670,7 @@ public class DataTest {
         decimalFormat.setMaximumFractionDigits(2);
         
 //        Date data = sdf.parse("17/11/2016 17:40:37.9417");
-////        vv.setData(data);
+////      vv.setData(data);
         IntencaoVenda iv = new IntencaoVenda();
         vv.setIntencaoVenda(iv);
         iv.setId(68240);

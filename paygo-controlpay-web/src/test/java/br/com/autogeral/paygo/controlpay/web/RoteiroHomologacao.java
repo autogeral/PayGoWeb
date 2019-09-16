@@ -71,20 +71,24 @@ public class RoteiroHomologacao {
                     Venda venda = new Venda();
                     venda.setTerminalId(Integer.toString(terminalId));
                     venda.setAdquirente("cielo");
-                    venda.setReferencia("PEDIDO");
-                    
-                    venda.setPedidoId(2408);
+                    venda.setReferencia("2421");
+
+                    venda.setPedidoId(2422);
                     venda.setFormaPagamentoId(21);
                     venda.setQuantidadeParcelas(1);
-                    venda.setValorTotalVendido(300);
+                    venda.setValorTotalVendido(150);
                     VendaVender vv = new VendaVender();
                     Data vendaData = vv.vender(venda);
-                    Data imprimi = ii.impri(venda);
+                    
+//                  Data imprimi = ii.impri(venda);
 
-                    System.out.println("Terminal Verdadeiro " + venda.getTerminalId());
-                    System.out.println("Terminal Verdadeiro " + venda.getTerminalId());
-                    System.out.println("Terminal Verdadeiro " + venda.getTerminalId());
-                    System.out.println("Terminal Verdadeiro " + venda.getTerminalId());
+                    /* List<String> listaComprovantes = new ArrayList<>();
+
+                data.getIntencoesVendas().stream().forEach(intencaoVenda -> {
+                    intencaoVenda.getPagamentosExternos().stream().forEach(pagamento -> listaComprovantes.add(pagamento.getComprovanteAdquirente()
+                    ));
+                });*/
+                   
                     System.out.println("Terminal Verdadeiro " + venda.getTerminalId());
 
                     if (vendaData != null && vendaData.getIntencaoVenda() != null) {
@@ -93,16 +97,28 @@ public class RoteiroHomologacao {
                         IntencaoVendaPesquisa ivp = new IntencaoVendaPesquisa(iv);
                         vendaData = ivg.get(ivp);
 
-                  //Pegando dados para a classe auxiliar.
+                        //Pegando dados para a classe auxiliar.
                         List<String> listaComprovantes = new ArrayList<>();
 
                         vendaData.getIntencoesVendas().stream().forEach(intencaoVenda -> {
                             intencaoVenda.getPagamentosExternos().stream().forEach(pagamento -> listaComprovantes.add(pagamento.getComprovanteAdquirente()
                             ));
                         });
+
                         System.out.println(listaComprovantes);
 
+                        for (String s : listaComprovantes) {
+                            if (venda.getConteudo() != null) {
+                                venda.getConteudo().concat("\n" + s);
+
+                            } else {
+                                venda.setConteudo(s);
+                            }
+                        }
+                        System.out.println(venda.getConteudo());
+                        Data imprimi = ii.impri(venda);
                     }
+
                 }
             } else {
                 System.out.println("Nao conseguiu se logar");

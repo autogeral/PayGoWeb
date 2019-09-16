@@ -125,6 +125,7 @@ public class ProdutoTest {
         assertEquals(SOLICITA_VALOR, p.isSolicitaValor());
         assertEquals(PRODUTO_TIPO, p.getProdutoTipo());
         assertNotNull(p.getProdutoStatus());
+        
         ProdutoStatus ps = p.getProdutoStatus();
         assertEquals(PRODUTO_STATUS_ID, ps.getId());
         assertEquals(PRODUTO_STATUS_NOME, ps.getNome());

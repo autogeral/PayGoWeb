@@ -28,10 +28,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
 
-/**
- *
- * @author kaique.mota
- */
+
 public class TerminalTest {
     public class LoginResultadoTest {
     
@@ -76,10 +73,8 @@ public class TerminalTest {
         assertNotNull(d.getPessoa());
         LoginPessoa p = d.getPessoa();
         testeParsePessoaPadrao(p);
-
         assertNotNull(d.getAndroid());
         assertEquals(APP_VERSAO_ANDROID, d.getAndroid().getVersaoApp());
-
         assertNotNull(d.getIos());
         assertEquals(APP_VERSAO_IOS, d.getIos().getVersaoApp());
         
@@ -93,7 +88,6 @@ public class TerminalTest {
         assertEquals(NOME_FANTASIA, p.getSobrenomeNomeFantasia());
         assertEquals(CNPJ, p.getCpfCnpj());
         assertEquals(CNPJ_FORMATADO, p.getCpfCnpjFormat());
-        
         assertNotNull(p.getPessoaStatus());
         PessoaStatus status = p.getPessoaStatus();
         assertEquals(PESSOA_STATUS_ID, status.getId());

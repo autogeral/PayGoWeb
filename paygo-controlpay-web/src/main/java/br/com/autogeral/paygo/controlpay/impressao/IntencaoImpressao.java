@@ -59,7 +59,7 @@ public class IntencaoImpressao {
         v.setAguardarClienteIniciarImpressao(true);
         v.setTerminalId(ControlPayConfig.getConfig().getTerminal());
         v.setImpressoraId(301);
-        v.setConteudo("ssssssssssss");
+        
 
         String json = WsHelper.getGson().toJson(v);
         RequestEntity requestEntity = new StringRequestEntity(

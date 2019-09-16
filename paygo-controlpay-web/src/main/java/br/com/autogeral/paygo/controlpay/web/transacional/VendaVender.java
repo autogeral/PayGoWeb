@@ -64,7 +64,7 @@ public class VendaVender {
     
     public Data vender(Venda venda) throws IOException {
         venda.setTerminalId(ControlPayConfig.getConfig().getTerminal());
-   
+        
         String json = WsHelper.getGson().toJson(venda);
         RequestEntity requestEntity = new StringRequestEntity(
                 json,

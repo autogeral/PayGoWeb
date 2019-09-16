@@ -68,40 +68,10 @@ public class VendaTest {
         assertEquals(expResult, result);
     }
 
-    @Test
-    public void test_parse() {
-        String toParse = 
-                "  \"formaPagamentoId\": 21,\n"
-                + "  \"pedidoId\": 0,\n"
-                + "  \"terminalId\": \"898\",\n"
-                + "  \"referencia\": null,\n"
-                + "  \"aguardarTefIniciarTransacao\": true,\n"
-                + "  \"parcelamentoAdmin\": null,\n"
-                + "  \"quantidadeParcelas\": 1,\n"
-                + "  \"adquirente\": \"\",\n"
-                + "  \"produtosVendidos\": [\n"
-                + "    {\n"
-                + "      \"id\": 0,\n"
-                + "      \"nome\": null,\n"
-                + "      \"quantidade\": \"1\",\n"
-                + "      \"valor\": \"1,00\"\n"
-                + "    }\n"
-                + "  ],\n"
-                + "  \"aguardarClienteIniciarImpressao\": true,\n"
-                + "  \"impressoraId\": 0,\n"
-                + "  \"conteudo\": null\n"
-                + "}";
-
-        Venda venda = WsHelper.unmarshal(toParse, Venda.class);
-        testVenda(venda);
-        assertEquals(toParse, venda);
-
-    }
-
+   
     private void testVenda(Venda venda) {
         Produto produto = new Produto();
         assertNotNull(venda);
-
         assertEquals(FORMA_PAGAMENTO_ID, venda.getFormaPagamentoId());
         assertEquals(PEDIDO_ID, venda.getPedidoId());
         assertEquals(TERMINAL_ID, venda.getTerminalId());
