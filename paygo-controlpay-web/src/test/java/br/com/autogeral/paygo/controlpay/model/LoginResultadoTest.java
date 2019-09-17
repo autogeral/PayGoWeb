@@ -32,7 +32,7 @@ import static org.junit.Assert.*;
  * @author Murilo Moraes Tuvani
  */
 public class LoginResultadoTest {
-    
+
     private static final String DATA = "05/06/2019 20:26:23.8106";
     private static final String HASH = "umHashMuitoDoido";
     private static final int ID = 1234;
@@ -47,11 +47,10 @@ public class LoginResultadoTest {
     private static final String PESSOA_STATUS_NOME = "Ativo Vendedor";
     private static final String APP_VERSAO_ANDROID = "3.3.1";
     private static final String APP_VERSAO_IOS = "3.2";
-    
 
     @Test
     public void testSomeMethod() {
-        String toParse = "{\"data\":\""+DATA
+        String toParse = "{\"data\":\"" + DATA
                 + "\",\n"
                 + "\"pessoa\":{\"key\":\"" + HASH + "\",\n"
                 + "          \"id\":" + ID + ",\n"
@@ -61,7 +60,6 @@ public class LoginResultadoTest {
                 + "          \"cpfCnpj\":\"" + CNPJ + "\",\n"
                 + "          \"cpfCnpjFormat\":\"" + CNPJ_FORMATADO + "\",\n"
                 + "          \"email\":\"" + E_MAIL + "\",\n"
-                + "          \"fotoThumbnail\":\"" + FOTO_THUNBNAIL + "\",\n"
                 + "          \"pessoaStatus\":{\"id\":" + PESSOA_STATUS_ID + ",\n"
                 + "		                  \"nome\":\"" + PESSOA_STATUS_NOME + "\"}\n"
                 + "         },\n"
@@ -80,7 +78,7 @@ public class LoginResultadoTest {
 
         assertNotNull(d.getIos());
         assertEquals(APP_VERSAO_IOS, d.getIos().getVersaoApp());
-        
+
     }
 
     private void testeParsePessoaPadrao(LoginPessoa p) {
@@ -91,7 +89,7 @@ public class LoginResultadoTest {
         assertEquals(NOME_FANTASIA, p.getSobrenomeNomeFantasia());
         assertEquals(CNPJ, p.getCpfCnpj());
         assertEquals(CNPJ_FORMATADO, p.getCpfCnpjFormat());
-        
+
         assertNotNull(p.getPessoaStatus());
         PessoaStatus status = p.getPessoaStatus();
         assertEquals(PESSOA_STATUS_ID, status.getId());

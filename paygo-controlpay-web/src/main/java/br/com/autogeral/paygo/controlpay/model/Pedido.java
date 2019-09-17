@@ -56,6 +56,7 @@ public class Pedido {
     private int pessoaVendedorId;
     private double valorTotalPedido;
     private String urlRetorno;
+    private PedidoFormaPagamento pedidoFormaPagamento;
     private List<PedidoFormaPagamento> pedidoFormasPagamento = new ArrayList<>();
     private transient int httpStatus;
 
@@ -149,6 +150,14 @@ public class Pedido {
 
     public String getValorOriginalPagoFormat() {
         return valorOriginalPagoFormat;
+    }
+
+    public PedidoFormaPagamento getPedidoFormaPagamento() {
+        return pedidoFormaPagamento;
+    }
+
+    public void setPedidoFormaPagamento(PedidoFormaPagamento pedidoFormaPagamento) {
+        this.pedidoFormaPagamento = pedidoFormaPagamento;
     }
 
     public void setValorOriginalPagoFormat(String valorOriginalPagoFormat) {

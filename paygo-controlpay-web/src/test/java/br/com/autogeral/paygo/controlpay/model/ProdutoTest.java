@@ -24,8 +24,6 @@
 package br.com.autogeral.paygo.controlpay.model;
 
 import br.com.autogeral.paygo.controlpay.web.WsHelper;
-import java.util.ArrayList;
-import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -105,7 +103,7 @@ public class ProdutoTest {
                 + "		    \"nome\":\"Ativo\"\n"
                 + "		},\n"
                 + "		\"fotoNome\":\"\",\n"
-                + "		\"fotBase64\":\"\"\n"
+                + "		\"fotBase64 \":\"\"\n"
                 + "	}\n"
                 + "}\n"
                 + "";
@@ -130,7 +128,6 @@ public class ProdutoTest {
         assertEquals(PRODUTO_STATUS_ID, ps.getId());
         assertEquals(PRODUTO_STATUS_NOME, ps.getNome());
         assertEquals(FOTO_NOME, p.getFotoNome());
-        assertEquals(FOTO_BASE_64, p.getFotBase64());
     }
 
 }

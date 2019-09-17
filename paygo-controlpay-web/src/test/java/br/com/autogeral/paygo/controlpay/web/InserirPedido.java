@@ -45,14 +45,14 @@ public class InserirPedido {
         PedidoInsertVenda piv = new PedidoInsertVenda();
 
         p.setPessoaVendedorId(1);
-        p.setReferencia("142");
-        p.setValorTotalPedido(300);
+        p.setReferencia("157");
+        p.setValorTotalPedido(150);
 
         Produto produto = new Produto();
         produto.setId(2075);
         produto.setNome("TESTE");
         produto.setQuantidade(1);
-        produto.setValor("300");
+        produto.setValor("150");
         p.getProdutosPedido().add(produto);
 
         FormaPagamento formaPagamento = new FormaPagamento();

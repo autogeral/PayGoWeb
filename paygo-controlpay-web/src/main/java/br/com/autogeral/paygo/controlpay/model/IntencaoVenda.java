@@ -57,6 +57,7 @@ public class IntencaoVenda {
     private String urlPagamento;
     private FormaPagamento formaPagamento;
     private Terminal terminal;
+    private int terminalId;
     private Pedido pedido;
     private List<PagamentoExterno> pagamentosExternos;
     private IntencaoVendaStatus intencaoVendaStatus;
@@ -66,7 +67,7 @@ public class IntencaoVenda {
     private String recordsTotal;
     private String recordsFiltered;
     private String draw;
-
+   
     public int getId() {
         return id;
     }
@@ -99,6 +100,13 @@ public class IntencaoVenda {
         this.token = token;
     }
 
+    public int getTerminalId() {
+        return terminalId;
+    }
+
+    public void setTerminalId(int terminalId) {
+        this.terminalId = terminalId;
+    }
     public LocalDateTime getData() {
         return data;
     }

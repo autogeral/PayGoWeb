@@ -71,9 +71,9 @@ public class RoteiroHomologacao {
                     Venda venda = new Venda();
                     venda.setTerminalId(Integer.toString(terminalId));
                     venda.setAdquirente("cielo");
-                    venda.setReferencia("2421");
+                    venda.setReferencia("2443");
 
-                    venda.setPedidoId(2422);
+                    venda.setPedidoId(2447);
                     venda.setFormaPagamentoId(21);
                     venda.setQuantidadeParcelas(1);
                     venda.setValorTotalVendido(150);
