@@ -1,5 +1,7 @@
 package br.com.autogeral.paygo.controlpay.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * 02/06/2019 21:48:13
  *
@@ -7,26 +9,30 @@ package br.com.autogeral.paygo.controlpay.model;
  */
 public class Produto {
 
+    @SerializedName (value = "itemProdutoId", alternate = {"ItemProdutoId"})
     private String itemProdutoId;
+    @SerializedName(value = "id", alternate = {"Id"})
     private int id;
+    @SerializedName(value = "nome", alternate = {"Nome"})
     private String nome;
     private String descricao;
     private String nomeExibe;
+    @SerializedName (value= "quantidade",alternate = {"Quantidade"})
     private int quantidade;
+    @SerializedName(value = "valor", alternate = {"Valor"})
     private String valor;
     private boolean solicitaValor;
     private String valorFormat;
     private boolean controlaQuantidade;
     private String fotoThumbnail;
     private String produtoTipo;
-    private String  ean;
+    private String ean;
     private ProdutoStatus produtoStatus;
     private String fotoNome;
     private String fotBase64;
     private String referencia;
     private ProdutoCategoria produtoCategoria;
 
-    
     public String getItemProdutoId() {
         return itemProdutoId;
     }

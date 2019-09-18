@@ -1,11 +1,14 @@
 package br.com.autogeral.paygo.controlpay.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  *
  * @author kaique.mota
  */
 public class PedidoStatus {
-    
+
+    @SerializedName(value = "id", alternate = "Id")
     private int id;
     private String nome;
 
@@ -24,5 +27,7 @@ public class PedidoStatus {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
+
+
+
 }

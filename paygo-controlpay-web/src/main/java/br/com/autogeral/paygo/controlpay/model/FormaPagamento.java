@@ -23,6 +23,8 @@
  */
 package br.com.autogeral.paygo.controlpay.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * 28/05/2019 09:27:07
  *
@@ -30,6 +32,7 @@ package br.com.autogeral.paygo.controlpay.model;
  */
 public class FormaPagamento {
 
+    @SerializedName (value = "id",alternate = {"Id"})
     private int id;
     private String nome;
     private String modalidade;

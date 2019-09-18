@@ -23,6 +23,7 @@
  */
 package br.com.autogeral.paygo.controlpay.model;
 
+import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,11 +50,13 @@ public class Pedido {
     private String interno;
     private int quantidade;
     private int quantidadeTransacoes;
+    @SerializedName (value ="pedidoStatus",alternate = {"PedidoStatus"})
     private PedidoStatus pedidoStatus;
     private Pessoa pessoa;
     private List<Produto> produtos = new ArrayList<>();
     private List<Produto> produtosPedido = new ArrayList<>();
     private int pessoaVendedorId;
+    @SerializedName(value = "valorTotalPedido", alternate = {"ValorTotalPedido"})
     private double valorTotalPedido;
     private String urlRetorno;
     private PedidoFormaPagamento pedidoFormaPagamento;
@@ -92,20 +95,20 @@ public class Pedido {
         this.data = data;
     }
 
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
     public String getHora() {
         return hora;
     }
 
     public void setHora(String hora) {
         this.hora = hora;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public double getValor() {
@@ -150,14 +153,6 @@ public class Pedido {
 
     public String getValorOriginalPagoFormat() {
         return valorOriginalPagoFormat;
-    }
-
-    public PedidoFormaPagamento getPedidoFormaPagamento() {
-        return pedidoFormaPagamento;
-    }
-
-    public void setPedidoFormaPagamento(PedidoFormaPagamento pedidoFormaPagamento) {
-        this.pedidoFormaPagamento = pedidoFormaPagamento;
     }
 
     public void setValorOriginalPagoFormat(String valorOriginalPagoFormat) {
@@ -258,6 +253,14 @@ public class Pedido {
 
     public void setUrlRetorno(String urlRetorno) {
         this.urlRetorno = urlRetorno;
+    }
+
+    public PedidoFormaPagamento getPedidoFormaPagamento() {
+        return pedidoFormaPagamento;
+    }
+
+    public void setPedidoFormaPagamento(PedidoFormaPagamento pedidoFormaPagamento) {
+        this.pedidoFormaPagamento = pedidoFormaPagamento;
     }
 
     public List<PedidoFormaPagamento> getPedidoFormasPagamento() {

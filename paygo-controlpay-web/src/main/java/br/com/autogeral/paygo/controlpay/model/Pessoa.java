@@ -23,6 +23,8 @@
  */
 package br.com.autogeral.paygo.controlpay.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * 03/06/2019 15:34:45
  *
@@ -30,18 +32,31 @@ package br.com.autogeral.paygo.controlpay.model;
  */
 public class Pessoa {
 
+    @SerializedName(value ="Id", alternate = {"id"})
     private int id;
+    @SerializedName(value="pessoaJuridica",alternate = {"PessoaJuridica"})
     private String pessoaJuridica;
+    @SerializedName(value = "nomeRazaoSocial",alternate = {"NomeRazaoSocial"})
     private String nomeRazaoSocial;
+    @SerializedName(value = "sobrenomeNomeFantasia", alternate = {"SobrenomeNomeFantasia"})
     private String sobrenomeNomeFantasia;
+    @SerializedName(value="cpfCnpj",alternate = {"CpfCnpj"})
     private String cpfCnpj;
+    @SerializedName(value = "cpfCnpjFormat", alternate = {"CpfCnpjFormat"})
     private String cpfCnpjFormat;
+    @SerializedName(value ="email",alternate = {"Email"})
     private String email;
+    @SerializedName(value ="telefone1",alternate = {"Telefone1"})
     private String telefone1;
+    @SerializedName(value="telefone2", alternate = {"Telefone2"})
     private String telefone2;
+    @SerializedName(value = "foto", alternate = {"Foto"})
     private String foto;
+    @SerializedName(value = "fotoNome", alternate = {"FotoNome"})
     private String fotoNome;
+    @SerializedName(value = "fotoBase64", alternate = {"FotoBase64"})
     private String fotoBase64;
+    @SerializedName(value = "endereco", alternate = {"Endereco"})
     private Endereco endereco;
 
     public int getId() {

@@ -54,6 +54,7 @@ public class InserirPedido {
         produto.setQuantidade(1);
         produto.setValor("150");
         p.getProdutosPedido().add(produto);
+        
 
         FormaPagamento formaPagamento = new FormaPagamento();
         PedidoFormaPagamento pfg = new PedidoFormaPagamento();

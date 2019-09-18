@@ -1,26 +1,3 @@
-/*
- * The MIT License
- *
- * Copyright 2019 Murilo Moraes Tuvani.
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
 package br.com.autogeral.paygo.controlpay.model;
 
 import br.com.autogeral.paygo.controlpay.web.WsHelper;
@@ -33,11 +10,11 @@ import static org.junit.Assert.*;
  */
 public class PessoaTest {
 
-    public static final String PESSOA_ID = "1234";
+    public static final int PESSOA_ID = 1234;
     public static final String PESSOA_JURIDICA = "true";
     public static final String NOME_RAZAO_SOCIAL = "Nome ou Razão Social";
     public static final String SOBRENOME_NOMEFANTASIA = "Sobrenome ou Nome fantasia";
-    public static final String CPF_CNPJ = "12345678901234";
+    public static final String CPF_CNPJ = "12345678909";
     public static final String CPF_CNPJ_FORMATADO = "12.345.678/9012-34";
     public static final String E_MAIL = "cadastro@mailinator.com";
     public static final String TELEFONE_1 = "(11)1111-1111";
@@ -92,16 +69,16 @@ public class PessoaTest {
     public void test_parse_data() {
         String toParse = "{\n"
                 + "    \"pessoa\":{\n"
-                + "  \"Id\": \"" + PESSOA_ID + "\",\n"
-                + "  \"PessoaJuridica\": \"true\",\n"
-                + "  \"NomeRazaoSocial\": \"Nome ou Razão Social\",\n"
-                + "  \"SobrenomeNomeFantasia\": \"Sobrenome ou Nome fantasia\",\n"
-                + "  \"CpfCnpj\": \"" + CPF_CNPJ + "\",\n"
-                + "  \"Email\": \"cadastro@mailinator.com\",\n"
-                + "  \"Telefone1\": \"(11)1111-1111\",\n"
-                + "  \"Telefone2\": \"(22)2222-2222\",\n"
-                + "  \"Foto\": \"UrlDaFoto.com\",\n"
-                + "  \"Endereco\": {\n"
+                + "        \"Id\": \"1234\",\n"
+                + "        \"PessoaJuridica\": \"true\",\n"
+                + "        \"NomeRazaoSocial\": \"Nome ou Razão Social\",\n"
+                + "        \"SobrenomeNomeFantasia\": \"Sobrenome ou Nome fantasia\",\n"
+                + "        \"CpfCnpj\": \"12345678909\",\n"
+                + "        \"Email\": \"cadastro@mailinator.com\",\n"
+                + "        \"Telefone1\": \"(11)1111-1111\",\n"
+                + "        \"Telefone2\": \"(22)2222-2222\",\n"
+                + "        \"Foto\": \"UrlDaFoto.com\",\n"
+                + "        \"Endereco\": {\n"
                 + "            \"TipoLogradouro\" :\"Rua\",\n"
                 + "            \"Logradouro\" :\"Nome da rua\",\n"
                 + "            \"Numero\" :\"111\",\n"
@@ -111,16 +88,17 @@ public class PessoaTest {
                 + "            \"Cidade\" :\"Cidade\",\n"
                 + "            \"Uf\" :\"SP\"\n"
                 + "        },\n"
-                + "  \"fotoNome\":\"Nome da foto\",\n"
-                + "  \"fotoBase64\":\"UrlDaFotoBase64\"\n"
+                + "        \"fotoNome\":\"Nome da foto\",\n"
+                + "        \"fotoBase64\":\"UrlDaFotoBase64\"\n"
                 + "    }\n"
-                + "}";
-        
+                + "}   ";
+
         Data d = WsHelper.unmarshal(toParse, Data.class);
         assertNotNull(d);
         assertNotNull(d.getPessoa());
         Pessoa p = d.getPessoa();
         testeParsePessoaPadrao(p);
+
     }
 
     @Test
@@ -145,10 +123,10 @@ public class PessoaTest {
                 + "       \"Cidade\" :\"Cidade\",\n"
                 + "       \"Uf\" :\"SP\"\n"
                 + "  },\n"
-                + "  \"fotoNome\":\"Nome da foto\",\n"
-                + "  \"fotoBase64\":\"UrlDaFotoBase64\"\n"
+                + "  \"FotoNome\":\"Nome da foto\",\n"
+                + "  \"FotoBase64\":\"UrlDaFotoBase64\"\n"
                 + "}";
-        
+
         Pessoa p = WsHelper.unmarshal(toParse, Pessoa.class);
         testeParsePessoaPadrao(p);
     }
@@ -164,7 +142,6 @@ public class PessoaTest {
         assertEquals(TELEFONE_1, p.getTelefone1());
         assertEquals(TELEFONE_2, p.getTelefone2());
         assertEquals(URL_FOTO, p.getFoto());
-
         assertNotNull(p.getEndereco());
         Endereco e = p.getEndereco();
         assertEquals(TIPO_LOGRADOURO, e.getTipoLogradouro());
@@ -175,9 +152,9 @@ public class PessoaTest {
         assertEquals(BAIRRO, e.getBairro());
         assertEquals(CIDADE, e.getCidade());
         assertEquals(UF, e.getUf());
-
         assertEquals(FOTO_NOME, p.getFotoNome());
         assertEquals(FOTO_BASE_64, p.getFotoBase64());
+
     }
 
 }

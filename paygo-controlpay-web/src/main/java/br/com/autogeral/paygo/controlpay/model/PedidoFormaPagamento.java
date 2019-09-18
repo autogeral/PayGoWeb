@@ -23,16 +23,22 @@
  */
 package br.com.autogeral.paygo.controlpay.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  *
  * @author kaique.mota
  */
 public class PedidoFormaPagamento {
 
+    @SerializedName(value ="id",alternate = {"Id"})
     private int id;
+    @SerializedName(value = "quantidadeMaximaParcelas", alternate = {"QuantidadeMaximaParcelas"})
     private int quantidadeMaximaParcelas;
+    @SerializedName(value ="formaPagamendo",alternate = {"FormaPagamento"})
     private FormaPagamento formaPagamento;
     private String adquirentePadrao;
+    @SerializedName(value="adquirente",alternate = {"Adquirente"})
     private String adquirente;
 
     public int getId() {
