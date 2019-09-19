@@ -87,7 +87,7 @@ public class TesteImpressora {
             if (service.getName().startsWith("MP-")) {
 
                 IntencaoVenda iv = new IntencaoVenda();
-                iv.setId(73165);
+                iv.setId(73252);
                 IntencaoVendaGet ivg = new IntencaoVendaGet();
                 IntencaoVendaPesquisa ivp = new IntencaoVendaPesquisa(iv);
                 Data data = ivg.get(ivp);

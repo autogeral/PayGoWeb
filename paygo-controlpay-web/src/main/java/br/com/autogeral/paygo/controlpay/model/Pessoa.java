@@ -32,23 +32,25 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Pessoa {
 
-    @SerializedName(value ="Id", alternate = {"id"})
+    @SerializedName(value = "Id", alternate = {"id"})
     private int id;
-    @SerializedName(value="pessoaJuridica",alternate = {"PessoaJuridica"})
+    @SerializedName(value = "pessoaIds", alternate = {"PessoaIds"})
+    private String pessoaIds;
+    @SerializedName(value = "pessoaJuridica", alternate = {"PessoaJuridica"})
     private String pessoaJuridica;
-    @SerializedName(value = "nomeRazaoSocial",alternate = {"NomeRazaoSocial"})
+    @SerializedName(value = "nomeRazaoSocial", alternate = {"NomeRazaoSocial"})
     private String nomeRazaoSocial;
     @SerializedName(value = "sobrenomeNomeFantasia", alternate = {"SobrenomeNomeFantasia"})
     private String sobrenomeNomeFantasia;
-    @SerializedName(value="cpfCnpj",alternate = {"CpfCnpj"})
+    @SerializedName(value = "cpfCnpj", alternate = {"CpfCnpj"})
     private String cpfCnpj;
     @SerializedName(value = "cpfCnpjFormat", alternate = {"CpfCnpjFormat"})
     private String cpfCnpjFormat;
-    @SerializedName(value ="email",alternate = {"Email"})
+    @SerializedName(value = "email", alternate = {"Email"})
     private String email;
-    @SerializedName(value ="telefone1",alternate = {"Telefone1"})
+    @SerializedName(value = "telefone1", alternate = {"Telefone1"})
     private String telefone1;
-    @SerializedName(value="telefone2", alternate = {"Telefone2"})
+    @SerializedName(value = "telefone2", alternate = {"Telefone2"})
     private String telefone2;
     @SerializedName(value = "foto", alternate = {"Foto"})
     private String foto;
@@ -65,6 +67,14 @@ public class Pessoa {
 
     public void setId(int Id) {
         this.id = Id;
+    }
+
+    public String getPessoaIds() {
+        return pessoaIds;
+    }
+
+    public void setPessoaIds(String pessoaIds) {
+        this.pessoaIds = pessoaIds;
     }
 
     public String getPessoaJuridica() {

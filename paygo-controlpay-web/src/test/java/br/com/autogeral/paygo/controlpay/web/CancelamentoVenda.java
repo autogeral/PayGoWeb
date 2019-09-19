@@ -21,7 +21,7 @@ public class CancelamentoVenda {
 
             VendaCancelarVenda cl = new VendaCancelarVenda();
             IntencaoVenda iv = new IntencaoVenda();
-            iv.setId(73084);
+            iv.setId(73250);
             IntencaoVendaGet ivg = new IntencaoVendaGet();
             IntencaoVendaPesquisa ivp = new IntencaoVendaPesquisa(iv);
             Data data = cl.canc(ivp);

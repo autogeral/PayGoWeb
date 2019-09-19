@@ -34,6 +34,7 @@ import java.util.List;
 public class Pedido {
 
     private int id;
+    private String pessoaIds;
     private String referencia;
     private String obs;
     private String data;
@@ -50,7 +51,7 @@ public class Pedido {
     private String interno;
     private int quantidade;
     private int quantidadeTransacoes;
-    @SerializedName (value ="pedidoStatus",alternate = {"PedidoStatus"})
+    @SerializedName(value = "pedidoStatus", alternate = {"PedidoStatus"})
     private PedidoStatus pedidoStatus;
     private Pessoa pessoa;
     private List<Produto> produtos = new ArrayList<>();
@@ -62,13 +63,24 @@ public class Pedido {
     private PedidoFormaPagamento pedidoFormaPagamento;
     private List<PedidoFormaPagamento> pedidoFormasPagamento = new ArrayList<>();
     private transient int httpStatus;
+    private String notaFiscal;
 
+    
+    
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getPessoaIds() {
+        return pessoaIds;
+    }
+
+    public void setPessoaIds(String pessoaIds) {
+        this.pessoaIds = pessoaIds;
     }
 
     public String getReferencia() {
@@ -215,6 +227,7 @@ public class Pedido {
         this.pessoa = pessoa;
     }
 
+    /*
     public List<Produto> getProdutos() {
         return produtos;
     }
@@ -222,7 +235,7 @@ public class Pedido {
     public void setProdutos(List<Produto> produtos) {
         this.produtos = produtos;
     }
-
+     */
     public List<Produto> getProdutosPedido() {
         return produtosPedido;
     }
@@ -277,6 +290,22 @@ public class Pedido {
 
     public void setHttpStatus(int httpStatus) {
         this.httpStatus = httpStatus;
+    }
+
+    public String getNotaFiscal() {
+        return notaFiscal;
+    }
+
+    public void setNotaFiscal(String notaFiscal) {
+        this.notaFiscal = notaFiscal;
+    }
+
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
     }
 
 }

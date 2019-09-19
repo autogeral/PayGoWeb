@@ -187,13 +187,11 @@ public class PedidoTeste {
         assertEquals(VALOR_TOTAL_PEDIDO, p.getValorTotalPedido(), 0D);
         assertEquals(URL, p.getUrlRetorno());
         assertNotNull(p.getProdutos());
-
         Produto pro = p.getProdutosPedido().get(0);
         assertEquals(PRODUTO_ID, pro.getId());
         assertEquals(PRODUTO_NOME, pro.getNome());
         assertEquals(PRODUTO_VALOR, pro.getValor());
         assertEquals(PRODUTO_QUANTIDADE, pro.getQuantidade());
-
         PedidoFormaPagamento formaPagamento = p.getPedidoFormasPagamento().get(0);
         assertEquals(FORMA_PAGAMENTO, p.getPedidoFormasPagamento().get(0).getFormaPagamento().getId());
         assertEquals(QUANTIDADE_MAXIMA_PARCELAS, formaPagamento.getQuantidadeMaximaParcelas());
@@ -226,10 +224,8 @@ public class PedidoTeste {
         assertEquals(SOBRENOME_NOME_FANTASIA, p.getPessoa().getSobrenomeNomeFantasia());
         assertEquals(CPF_CNPJ_FORMAT, p.getPessoa().getCpfCnpjFormat());
         assertEquals(EMAIL, p.getPessoa().getEmail());
-
         assertNotNull(p.getProdutos());
         Produto produto = p.getProdutos().get(0);
-
         assertEquals(PRODUTO_ID, p.getProdutos().get(0).getId());
         assertEquals(PRODUTO_NOME, p.getProdutos().get(0).getNome());
         assertEquals(PRODUTO_EXIBE_NOME, produto.getNomeExibe());

@@ -35,7 +35,7 @@ public class PedidoFormaPagamento {
     private int id;
     @SerializedName(value = "quantidadeMaximaParcelas", alternate = {"QuantidadeMaximaParcelas"})
     private int quantidadeMaximaParcelas;
-    @SerializedName(value ="formaPagamendo",alternate = {"FormaPagamento"})
+    @SerializedName(value ="formaPagamento",alternate = {"FormaPagamento"})
     private FormaPagamento formaPagamento;
     private String adquirentePadrao;
     @SerializedName(value="adquirente",alternate = {"Adquirente"})
