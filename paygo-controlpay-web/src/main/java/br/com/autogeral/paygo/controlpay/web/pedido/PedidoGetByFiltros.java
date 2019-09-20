@@ -22,8 +22,8 @@
  * THE SOFTWARE.
  */
 package br.com.autogeral.paygo.controlpay.web.pedido;
-import br.com.autogeral.paygo.controlpay.model.PedidoPesquisa;
 import br.com.autogeral.paygo.controlpay.model.Data;
+import br.com.autogeral.paygo.controlpay.model.Pedido;
 import br.com.autogeral.paygo.controlpay.web.ControlPayConfig;
 import br.com.autogeral.paygo.controlpay.web.WsHelper;
 import java.io.IOException;
@@ -51,9 +51,9 @@ public class PedidoGetByFiltros {
         return servidor + PATH + config.getKey();
     }
 
-    public Data get(PedidoPesquisa pp) throws IOException {
+    public Data get(Pedido p) throws IOException {
        
-        String json = WsHelper.getGson().toJson(pp);
+        String json = WsHelper.getGson().toJson(p);
         RequestEntity requestEntity = new StringRequestEntity(
                 json,
                 "application/json",

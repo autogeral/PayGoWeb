@@ -7,7 +7,6 @@ import br.com.autogeral.paygo.controlpay.model.Produto;
 import br.com.autogeral.paygo.controlpay.model.Pedido;
 import br.com.autogeral.paygo.controlpay.model.PedidoFormaPagamento;
 import java.io.IOException;
-import java.util.Arrays;
 
 /**
  *
@@ -23,7 +22,7 @@ public class InserirPedido {
         PedidoInsertVenda piv = new PedidoInsertVenda();
 
         p.setPessoaVendedorId(1);
-        p.setReferencia("02");
+        p.setReferencia("03");
         p.setValorTotalPedido(200);
 
         Produto produto = new Produto();

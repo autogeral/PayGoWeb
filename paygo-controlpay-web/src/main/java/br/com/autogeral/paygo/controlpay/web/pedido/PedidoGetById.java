@@ -24,7 +24,7 @@
 package br.com.autogeral.paygo.controlpay.web.pedido;
 
 import br.com.autogeral.paygo.controlpay.model.Data;
-import br.com.autogeral.paygo.controlpay.model.PedidoPesquisa;
+import br.com.autogeral.paygo.controlpay.model.Pedido;
 import br.com.autogeral.paygo.controlpay.web.ControlPayConfig;
 import br.com.autogeral.paygo.controlpay.web.WsHelper;
 import java.io.IOException;
@@ -56,7 +56,7 @@ public class PedidoGetById {
         return servidor + PATH + config.getKey() + "&pedidoId=" + pedidoId;
     }
 
-    public Data execute(PedidoPesquisa pp) throws IOException {
+    public Data execute(Pedido pp) throws IOException {
 
         int pedidoId = pp.getPedidoId();
         GetMethod method = new GetMethod(getPath(pedidoId));

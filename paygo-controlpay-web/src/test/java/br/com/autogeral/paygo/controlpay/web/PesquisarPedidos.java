@@ -24,7 +24,7 @@
 package br.com.autogeral.paygo.controlpay.web;
 
 import br.com.autogeral.paygo.controlpay.model.Data;
-import br.com.autogeral.paygo.controlpay.model.PedidoPesquisa;
+import br.com.autogeral.paygo.controlpay.model.Pedido;
 import br.com.autogeral.paygo.controlpay.web.pedido.PedidoGetByFiltros;
 import java.io.IOException;
 
@@ -37,10 +37,9 @@ public class PesquisarPedidos {
    public static void main(String[] args) throws IOException {
         
         PedidoGetByFiltros pgf = new PedidoGetByFiltros();
-        PedidoPesquisa pp = new PedidoPesquisa ();
-        
-        pp.setPedidoId(2364);
+        Pedido pedido = new Pedido();
+        pedido.setPedidoId(2364);
    
-        Data ped = pgf.get(pp);
+        Data ped = pgf.get(pedido);
     }
 }

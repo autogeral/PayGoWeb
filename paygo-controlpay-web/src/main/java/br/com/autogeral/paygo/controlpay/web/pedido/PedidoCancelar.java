@@ -24,7 +24,7 @@
 package br.com.autogeral.paygo.controlpay.web.pedido;
 
 import br.com.autogeral.paygo.controlpay.model.Data;
-import br.com.autogeral.paygo.controlpay.model.PedidoPesquisa;
+import br.com.autogeral.paygo.controlpay.model.Pedido;
 import br.com.autogeral.paygo.controlpay.web.ControlPayConfig;
 import br.com.autogeral.paygo.controlpay.web.WsHelper;
 import java.io.IOException;
@@ -56,9 +56,9 @@ public class PedidoCancelar {
         return servidor + PATH + config.getKey() + "&pedidoId=" + pedidoId;
     }
 
-    public Data cancelar(PedidoPesquisa pp) throws IOException {
+    public Data cancelar(Pedido p) throws IOException {
 
-        int pedidoId = pp.getPedidoId();
+        int pedidoId = p.getPedidoId();
         GetMethod method = new GetMethod(getPath(pedidoId));
         method.addRequestHeader("Content-Type", "application/json");
         HttpClient client = new HttpClient();

@@ -30,15 +30,16 @@ package br.com.autogeral.paygo.controlpay.model;
 public class Cliente {
 
     private int id;
-    private String cpfcnpj;
+    private String cpfCnpj;
     private String nomeRazaoSocial;
     private String email;
     private String cliente;
     private String referencia;
     private String telefone;
-    private boolean pessoaJurica;
+    private boolean pessoaJuridica;
     private int pessoaId;
     private Endereco endereco;
+    private Pessoa pessoa;
 
     public int getId() {
         return id;
@@ -48,12 +49,12 @@ public class Cliente {
         this.id = id;
     }
 
-    public String getCpfcnpj() {
-        return cpfcnpj;
+    public String getCpfCnpj() {
+        return cpfCnpj;
     }
 
-    public void setCpfcnpj(String cpfcnpj) {
-        this.cpfcnpj = cpfcnpj;
+    public void setCpfCnpj(String cpfCnpj) {
+        this.cpfCnpj = cpfCnpj;
     }
 
     public String getTelefone() {
@@ -88,12 +89,12 @@ public class Cliente {
         this.cliente = cliente;
     }
 
-    public boolean isPessoaJurica() {
-        return pessoaJurica;
+    public boolean isPessoaJuridica() {
+        return pessoaJuridica;
     }
 
-    public void setPessoaJurica(boolean pessoaJurica) {
-        this.pessoaJurica = pessoaJurica;
+    public void setPessoaJuridica(boolean pessoaJuridica) {
+        this.pessoaJuridica = pessoaJuridica;
     }
 
     public int getPessoaId() {
@@ -118,6 +119,14 @@ public class Cliente {
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 
 }

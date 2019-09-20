@@ -34,6 +34,7 @@ import java.util.List;
 public class Pedido {
 
     private int id;
+    private int pedidoId;
     private String pessoaIds;
     private String referencia;
     private String obs;
@@ -65,8 +66,6 @@ public class Pedido {
     private transient int httpStatus;
     private String notaFiscal;
 
-    
-    
     public int getId() {
         return id;
     }
@@ -77,6 +76,14 @@ public class Pedido {
 
     public String getPessoaIds() {
         return pessoaIds;
+    }
+
+    public int getPedidoId() {
+        return pedidoId;
+    }
+
+    public void setPedidoId(int pedidoId) {
+        this.pedidoId = pedidoId;
     }
 
     public void setPessoaIds(String pessoaIds) {

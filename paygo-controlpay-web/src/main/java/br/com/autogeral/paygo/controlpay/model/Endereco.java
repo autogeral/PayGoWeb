@@ -24,84 +24,127 @@
 
 package br.com.autogeral.paygo.controlpay.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * 03/06/2019 15:53:01
  * @author Murilo Moraes Tuvani
  */
 public class Endereco {
 
-    private String TipoLogradouro;
-    private String Logradouro;
-    private String Numero;
-    private String Complemento;
-    private String Cep;
-    private String Bairro;
-    private String Cidade;
-    private String Uf;
+    @SerializedName (value = "tipoLogradouro",alternate = {"TipoLogradouro"})
+    private String tipoLogradouro;
+    @SerializedName (value = "logradouro",alternate = {"Logradouro"})
+    private String logradouro;
+    @SerializedName(value = "numero",alternate = {"Numero"})
+    private String numero;
+    @SerializedName(value= "complemento",alternate = {"Complemento"})
+    private String complemento;
+    @SerializedName(value = "cep",alternate = {"Cep"})
+    private String cep;
+    @SerializedName(value = "bairro",alternate = {"Bairro"})
+    private String bairro;
+    @SerializedName (value = "cidade",alternate = {"Cidade"})
+    private String cidade;
+    @SerializedName(value = "uf",alternate = {"Uf"})
+    private String uf;
+    @SerializedName(value ="latitude",alternate = {"Latitude"})
+    private String latitude;
+    @SerializedName(value ="longitude",alternate = {"Longitude"})
+    private String longitude;
+    @SerializedName(value = "geoLocalizacao",alternate = {"GeoLocalizacao"})
+    private String geoLocalizacao;
 
     public String getTipoLogradouro() {
-        return TipoLogradouro;
+        return tipoLogradouro;
     }
 
-    public void setTipoLogradouro(String TipoLogradouro) {
-        this.TipoLogradouro = TipoLogradouro;
+    public void setTipoLogradouro(String tipoLogradouro) {
+        this.tipoLogradouro = tipoLogradouro;
     }
 
     public String getLogradouro() {
-        return Logradouro;
+        return logradouro;
     }
 
-    public void setLogradouro(String Logradouro) {
-        this.Logradouro = Logradouro;
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
     }
 
     public String getNumero() {
-        return Numero;
+        return numero;
     }
 
-    public void setNumero(String Numero) {
-        this.Numero = Numero;
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
     public String getComplemento() {
-        return Complemento;
+        return complemento;
     }
 
-    public void setComplemento(String Complemento) {
-        this.Complemento = Complemento;
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
     }
 
     public String getCep() {
-        return Cep;
+        return cep;
     }
 
-    public void setCep(String Cep) {
-        this.Cep = Cep;
+    public void setCep(String cep) {
+        this.cep = cep;
     }
 
     public String getBairro() {
-        return Bairro;
+        return bairro;
     }
 
-    public void setBairro(String Bairro) {
-        this.Bairro = Bairro;
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
     }
 
     public String getCidade() {
-        return Cidade;
+        return cidade;
     }
 
-    public void setCidade(String Cidade) {
-        this.Cidade = Cidade;
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 
     public String getUf() {
-        return Uf;
+        return uf;
     }
 
-    public void setUf(String Uf) {
-        this.Uf = Uf;
+    public void setUf(String uf) {
+        this.uf = uf;
     }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getGeoLocalizacao() {
+        return geoLocalizacao;
+    }
+
+    public void setGeoLocalizacao(String geoLocalizacao) {
+        this.geoLocalizacao = geoLocalizacao;
+    }
+    
+
+   
     
     
 }

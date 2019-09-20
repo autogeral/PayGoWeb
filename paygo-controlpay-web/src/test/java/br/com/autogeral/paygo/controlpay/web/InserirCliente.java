@@ -42,11 +42,11 @@ public class InserirCliente {
         ClienteInsert ci = new ClienteInsert();
 
         c.setId(3);
-        c.setCpfcnpj("05437537000137");
+        c.setCpfCnpj("05437537000137");
         c.setNomeRazaoSocial("Cadastrode Cliente");
         c.setEmail("kaique.motta@hotmail.com");
         c.setReferencia("Cliente");
-        c.setPessoaJurica(false);
+        c.setPessoaJuridica(false);
         c.setPessoaId(1);
      
         c.setEndereco(end);

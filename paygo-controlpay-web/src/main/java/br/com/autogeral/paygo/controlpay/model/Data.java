@@ -41,17 +41,17 @@ public class Data {
     private IntencaoVenda intencaoVenda;
     private Pessoa pessoa;
     private Produto produto;
-    private List<Terminal> terminais;
-    private List<IntencaoVenda> intencoesVendas;
-    private List<Produto> produtos;
-    private List<Pedido> pedidos;
-    private List<FormaPagamento>formasPagamento;
     private PagamentoExterno pagamentoExterno;
     private Pedido pedido;
     private ClienteCartao clienteCartao;
     private Cliente cliente;
     private IntencaoImpressao intencaoImpressao;
-    
+    private List<Terminal> terminais;
+    private List<IntencaoVenda> intencoesVendas;
+    private List<Produto> produtos;
+    private List<Pedido> pedidos;
+    private List<Cliente> clientes;
+    private List<FormaPagamento> formasPagamento;
 
     public int getId() {
         return id;
@@ -69,16 +69,16 @@ public class Data {
         this.httpStatus = httpStatus;
     }
 
+    public LocalDateTime getData() {
+        return data;
+    }
+
+    public void setData(LocalDateTime data) {
+        this.data = data;
+    }
+
     public String getMessage() {
         return message;
-    }
-
-    public IntencaoImpressao getIntencaoImpressao() {
-        return intencaoImpressao;
-    }
-
-    public void setIntencaoImpressao(IntencaoImpressao intencaoImpressao) {
-        this.intencaoImpressao = intencaoImpressao;
     }
 
     public void setMessage(String message) {
@@ -93,40 +93,8 @@ public class Data {
         this.intencaoVenda = intencaoVenda;
     }
 
-    public LocalDateTime getData() {
-        return data;
-    }
-
-    public void setData(LocalDateTime data) {
-        this.data = data;
-    }
-
-    public ClienteCartao getClienteCartao() {
-        return clienteCartao;
-    }
-
-    public void setClienteCartao(ClienteCartao clienteCartao) {
-        this.clienteCartao = clienteCartao;
-    }
-
-    public PagamentoExterno getPagamentoExterno() {
-        return pagamentoExterno;
-    }
-
-    public void setPagamentoExterno(PagamentoExterno pagamentoExterno) {
-        this.pagamentoExterno = pagamentoExterno;
-    }
-
     public Pessoa getPessoa() {
         return pessoa;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
     }
 
     public void setPessoa(Pessoa pessoa) {
@@ -141,6 +109,46 @@ public class Data {
         this.produto = produto;
     }
 
+    public PagamentoExterno getPagamentoExterno() {
+        return pagamentoExterno;
+    }
+
+    public void setPagamentoExterno(PagamentoExterno pagamentoExterno) {
+        this.pagamentoExterno = pagamentoExterno;
+    }
+
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
+
+    public ClienteCartao getClienteCartao() {
+        return clienteCartao;
+    }
+
+    public void setClienteCartao(ClienteCartao clienteCartao) {
+        this.clienteCartao = clienteCartao;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public IntencaoImpressao getIntencaoImpressao() {
+        return intencaoImpressao;
+    }
+
+    public void setIntencaoImpressao(IntencaoImpressao intencaoImpressao) {
+        this.intencaoImpressao = intencaoImpressao;
+    }
+
     public List<Terminal> getTerminais() {
         return terminais;
     }
@@ -153,26 +161,16 @@ public class Data {
         return intencoesVendas;
     }
 
+    public void setIntencoesVendas(List<IntencaoVenda> intencoesVendas) {
+        this.intencoesVendas = intencoesVendas;
+    }
+
     public List<Produto> getProdutos() {
         return produtos;
     }
 
     public void setProdutos(List<Produto> produtos) {
         this.produtos = produtos;
-    }
-
-    public List<FormaPagamento> getFormasPagamento() {
-        return formasPagamento;
-    }
-
-    public void setFormasPagamento(List<FormaPagamento> formasPagamento) {
-        this.formasPagamento = formasPagamento;
-    }
-
-
- 
-    public void setIntencoesVendas(List<IntencaoVenda> intencoesVendas) {
-        this.intencoesVendas = intencoesVendas;
     }
 
     public List<Pedido> getPedidos() {
@@ -183,12 +181,21 @@ public class Data {
         this.pedidos = pedidos;
     }
 
-    public Pedido getPedido() {
-        return pedido;
+    public List<Cliente> getClientes() {
+        return clientes;
     }
 
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
+    public void setClientes(List<Cliente> clientes) {
+        this.clientes = clientes;
     }
 
+    public List<FormaPagamento> getFormasPagamento() {
+        return formasPagamento;
+    }
+
+    public void setFormasPagamento(List<FormaPagamento> formasPagamento) {
+        this.formasPagamento = formasPagamento;
+    }
+
+    
 }

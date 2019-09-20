@@ -27,16 +27,6 @@ package br.com.autogeral.paygo.controlpay.model;
  *
  * @author kaique.mota
  */
-public class PedidoPesquisa {
-
-    private int pedidoId;
-
-    public int getPedidoId() {
-        return pedidoId;
-    }
-
-    public void setPedidoId(int pedidoId) {
-        this.pedidoId = pedidoId;
-    }
-
+public class ClienteIdTeste {
+    
 }

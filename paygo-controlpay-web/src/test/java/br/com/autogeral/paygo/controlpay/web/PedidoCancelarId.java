@@ -24,7 +24,7 @@
 package br.com.autogeral.paygo.controlpay.web;
 
 import br.com.autogeral.paygo.controlpay.model.Data;
-import br.com.autogeral.paygo.controlpay.model.PedidoPesquisa;
+import br.com.autogeral.paygo.controlpay.model.Pedido;
 import br.com.autogeral.paygo.controlpay.web.pedido.PedidoCancelar;
 import java.io.IOException;
 
@@ -37,10 +37,9 @@ public class PedidoCancelarId {
     public static void main(String[] args) throws IOException {
 
         PedidoCancelar pedidoCancelar = new PedidoCancelar();
-        PedidoPesquisa pedidoPesquisa = new PedidoPesquisa();
+        Pedido pedido = new Pedido();
+        pedido.setPedidoId(2451);
 
-        pedidoPesquisa.setPedidoId(2451);
-
-        Data ped = pedidoCancelar.cancelar(pedidoPesquisa);
+        Data ped = pedidoCancelar.cancelar(pedido);
     }
 }
