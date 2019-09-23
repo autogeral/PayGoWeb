@@ -22,7 +22,7 @@ public class InserirPedido {
         PedidoInsertVenda piv = new PedidoInsertVenda();
 
         p.setPessoaVendedorId(1);
-        p.setReferencia("03");
+        p.setReferencia("09");
         p.setValorTotalPedido(200);
 
         Produto produto = new Produto();

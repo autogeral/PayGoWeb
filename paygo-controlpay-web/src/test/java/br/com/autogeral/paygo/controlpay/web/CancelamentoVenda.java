@@ -1,10 +1,8 @@
 package br.com.autogeral.paygo.controlpay.web;
-
 import br.com.autogeral.paygo.controlpay.model.Data;
 import br.com.autogeral.paygo.controlpay.web.transacional.VendaCancelarVenda;
 import br.com.autogeral.paygo.controlpay.model.IntencaoVenda;
-import br.com.autogeral.paygo.controlpay.model.IntencaoVendaPesquisa;
-import br.com.autogeral.paygo.controlpay.web.transacional.IntencaoVendaGet;
+import br.com.autogeral.paygo.controlpay.model.VendaCancelamento;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,12 +17,17 @@ public class CancelamentoVenda {
 
         try {
 
+            
             VendaCancelarVenda cl = new VendaCancelarVenda();
             IntencaoVenda iv = new IntencaoVenda();
-            iv.setId(73250);
-            IntencaoVendaGet ivg = new IntencaoVendaGet();
-            IntencaoVendaPesquisa ivp = new IntencaoVendaPesquisa(iv);
-            Data data = cl.canc(ivp);
+            VendaCancelamento cancelamento = new VendaCancelamento();
+            
+            cancelamento.setIntencaoVendaId("73300");
+            cancelamento.setAguardarTefIniciarTransacao(true);
+            cancelamento.setSenhaTecnica(ControlPayConfig.getConfig().getSenhaTecnica());
+            cancelamento.setTerminalId("900");
+
+            Data cancelar = cl.canc(cancelamento);
 
         } catch (IOException ex) {
             Logger.getLogger(ObtemIntencaoVenda.class.getName()).log(Level.SEVERE, null, ex);

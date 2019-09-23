@@ -23,8 +23,6 @@
  */
 package br.com.autogeral.paygo.controlpay.model;
 
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.List;
 
 /**
@@ -37,8 +35,8 @@ public class IntencaoVenda {
     private int id;
     private String referencia;
     private String token;
-    private LocalDateTime data;
-    private LocalTime hora;
+    private String data;
+    private String hora;
     private String dataAtualizacao;
     private int quantidade;
     private String latitude;
@@ -67,7 +65,7 @@ public class IntencaoVenda {
     private String recordsTotal;
     private String recordsFiltered;
     private String draw;
-   
+
     public int getId() {
         return id;
     }
@@ -107,19 +105,20 @@ public class IntencaoVenda {
     public void setTerminalId(int terminalId) {
         this.terminalId = terminalId;
     }
-    public LocalDateTime getData() {
+
+    public String getData() {
         return data;
     }
 
-    public void setData(LocalDateTime data) {
+    public void setData(String data) {
         this.data = data;
     }
 
-    public LocalTime getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(LocalTime hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 

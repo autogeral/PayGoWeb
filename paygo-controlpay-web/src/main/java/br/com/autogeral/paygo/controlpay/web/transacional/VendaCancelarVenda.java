@@ -23,8 +23,8 @@
  */
 package br.com.autogeral.paygo.controlpay.web.transacional;
 
+import br.com.autogeral.paygo.controlpay.model.VendaCancelamento;
 import br.com.autogeral.paygo.controlpay.model.Data;
-import br.com.autogeral.paygo.controlpay.model.IntencaoVendaPesquisa;
 import br.com.autogeral.paygo.controlpay.web.ControlPayConfig;
 import br.com.autogeral.paygo.controlpay.web.WsHelper;
 import java.io.IOException;
@@ -53,13 +53,11 @@ public class VendaCancelarVenda {
         return servidor + PATH + config.getKey();
     }
 
-    public Data canc(IntencaoVendaPesquisa clc) throws IOException {
+    public Data canc(VendaCancelamento cv) throws IOException {
+        
+        
 
-        clc.setTerminalId(ControlPayConfig.getConfig().getTerminal());
-        clc.setAguardarTefIniciarTransacao(true);
-        clc.setSenhaTecnica(ControlPayConfig.getConfig().getSenhaTecnica());
-
-        String json = WsHelper.getGson().toJson(clc);
+        String json = WsHelper.getGson().toJson(cv);
 
         RequestEntity requestEntity = new StringRequestEntity(
                 json,
@@ -74,7 +72,7 @@ public class VendaCancelarVenda {
 
         String responseBody = method.getResponseBodyAsString();
         System.out.println(responseBody);
-        Data data = WsHelper.unmarshal(json, Data.class);
+        Data data = WsHelper.unmarshal(responseBody, Data.class);
         data.setHttpStatus(result);
         return data;
     }
