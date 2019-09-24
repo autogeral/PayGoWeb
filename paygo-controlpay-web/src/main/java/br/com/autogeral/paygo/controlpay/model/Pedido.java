@@ -34,6 +34,7 @@ import java.util.List;
 public class Pedido {
 
     private int id;
+    private int terminalFisicoId;
     private int pedidoId;
     private String pessoaIds;
     private String referencia;
@@ -88,6 +89,14 @@ public class Pedido {
 
     public void setPessoaIds(String pessoaIds) {
         this.pessoaIds = pessoaIds;
+    }
+
+    public int getTerminalFisicoId() {
+        return terminalFisicoId;
+    }
+
+    public void setTerminalFisicoId(int terminalFisicoId) {
+        this.terminalFisicoId = terminalFisicoId;
     }
 
     public String getReferencia() {

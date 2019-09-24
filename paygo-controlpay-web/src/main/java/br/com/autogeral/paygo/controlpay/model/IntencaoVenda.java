@@ -23,6 +23,7 @@
  */
 package br.com.autogeral.paygo.controlpay.model;
 
+import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
@@ -55,11 +56,12 @@ public class IntencaoVenda {
     private String urlPagamento;
     private FormaPagamento formaPagamento;
     private Terminal terminal;
-    private int terminalId;
+    private String terminalId;
     private Pedido pedido;
+    @SerializedName(value = "pagamentosExternos", alternate = {"pagamentosExterno"})
     private List<PagamentoExterno> pagamentosExternos;
     private IntencaoVendaStatus intencaoVendaStatus;
-    private Cliente cliente;
+    private String cliente;
     private Vendedor vendedor;
     private List<ProdutoVenda> produtos;
     private String recordsTotal;
@@ -98,11 +100,11 @@ public class IntencaoVenda {
         this.token = token;
     }
 
-    public int getTerminalId() {
+    public String getTerminalId() {
         return terminalId;
     }
 
-    public void setTerminalId(int terminalId) {
+    public void setTerminalId(String terminalId) {
         this.terminalId = terminalId;
     }
 
@@ -122,11 +124,11 @@ public class IntencaoVenda {
         this.hora = hora;
     }
 
-    public Cliente getCliente() {
+    public String getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(String cliente) {
         this.cliente = cliente;
     }
 

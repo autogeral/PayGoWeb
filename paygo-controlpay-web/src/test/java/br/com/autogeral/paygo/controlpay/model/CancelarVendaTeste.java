@@ -1,8 +1,6 @@
 package br.com.autogeral.paygo.controlpay.model;
 
 import br.com.autogeral.paygo.controlpay.web.WsHelper;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
@@ -90,7 +88,7 @@ public class CancelarVendaTeste {
         String toParse = "   {\n"
                 + "    \"intencaoVendaId\":" + ID_INTENCAO_VENDA + ",\n"
                 + "    \"terminalId\":" + TERMINAL + ",\n"
-                + "    \"aguardarTefIniciarTransacao\": false,\n"
+                + "    \"aguardarTefIniciarTransacao\": "+AGUARDAR_TEF_INICIAR_TRANSCAO+",\n"
                 + "    \"senhaTecnica\":" + SENHA_TECNICA + "\n"
                 + "}";
         VendaCancelamento vendaCancelamento = WsHelper.unmarshal(toParse, VendaCancelamento.class

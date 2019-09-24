@@ -18,6 +18,7 @@ public class PedidoTeste {
     private static final String HORA = "11:50:40";
     private static final double VALOR = 500.00;
     private static final int PESSOA_VENDEDOR_ID = 1;
+    private static final int TERMINAL_FISICO = 1;
     private static final String VALOR_FORMAT = "900";
     private static final double VALOR_ABERTO = 300.00;
     private static final String VALOR_ABERTO_FORMAT = "300";
@@ -35,6 +36,7 @@ public class PedidoTeste {
     private static final String SOBRENOME_NOME_FANTASIA = "AUTO GERAL AUTOPECAS LTDA";
     private static final String CPF_CNPJ_FORMAT = "05.437.537/0001-37";
     private static final String EMAIL = "kaique.motta@autogeral.com.br";
+    private static final String PRODUTO_DESCRICAO = "AAAA";
     private static final int PRODUTO_ID = 2075;
     private static final String PRODUTO_NOME = "Produto genérico";
     private static final String PRODUTO_EXIBE_NOME = "Produto ge";
@@ -47,11 +49,13 @@ public class PedidoTeste {
     private static final int QUANTIDADE_MAXIMA_PARCELAS = 3;
     private static final String ADQUIRENTE = "cielo";
     private static final double VALOR_TOTAL_PEDIDO = 300.00;
+    private static final String QUANTIDADE_PROD_VENDA = "1";
     private static final String URL = null;
 
     @Test
     public void test_serialize() {
         Pedido p = new Pedido();
+        p.setTerminalFisicoId(TERMINAL_FISICO);
         p.setId(PEDIDO_ID);
         p.setReferencia(REFERENCIA);
         p.setObs(OBSERVACAO);
@@ -94,6 +98,11 @@ public class PedidoTeste {
         pedidoFormaPagamento.setAdquirente(ADQUIRENTE);
         p.setValorTotalPedido(VALOR_TOTAL_PEDIDO);
         p.setUrlRetorno(URL);
+        ProdutoVenda produtoVenda = new ProdutoVenda();
+        produtoVenda.setId(PRODUTO_ID);
+        produtoVenda.setNome(NOME);
+        produtoVenda.setQuantidade(QUANTIDADE_PROD_VENDA);
+        produtoVenda.setValor(PRODUTO_VALOR);
 
         String result = WsHelper.marshal(p);
         System.out.println(result);
@@ -101,44 +110,42 @@ public class PedidoTeste {
 
     @Test
     public void test_parse_data() {
-        String toParse = "{\"data\":\"17/09/2019 14:50:40.3933\",\n"
-                + "\"pedido\":{\"id\":2439,\n"
-                + "\"referencia\":\"REF 151\",\n"
-                + "\"obs\":null,\n"
-                + "\"data\":\"17/09/2019 11:50:40.2422\",\n"
-                + "\"hora\":\"11:50:40\",\n"
-                + "\"valor\":500.00,\n"
-                + "\"valorFormat\":\"900"
+        String toParse = "{\"data\":\"" + DATA_DATA + "\",\n"
+                + "\"pedido\":{\"id\":" + PEDIDO_ID + ",\n"
+                + "\"referencia\":\"" + REFERENCIA + "\",\n"
+                + "\"obs\":" + OBSERVACAO + ",\n"
+                + "\"data\":\"" + DATA_DATA + "\",\n"
+                + "\"hora\":\"" + HORA + "\",\n"
+                + "\"valor\":" + VALOR + ",\n"
+                + "\"valorFormat\":\"" + VALOR_FORMAT + ""
                 + "\",\n"
-                + "\"valorAberto\":300.00,\n"
-                + "\"valorAbertoFormat\":\"300"
+                + "\"valorAberto\":" + VALOR_ABERTO + ",\n"
+                + "\"valorAbertoFormat\":\"" + VALOR_ABERTO_FORMAT + ""
                 + "\",\n"
-                + "\"valorOriginalPago\":300.00,\n"
-                + "\"valorOriginalPagoFormat\":\"0,"
-                + "00\",\n"
-                + "\"valorOriginalEmPagamento\":0.0,\n"
-                + "\"valorOriginalEmPagamentoFormat\":\"0,00\",\n"
-                + "\"tipo\":\"Interno\",\n"
-                + "\"quantidade\":1,\n"
-                + "\"quantidadeTransacoes\":0,\n"
-                + "\"pedidoStatus\":{\"id\":5,\n"
-                + "\"nome\":\"Aberto\"},\n"
-                + "\"pessoa\":{\"id\":8149,\n"
-                + "\"nomeRazaoSocial\":\"AUTO GERAL AUTOPECAS LTDA\",\n"
-                + "\"sobrenomeNomeFantasia\":\"AUTO GERAL AUTOPECAS LTDA\",\n"
-                + "\"cpfCnpjFormat\":\"05.437.537/0001-37\",\n"
-                + "\"email\":\"kaique.motta@autogeral.com.br\"},\n"
-                + "\"produtos\":[{\"itemProdutoId\":30938,\n"
-                + "\"id\":2075,\n"
+                + "\"valorOriginalPago\":" + VALOR_ORIGINAL_PAGO + ",\n"
+                + "\"valorOriginalPagoFormat\":\"" + VALOR_ORIGINAL_PAGO_FORMAT + "\",\n"
+                + "\"valorOriginalEmPagamento\":" + VALOR_ORIGINAL_EM_PAGAMENTO + ",\n"
+                + "\"valorOriginalEmPagamentoFormat\":\"" + VALOR_ORIGINAL_EM_PAGAMENTO_FORMAT + "\",\n"
+                + "\"tipo\":\"" + TIPO + "\",\n"
+                + "\"quantidade\":" + QUANTIDADE + ",\n"
+                + "\"quantidadeTransacoes\":" + QUANTIDADE_TRANSACOES + ",\n"
+                + "\"pedidoStatus\":{\"id\":" + PEDIDO_STATUS_ID + ",\n"
+                + "\"nome\":\"" + NOME + "\"},\n"
+                + "\"pessoa\":{\"id\":" + PESSOA_ID + ",\n"
+                + "\"nomeRazaoSocial\":\"" + NOME_RAZAO_SOCIAL + "\",\n"
+                + "\"sobrenomeNomeFantasia\":\"" + SOBRENOME_NOME_FANTASIA + "\",\n"
+                + "\"cpfCnpjFormat\":\"" + CPF_CNPJ_FORMAT + "\",\n"
+                + "\"email\":\"" + EMAIL + "\"},\n"
+                + "\"produtos\":[{\"itemProdutoId\":" + ID_PRODUTO + ",\n"
+                + "\"id\":" + PRODUTO_ID + ",\n"
                 + "\"nome\":\""
-                + PRODUTO_NOME+"\",\n"
-                + "\"descricao\":\"Produto genérico\",\n"
-                + "\"nomeExibe\":\"Produto ge\",\n"
-                + "\"quantidade\":1,\n"
-                + "\"valor\":300.0,\n"
-                + "\"valorFormat\":\"300."
-                + "00\",\n"
-                + "\"fotoThumbnail\":\"https://pay2alldemo.azurewebsites.net/WebAPI/ImagensProdutos/_ProdutoDefault.png\"}]}}";
+                + PRODUTO_NOME + "\",\n"
+                + "\"descricao\":\"" + PRODUTO_DESCRICAO + "\",\n"
+                + "\"nomeExibe\":\"" + PRODUTO_EXIBE_NOME + "\",\n"
+                + "\"quantidade\":" + PRODUTO_QUANTIDADE + ",\n"
+                + "\"valor\":" + PRODUTO_VALOR + ",\n"
+                + "\"valorFormat\":\"" + PRODUTO_VALOR_FORMAT + "\",\n"
+                + "\"fotoThumbnail\":\"" + FOTO_THUMBNAIL + "\"}]}}";
 
         Data d = WsHelper.unmarshal(toParse, Data.class);
         assertNotNull(d);
@@ -151,26 +158,26 @@ public class PedidoTeste {
     @Test
     public void test_parse() {
         String toParse = "{\n"
-                + "  \"pessoaVendedorId\": \"1\",\n"
-                + "   \"terminalFisicoId\":900,\n"
-                + "  \"referencia\": \"REF 151\",\n"
-                + "  \"ValorTotalPedido\": \"300.00\", \n"
-                + "  \"urlRetorno\": null, \n"
+                + "  \"pessoaVendedorId\": \"" + PESSOA_VENDEDOR_ID + "\",\n"
+                + "   \"terminalFisicoId\":" + TERMINAL_FISICO + ",\n"
+                + "  \"referencia\": \"" + REFERENCIA + "\",\n"
+                + "  \"ValorTotalPedido\": \"" + VALOR_TOTAL_PEDIDO + "\", \n"
+                + "  \"urlRetorno\": " + URL + ", \n"
                 + "  \"produtosPedido\": [\n"
                 + "      {\n"
-                + "      \"Id\": \"2075\",  \n"
-                + "      \"Nome\": \"Produto genérico\", \n"
-                + "      \"Valor\": \"300.0\", \n"
-                + "      \"Quantidade\": \"1\"\n"
+                + "      \"Id\": \"" + PRODUTO_ID + "\",  \n"
+                + "      \"Nome\": \""+PRODUTO_NOME+"\", \n"
+                + "      \"Valor\": \""+PRODUTO_VALOR+"\", \n"
+                + "      \"Quantidade\": \""+QUANTIDADE_PROD_VENDA+"\"\n"
                 + "      }\n"
                 + "  ],\n"
                 + "  \"pedidoFormasPagamento\":[\n"
                 + "    {\n"
                 + "      \"FormaPagamento\":{\n"
-                + "        \"Id\":21\n"
+                + "        \"Id\":"+FORMA_PAGAMENTO+"\n"
                 + "      },\n"
-                + "      \"QuantidadeMaximaParcelas\":3,\n"
-                + "      \"Adquirente\":\"cielo\"\n"
+                + "      \"QuantidadeMaximaParcelas\":"+QUANTIDADE_MAXIMA_PARCELAS+",\n"
+                + "      \"Adquirente\":\""+ADQUIRENTE+"\"\n"
                 + "    }\n"
                 + "  ]\n"
                 + "  }";

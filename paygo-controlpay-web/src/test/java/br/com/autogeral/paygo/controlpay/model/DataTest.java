@@ -679,9 +679,9 @@ public class DataTest {
         
 //        data = sdf.parse("30/05/2019 16:51:05.0000");
         LocalDateTime data = LocalDateTime.of(2019, Month.MAY, 30, 16, 51, 5);
-        iv.setData(data);
+      //  iv.setData(data);
         LocalTime hora = LocalTime.of(16, 51, 5);
-        iv.setHora(hora);
+       // iv.setHora(hora);
         
         double valor = 1d;
         iv.setValorOriginal(valor);

@@ -32,8 +32,9 @@ import com.google.gson.annotations.SerializedName;
  */
 public class FormaPagamento {
 
-    @SerializedName (value = "id",alternate = {"Id"})
+    @SerializedName(value = "id", alternate = {"Id"})
     private int id;
+    private String formaPagamentoId;
     private String nome;
     private String modalidade;
     private boolean permiteParcelamento;
@@ -48,6 +49,14 @@ public class FormaPagamento {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getFormaPagamentoId() {
+        return formaPagamentoId;
+    }
+
+    public void setFormaPagamentoId(String formaPagamentoId) {
+        this.formaPagamentoId = formaPagamentoId;
     }
 
     public String getNome() {

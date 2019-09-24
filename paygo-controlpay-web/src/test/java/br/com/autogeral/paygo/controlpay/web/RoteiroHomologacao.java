@@ -73,7 +73,7 @@ public class RoteiroHomologacao {
                     venda.setAdquirente("cielo");
                     venda.setReferencia("REF 1234");
 
-                    venda.setPedidoId(2465);
+                    venda.setPedidoId(2472);
                     venda.setFormaPagamentoId(21);
                     venda.setQuantidadeParcelas(1);
                     venda.setValorTotalVendido(200);

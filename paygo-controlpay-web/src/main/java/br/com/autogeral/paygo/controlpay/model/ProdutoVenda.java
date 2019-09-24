@@ -21,21 +21,20 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package br.com.autogeral.paygo.controlpay.model;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
  * 03/06/2019 15:38:05
+ *
  * @author Murilo Moraes Tuvani
  */
 public class ProdutoVenda {
 
-    @Expose(serialize = false, deserialize = true)
-    @SerializedName("itemProdutoId")
-    private transient int itemProdutoId;
+    
+    @SerializedName(value ="itemProdutoId",alternate = {"ItemProdutoId"})
+    private  int itemProdutoId;
     @SerializedName(value = "id", alternate = {"Id"})
     private int id;
     private String nome;
@@ -51,8 +50,6 @@ public class ProdutoVenda {
     public void setItemProdutoId(int itemProdutoId) {
         this.itemProdutoId = itemProdutoId;
     }
-
- 
 
     public int getId() {
         return id;
@@ -80,8 +77,8 @@ public class ProdutoVenda {
 
     /**
      * Valor esta como String para ser tratado no padro brasileiro</br>
-     * 
-     * @return 
+     *
+     * @return
      */
     public String getValor() {
         return valor;
@@ -89,6 +86,7 @@ public class ProdutoVenda {
 
     /**
      * Valor esta como String para ser tratado no padro brasileiro</br>
+     *
      * @param valor
      */
     public void setValor(String valor) {

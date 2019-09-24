@@ -36,10 +36,9 @@ public class IntencaoVendaPesquisa {
     private String senhaTecnica;
     private boolean aguardarTefIniciarTransacao =true;
     private String terminalId ;
+    private boolean vendasDia ;
+    private String status;
 
-
-  
-    
     //
     public IntencaoVendaPesquisa(IntencaoVenda iv) {
         this.intencaoVendaId = iv.getId();
@@ -49,7 +48,6 @@ public class IntencaoVendaPesquisa {
        
     }
 
-  
     public String getTerminalId() {
         return terminalId;
     }
@@ -58,9 +56,21 @@ public class IntencaoVendaPesquisa {
         this.terminalId = terminalId;
     }
 
-   
-   
+    public boolean isVendasDia() {
+        return vendasDia;
+    }
 
+    public void setVendasDia(boolean vendasDia) {
+        this.vendasDia = vendasDia;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
     public boolean isAguardarTefIniciarTransacao() {
         return aguardarTefIniciarTransacao;
     }
