@@ -29,6 +29,7 @@ public class PedidoCancelamentoTeste {
     private static final int QUANTIDADE = 1;
     private static final int QUANTIDADE_TRANSACOES = 0;
     private static final int PEDIDO_STATUS_ID = 15;
+    private static final String PEDIDO_STATUS_NOME = "PEDIDO TESTE";
     private static final String NOME = "Cancelado";
     private static final int PESSOA_ID = 8149;
     private static final String NOME_RAZAO_SOCIAL = "AUTO GERAL AUTOPECAS LTDA";
@@ -39,6 +40,7 @@ public class PedidoCancelamentoTeste {
     private static final int PRODUTO_ID = 2075;
     private static final String PRODUTO_NOME = "Produto genérico";
     private static final String PRODUTO_EXIBE_NOME = "Produto ge";
+    private static final String PRODUTO_EXIBE_DESCRICAO = "Produto";
     private static final int PRODUTO_QUANTIDADE = 1;
     private static final String PRODUTO_VALOR = "300.0000";
     private static final String PRODUTO_VALOR_FORMAT = "300,00";
@@ -95,46 +97,46 @@ public class PedidoCancelamentoTeste {
     @Test
     public void testParseData() {
         String toParse = " {\n"
-                + "    \"data\": \"20/09/2019 14:18:01.1227\",\n"
+                + "    \"data\": \"" + DATA_DATA + "\",\n"
                 + "    \"pedido\": {\n"
-                + "        \"id\": 2364,\n"
-                + "        \"referencia\": \"PEDIDO10\",\n"
-                + "        \"obs\": null,\n"
-                + "        \"data\": \"11/09/2019 12:36:08.0000\",\n"
-                + "        \"hora\": \"12:36:08\",\n"
-                + "        \"valor\": 300.0000,\n"
-                + "        \"valorFormat\": \"300,00\",\n"
-                + "        \"valorAberto\": 300.0000,\n"
-                + "        \"valorAbertoFormat\": \"300,00\",\n"
-                + "        \"valorOriginalPago\": 0.0,\n"
-                + "        \"valorOriginalPagoFormat\": \"0,00\",\n"
-                + "        \"valorOriginalEmPagamento\": 0.0,\n"
-                + "        \"valorOriginalEmPagamentoFormat\": \"0,00\",\n"
-                + "        \"tipo\": \"Interno\",\n"
-                + "        \"quantidade\": 1,\n"
-                + "        \"quantidadeTransacoes\": 0,\n"
+                + "        \"id\": " + PEDIDO_ID + ",\n"
+                + "        \"referencia\": \"" + REFERENCIA + "\",\n"
+                + "        \"obs\": " + OBSERVACAO + ",\n"
+                + "        \"data\": \"" + DATA_DATA + "\",\n"
+                + "        \"hora\": \"" + HORA + "\",\n"
+                + "        \"valor\": " + VALOR + ",\n"
+                + "        \"valorFormat\": \"" + VALOR_FORMAT + "\",\n"
+                + "        \"valorAberto\": " + VALOR_ABERTO + ",\n"
+                + "        \"valorAbertoFormat\": \"" + VALOR_ABERTO_FORMAT + "\",\n"
+                + "        \"valorOriginalPago\": " + VALOR_ORIGINAL_PAGO + ",\n"
+                + "        \"valorOriginalPagoFormat\": \"" + VALOR_ORIGINAL_PAGO_FORMAT + "\",\n"
+                + "        \"valorOriginalEmPagamento\": " + VALOR_ORIGINAL_EM_PAGAMENTO + ",\n"
+                + "        \"valorOriginalEmPagamentoFormat\": \"" + VALOR_ORIGINAL_EM_PAGAMENTO_FORMAT + "\",\n"
+                + "        \"tipo\": \"" + TIPO + "\",\n"
+                + "        \"quantidade\": " + QUANTIDADE + ",\n"
+                + "        \"quantidadeTransacoes\": " + QUANTIDADE_TRANSACOES + ",\n"
                 + "        \"pedidoStatus\": {\n"
-                + "            \"id\": 15,\n"
-                + "            \"nome\": \"Cancelado\"\n"
+                + "            \"id\": " + PEDIDO_STATUS_ID + ",\n"
+                + "            \"nome\": \"" + NOME + "\"\n"
                 + "        },\n"
                 + "        \"pessoa\": {\n"
-                + "            \"id\": 8149,\n"
-                + "            \"nomeRazaoSocial\": \"AUTO GERAL AUTOPECAS LTDA\",\n"
-                + "            \"sobrenomeNomeFantasia\": \"AUTO GERAL AUTOPECAS LTDA\",\n"
-                + "            \"cpfCnpjFormat\": \"05.437.537/0001-37\",\n"
-                + "            \"email\": \"kaique.motta@autogeral.com.br\"\n"
+                + "            \"id\": " + PESSOA_ID + ",\n"
+                + "            \"nomeRazaoSocial\": \"" + NOME_RAZAO_SOCIAL + "\",\n"
+                + "            \"sobrenomeNomeFantasia\": \"" + SOBRENOME_NOME_FANTASIA + "\",\n"
+                + "            \"cpfCnpjFormat\": \"" + CPF_CNPJ_FORMAT + "\",\n"
+                + "            \"email\": \"" + EMAIL + "\"\n"
                 + "        },\n"
                 + "        \"produtos\": [\n"
                 + "            {\n"
-                + "                \"itemProdutoId\": 30829,\n"
-                + "                \"id\": 2075,\n"
-                + "                \"nome\": \"Produto genérico\",\n"
-                + "                \"descricao\": \"Produto genérico\",\n"
-                + "                \"nomeExibe\": \"Produto ge\",\n"
-                + "                \"quantidade\": 1,\n"
-                + "                \"valor\": 300.0000,\n"
-                + "                \"valorFormat\": \"300,00\",\n"
-                + "                \"fotoThumbnail\": \"http://pay2alldemo.azurewebsites.net/WebAPI/ImagensProdutos/_ProdutoDefault.png\"\n"
+                + "                \"itemProdutoId\": " + ITEM_PRODUTO_ID + ",\n"
+                + "                \"id\": " + PRODUTO_ID + ",\n"
+                + "                \"nome\": \"" + PRODUTO_NOME + "\",\n"
+                + "                \"descricao\": \"" + PRODUTO_EXIBE_DESCRICAO + "\",\n"
+                + "                \"nomeExibe\": \"" + PRODUTO_EXIBE_NOME + "\",\n"
+                + "                \"quantidade\": " + PRODUTO_QUANTIDADE + ",\n"
+                + "                \"valor\": " + PRODUTO_VALOR + ",\n"
+                + "                \"valorFormat\": \"" + PRODUTO_VALOR_FORMAT + "\",\n"
+                + "                \"fotoThumbnail\": \"" + FOTO_THUMBNAIL + "\"\n"
                 + "            }\n"
                 + "        ]\n"
                 + "    }\n"
@@ -178,6 +180,7 @@ public class PedidoCancelamentoTeste {
         assertEquals(PRODUTO_ID, p.getProdutos().get(0).getId());
         assertEquals(PRODUTO_NOME, p.getProdutos().get(0).getNome());
         assertEquals(PRODUTO_EXIBE_NOME, produto.getNomeExibe());
+        assertEquals(PRODUTO_EXIBE_DESCRICAO, produto.getDescricao());
         assertEquals(PRODUTO_QUANTIDADE, produto.getQuantidade());
         assertEquals(PRODUTO_VALOR, produto.getValor());
         assertEquals(PRODUTO_VALOR_FORMAT, produto.getValorFormat());

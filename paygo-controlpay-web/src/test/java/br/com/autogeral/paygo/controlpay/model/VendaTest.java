@@ -82,7 +82,7 @@ public class VendaTest {
     }
 
     @Test
-    public void test01_serialize() {
+    public void test02_serialize() {
         Venda instance = new Venda();
         instance.setTerminalId(TERMINAL);
         instance.setAdquirente(ADQUIRENTE);

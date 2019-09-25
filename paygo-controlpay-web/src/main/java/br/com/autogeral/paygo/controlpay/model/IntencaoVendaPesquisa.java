@@ -45,7 +45,6 @@ public class IntencaoVendaPesquisa {
         this.formaPagamentoId = (iv.getFormaPagamento() != null && iv.getFormaPagamento().getId() > 0 ? iv.getFormaPagamento().getId() : 0);
         this.referencia = (iv.getReferencia() != null ? iv.getReferencia() : null);
         
-       
     }
 
     public String getTerminalId() {
