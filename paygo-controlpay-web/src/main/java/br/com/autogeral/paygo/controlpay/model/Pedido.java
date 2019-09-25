@@ -53,6 +53,7 @@ public class Pedido {
     private String interno;
     private int quantidade;
     private int quantidadeTransacoes;
+    private String cliente;
     @SerializedName(value = "pedidoStatus", alternate = {"PedidoStatus"})
     private PedidoStatus pedidoStatus;
     private Pessoa pessoa;
@@ -64,6 +65,7 @@ public class Pedido {
     private String urlRetorno;
     private PedidoFormaPagamento pedidoFormaPagamento;
     private List<PedidoFormaPagamento> pedidoFormasPagamento = new ArrayList<>();
+    private List<IntencaoVenda> intencoesVenda = new ArrayList<>();
     private transient int httpStatus;
     private String notaFiscal;
 
@@ -243,6 +245,16 @@ public class Pedido {
         this.pessoa = pessoa;
     }
 
+    public String getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
+    }
+
+
+
     /*
     public List<Produto> getProdutos() {
         return produtos;
@@ -322,6 +334,15 @@ public class Pedido {
 
     public void setProdutos(List<Produto> produtos) {
         this.produtos = produtos;
+    }
+
+    public List<IntencaoVenda> getIntencoesVenda() {
+        return intencoesVenda;
+    }
+
+    public void setIntencoesVenda(List<IntencaoVenda> intencoesVenda) {
+        this.intencoesVenda = intencoesVenda;
+
     }
 
 }

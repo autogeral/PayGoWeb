@@ -68,9 +68,8 @@ public class PagamentoExternoTeste {
                 + "      \"nome\": \"" + TERMINALID + "\"\n"
                 + "    }\n"
                 + "  }";
-
-        PagamentoExterno pag = WsHelper.unmarshal(toParse, PagamentoExterno.class);
-        testParsePagamento(pag);
+        
+        
     }
 
     private void  testParsePagamento(PagamentoExterno pagamento){

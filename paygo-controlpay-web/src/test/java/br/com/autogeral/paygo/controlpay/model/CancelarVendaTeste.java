@@ -45,7 +45,7 @@ public class CancelarVendaTeste {
     private static final String PRODUTO_VALOR = "10.000";
 
     @Test
-    public void serialize() {
+    public void testSerialize() {
         VendaCancelamento vendaCancelamento = new VendaCancelamento();
         vendaCancelamento.setIntencaoVendaId(ID_INTENCAO_VENDA);
         vendaCancelamento.setTerminalId(TERMINAL);
@@ -84,7 +84,7 @@ public class CancelarVendaTeste {
     }
 
     @Test
-    public void test_Parse() {
+    public void testParse() {
         String toParse = "   {\n"
                 + "    \"intencaoVendaId\":" + ID_INTENCAO_VENDA + ",\n"
                 + "    \"terminalId\":" + TERMINAL + ",\n"

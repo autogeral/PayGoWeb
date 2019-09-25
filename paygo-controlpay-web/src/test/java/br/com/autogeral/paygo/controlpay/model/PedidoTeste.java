@@ -53,7 +53,7 @@ public class PedidoTeste {
     private static final String URL = null;
 
     @Test
-    public void test_serialize() {
+    public void testSerialize() {
         Pedido p = new Pedido();
         p.setTerminalFisicoId(TERMINAL_FISICO);
         p.setId(PEDIDO_ID);
@@ -109,7 +109,7 @@ public class PedidoTeste {
     }
 
     @Test
-    public void test_parse_data() {
+    public void testParseData() {
         String toParse = "{\"data\":\"" + DATA_DATA + "\",\n"
                 + "\"pedido\":{\"id\":" + PEDIDO_ID + ",\n"
                 + "\"referencia\":\"" + REFERENCIA + "\",\n"
@@ -156,7 +156,7 @@ public class PedidoTeste {
     }
 
     @Test
-    public void test_parse() {
+    public void testParse() {
         String toParse = "{\n"
                 + "  \"pessoaVendedorId\": \"" + PESSOA_VENDEDOR_ID + "\",\n"
                 + "   \"terminalFisicoId\":" + TERMINAL_FISICO + ",\n"

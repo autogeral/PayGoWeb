@@ -42,6 +42,7 @@ public class PagamentoExterno {
     private String mensagemRespostaAdquirente;
     private String idConfirmacao;
     private String dataAdquirente;
+    
     private String dataAtualizacao;
     private String respostaAdquirente;
     private String nome ;

@@ -22,6 +22,8 @@ public class PedidoGetByIdTeste {
     private static final String VALOR_ABERTO_FORMAT = "10,00";
     private static final double VALOR_ORIGINAL_PAGO = 0.0;
     private static final String VALOR_ORIGINAL_PAGO_FORMAT = "0,00";
+    private static final double VALOR_ORIGINAL_EM_PAGAMENTO = 0.0;
+    private static final String VALOR_ORIGINAL_EM_PAGAMENTO_FORMAT = "0,00";
     private static final String TIPO = "Interno";
     private static final int QUANTIDADE = 1;
     private static final int QUANTIDADE_TRANSACOES = 0;
@@ -56,7 +58,7 @@ public class PedidoGetByIdTeste {
     private static final String FLUXO_PAGAMENTO_NOME = "TEF";
 
     @Test
-    public void TEST_SERIALIZE() {
+    public void testSerialize() {
         Pedido p = new Pedido();
         p.setId(PEDIDO_ID);
         p.setReferencia(REFERENCIA);
@@ -69,6 +71,8 @@ public class PedidoGetByIdTeste {
         p.setValorAbertoFormat(VALOR_ABERTO_FORMAT);
         p.setValorOriginalPago(VALOR_ORIGINAL_PAGO);
         p.setValorOriginalPagoFormat(VALOR_ORIGINAL_PAGO_FORMAT);
+        p.setValorOriginalEmPagamento(VALOR_ORIGINAL_EM_PAGAMENTO);
+        p.setValorOriginalEmPagamentoFormat(VALOR_ORIGINAL_EM_PAGAMENTO_FORMAT);
         p.setTipo(TIPO);
         p.setQuantidade(QUANTIDADE);
         p.setQuantidadeTransacoes(QUANTIDADE_TRANSACOES);
@@ -110,84 +114,89 @@ public class PedidoGetByIdTeste {
     }
 
     @Test
-    public void TEST_PARSE_DATA() {
+    public void testParse() {
+    
+    }
+
+    @Test
+    public void testParseData() {
 
         String toParse = "{\n"
-                + "    \"data\": \"19/09/2019 12:17:51.1920\",\n"
+                + "    \"data\": \"" + DATA + "\",\n"
                 + "    \"pedido\": {\n"
-                + "        \"id\": 2303,\n"
-                + "        \"referencia\": \"REF 015\",\n"
-                + "        \"obs\": null,\n"
-                + "        \"data\": \"05/09/2019 12:16:57.0000\",\n"
-                + "        \"hora\": \"12:16:57\",\n"
-                + "        \"valor\": 10.0000,\n"
-                + "        \"valorFormat\": \"10,00\",\n"
-                + "        \"valorAberto\": 10.0000,\n"
-                + "        \"valorAbertoFormat\": \"10,00\",\n"
-                + "        \"valorOriginalPago\": 0.0,\n"
-                + "        \"valorOriginalPagoFormat\": \"0,00\",\n"
-                + "        \"valorOriginalEmPagamento\": 0.0,\n"
-                + "        \"valorOriginalEmPagamentoFormat\": \"0,00\",\n"
-                + "        \"tipo\": \"Interno\",\n"
-                + "        \"quantidade\": 1,\n"
-                + "        \"quantidadeTransacoes\": 0,\n"
+                + "        \"id\": " + PEDIDO_ID + ",\n"
+                + "        \"referencia\": \"" + REFERENCIA + "\",\n"
+                + "        \"obs\": " + OBSERVACAO + ",\n"
+                + "        \"data\": \"" + DATA + "\",\n"
+                + "        \"hora\": \"" + HORA + "\",\n"
+                + "        \"valor\": " + VALOR + ",\n"
+                + "        \"valorFormat\": \"" + VALOR_FORMAT + "\",\n"
+                + "        \"valorAberto\": " + VALOR_ABERTO + ",\n"
+                + "        \"valorAbertoFormat\": \"" + VALOR_ABERTO_FORMAT + "\",\n"
+                + "        \"valorOriginalPago\": " + VALOR_ORIGINAL_PAGO + ",\n"
+                + "        \"valorOriginalPagoFormat\": \"" + VALOR_ORIGINAL_PAGO_FORMAT + "\",\n"
+                + "        \"valorOriginalEmPagamento\": " + VALOR_ORIGINAL_EM_PAGAMENTO + ",\n"
+                + "        \"valorOriginalEmPagamentoFormat\": \"" + VALOR_ORIGINAL_EM_PAGAMENTO_FORMAT + "\",\n"
+                + "        \"tipo\": \"" + TIPO + "\",\n"
+                + "        \"quantidade\": " + QUANTIDADE + ",\n"
+                + "        \"quantidadeTransacoes\": " + QUANTIDADE_TRANSACOES + ",\n"
                 + "        \"pedidoStatus\": {\n"
-                + "            \"id\": 15,\n"
-                + "            \"nome\": \"Cancelado\"\n"
+                + "            \"id\": " + PEDIDO_STATUS_ID + ",\n"
+                + "            \"nome\": \"" + PEDIDO_STATUS_NOME + "\"\n"
                 + "        },\n"
                 + "        \"pessoa\": {\n"
-                + "            \"id\": 8149,\n"
-                + "            \"nomeRazaoSocial\": \"AUTO GERAL AUTOPECAS LTDA\",\n"
-                + "            \"sobrenomeNomeFantasia\": \"AUTO GERAL AUTOPECAS LTDA\",\n"
-                + "            \"cpfCnpjFormat\": \"05.437.537/0001-37\",\n"
-                + "            \"email\": \"kaique.motta@autogeral.com.br\"\n"
+                + "            \"id\": " + PESSOA_ID + ",\n"
+                + "            \"nomeRazaoSocial\": \"" + NOME_RAZAO_SOCIAL + "\",\n"
+                + "            \"sobrenomeNomeFantasia\": \"" + SOBRENOME_NOME_FANTASIA + "\",\n"
+                + "            \"cpfCnpjFormat\": \"" + CNPJ_FORMAT + "\",\n"
+                + "            \"email\": \"" + EMAIL + "\"\n"
                 + "        },\n"
                 + "        \"produtos\": [\n"
                 + "            {\n"
-                + "                \"itemProdutoId\": 30747,\n"
-                + "                \"id\": 2075,\n"
-                + "                \"nome\": \"Produto genérico\",\n"
-                + "                \"descricao\": \"Produto genérico\",\n"
-                + "                \"nomeExibe\": \"Produto ge\",\n"
-                + "                \"quantidade\": 1,\n"
-                + "                \"valor\": 10.000,\n"
-                + "                \"valorFormat\": \"10,00\",\n"
-                + "                \"fotoThumbnail\": \"http://pay2alldemo.azurewebsites.net/WebAPI/ImagensProdutos/_ProdutoDefault.png\"\n"
+                + "                \"itemProdutoId\": " + ITEM_PRODUTO_ID + ",\n"
+                + "                \"id\": " + PRODUTO_ID + ",\n"
+                + "                \"nome\": \"" + PRODUTO_NOME + "\",\n"
+                + "                \"descricao\": \"" + PRODUTO_DESCRICAO + "\",\n"
+                + "                \"nomeExibe\": \"" + PRODUTO_NOME_EXIBE + "\",\n"
+                + "                \"quantidade\": " + PRODUTO_QUANTIDADE + ",\n"
+                + "                \"valor\": " + PRODUTO_VALOR + ",\n"
+                + "                \"valorFormat\": \"" + PRODUTO_VALOR_FORMAT + "\",\n"
+                + "                \"fotoThumbnail\": \"" + PRODUTO_FOTO_THUMBNAIL + "\"\n"
                 + "            }\n"
                 + "        ],\n"
-                + "        \"notaFiscal\": null,\n"
+                + "        \"notaFiscal\": " + NOTA_FISCAL + ",\n"
                 + "        \"intencoesVenda\": [],\n"
                 + "        \"pedidoFormasPagamento\": [\n"
                 + "            {\n"
-                + "                \"id\": 702,\n"
-                + "                \"quantidadeMaximaParcelas\": 1,\n"
-                + "                \"adquirentePadrao\": \"\",\n"
+                + "                \"id\": " + PEDIDO_FORMA_PAGAMENTO_ID + ",\n"
+                + "                \"quantidadeMaximaParcelas\": " + PEDIDO_FORMA_PAGAMENTO_QUANTIDADE_MAXIMA_PARCELAS + ",\n"
+                + "                \"adquirentePadrao\": \"" + PEDIDO_FORMA_PAGAMENTO_ADQUIRENTE_PADRAO + "\",\n"
                 + "                \"formaPagamento\": {\n"
-                + "                    \"id\": 21,\n"
-                + "                    \"nome\": \"TEF\",\n"
-                + "                    \"modalidade\": \"Crédito\",\n"
-                + "                    \"permiteParcelamento\": true,\n"
-                + "                    \"solicitaObs\": false,\n"
-                + "                    \"quantidadeMaximaParcelas\": 12,\n"
-                + "                    \"isentoDeTarifa\": true,\n"
+                + "                    \"id\": " + FORMA_PAGAMENTO_ID + ",\n"
+                + "                    \"nome\": \"" + FORMA_PAGAMENTO_NOME + "\",\n"
+                + "                    \"modalidade\": \"" + FORMA_PAGAMENTO_MODALIDADE + "\",\n"
+                + "                    \"permiteParcelamento\": " + FORMA_PAGAMENTO_PERMITE_PARCELAMENTO + ",\n"
+                + "                    \"solicitaObs\": " + FORMA_PAGAMENTO_SOLICITA_OBSERVACAO + ",\n"
+                + "                    \"quantidadeMaximaParcelas\": " + FORMA_PAGAMENTO_QUANTIADE_MAXIMA_PARCELAS + ",\n"
+                + "                    \"isentoDeTarifa\": " + FORMA_PAGAMENTO_ISENTO_DE_TARIFA + ",\n"
                 + "                    \"fluxoPagamento\": {\n"
-                + "                        \"id\": 21,\n"
-                + "                        \"nome\": \"TEF\"\n"
+                + "                        \"id\": " + FLUXO_PAGAMENTO_ID + ",\n"
+                + "                        \"nome\": \"" + FLUXO_PAGAMENTO_NOME + "\"\n"
                 + "                    }\n"
                 + "                }\n"
                 + "            }\n"
                 + "        ]\n"
                 + "    }\n"
                 + "}";
+
         Data d = WsHelper.unmarshal(toParse, Data.class);
         assertNotNull(d);
         assertNotNull(d.getPedido());
         Pedido p = d.getPedido();
-        TEST_DATA_PEDIDO(p);
+        testDataPedido(p);
     }
 
-    
-    private void TEST_DATA_PEDIDO(Pedido p) {
+    private void testDataPedido(Pedido p) {
         assertNotNull(p);
         assertEquals(PEDIDO_ID, p.getId());
         assertEquals(REFERENCIA, p.getReferencia());
@@ -200,6 +209,8 @@ public class PedidoGetByIdTeste {
         assertEquals(VALOR_ABERTO_FORMAT, p.getValorAbertoFormat());
         assertEquals(VALOR_ORIGINAL_PAGO, p.getValorOriginalPago(), 0D);
         assertEquals(VALOR_ORIGINAL_PAGO_FORMAT, p.getValorOriginalPagoFormat());
+        assertEquals(VALOR_ORIGINAL_EM_PAGAMENTO, p.getValorOriginalEmPagamento(), 0.00);
+        assertEquals(VALOR_ORIGINAL_EM_PAGAMENTO_FORMAT, p.getValorOriginalEmPagamentoFormat());
         assertEquals(TIPO, p.getTipo());
         assertEquals(QUANTIDADE, p.getQuantidade());
         assertEquals(QUANTIDADE_TRANSACOES, p.getQuantidadeTransacoes());
@@ -219,5 +230,18 @@ public class PedidoGetByIdTeste {
         assertEquals(PRODUTO_VALOR, produto.getValor());
         assertEquals(PRODUTO_VALOR_FORMAT, produto.getValorFormat());
         assertEquals(PRODUTO_FOTO_THUMBNAIL, produto.getFotoThumbnail());
+        assertEquals(NOTA_FISCAL, p.getNotaFiscal());
+        assertEquals(PEDIDO_FORMA_PAGAMENTO_ID, p.getPedidoFormasPagamento().get(0).getId());
+        assertEquals(PEDIDO_FORMA_PAGAMENTO_QUANTIDADE_MAXIMA_PARCELAS, p.getPedidoFormasPagamento().get(0).getQuantidadeMaximaParcelas());
+        assertEquals(PEDIDO_FORMA_PAGAMENTO_ADQUIRENTE_PADRAO, p.getPedidoFormasPagamento().get(0).getAdquirentePadrao());
+        assertEquals(FORMA_PAGAMENTO_ID, p.getPedidoFormasPagamento().get(0).getFormaPagamento().getId());
+        assertEquals(FORMA_PAGAMENTO_NOME, p.getPedidoFormasPagamento().get(0).getFormaPagamento().getNome());
+        assertEquals(FORMA_PAGAMENTO_MODALIDADE, p.getPedidoFormasPagamento().get(0).getFormaPagamento().getModalidade());
+        assertEquals(FORMA_PAGAMENTO_PERMITE_PARCELAMENTO, p.getPedidoFormasPagamento().get(0).getFormaPagamento().isPermiteParcelamento());
+        assertEquals(FORMA_PAGAMENTO_SOLICITA_OBSERVACAO, p.getPedidoFormasPagamento().get(0).getFormaPagamento().isSolicitaObs());
+        assertEquals(FORMA_PAGAMENTO_QUANTIADE_MAXIMA_PARCELAS, p.getPedidoFormasPagamento().get(0).getFormaPagamento().getQuantidadeMaximaParcelas());
+        assertEquals(FORMA_PAGAMENTO_ISENTO_DE_TARIFA, p.getPedidoFormasPagamento().get(0).getFormaPagamento().isIsentoDeTarifa());
+        assertEquals(FLUXO_PAGAMENTO_ID, p.getPedidoFormasPagamento().get(0).getFormaPagamento().getFluxoPagamento().getId());
+        assertEquals(FLUXO_PAGAMENTO_NOME, p.getPedidoFormasPagamento().get(0).getFormaPagamento().getFluxoPagamento().getNome());
     }
 }

@@ -19,7 +19,7 @@ public class IntencaoVendaGetTeste {
     private static final String REFERENCIA = null;
 
     @Test
-    public void Serialize() {
+    public void serialize() {
         IntencaoVenda intencaoVenda = new IntencaoVenda();
         IntencaoVendaPesquisa intencaoVendaPesquisa = new IntencaoVendaPesquisa(intencaoVenda);
         intencaoVenda.setId(INTENCAO_VENDA_ID);
@@ -45,9 +45,7 @@ public class IntencaoVendaGetTeste {
                 + "}\"";
 
         IntencaoVendaPesquisa intencaoVendaPesquisa = WsHelper.unmarshal(toParse, IntencaoVendaPesquisa.class);
-
     }
-
     private void testParseBusca(IntencaoVendaPesquisa intencaoVendaPesquisa) {
         IntencaoVenda intencao = new IntencaoVenda();
         assertNotNull(intencaoVendaPesquisa);
