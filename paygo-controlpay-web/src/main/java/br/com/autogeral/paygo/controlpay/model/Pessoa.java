@@ -31,7 +31,8 @@ import com.google.gson.annotations.SerializedName;
  * @author Murilo Moraes Tuvani
  */
 public class Pessoa {
-
+    @SerializedName(value = "key", alternate = {"Key"})
+    private String key ;
     @SerializedName(value = "Id", alternate = {"id"})
     private int id;
     @SerializedName(value = "pessoaIds", alternate = {"PessoaIds"})
@@ -58,9 +59,13 @@ public class Pessoa {
     private String fotoNome;
     @SerializedName(value = "fotoBase64", alternate = {"FotoBase64"})
     private String fotoBase64;
+    @SerializedName(value = "fotoThumbnail", alternate = {"FotoThumbnail"})
+    private String fotoThumbnail;
     @SerializedName(value = "endereco", alternate = {"Endereco"})
     private Endereco endereco;
+    private PessoaStatus pessoaStatus ;
 
+   
     public int getId() {
         return id;
     }
@@ -171,6 +176,30 @@ public class Pessoa {
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getFotoThumbnail() {
+        return fotoThumbnail;
+    }
+
+    public void setFotoThumbnail(String fotoThumbnail) {
+        this.fotoThumbnail = fotoThumbnail;
+    }
+
+    public PessoaStatus getPessoaStatus() {
+        return pessoaStatus;
+    }
+
+    public void setPessoaStatus(PessoaStatus pessoaStatus) {
+        this.pessoaStatus = pessoaStatus;
     }
 
     void setId(String PESSOA_ID) {

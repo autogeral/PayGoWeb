@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Produto {
 
-    @SerializedName (value = "itemProdutoId", alternate = {"ItemProdutoId"})
+    @SerializedName(value = "itemProdutoId", alternate = {"ItemProdutoId"})
     private String itemProdutoId;
     @SerializedName(value = "id", alternate = {"Id"})
     private int id;
@@ -17,7 +17,7 @@ public class Produto {
     private String nome;
     private String descricao;
     private String nomeExibe;
-    @SerializedName (value= "quantidade",alternate = {"Quantidade"})
+    @SerializedName(value = "quantidade", alternate = {"Quantidade"})
     private int quantidade;
     @SerializedName(value = "valor", alternate = {"Valor"})
     private String valor;
@@ -31,6 +31,7 @@ public class Produto {
     private String fotoNome;
     private String fotBase64;
     private String referencia;
+    private boolean servico;
     private ProdutoCategoria produtoCategoria;
 
     public String getItemProdutoId() {
@@ -180,6 +181,16 @@ public class Produto {
     public void setProdutoCategoria(ProdutoCategoria produtoCategoria) {
         this.produtoCategoria = produtoCategoria;
     }
+
+    public boolean isServico() {
+        return servico;
+    }
+
+    public void setServico(boolean servico) {
+        this.servico = servico;
+    }
+
+   
 
     @Override
     public String toString() {

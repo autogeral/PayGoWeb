@@ -52,6 +52,10 @@ public class Data {
     private List<Pedido> pedidos;
     private List<Cliente> clientes;
     private List<FormaPagamento> formasPagamento;
+    private Android android;
+    private IOS ios;
+    private String app;
+    private String operador;
 
     public int getId() {
         return id;
@@ -197,5 +201,36 @@ public class Data {
         this.formasPagamento = formasPagamento;
     }
 
-    
+    public Android getAndroid() {
+        return android;
+    }
+
+    public void setAndroid(Android android) {
+        this.android = android;
+    }
+
+    public IOS getIos() {
+        return ios;
+    }
+
+    public void setIos(IOS ios) {
+        this.ios = ios;
+    }
+
+    public String getApp() {
+        return app;
+    }
+
+    public void setApp(String app) {
+        this.app = app;
+    }
+
+    public String getOperador() {
+        return operador;
+    }
+
+    public void setOperador(String operador) {
+        this.operador = operador;
+    }
+
 }
