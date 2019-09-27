@@ -25,6 +25,7 @@ package br.com.autogeral.paygo.controlpay.model;
 
 import br.com.autogeral.paygo.controlpay.web.WsHelper;
 import java.util.List;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
 
@@ -35,7 +36,7 @@ import org.junit.Test;
 public class TerminalGetIdTeste {
 
     private static final String NOME = "";
-    private static final boolean SOLICITAR_REFERENCIA = false;
+    private static final boolean SOLICITAR_REFERENCIA = true;
     private static final boolean SOLOCITAR_CLIENTE = false;
     private static final boolean SOLICITAR_OPERADOR = false;
     private static final String IDENTIFICADOR_TEF = "05471416000101";
@@ -64,13 +65,69 @@ public class TerminalGetIdTeste {
     private static final int PESSOA_STATUS_ID = 2;
     private static final int TERMINAL_FISICO_ID = 216;
     private static final String TERMINAL_FISICO_NOME = "Terminal 00";
-    private static final String TERMINAL_FISICO_INSTALACAO_ID = "450137";
     private static final int TERMINAL_PARAMETROS_ID = 12276;
     private static final boolean TERMINAL_PARAMETROS_VALOR = true;
     private static final int PARAMETRO_ID = 80;
     private static final String PARAMETRO_NOME = "permiteVendaParcelada";
     private static final String PARAMETRO_DESCRICAO = "Parâmetro para o vendedor configurar se permite ou não venda parcelada";
     private static final String PARAMETRO_VALOR = null;
+    private static final int TERMINAL_ID = 900;
+    private static final String TERMINAL_NOME = "TERMINAL 900";
+    private static final boolean PESSOA_JURIDICA = true;
+    private static final String INSTALACAO_ID = "450137";
+
+    @Test
+    public void testSerialize() {
+        Terminal ter = new Terminal();
+        ter.setId(TERMINAL_ID);
+        ter.setNome(TERMINAL_NOME);
+        ter.setSolicitarReferencia(SOLICITAR_REFERENCIA);
+        ter.setSolicitarCliente(SOLOCITAR_CLIENTE);
+        ter.setSolicitarOperador(SOLICITAR_OPERADOR);
+        ter.setIdentificadorTef(IDENTIFICADOR_TEF);
+        ter.setRastrearIntervalo(RASTREAR_INTERVALO);
+        ter.setPermiteVendaParcelada(PERMITE_VENDA_PARCELADA);
+        ter.setParcelamentoPadrao(PARCELAMENTO_PADRAO);
+        ter.setPermiteDesconto(PERMITE_DESCONTO);
+        ter.setPermiteAcrescimo(PERMITE_ACRESCIMO);
+        ter.setAguardaTef(AGUARDA_TEF);
+        ter.setHabilitarPDV(HABILITAR_PDV);
+        ter.setVendaPorValor(VENDA_POR_VALOR);
+        ter.setVendaPorProduto(VENDA_POR_PRODUTO);
+        ter.setHabilitarPedidos(HABILITAR_PEDIDOS);
+        ter.setImpressaoAutomatica(IMPRESSAO_AUTOMARICA);
+        ter.setImpressaoAutomatica(IMPRESSAO_AUTOMARICA);
+        ter.setImprimirProdutos(IMPRIMIR_PRODUTOS);
+        ter.setImprimirCupomLojista(IMPRIMIR_CUPOM_LOJISTA);
+        ter.setImprimirCupomCliente(IMPRIMIR_CUPOM_CLIENTE);
+        LoginPessoa pessoa = new LoginPessoa();
+        pessoa.setId(PESSOA_ID);
+        pessoa.setNomeRazaoSocial(NOME_RAZAO_SOCIAL);
+        pessoa.setSobrenomeNomeFantasia(SOBRENOME_NOME_FANTASIA);
+        pessoa.setCpfCnpj(CPF_CNPJ);
+        pessoa.setCpfCnpjFormat(CPF_CNPJ_FORMAT);
+        pessoa.setEmail(EMAIL);
+        PessoaStatus status = new PessoaStatus();
+        status.setNome(PESSOA_STATUS_NOME);
+        status.setId(PESSOA_STATUS_ID);
+        TerminalFisico fisico = new TerminalFisico();
+        fisico.setId(PESSOA_ID);
+        fisico.setNome(NOME);
+        fisico.setInstalacaoId(INSTALACAO_ID);
+        TerminalParametro terminalParametro = new TerminalParametro();
+        terminalParametro.setId(TERMINAL_PARAMETROS_ID);
+        terminalParametro.setValor(TERMINAL_PARAMETROS_VALOR);
+        Parametro parametro = new Parametro();
+        parametro.setId(PARAMETRO_ID);
+        parametro.setNome(PARAMETRO_NOME);
+        parametro.setDescricao(PARAMETRO_DESCRICAO);
+        parametro.setValor(PARAMETRO_VALOR);
+        ter.setId(TERMINAL_ID);
+        ter.setNome(TERMINAL_NOME);
+        pessoa.setPessoaJuridica(PESSOA_JURIDICA);
+        fisico.setInstalacaoId(INSTALACAO_ID);
+
+    }
 
     /* https://docs.controlpay.com.br/?version=latest#50fcf7b2-0b4d-5627-ddba-100a1f15a5e0*/
     @Test
@@ -80,60 +137,60 @@ public class TerminalGetIdTeste {
                 + "    \"data\": \"26/09/2019 17:08:58.8010\",\n"
                 + "    \"terminais\": [\n"
                 + "        {\n"
-                + "            \"id\": 854,\n"
-                + "            \"nome\": \"Terminal 00\",\n"
-                + "            \"solicitarReferencia\": false,\n"
-                + "            \"solicitarCliente\": false,\n"
-                + "            \"solicitarOperador\": false,\n"
-                + "            \"identificadorTef\": \"05471416000101\",\n"
-                + "            \"rastrearIntervalo\": \"\",\n"
-                + "            \"permiteVendaParcelada\": true,\n"
-                + "            \"parcelamentoPadrao\": \"loja\",\n"
-                + "            \"permiteDesconto\": false,\n"
-                + "            \"permiteAcrescimo\": false,\n"
-                + "            \"aguardaTef\": true,\n"
-                + "            \"habilitarPDV\": true,\n"
-                + "            \"vendaPorValor\": true,\n"
-                + "            \"vendaPorProduto\": false,\n"
-                + "            \"habilitarPedidos\": false,\n"
-                + "            \"impressaoAutomatica\": false,\n"
-                + "            \"imprimirProdutos\": false,\n"
-                + "            \"imprimirCupomLojista\": false,\n"
-                + "            \"imprimirCupomCliente\": false,\n"
-                + "            \"impressora\": null,\n"
+                + "            \"id\": " + TERMINAL_ID + ",\n"
+                + "            \"nome\": \"" + TERMINAL_NOME + "\",\n"
+                + "            \"solicitarReferencia\": " + SOLICITAR_REFERENCIA + ",\n"
+                + "            \"solicitarCliente\": " + SOLOCITAR_CLIENTE + ",\n"
+                + "            \"solicitarOperador\": " + SOLICITAR_OPERADOR + ",\n"
+                + "            \"identificadorTef\": \"" + IDENTIFICADOR_TEF + "\",\n"
+                + "            \"rastrearIntervalo\": \"" + RASTREAR_INTERVALO + "\",\n"
+                + "            \"permiteVendaParcelada\": " + PERMITE_VENDA_PARCELADA + ",\n"
+                + "            \"parcelamentoPadrao\": \"" + PARCELAMENTO_PADRAO + "\",\n"
+                + "            \"permiteDesconto\": " + PERMITE_DESCONTO + ",\n"
+                + "            \"permiteAcrescimo\": " + PERMITE_ACRESCIMO + ",\n"
+                + "            \"aguardaTef\": " + AGUARDA_TEF + ",\n"
+                + "            \"habilitarPDV\": " + HABILITAR_PDV + ",\n"
+                + "            \"vendaPorValor\": " + VENDA_POR_VALOR + ",\n"
+                + "            \"vendaPorProduto\": " + VENDA_POR_PRODUTO + ",\n"
+                + "            \"habilitarPedidos\": " + HABILITAR_PEDIDOS + ",\n"
+                + "            \"impressaoAutomatica\": " + IMPRESSAO_AUTOMARICA + ",\n"
+                + "            \"imprimirProdutos\": " + IMPRIMIR_PRODUTOS + ",\n"
+                + "            \"imprimirCupomLojista\": " + IMPRIMIR_CUPOM_LOJISTA + ",\n"
+                + "            \"imprimirCupomCliente\": " + IMPRIMIR_CUPOM_CLIENTE + ",\n"
+                + "            \"impressora\": " + IMPRESSORA + ",\n"
                 + "            \"pessoa\": {\n"
-                + "                \"id\": 8149,\n"
-                + "                \"nomeRazaoSocial\": \"AUTO GERAL AUTOPECAS LTDA\",\n"
-                + "                \"sobrenomeNomeFantasia\": \"AUTO GERAL AUTOPECAS LTDA\",\n"
-                + "                \"pessoaJuridica\": true,\n"
-                + "                \"cpfCnpj\": \"05437537000137\",\n"
-                + "                \"cpfCnpjFormat\": \"05.437.537/0001-37\",\n"
-                + "                \"email\": \"kaique.motta@autogeral.com.br\",\n"
+                + "                \"id\": " + PESSOA_ID + ",\n"
+                + "                \"nomeRazaoSocial\": \"" + NOME_RAZAO_SOCIAL + "\",\n"
+                + "                \"sobrenomeNomeFantasia\": \"" + SOBRENOME_NOME_FANTASIA + "\",\n"
+                + "                \"pessoaJuridica\": " + PESSOA_JURIDICA + ",\n"
+                + "                \"cpfCnpj\": \"" + CPF_CNPJ + "\",\n"
+                + "                \"cpfCnpjFormat\": \"" + CPF_CNPJ_FORMAT + "\",\n"
+                + "                \"email\": \"" + EMAIL + "\",\n"
                 + "                \"pessoaStatus\": {\n"
-                + "                    \"id\": 2,\n"
-                + "                    \"nome\": \"Ativo Vendedor\"\n"
+                + "                    \"id\": " + PESSOA_STATUS_ID + ",\n"
+                + "                    \"nome\": \"" + PESSOA_STATUS_NOME + "\"\n"
                 + "                }\n"
                 + "            },\n"
                 + "            \"terminalFisico\": {\n"
-                + "                \"id\": 216,\n"
-                + "                \"nome\": \"Terminal 00\",\n"
-                + "                \"instalacaoId\": \"450137\",\n"
+                + "                \"id\": " + TERMINAL_FISICO_ID + ",\n"
+                + "                \"nome\": \"" + TERMINAL_FISICO_NOME + "\",\n"
+                + "                \"instalacaoId\": \"" + INSTALACAO_ID + "\",\n"
                 + "                \"pessoa\": {\n"
-                + "                    \"id\": 8149,\n"
-                + "                    \"nomeRazaoSocial\": \"AUTO GERAL AUTOPECAS LTDA\",\n"
-                + "                    \"sobrenomeNomeFantasia\": \"AUTO GERAL AUTOPECAS LTDA\",\n"
-                + "                    \"cpfCnpj\": \"05437537000137\"\n"
+                + "                    \"id\": " + PESSOA_ID + ",\n"
+                + "                    \"nomeRazaoSocial\": \"" + NOME_RAZAO_SOCIAL + "\",\n"
+                + "                    \"sobrenomeNomeFantasia\": \"" + SOBRENOME_NOME_FANTASIA + "\",\n"
+                + "                    \"cpfCnpj\": \"" + CPF_CNPJ + "\"\n"
                 + "                }\n"
                 + "            },\n"
                 + "            \"terminalParametros\": [\n"
                 + "                {\n"
-                + "                    \"id\": 12276,\n"
-                + "                    \"valor\": \"true\",\n"
+                + "                    \"id\": " + TERMINAL_PARAMETROS_ID + ",\n"
+                + "                    \"valor\": \"" + TERMINAL_PARAMETROS_VALOR + "\",\n"
                 + "                    \"parametro\": {\n"
-                + "                        \"id\": 80,\n"
-                + "                        \"nome\": \"permiteVendaParcelada\",\n"
-                + "                        \"descricao\": \"Parâmetro para o vendedor configurar se permite ou não venda parcelada\",\n"
-                + "                        \"valor\": null\n"
+                + "                        \"id\": " + PARAMETRO_ID + ",\n"
+                + "                        \"nome\": \"" + PARAMETRO_NOME + "\",\n"
+                + "                        \"descricao\": \"" + PARAMETRO_DESCRICAO + "\",\n"
+                + "                        \"valor\": " + PARAMETRO_VALOR + "\n"
                 + "                    }\n"
                 + "                },\n"
                 + "                {\n"
@@ -1012,6 +1069,54 @@ public class TerminalGetIdTeste {
 
     private void testeTerminal(List<Terminal> terminal) {
         assertNotNull(terminal);
+        assertEquals(TERMINAL_ID, terminal.get(0).getId());
+        assertEquals(TERMINAL_NOME, terminal.get(0).getNome());
+        assertEquals(SOLICITAR_REFERENCIA, terminal.get(0).isSolicitarReferencia());
+        assertEquals(SOLOCITAR_CLIENTE, terminal.get(0).isSolicitarCliente());
+        assertEquals(SOLICITAR_OPERADOR, terminal.get(0).isSolicitarOperador());
+        assertEquals(IDENTIFICADOR_TEF, terminal.get(0).getIdentificadorTef());
+        assertEquals(RASTREAR_INTERVALO, terminal.get(0).getRastrearIntervalo());
+        assertEquals(PERMITE_VENDA_PARCELADA, terminal.get(0).isPermiteVendaParcelada());
+        assertEquals(PARCELAMENTO_PADRAO, terminal.get(0).getParcelamentoPadrao());
+        assertEquals(PERMITE_DESCONTO, terminal.get(0).isPermiteDesconto());
+        assertEquals(AGUARDA_TEF, terminal.get(0).isAguardaTef());
+        assertEquals(HABILITAR_PDV, terminal.get(0).isHabilitarPDV());
+        assertEquals(VENDA_POR_VALOR, terminal.get(0).isVendaPorValor());
+        assertEquals(VENDA_POR_PRODUTO, terminal.get(0).isVendaPorProduto());
+        assertEquals(HABILITAR_PEDIDOS, terminal.get(0).isHabilitarPedidos());
+        assertEquals(IMPRESSAO_AUTOMARICA, terminal.get(0).isImpressaoAutomatica());
+        assertEquals(IMPRIMIR_PRODUTOS, terminal.get(0).isImprimirProdutos());
+        assertEquals(IMPRIMIR_CUPOM_LOJISTA, terminal.get(0).isImprimirCupomLojista());
+        assertEquals(IMPRIMIR_CUPOM_CLIENTE, terminal.get(0).isImprimirCupomCliente());
+        assertEquals(IMPRESSORA, terminal.get(0).getImpressora());
+        LoginPessoa pessoa = terminal.get(0).getPessoa();
+        assertEquals(PESSOA_ID, pessoa.getId());
+        assertEquals(NOME_RAZAO_SOCIAL, pessoa.getNomeRazaoSocial());
+        assertEquals(SOBRENOME_NOME_FANTASIA, pessoa.getSobrenomeNomeFantasia());
+        assertEquals(PESSOA_JURIDICA, pessoa.isPessoaJuridica());
+        assertEquals(CPF_CNPJ, pessoa.getCpfCnpj());
+        assertEquals(CPF_CNPJ_FORMAT, pessoa.getCpfCnpjFormat());
+        assertEquals(EMAIL, pessoa.getEmail());
+        PessoaStatus pessoaStatus = terminal.get(0).getPessoa().getPessoaStatus();
+        assertEquals(PESSOA_STATUS_ID, pessoaStatus.getId());
+        assertEquals(PESSOA_STATUS_NOME, pessoaStatus.getNome());
+        TerminalFisico terminalFisico = terminal.get(0).getTerminalFisico();
+        assertEquals(TERMINAL_FISICO_ID, terminalFisico.getId());
+        assertEquals(TERMINAL_FISICO_NOME, terminalFisico.getNome());
+        assertEquals(INSTALACAO_ID, terminalFisico.getInstalacaoId());
+        assertEquals(PESSOA_ID, pessoa.getId());
+        assertEquals(NOME_RAZAO_SOCIAL, pessoa.getNomeRazaoSocial());
+        assertEquals(SOBRENOME_NOME_FANTASIA, pessoa.getSobrenomeNomeFantasia());
+        assertEquals(CPF_CNPJ, pessoa.getCpfCnpj());
+        TerminalParametro terminalParametro = terminal.get(0).getTerminalParametros().get(0);
+        assertEquals(TERMINAL_PARAMETROS_ID, terminalParametro.getId());
+        assertEquals(TERMINAL_PARAMETROS_VALOR, terminalParametro.isValor());
+        Parametro parametro = terminal.get(0).getTerminalParametros().get(0).getParametro();
+        assertEquals(PARAMETRO_ID, parametro.getId());
+        assertEquals(PARAMETRO_NOME, parametro.getNome());
+        assertEquals(PARAMETRO_DESCRICAO, parametro.getDescricao());
+        assertEquals(PARAMETRO_VALOR, parametro.getValor());
+
     }
 
 }

@@ -46,6 +46,7 @@ public class Data {
     private ClienteCartao clienteCartao;
     private Cliente cliente;
     private IntencaoImpressao intencaoImpressao;
+    private Terminal terminal;
     private List<Terminal> terminais;
     private List<IntencaoVenda> intencoesVendas;
     private List<Produto> produtos;
@@ -127,6 +128,14 @@ public class Data {
 
     public void setPedido(Pedido pedido) {
         this.pedido = pedido;
+    }
+
+    public Terminal getTerminal() {
+        return terminal;
+    }
+
+    public void setTerminal(Terminal terminal) {
+        this.terminal = terminal;
     }
 
     public ClienteCartao getClienteCartao() {

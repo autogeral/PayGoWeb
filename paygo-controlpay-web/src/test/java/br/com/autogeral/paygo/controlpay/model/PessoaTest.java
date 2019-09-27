@@ -20,7 +20,6 @@ public class PessoaTest {
     public static final String TELEFONE_1 = "(11)1111-1111";
     public static final String TELEFONE_2 = "(22)2222-2222";
     public static final String URL_FOTO = "UrlDaFoto.com";
-
     public static final String TIPO_LOGRADOURO = "Rua";
     public static final String LOGRADOURO = "Nome da rua";
     public static final String NUMERO = "111";
@@ -31,6 +30,8 @@ public class PessoaTest {
     public static final String UF = "SP";
     public static final String FOTO_NOME = "Nome da foto";
     public static final String FOTO_BASE_64 = "UrlDaFotoBase64";
+    public static final int PESSOA_STATUS_ID = 1;
+    public static final String PESSOA_STATUS_NOME = null;
 
     @Test
     public void test_serialize() {
@@ -69,27 +70,27 @@ public class PessoaTest {
     public void test_parse_data() {
         String toParse = "{\n"
                 + "    \"pessoa\":{\n"
-                + "        \"Id\": \"1234\",\n"
-                + "        \"PessoaJuridica\": \"true\",\n"
-                + "        \"NomeRazaoSocial\": \"Nome ou Razão Social\",\n"
-                + "        \"SobrenomeNomeFantasia\": \"Sobrenome ou Nome fantasia\",\n"
-                + "        \"CpfCnpj\": \"12345678909\",\n"
-                + "        \"Email\": \"cadastro@mailinator.com\",\n"
-                + "        \"Telefone1\": \"(11)1111-1111\",\n"
-                + "        \"Telefone2\": \"(22)2222-2222\",\n"
-                + "        \"Foto\": \"UrlDaFoto.com\",\n"
+                + "        \"Id\": \"" + PESSOA_ID + "\",\n"
+                + "        \"PessoaJuridica\": \"" + PESSOA_JURIDICA + "\",\n"
+                + "        \"NomeRazaoSocial\": \"" + NOME_RAZAO_SOCIAL + "\",\n"
+                + "        \"SobrenomeNomeFantasia\": \"" + SOBRENOME_NOMEFANTASIA + "\",\n"
+                + "        \"CpfCnpj\": \"" + CPF_CNPJ + "\",\n"
+                + "        \"Email\": \"" + E_MAIL + "\",\n"
+                + "        \"Telefone1\": \"" + TELEFONE_1 + "\",\n"
+                + "        \"Telefone2\": \"" + TELEFONE_2 + "\",\n"
+                + "        \"Foto\": \"" + URL_FOTO + "\",\n"
                 + "        \"Endereco\": {\n"
-                + "            \"TipoLogradouro\" :\"Rua\",\n"
-                + "            \"Logradouro\" :\"Nome da rua\",\n"
-                + "            \"Numero\" :\"111\",\n"
-                + "            \"Complemento\" :\"apto 11\",\n"
-                + "            \"Cep\" :\"00000-000\",\n"
-                + "            \"Bairro\" :\"Nome do bairro\",\n"
-                + "            \"Cidade\" :\"Cidade\",\n"
-                + "            \"Uf\" :\"SP\"\n"
+                + "            \"TipoLogradouro\" :\"" + TIPO_LOGRADOURO + "\",\n"
+                + "            \"Logradouro\" :\"" + LOGRADOURO + "\",\n"
+                + "            \"Numero\" :\"" + NUMERO + "\",\n"
+                + "            \"Complemento\" :\"" + COMPLEMENTO + "\",\n"
+                + "            \"Cep\" :\"" + CEP + "\",\n"
+                + "            \"Bairro\" :\"" + BAIRRO + "\",\n"
+                + "            \"Cidade\" :\"" + CIDADE + "\",\n"
+                + "            \"Uf\" :\"" + UF + "\"\n"
                 + "        },\n"
-                + "        \"fotoNome\":\"Nome da foto\",\n"
-                + "        \"fotoBase64\":\"UrlDaFotoBase64\"\n"
+                + "        \"fotoNome\":\"" + FOTO_NOME + "\",\n"
+                + "        \"fotoBase64\":\"" + FOTO_BASE_64 + "\"\n"
                 + "    }\n"
                 + "}   ";
 
@@ -102,29 +103,55 @@ public class PessoaTest {
     }
 
     @Test
+    public void testParsePessoa() {
+        String toParse = "{\n"
+                + "  \"pessoa\": {\n"
+                + "    \"id\": " + PESSOA_ID + ",\n"
+                + "    \"pessoaJuridica\": " + PESSOA_JURIDICA + ",\n"
+                + "    \"nomeRazaoSocial\": \"" + NOME_RAZAO_SOCIAL + "\",\n"
+                + "    \"sobrenomeNomeFantasia\": \"" + SOBRENOME_NOMEFANTASIA + "\",\n"
+                + "    \"cpfCnpj\": \"" + CPF_CNPJ + "\",\n"
+                + "    \"cpfCnpjFormat\": \"" + CPF_CNPJ_FORMATADO + "\",\n"
+                + "    \"email\": \"" + E_MAIL + "\",\n"
+                + "    \"telefone1\": \"" + TELEFONE_1 + "\",\n"
+                + "    \"telefone2\": \"" + TELEFONE_2 + "\",\n"
+                + "    \"pessoaStatus\": {\n"
+                + "      \"id\": " + PESSOA_STATUS_ID + ",\n"
+                + "      \"nome\": " + PESSOA_STATUS_NOME + "\n"
+                + "    }\n"
+                + "  }\n"
+                + "}";
+        Data d = WsHelper.unmarshal(toParse, Data.class);
+        assertNotNull(d);
+        assertNotNull(d.getPessoa());
+        Pessoa p = d.getPessoa();
+        testPessoa(p);
+    }
+
+    @Test
     public void test_parse() {
         String toParse = "{\n"
                 + "  \"Id\": \"" + PESSOA_ID + "\",\n"
-                + "  \"PessoaJuridica\": \"true\",\n"
-                + "  \"NomeRazaoSocial\": \"Nome ou Razão Social\",\n"
-                + "  \"SobrenomeNomeFantasia\": \"Sobrenome ou Nome fantasia\",\n"
+                + "  \"PessoaJuridica\": \"" + PESSOA_JURIDICA + "\",\n"
+                + "  \"NomeRazaoSocial\": \"" + NOME_RAZAO_SOCIAL + "\",\n"
+                + "  \"SobrenomeNomeFantasia\": \"" + SOBRENOME_NOMEFANTASIA + "\",\n"
                 + "  \"CpfCnpj\": \"" + CPF_CNPJ + "\",\n"
-                + "  \"Email\": \"cadastro@mailinator.com\",\n"
-                + "  \"Telefone1\": \"(11)1111-1111\",\n"
-                + "  \"Telefone2\": \"(22)2222-2222\",\n"
-                + "  \"Foto\": \"UrlDaFoto.com\",\n"
+                + "  \"Email\": \"" + E_MAIL + "\",\n"
+                + "  \"Telefone1\": \"" + TELEFONE_1 + "\",\n"
+                + "  \"Telefone2\": \"" + TELEFONE_2 + "\",\n"
+                + "  \"Foto\": \"" + URL_FOTO + "\",\n"
                 + "  \"Endereco\": {\n"
-                + "       \"TipoLogradouro\" :\"Rua\",\n"
-                + "       \"Logradouro\" :\"Nome da rua\",\n"
-                + "       \"Numero\" :\"111\",\n"
-                + "       \"Complemento\" :\"apto 11\",\n"
-                + "       \"Cep\" :\"00000-000\",\n"
-                + "       \"Bairro\" :\"Nome do bairro\",\n"
-                + "       \"Cidade\" :\"Cidade\",\n"
-                + "       \"Uf\" :\"SP\"\n"
+                + "       \"TipoLogradouro\" :\"" + TIPO_LOGRADOURO + "\",\n"
+                + "       \"Logradouro\" :\"" + LOGRADOURO + "\",\n"
+                + "       \"Numero\" :\"" + NUMERO + "\",\n"
+                + "       \"Complemento\" :\"" + COMPLEMENTO + "\",\n"
+                + "       \"Cep\" :\"" + CEP + "\",\n"
+                + "       \"Bairro\" :\"" + BAIRRO + "\",\n"
+                + "       \"Cidade\" :\"" + CIDADE + "\",\n"
+                + "       \"Uf\" :\"" + UF + "\"\n"
                 + "  },\n"
-                + "  \"FotoNome\":\"Nome da foto\",\n"
-                + "  \"FotoBase64\":\"UrlDaFotoBase64\"\n"
+                + "  \"FotoNome\":\"" + FOTO_NOME + "\",\n"
+                + "  \"FotoBase64\":\"" + FOTO_BASE_64 + "\"\n"
                 + "}";
 
         Pessoa p = WsHelper.unmarshal(toParse, Pessoa.class);
@@ -154,6 +181,21 @@ public class PessoaTest {
         assertEquals(UF, e.getUf());
         assertEquals(FOTO_NOME, p.getFotoNome());
         assertEquals(FOTO_BASE_64, p.getFotoBase64());
+
+    }
+
+    private void testPessoa(Pessoa p) {
+        assertNotNull(p);
+        assertEquals(PESSOA_ID, p.getId());
+        assertEquals(PESSOA_JURIDICA, p.getPessoaJuridica());
+        assertEquals(NOME_RAZAO_SOCIAL, p.getNomeRazaoSocial());
+        assertEquals(SOBRENOME_NOMEFANTASIA, p.getSobrenomeNomeFantasia());
+        assertEquals(CPF_CNPJ, p.getCpfCnpj());
+        assertEquals(E_MAIL, p.getEmail());
+        assertEquals(TELEFONE_1, p.getTelefone1());
+        assertEquals(TELEFONE_2, p.getTelefone2());
+        assertEquals(PESSOA_STATUS_ID, p.getPessoaStatus().getId());
+        assertEquals(PESSOA_STATUS_NOME, p.getPessoaStatus().getNome());
 
     }
 

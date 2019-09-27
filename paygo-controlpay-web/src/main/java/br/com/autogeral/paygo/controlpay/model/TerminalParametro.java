@@ -21,17 +21,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package br.com.autogeral.paygo.controlpay.model;
 
 /**
  * 10/06/2019 08:30:01
+ *
  * @author Murilo Moraes Tuvani
  */
 public class TerminalParametro {
 
     private int id;
-    private String valor;
+    private boolean valor;
     private Parametro parametro;
 
     public int getId() {
@@ -42,11 +42,11 @@ public class TerminalParametro {
         this.id = id;
     }
 
-    public String getValor() {
+    public boolean isValor() {
         return valor;
     }
 
-    public void setValor(String valor) {
+    public void setValor(boolean valor) {
         this.valor = valor;
     }
 
@@ -62,5 +62,5 @@ public class TerminalParametro {
     public String toString() {
         return "TerminalParametro{id=" + id + ", valor=" + valor + ", parametro=" + parametro + '}';
     }
-    
+
 }

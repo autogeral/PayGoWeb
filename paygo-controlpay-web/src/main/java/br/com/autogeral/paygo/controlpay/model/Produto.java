@@ -27,6 +27,16 @@ public class Produto {
     private String fotoThumbnail;
     private String produtoTipo;
     private String ean;
+    private String ncm;
+    private String cfop;
+    private String extipi;
+    private String origem;
+    private String unidadeTributaria;
+    private int quantidadeTributaria;
+    private String unidadeComercial;
+    private int quantidadeComercial;
+    private String informacoesComplementares;
+    private String produtoImposto;
     private ProdutoStatus produtoStatus;
     private String fotoNome;
     private String fotBase64;
@@ -88,6 +98,86 @@ public class Produto {
 
     public void setReferencia(String referencia) {
         this.referencia = referencia;
+    }
+
+    public String getCfop() {
+        return cfop;
+    }
+
+    public void setCfop(String cfop) {
+        this.cfop = cfop;
+    }
+
+    public String getNcm() {
+        return ncm;
+    }
+
+    public void setNcm(String ncm) {
+        this.ncm = ncm;
+    }
+
+    public String getExtipi() {
+        return extipi;
+    }
+
+    public void setExtipi(String extipi) {
+        this.extipi = extipi;
+    }
+
+    public String getOrigem() {
+        return origem;
+    }
+
+    public void setOrigem(String origem) {
+        this.origem = origem;
+    }
+
+    public String getUnidadeTributaria() {
+        return unidadeTributaria;
+    }
+
+    public void setUnidadeTributaria(String unidadeTributaria) {
+        this.unidadeTributaria = unidadeTributaria;
+    }
+
+    public int getQuantidadeTributaria() {
+        return quantidadeTributaria;
+    }
+
+    public void setQuantidadeTributaria(int quantidadeTributaria) {
+        this.quantidadeTributaria = quantidadeTributaria;
+    }
+
+    public String getUnidadeComercial() {
+        return unidadeComercial;
+    }
+
+    public void setUnidadeComercial(String unidadeComercial) {
+        this.unidadeComercial = unidadeComercial;
+    }
+
+    public int getQuantidadeComercial() {
+        return quantidadeComercial;
+    }
+
+    public void setQuantidadeComercial(int quantidadeComercial) {
+        this.quantidadeComercial = quantidadeComercial;
+    }
+
+    public String getInformacoesComplementares() {
+        return informacoesComplementares;
+    }
+
+    public void setInformacoesComplementares(String informacoesComplementares) {
+        this.informacoesComplementares = informacoesComplementares;
+    }
+
+    public String getProdutoImposto() {
+        return produtoImposto;
+    }
+
+    public void setProdutoImposto(String produtoImposto) {
+        this.produtoImposto = produtoImposto;
     }
 
     public void setDescricao(String descricao) {
@@ -189,8 +279,6 @@ public class Produto {
     public void setServico(boolean servico) {
         this.servico = servico;
     }
-
-   
 
     @Override
     public String toString() {

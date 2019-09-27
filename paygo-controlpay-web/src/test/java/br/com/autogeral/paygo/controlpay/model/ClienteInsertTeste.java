@@ -20,19 +20,23 @@ public class ClienteInsertTeste {
     private static final int PESSOA_ID = 2;
     private static final String TIPO_LOGRADOURO = "Rua";
     private static final String LOGRADOURO = "Fidêncio Ramos";
+    private static final String TELEFONE = null;
+    private static final String TELEFONE1 = "(22)2222-2222";
+    private static final String TELEFONE2 = "(22)2222-2222";
     private static final String NUMERO = "100";
     private static final String COMPLEMENTO = "CJ-2";
     private static final String CEP = "04551-010";
     private static final String BAIRRO = "Vila olímpia";
     private static final String CIDADE = "São Paulo";
     private static final String UF = "SP";
-    private static final String  PESSOA_NOME_RAZAO_SOCIAL = "PayGo Pagamentos";
-    private static final String  PESSOA_SOBRENOME_NOME_FANTASIA = "PayGo Pagamentos";
+    private static final String PESSOA_NOME_RAZAO_SOCIAL = "PayGo Pagamentos";
+    private static final String PESSOA_SOBRENOME_NOME_FANTASIA = "PayGo Pagamentos";
     private static final String ENDERECO_LATITUDE = null;
     private static final String ENDERECO_LONGITUDE = null;
-    private static final String ENDECO_GEO_LOCALIZACAO =null;
- 
-  
+    private static final String ENDECO_GEO_LOCALIZACAO = null;
+    private static final String CPF_CNPJ_FORMAT = "726.455.565-82";
+    private static final int PESSOA_STATUS_ID = 1;
+    private static final String PESSOA_STATUS_NOME = null;
 
     @Test
     public void testSerialize() {
@@ -44,6 +48,7 @@ public class ClienteInsertTeste {
         cliente.setReferencia(REFERENCIA);
         cliente.setPessoaJuridica(PESSOA_JURIDICA);
         cliente.setPessoaId(PESSOA_ID);
+        cliente.setTelefone(TELEFONE);
         Endereco endereco = new Endereco();
         endereco.setTipoLogradouro(TIPO_LOGRADOURO);
         endereco.setLogradouro(LOGRADOURO);
@@ -65,22 +70,22 @@ public class ClienteInsertTeste {
     @Test
     public void testParse() {
         String toParse = "{"
-                + "  \"id\":1123,\n"
-                + "  \"cpfCnpj\":\"05.471.416/0001-01\",\n"
-                + "  \"nomeRazaoSocial\": \"Cadastro Cliente\",\n"
-                + "  \"email\":\"cliente@mailinator.com\",\n"
-                + "  \"referencia\":\"Cliente\",\n"
-                + "  \"pessoaJuridica\":true,\n"
-                + "  \"pessoaId\":\"2\",\n"
+                + "  \"id\":" + ID + ",\n"
+                + "  \"cpfCnpj\":\"" + CPF_CNPJ + "\",\n"
+                + "  \"nomeRazaoSocial\": \"" + NOME_RAZAO_SOCIAL + "\",\n"
+                + "  \"email\":\"" + EMAIL + "\",\n"
+                + "  \"referencia\":\"" + REFERENCIA + "\",\n"
+                + "  \"pessoaJuridica\":" + PESSOA_JURIDICA + ",\n"
+                + "  \"pessoaId\":\"" + PESSOA_ID + "\",\n"
                 + "  \"endereco\": {\n"
-                + "            \"TipoLogradouro\" :\"Rua\",\n"
-                + "            \"Logradouro\" :\"Fidêncio Ramos\",\n"
-                + "            \"Numero\" :\"100\",\n"
-                + "            \"Complemento\" :\"CJ-2\",\n"
-                + "            \"Cep\" :\"04551-010\",\n"
-                + "            \"Bairro\" :\"Vila olímpia\",\n"
-                + "            \"Cidade\" :\"São Paulo\",\n"
-                + "            \"Uf\" :\"SP\"\n"
+                + "            \"TipoLogradouro\" :\"" + TIPO_LOGRADOURO + "\",\n"
+                + "            \"Logradouro\" :\"" + LOGRADOURO + "\",\n"
+                + "            \"Numero\" :\"" + NUMERO + "\",\n"
+                + "            \"Complemento\" :\"" + COMPLEMENTO + "\",\n"
+                + "            \"Cep\" :\"" + CEP + "\",\n"
+                + "            \"Bairro\" :\"" + BAIRRO + "\",\n"
+                + "            \"Cidade\" :\"" + CIDADE + "\",\n"
+                + "            \"Uf\" :\"" + UF + "\"\n"
                 + "        }\n"
                 + "}";
 
@@ -90,38 +95,78 @@ public class ClienteInsertTeste {
     }
 
     @Test
+    public void testPessoaData() {
+        String toParse = "{\n"
+                + "  \"pessoa\": {\n"
+                + "    \"id\": " + ID + ",\n"
+                + "    \"pessoaJuridica\": " + PESSOA_JURIDICA + ",\n"
+                + "    \"nomeRazaoSocial\": \"" + NOME_RAZAO_SOCIAL + "\",\n"
+                + "    \"sobrenomeNomeFantasia\": \"" + PESSOA_SOBRENOME_NOME_FANTASIA + "\",\n"
+                + "    \"cpfCnpj\": \"" + CPF_CNPJ + "\",\n"
+                + "    \"cpfCnpjFormat\": \"" + CPF_CNPJ_FORMAT + "\",\n"
+                + "    \"email\": \"" + EMAIL + "\",\n"
+                + "    \"telefone1\": \"" + TELEFONE1 + "\",\n"
+                + "    \"telefone2\": \"" + TELEFONE2 + "\",\n"
+                + "    \"pessoaStatus\": {\n"
+                + "      \"id\": " + PESSOA_STATUS_ID + ",\n"
+                + "      \"nome\": " + PESSOA_STATUS_NOME + "\n"
+                + "    }\n"
+                + "  }\n"
+                + "}";
+        Data d = WsHelper.unmarshal(toParse, Data.class);
+        assertNotNull(d);
+        Pessoa p = d.getPessoa();
+        testPessoaParse(p);
+    }
+
+    public void testPessoaParse(Pessoa p) {
+        assertNotNull(p);
+        assertEquals(ID, p.getId());
+        assertEquals(NOME_RAZAO_SOCIAL, p.getNomeRazaoSocial());
+        assertEquals(PESSOA_SOBRENOME_NOME_FANTASIA, p.getSobrenomeNomeFantasia());
+        assertEquals(CPF_CNPJ, p.getCpfCnpj());
+        assertEquals(CPF_CNPJ_FORMAT, p.getCpfCnpjFormat());
+        assertEquals(EMAIL, p.getEmail());
+        assertEquals(TELEFONE1, p.getTelefone1());
+        assertEquals(TELEFONE2, p.getTelefone2());
+        assertEquals(PESSOA_STATUS_ID, p.getPessoaStatus().getId());
+        assertEquals(PESSOA_STATUS_NOME, p.getPessoaStatus().getNome());
+
+    }
+
+    @Test
     public void testeParseData() {
         String toParse = "{\n"
                 + "    \"data\": \"18/09/2019 17:03:46.0110\",\n"
                 + "    \"cliente\": {\n"
-                + "        \"id\": 1123,\n"
-                + "        \"cpfCnpj\": \"05.471.416/0001-01\",\n"
-                + "        \"nomeRazaoSocial\": \"Cadastro Cliente\",\n"
-                + "        \"email\": \"cliente@mailinator.com\",\n"
-                + "        \"telefone\": null,\n"
-                + "        \"referencia\": \"Cliente\",\n"
-                + "        \"pessoaJuridica\": true,\n"
+                + "        \"id\": " + ID + ",\n"
+                + "        \"cpfCnpj\": \"" + CPF_CNPJ + "\",\n"
+                + "        \"nomeRazaoSocial\": \"" + NOME_RAZAO_SOCIAL + "\",\n"
+                + "        \"email\": \"" + EMAIL + "\",\n"
+                + "        \"telefone\": " + TELEFONE + ",\n"
+                + "        \"referencia\": \"" + REFERENCIA + "\",\n"
+                + "        \"pessoaJuridica\": " + PESSOA_JURIDICA + ",\n"
                 + "        \"pessoa\": {\n"
-                + "            \"id\": 2,\n"
-                + "            \"nomeRazaoSocial\": \"PayGo Pagamentos\",\n"
-                + "            \"sobrenomeNomeFantasia\": \"PayGo Pagamentos\"\n"
+                + "            \"id\": " + PESSOA_ID + ",\n"
+                + "            \"nomeRazaoSocial\": \"" + PESSOA_NOME_RAZAO_SOCIAL + "\",\n"
+                + "            \"sobrenomeNomeFantasia\": \"" + PESSOA_SOBRENOME_NOME_FANTASIA + "\"\n"
                 + "        },\n"
                 + "        \"endereco\": {\n"
-                + "            \"tipoLogradouro\": \"Rua\",\n"
-                + "            \"logradouro\": \"Fidêncio Ramos\",\n"
-                + "            \"numero\": \"100\",\n"
-                + "            \"complemento\": \"CJ-2\",\n"
-                + "            \"cep\": \"04551-010\",\n"
-                + "            \"bairro\": \"Vila olímpia\",\n"
-                + "            \"cidade\": \"São Paulo\",\n"
-                + "            \"uf\": \"SP\",\n"
-                + "            \"latitude\": null,\n"
-                + "            \"longitude\": null,\n"
-                + "            \"geoLocalizacao\": null\n"
+                + "            \"tipoLogradouro\": \"" + TIPO_LOGRADOURO + "\",\n"
+                + "            \"logradouro\": \"" + LOGRADOURO + "\",\n"
+                + "            \"numero\": \"" + NUMERO + "\",\n"
+                + "            \"complemento\": \"" + COMPLEMENTO + "\",\n"
+                + "            \"cep\": \"" + CEP + "\",\n"
+                + "            \"bairro\": \"" + BAIRRO + "\",\n"
+                + "            \"cidade\": \"" + CIDADE + "\",\n"
+                + "            \"uf\": \"" + UF + "\",\n"
+                + "            \"latitude\": " + ENDERECO_LATITUDE + ",\n"
+                + "            \"longitude\": " + ENDERECO_LONGITUDE + ",\n"
+                + "            \"geoLocalizacao\": " + ENDECO_GEO_LOCALIZACAO + "\n"
                 + "        }\n"
                 + "    }\n"
                 + "}";
-        
+
         Data d = WsHelper.unmarshal(toParse, Data.class);
         assertNotNull(d);
         Cliente c = d.getCliente();
@@ -151,12 +196,14 @@ public class ClienteInsertTeste {
         assertEquals(UF, endereco.getUf());
 
     }
-    private void tesParsetData(Cliente c){
+
+    private void tesParsetData(Cliente c) {
         assertNotNull(c);
         assertEquals(ID, c.getId());
         assertEquals(CPF_CNPJ, c.getCpfCnpj());
         assertEquals(NOME_RAZAO_SOCIAL, c.getNomeRazaoSocial());
         assertEquals(EMAIL, c.getEmail());
+        assertEquals(TELEFONE, c.getTelefone());
         assertEquals(REFERENCIA, c.getReferencia());
         assertEquals(PESSOA_JURIDICA, c.isPessoaJuridica());
         Pessoa pessoa = new Pessoa();
@@ -174,6 +221,9 @@ public class ClienteInsertTeste {
         assertEquals(BAIRRO, endereco.getBairro());
         assertEquals(CIDADE, endereco.getCidade());
         assertEquals(UF, endereco.getUf());
+        assertEquals(ENDERECO_LATITUDE, endereco.getLatitude());
+        assertEquals(ENDERECO_LONGITUDE, endereco.getLongitude());
+        assertEquals(ENDECO_GEO_LOCALIZACAO, endereco.getGeoLocalizacao());
 
     }
 }
