@@ -31,6 +31,7 @@ public class ClienteCartao {
 
     private int id;
     private boolean preferencial;
+    private String clienteId;
     private Cliente cliente;
     private String dataAtualizacao;
     private String dataInsercao;
@@ -42,7 +43,7 @@ public class ClienteCartao {
     private int status;
     private String statusDescricao;
     private String urlCapturarDadosCartao;
-
+    
     public int getId() {
         return id;
     }
@@ -53,6 +54,14 @@ public class ClienteCartao {
 
     public boolean isPreferencial() {
         return preferencial;
+    }
+
+    public String getClienteId() {
+        return clienteId;
+    }
+
+    public void setClienteId(String clienteId) {
+        this.clienteId = clienteId;
     }
 
     public void setPreferencial(boolean preferencial) {

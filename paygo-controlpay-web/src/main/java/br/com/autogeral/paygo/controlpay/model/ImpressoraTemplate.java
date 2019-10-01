@@ -35,7 +35,7 @@ public class ImpressoraTemplate {
     private int quantidadeLinhasPre;
     private int quantidadeLinhasPos;
     private String comandoPre;
-    private int comandoPos;
+    private String comandoPos;
     private IntencaoImpressaoStatus intencaoImpressaoStatus;
 
     public int getId() {
@@ -86,11 +86,11 @@ public class ImpressoraTemplate {
         this.comandoPre = comandoPre;
     }
 
-    public int getComandoPos() {
+    public String getComandoPos() {
         return comandoPos;
     }
 
-    public void setComandoPos(int comandoPos) {
+    public void setComandoPos(String comandoPos) {
         this.comandoPos = comandoPos;
     }
 

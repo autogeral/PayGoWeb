@@ -22,7 +22,7 @@ public class CancelamentoVenda {
             IntencaoVenda iv = new IntencaoVenda();
             VendaCancelamento cancelamento = new VendaCancelamento();
             
-            cancelamento.setIntencaoVendaId("73343");
+            cancelamento.setIntencaoVendaId("73509");
             cancelamento.setAguardarTefIniciarTransacao(true);
             cancelamento.setSenhaTecnica(ControlPayConfig.getConfig().getSenhaTecnica());
             cancelamento.setTerminalId("900");

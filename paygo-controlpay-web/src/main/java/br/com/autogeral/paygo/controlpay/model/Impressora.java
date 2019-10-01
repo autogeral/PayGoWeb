@@ -30,15 +30,15 @@ package br.com.autogeral.paygo.controlpay.model;
  */
 public class Impressora {
 
-    private String id;
+    private int id;
     private String nome;
     private ImpressoraTemplate impressoraTemplate;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

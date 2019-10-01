@@ -69,16 +69,16 @@ public class ClientePesssoaIdTeste {
                 + "    \"data\": \"20/09/2019 15:59:41.1386\",\n"
                 + "    \"clientes\": [\n"
                 + "        {\n"
-                + "            \"id\": 423,\n"
-                + "            \"cpfCnpj\": \"773.152.840-52\",\n"
-                + "            \"nomeRazaoSocial\": \"Teste\",\n"
-                + "            \"email\": \"testerecorrencia@mailinator.com\",\n"
-                + "            \"telefone\": null,\n"
-                + "            \"referencia\": \"Usuário 123\",\n"
-                + "            \"pessoaJuridica\": false,\n"
+                + "            \"id\": "+ID+",\n"
+                + "            \"cpfCnpj\": \""+CPF_CNPJ+"\",\n"
+                + "            \"nomeRazaoSocial\": \""+NOME_RAZAO_SOCIAL+"\",\n"
+                + "            \"email\": \""+EMAIL+"\",\n"
+                + "            \"telefone\": "+TELEFONE+",\n"
+                + "            \"referencia\": \""+REFERENCIA+"\",\n"
+                + "            \"pessoaJuridica\": "+PESSOA_JURIDICA+",\n"
                 + "            \"pessoa\": {\n"
-                + "                \"id\": 1,\n"
-                + "                \"nomeRazaoSocial\": \"2ALL\",\n"
+                + "                \"id\": "+PESSOA_ID+",\n"
+                + "                \"nomeRazaoSocial\": \""+NOME_RAZAO_SOCIAL+"\",\n"
                 + "                \"sobrenomeNomeFantasia\": \"2ALL meios de pagamentos LTDA\"\n"
                 + "            },\n"
                 + "            \"endereco\": null\n"
@@ -105,7 +105,7 @@ public class ClientePesssoaIdTeste {
         assertEquals(PESSOA_JURIDICA, c.isPessoaJuridica());
         Pessoa pessoa = new Pessoa();
         assertEquals(PESSOA_ID, c.getPessoa().getId());
-        assertEquals(PESSOA_NOME_RAZAO_SOCIAL, c.getPessoa().getNomeRazaoSocial());
+        assertEquals(NOME_RAZAO_SOCIAL, c.getPessoa().getNomeRazaoSocial());
         assertEquals(PESSOA_SOBRENOME_NOME_FANTASIA, c.getPessoa().getSobrenomeNomeFantasia());
 
     }

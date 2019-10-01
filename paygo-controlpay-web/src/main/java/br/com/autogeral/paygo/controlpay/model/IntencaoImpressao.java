@@ -38,6 +38,7 @@ public class IntencaoImpressao {
     private String terminalId;
     private boolean aguardarClienteIniciarImpressao = true;
     private Impressora impressora;
+    private IntencaoImpressaoStatus intencaoImpressaoStatus;
 
     public int getId() {
         return id;
@@ -109,6 +110,14 @@ public class IntencaoImpressao {
 
     public void setImpressora(Impressora impressora) {
         this.impressora = impressora;
+    }
+
+    public IntencaoImpressaoStatus getIntencaoImpressaoStatus() {
+        return intencaoImpressaoStatus;
+    }
+
+    public void setIntencaoImpressaoStatus(IntencaoImpressaoStatus intencaoImpressaoStatus) {
+        this.intencaoImpressaoStatus = intencaoImpressaoStatus;
     }
 
 }

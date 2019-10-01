@@ -38,7 +38,7 @@ public class PesquisarPedidos {
         
         PedidoGetByFiltros pgf = new PedidoGetByFiltros();
         Pedido pedido = new Pedido();
-        pedido.setPedidoId(2364);
+        pedido.setPedidoId(2478);
    
         Data ped = pgf.get(pedido);
     }
