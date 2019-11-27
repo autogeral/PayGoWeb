@@ -55,7 +55,6 @@ public class RoteiroHomologacao {
     public static void main(String[] args) {
         try {
 
-            AuxiliarTeste aux = new AuxiliarTeste();
             IntencaoImpressao ii = new IntencaoImpressao();
             Pedido p = new Pedido();
             LoginLogin ll = new LoginLogin();
@@ -72,11 +71,10 @@ public class RoteiroHomologacao {
                     venda.setTerminalId(Integer.toString(terminalId));
                     venda.setAdquirente("cielo");
                     venda.setReferencia("REF 1234");
-
-                    venda.setPedidoId(2478);
+                    venda.setPedidoId(2775);
                     venda.setFormaPagamentoId(21);
                     venda.setQuantidadeParcelas(1);
-                    venda.setValorTotalVendido(200);
+                    venda.setValorTotalVendido(100);
                     VendaVender vv = new VendaVender();
                     Data vendaData = vv.vender(venda);
                     

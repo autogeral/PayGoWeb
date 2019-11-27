@@ -37,11 +37,9 @@ public class IntencaoImpressaoGetId {
     public static void main(String[] args) throws IOException {
 
         
-            IntencaoImpressaoId   intencaoImpressaoID = new IntencaoImpressaoId();
-            IntencaoImpressao   intencaoImpressao = new IntencaoImpressao();
-            
+            IntencaoImpressaoId intencaoImpressaoID = new IntencaoImpressaoId();
+            IntencaoImpressao intencaoImpressao = new IntencaoImpressao();
             intencaoImpressao.setIntencaoImpressao(1);
-            
             Data imprimirGetId = intencaoImpressaoID.imprimi(intencaoImpressao);
             
     }

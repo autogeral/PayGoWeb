@@ -1,3 +1,5 @@
+package br.com.autogeral.paygo.controlpay.impressao;
+
 
 import java.awt.print.PrinterJob;
 import java.io.ByteArrayInputStream;
@@ -79,7 +81,7 @@ public class TesteImpressora {
         }
     }
 
-    public static void main(String[] args) throws PrintException, IOException {
+    public void prrenche(int intencaoVendaId )throws PrintException, IOException {
         TesteImpressora ti = new TesteImpressora();
         PrintService services[] = PrinterJob.lookupPrintServices();
         for (PrintService service : services) {
@@ -87,7 +89,7 @@ public class TesteImpressora {
             if (service.getName().startsWith("MP-")) {
 
                 IntencaoVenda iv = new IntencaoVenda();
-                iv.setId(73509);
+                iv.setId(intencaoVendaId);
                 IntencaoVendaGet ivg = new IntencaoVendaGet();
                 IntencaoVendaPesquisa ivp = new IntencaoVendaPesquisa(iv);
                 Data data = ivg.get(ivp);
@@ -114,9 +116,7 @@ public class TesteImpressora {
                 System.out.println("Printando a lista : ");
                 System.out.println(listaComprovantes);
 //                byte[] bytes = convertObjectToByteArray(listaComprovantes);
-
             }
-
         }
 
 //    public static byte[] convertObjectToByteArray(Object object) {

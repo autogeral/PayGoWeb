@@ -95,6 +95,8 @@ public class DataTest {
     /**
      * Test of getHttpStatus method, of class Data.
      */
+    
+  /*
     @Test
     public void test_parse_getTerminalByPessoaId() {
         String toParse = "{\n"
@@ -568,8 +570,9 @@ public class DataTest {
         assertEquals(localTime, d.getData());
         assertNotNull(d.getTerminais());
         assertEquals(2, d.getTerminais().size());
+        
 
-        Terminal t0 = d.getTerminais().get(0);
+       Terminal t0 = d.getTerminais().get(0);
         assertEquals(TERMINAL_000_ID, t0.getId());
         assertEquals(TERMINAL_000_NOME, t0.getNome());
         assertEquals(TERMINAL_000_SOLICITAR_REFENCIA, t0.isSolicitarReferencia());
@@ -659,7 +662,7 @@ public class DataTest {
         assertEquals(PessoaTest.SOBRENOME_NOMEFANTASIA, pessoaTf.getSobrenomeNomeFantasia());
         assertEquals(PessoaTest.CPF_CNPJ, pessoaTf.getCpfCnpj());
     }
-    
+    */
 //    @Test
     public void test_serializacao() throws ParseException {
         System.out.println("serializacao");

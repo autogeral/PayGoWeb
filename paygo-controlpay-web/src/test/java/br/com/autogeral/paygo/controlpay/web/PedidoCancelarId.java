@@ -38,7 +38,7 @@ public class PedidoCancelarId {
 
         PedidoCancelar pedidoCancelar = new PedidoCancelar();
         Pedido pedido = new Pedido();
-        pedido.setPedidoId(2478);
+        pedido.setPedidoId(2775);
 
         Data ped = pedidoCancelar.cancelar(pedido);
     }

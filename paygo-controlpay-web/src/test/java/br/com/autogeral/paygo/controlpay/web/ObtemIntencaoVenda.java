@@ -22,7 +22,7 @@ public class ObtemIntencaoVenda {
     public static void main(String[] args) {
         try {
             IntencaoVenda iv = new IntencaoVenda();
-            iv.setId(73509);
+            iv.setId(78107);
             IntencaoVendaGet ivg = new IntencaoVendaGet();
             IntencaoVendaPesquisa ivp = new IntencaoVendaPesquisa(iv);
             Data data = ivg.get(ivp);

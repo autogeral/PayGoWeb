@@ -23,30 +23,16 @@ public class TerminalInsertTest {
     private static final Impressora IMPRESSORA = null;
 
     @Test
-    public void testSerialize (){
-    Terminal t = new Terminal();
-    t.setNome(NOME);
-    t.setId(TERMINAL_ID);
-    Pessoa p = new Pessoa();
-    p.setId(PESSOA_ID);
-    p.setNomeRazaoSocial(NOME_RAZAO_SOCIAL);
-    p.setSobrenomeNomeFantasia(SOBRENOME_NOME_FANTASIA);
-    p.setCpfCnpj(CPF_CNPJ);
-    
-    }
-    @Test
-    public void testParse() {
-        String toParse = "{\n"
-                + "    \"nome\": \"" + NOME + "\",\n"
-                + "    \"impressora\": {\n"
-                + "        \"id\": " + IMPRESSORA_ID + "\n"
-                + "    },\n"
-                + "    \"pessoa\": {\n"
-                + "      \"id\": " + PESSOA_ID + "\n"
-                + "    }\n"
-                + "}";
-        Terminal t = WsHelper.unmarshal(toParse, Terminal.class);
-        testParse(t);
+    public void testSerialize() {
+        Terminal t = new Terminal();
+        t.setNome(NOME);
+        t.setId(TERMINAL_ID);
+        Pessoa p = new Pessoa();
+        p.setId(PESSOA_ID);
+        p.setNomeRazaoSocial(NOME_RAZAO_SOCIAL);
+        p.setSobrenomeNomeFantasia(SOBRENOME_NOME_FANTASIA);
+        p.setCpfCnpj(CPF_CNPJ);
+
     }
 
     @Test
@@ -81,12 +67,4 @@ public class TerminalInsertTest {
         assertEquals(SOBRENOME_NOME_FANTASIA, t.getPessoa().getSobrenomeNomeFantasia());
         assertEquals(CPF_CNPJ, t.getPessoa().getCpfCnpj());
     }
-
-    private void testParse(Terminal t) {
-        assertNotNull(t);
-        assertEquals(NOME, t.getNome());
-        assertEquals(IMPRESSORA_ID, t.getImpressora().getId());
-        assertEquals(PESSOA_ID, t.getPessoa().getId());
-    }
-
 }
