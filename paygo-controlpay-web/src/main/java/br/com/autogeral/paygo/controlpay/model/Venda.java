@@ -33,9 +33,7 @@ import java.util.List;
  */
 public class Venda {
 
-   
     private int formaPagamentoId;
-    private int pedidoId ;
     private String terminalId;
     private String referencia;
     private boolean aguardarTefIniciarTransacao = true;
@@ -54,14 +52,6 @@ public class Venda {
 
     public void setFormaPagamentoId(int formaPagamentoId) {
         this.formaPagamentoId = formaPagamentoId;
-    }
-
-    public int getPedidoId() {
-        return pedidoId;
-    }
-
-    public void setPedidoId(int pedidoId) {
-        this.pedidoId = pedidoId;
     }
 
     public String getTerminalId() {
@@ -151,7 +141,5 @@ public class Venda {
     public void setConteudo(String conteudo) {
         this.conteudo = conteudo;
     }
-
-   
 
 }

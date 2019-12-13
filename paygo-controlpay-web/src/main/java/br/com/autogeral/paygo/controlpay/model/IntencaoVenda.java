@@ -52,6 +52,7 @@ public class IntencaoVenda {
     private String valorFinalFormat;
     private String gate2allToken;
     private int quantidadeParcelas;
+    private boolean vendasDia;
     private String operador;
     private String urlPagamento;
     private FormaPagamento formaPagamento;

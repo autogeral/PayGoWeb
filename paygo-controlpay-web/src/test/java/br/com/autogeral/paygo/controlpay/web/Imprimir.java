@@ -23,26 +23,27 @@
  */
 package br.com.autogeral.paygo.controlpay.web;
 
+import br.com.autogeral.paygo.controlpay.impressao.ImprimeComprovante;
 import br.com.autogeral.paygo.controlpay.model.Data;
-import br.com.autogeral.paygo.controlpay.model.Pedido;
-import br.com.autogeral.paygo.controlpay.web.pedido.PedidoGetById;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.print.PrintException;
 
 /**
  *
  * @author kaique.mota
  */
-public class PesquisaPedidoEspecifico {
+public class Imprimir {
 
-   
-  public static void main(String[] args) throws IOException {
-        
-        PedidoGetById pgbi = new PedidoGetById();
-        Pedido pedido = new Pedido ();
-        
-        pedido.setPedidoId(3273);
-   
-        Data ped = pgbi.execute(pedido);
-        System.out.println("");
+    public static void main(String[] args) {
+        ImprimeComprovante ImprimeComprovante = new ImprimeComprovante();
+        try {
+            ImprimeComprovante.prrenche(79677);
+        } catch (PrintException ex) {
+            Logger.getLogger(Imprimir.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Imprimir.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

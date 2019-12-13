@@ -48,7 +48,7 @@ import java.util.logging.Logger;
  *
  * @author kaique.mota
  */
-public class TesteImpressora {
+public class ImprimeComprovante {
 
     private void imprimir(PrintService service, String conteudo) {
         InputStream stream = new ByteArrayInputStream(conteudo.getBytes());
@@ -58,7 +58,7 @@ public class TesteImpressora {
         try {
             dpj.print(doc, null);
         } catch (PrintException ex) {
-            Logger.getLogger(TesteImpressora.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ImprimeComprovante.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -82,7 +82,7 @@ public class TesteImpressora {
     }
 
     public void prrenche(int intencaoVendaId )throws PrintException, IOException {
-        TesteImpressora ti = new TesteImpressora();
+        ImprimeComprovante ti = new ImprimeComprovante();
         PrintService services[] = PrinterJob.lookupPrintServices();
         for (PrintService service : services) {
             System.out.println("Printer service name : " + service.getName());

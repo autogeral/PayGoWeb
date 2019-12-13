@@ -63,7 +63,6 @@ public class VendaTest {
         Venda venda = new Venda();
 
         venda.setFormaPagamentoId(FORMA_PAGAMENTO_ID);
-        venda.setPedidoId(PEDIDO_ID);
         venda.setTerminalId(TERMINAL);
         venda.setReferencia(REFERENCIA);
         venda.setAguardarTefIniciarTransacao(AGURDAR_TEF_INICIAR_TRANSACAO);
@@ -278,7 +277,6 @@ public class VendaTest {
         ProdutoVenda produtoVenda = new ProdutoVenda();
         assertNotNull(venda);
         assertEquals(FORMA_PAGAMENTO_ID, venda.getFormaPagamentoId());
-        assertEquals(PEDIDO_ID, venda.getPedidoId());
         assertEquals(TERMINAL, venda.getTerminalId());
         assertEquals(REFERENCIA, venda.getReferencia());
         assertEquals(AGURDAR_TEF_INICIAR_TRANSACAO, venda.isAguardarTefIniciarTransacao());

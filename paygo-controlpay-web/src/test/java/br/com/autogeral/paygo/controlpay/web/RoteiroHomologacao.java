@@ -24,7 +24,6 @@
 package br.com.autogeral.paygo.controlpay.web;
 //import br.com.autogeral.paygo.controlpay.model.AuxiliarTeste;
 
-import br.com.autogeral.paygo.controlpay.model.AuxiliarTeste;
 import br.com.autogeral.paygo.controlpay.impressao.IntencaoImpressao;
 import br.com.autogeral.paygo.controlpay.model.Data;
 import br.com.autogeral.paygo.controlpay.model.IntencaoVenda;
@@ -63,21 +62,20 @@ public class RoteiroHomologacao {
                 ControlPayConfig.getConfig().setKey(loginData.getPessoa().getKey());
                 TerminalGetByPessoaId lgb = new TerminalGetByPessoaId();
                 Data terminais = lgb.execute(loginData);
-
                 System.out.println("Status HTTP : " + terminais.getHttpStatus());
                 if (terminais.getHttpStatus() == 200 && !terminais.getTerminais().isEmpty()) {
                     int terminalId = terminais.getTerminais().get(3).getId();
                     Venda venda = new Venda();
                     venda.setTerminalId(Integer.toString(terminalId));
                     venda.setAdquirente("cielo");
-                    venda.setReferencia("REF 1234");
-                    venda.setPedidoId(2775);
+                  venda.setReferencia("REF 1234");
+//                    venda.setPedidoId(2775);
                     venda.setFormaPagamentoId(21);
                     venda.setQuantidadeParcelas(1);
                     venda.setValorTotalVendido(100);
                     VendaVender vv = new VendaVender();
                     Data vendaData = vv.vender(venda);
-                    
+
 //                  Data imprimi = ii.impri(venda);
 
                     /* List<String> listaComprovantes = new ArrayList<>();
@@ -86,7 +84,6 @@ public class RoteiroHomologacao {
                     intencaoVenda.getPagamentosExternos().stream().forEach(pagamento -> listaComprovantes.add(pagamento.getComprovanteAdquirente()
                     ));
                 });*/
-                   
                     System.out.println("Terminal Verdadeiro " + venda.getTerminalId());
 
                     if (vendaData != null && vendaData.getIntencaoVenda() != null) {
