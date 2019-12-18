@@ -32,21 +32,8 @@ public class TerminalTest {
 
     public class LoginResultadoTest {
 
-        private static final String DATA = "05/06/2019 20:26:23.8106";
-        private static final String HASH = "umHashMuitoDoido";
-        private static final int ID = 1234;
-        private static final boolean PESSOA_JURIDICA = false;
-        private static final String EMPRESA_NOME = "ACME S/A";
-        private static final String NOME_FANTASIA = "ACME";
-        private static final String CNPJ = "12345678000190";
-        private static final String CNPJ_FORMATADO = "12.345.678/0001-90";
-        private static final String E_MAIL = "seuemail@site.com.br";
-        private static final String FOTO_THUNBNAIL = "https://pay2alldemo.azurewebsites.net/WebAPI/ImagensPessoas/_PessoaDefault.png";
-        private static final int PESSOA_STATUS_ID = 2;
-        private static final String PESSOA_STATUS_NOME = "Ativo Vendedor";
-        private static final String APP_VERSAO_ANDROID = "3.3.1";
-        private static final String APP_VERSAO_IOS = "3.2";
-
+       
+/*
         @Test
         public void testSomeMethod() {
             String toParse = "{\"data\":\"" + DATA
@@ -92,6 +79,7 @@ public class TerminalTest {
             assertEquals(PESSOA_STATUS_ID, status.getId());
             assertEquals(PESSOA_STATUS_NOME, status.getNome());
         }
-
+*/
     }
+    
 }

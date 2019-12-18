@@ -42,7 +42,6 @@ public class PagamentoExterno {
     private String mensagemRespostaAdquirente;
     private String idConfirmacao;
     private String dataAdquirente;
-    
     private String dataAtualizacao;
     private String respostaAdquirente;
     private String nome ;
@@ -56,6 +55,7 @@ public class PagamentoExterno {
     private PagamentoExternoStatus pagamentoExternoStatus;
     private String senhaTecnica;
     private String orderLIO;
+    private boolean aguardarTefIniciarTransacao;
 
     public String getOrderLIO() {
         return orderLIO;
@@ -257,6 +257,15 @@ public class PagamentoExterno {
     public void setDataAtualizacao(String dataAtualizacao) {
         this.dataAtualizacao = dataAtualizacao;
     }
+
+    public boolean isAguardarTefIniciarTransacao() {
+        return aguardarTefIniciarTransacao;
+    }
+
+    public void setAguardarTefIniciarTransacao(boolean aguardarTefIniciarTransacao) {
+        this.aguardarTefIniciarTransacao = aguardarTefIniciarTransacao;
+    }
+    
 
     @Override
     public String toString() {
