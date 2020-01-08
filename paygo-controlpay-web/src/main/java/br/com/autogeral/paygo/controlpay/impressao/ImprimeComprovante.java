@@ -50,7 +50,7 @@ import java.util.logging.Logger;
  */
 public class ImprimeComprovante {
 
-    private void imprimir(PrintService service, String conteudo) {
+    void imprimir(PrintService service, String conteudo) {
         InputStream stream = new ByteArrayInputStream(conteudo.getBytes());
         DocPrintJob dpj = service.createPrintJob();
         DocFlavor flavor = DocFlavor.INPUT_STREAM.AUTOSENSE;
@@ -95,45 +95,23 @@ public class ImprimeComprovante {
                 Data data = ivg.get(ivp);
 
                 List<String> listaComprovantes = new ArrayList<>();
-
                 data.getIntencoesVendas().stream().forEach(intencaoVenda -> {
                     intencaoVenda.getPagamentosExternos().stream().forEach(pagamento -> listaComprovantes.add(pagamento.getComprovanteAdquirente()
                     ));
                 });
                 System.out.println("Printando os itens : ");
-
                 Optional<String> opString = listaComprovantes.stream().filter(c -> c.isEmpty()).findAny();
 
                 if (opString.isPresent()) {
                     listaComprovantes.remove(opString.get());
                 }
-
                 listaComprovantes.stream().forEach(c -> {
                     ti.imprimir(service, c);
                     ti.acionarGuilhotina();
                 });
-
                 System.out.println("Printando a lista : ");
                 System.out.println(listaComprovantes);
-//                byte[] bytes = convertObjectToByteArray(listaComprovantes);
             }
         }
-
-//    public static byte[] convertObjectToByteArray(Object object) {
-//        byte[] bytes = null;
-//        try {
-//            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-//            ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
-//            objectOutputStream.writeObject(object);
-//            objectOutputStream.flush();
-//            objectOutputStream.close();
-//            byteArrayOutputStream.close();
-//            bytes = byteArrayOutputStream.toByteArray();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return bytes;
-//    }
     }
 }
