@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<title>DOC "paygo-controlpay-web (GitHub)" e "paygo-erpj (Gcloud)"</title>
+<meta charset="UTF-8">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	crossorigin="anonymous"></script>
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	rel="stylesheet" crossorigin="anonymous" />
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+</head>
+<body>
+	<div class="container">
+		<h3 class="display-4">Informações de como os projeto "paygo-controlpay-web (GitHub)" e "paygo-erpj (Gcloud)" estão estruturado</h3>
+		<p class="lead">Este documento especifica a forma como as partes do projeto e funções principais do paygo-controlpay-web e paygo-erpj estão estruturadas atualmente.</p>
+		<p class="lead">A medida que o sistema for alterado, este documento precisa ser atualizado para que, quem for fazer manutenção no sistema, saiba como ele está estruturado, e quais suas funcionalidades principais.</p>
+
+
+		<h4 class="display-6">ControlPay</h4>
+		<p class="lead">A Controlpay é uma plataforma sistêmica, que possibilita a integração com diversos tipos de plataformas através de um fluxo de mensagens.</p>
+
+		<p class="lead">A função do projeto <b>paygo-controlpay-web</b> é manter a comunicação com o servidor da Paygo, que disponibiliza api's para facilitar a integração com o sistema de pagamentos. O projeto <b>paygo-controlpay-web</b> atua como uma biblioteca, que nela existem as chamadas de comunicação com o servidor da PayGo.</p>
+		<p class="lead">Com a biblioteca importada no projeto, podemos realizar pagamentos, consultar pagamentos, reimpressões de comprovantes.</p>
+		
+		
+		<h4 class="display-6">Paygo-erpj</h4>
+		<p class="lead">Esse projeto foi desenvolvido para receber o <b>"STATUS FINAL"</b> de uma transação. Como a controlPay precisa mandar o status final de uma translação, foi construido um <a href="https://3cplusnow.com/o-que-e-call-back-para-que-serve/">CallBack</a>, onde nele mantém a comunicação, servindo como um <a href="https://blog.vindi.com.br/o-que-sao-webhooks/">WebHook</a> para receber a ultima informação após a alteração do status do pagamento.</p>
+
+		<h4 class="display-6">Banco de dados</h4>
+		<p class="lead">O Banco de dados utlizado nesse projeto é o Cloud Firestore do Firebase (NoSQL), e se encontra no projeto erpj-ws coleção "PayGo" e o Banco "AutoGeral" MYSQL. Para saber mais sobre o Cloud Firestore, de uma olhada no link
+		<a href="https://firebase.google.com/docs/firestore/?hl=pt-br">Cloud Firestore .</a></p>		
+		
+		<h4 class="display-6">Integração</h4>
+		<p class ="lead">Primeiro, devemos clonar o projeto <b>paygo-controlpay-web</b>. Link para clonar o projeto <a href="https://github.com/murilotuvani/PayGoWeb">paygo-controlpay-web</a>.</p>
+		
+		<p class = "lead">Com o projeto já clonado, <b>CASO</b> o projeto seja java DESKTOP, devemos importar os JARs do projeto paygo-controlpay-web. Segue a baixo instruções e imagens de como importar os Jars.</p>
+	
+		<p class = "lead">1° Passo - Criar uma Biblioteca com o nome "ControlPay" em seu projeto.</p>
+			<p class = "lead">Imagem 1</p>
+			<img src="../doc/imagens/imgCriarBibliotecaPasso1.png" width=850 height=500 />
+		
+		<p class = "lead">Imagem 2</p>
+			<img src = "../doc/imagens/imgaCriarBibliotecaPassa1img2.png" width= 850 height = 500/>
+
+		<p class = "lead">2° Passo - Importar os .jar do projeto paygo-controlpay-web.</p>
+
+		<p class = "lead"> Imagem 1'</p>
+			<img src = "../doc/imagens/imgaCriarBibliotecaPassa2img1.png" width= 850 height = 500/>
+
+		<p class = "lead"> Imagem 2</p>
+			<img src = "../doc/imagens/imgaCriarBibliotecaPasso2img2.png" width= 850 height = 500/>
+
+			<p class = "lead">Caso o projeto que sera importado, seja um projeto MAVEN, adicionar a seguinte dependência.</p>
+
+
+
+<pre class="prettyprint lang-java">
+	< dependency>
+		 < groupId>br.com.autogeral< /groupId>
+		 < artifactId>paygo-controlpay-web< /artifactId>
+		 < version>1.0< /version>
+	< /dependency>
+</pre> 
+
+		<p class="lead">Com a biblioteca inserida em nosso projeto, vamos analisar os principais codigos usados na integração da API.</p>
+		
+<p class = "lead">Abaixo, a <b>controlPay.properties</b>, usada para configurar, servidor, terminal, cnpj da empresa, senha e senha Tecnica. </p>
+<pre class="prettyprint lang-java">
+	key = tgy8LUCZhHpwwKtEyB5t%2bAmWo9ayJrBLaHC4qUWSUkdDX%2fy35tDDoko8rasNz6QrPDvXPtZH4a4RRU1uyd4C0Z96NaqOu%2bjNh%2fxTr%2f6A%2fJQ%3d
+	servidor = pay2alldemo.azurewebsites.net
+	terminal=900
+	# Servidor
+	servidor = pay2alldemo.azurewebsites.net
+	# CPF/CNPJ - para o Login na plataforma
+	cpfCnpj = 05437537000137
+	#Senha para logar na plataforma
+	senha = autogeral
+	#Senha Tecnica para cancelamento
+	senhaTecnica = 314159
+</pre> 
+
+	<p class  = "lead">Uma das principais classes do projeto <b>paygo-controlpay-web</b> é a Data, nela fica contida toda recepção de response geradas de requisições feitas no servidor da controlPay, desde um statusHttp até um comprovante de pagamento. </p>
+	<pre class="prettyprint lang-java">
+public class Data {
+
+    private int id;
+    private transient int httpStatus;
+    private LocalDateTime data;
+    private String message;
+    private IntencaoVenda intencaoVenda;
+    private Pessoa pessoa;
+    private Produto produto;
+    private PagamentoExterno pagamentoExterno;
+    private Pedido pedido;
+    private ClienteCartao clienteCartao;
+    private Cliente cliente;
+    private IntencaoImpressao intencaoImpressao;
+    private Terminal terminal;
+    private List< Terminal> terminais;
+    private List< IntencaoVenda> intencoesVendas;
+    private List< Produto> produtos;
+    private List< Pedido> pedidos;
+    private List< Cliente> clientes;
+    private List< FormaPagamento> formasPagamento;
+    private Android android;
+    private IOS ios;
+    private String app;
+    private String operador;
+
+    // Getters and setters...
+	</pre>
+
+	<p class = "lead">O proximo codigo, é um exemplo de requisição da chamada<b>VendaVender</b> feito para o servidor da PayGo</p>
+	
+	<pre class="prettyprint lang-java">
+
+ public class VendaVender {
+    
+    private static final String PATH = "webapi/Venda/Vender/?key=";
+    
+    /**
+     * Retorna a URL compra para o envio da requisição
+     * para o endpoint de transacao de venda
+     * @return 
+     */
+    private String getPath() {
+        ControlPayConfig config = ControlPayConfig.getConfig();
+        String servidor = config.getServidor();
+        if (!servidor.startsWith("http")) {
+            servidor = "https://" + servidor;
+        }
+        if (!servidor.endsWith("/")) {
+            servidor += "/";
+        }
+        return servidor + PATH + config.getKey();
+    }
+    
+    public Data vender(Venda venda) throws IOException {
+        venda.setTerminalId(ControlPayConfig.getConfig().getTerminal());
+        
+        String json = WsHelper.getGson().toJson(venda);
+        RequestEntity requestEntity = new StringRequestEntity(
+                json,
+                "application/json",
+                "UTF-8");
+        
+        PostMethod method = new PostMethod(getPath());
+        method.addRequestHeader("Content-Type", "application/json");
+        method.setRequestEntity(requestEntity);
+        HttpClient client = new HttpClient();
+        int result = client.executeMethod(method);
+       
+        String responseBody = method.getResponseBodyAsString();
+        System.out.println(responseBody);
+        Data data = WsHelper.unmarshal(responseBody, Data.class);
+        data.setHttpStatus(result);
+        return data;
+    }
+    
+}
+	</pre>
+
+	<p class = "lead">Neste codigo (ProcessamentoCartãoView), é preenchido os objeto, para ser feita a chamada em <b>VendaVender</b></p>
+		<pre class="prettyprint lang-java">
+	private void adicionarIntencaoVendaControlPay() throws DbfException, SQLException, PrintException, IOException {
+
+        for (int key : romaneiosNaoPagos.keySet()) {
+            RomaneioPagamentoModel romaneioPagamento = romaneiosNaoPagos.get(key);
+            double somaTotalPagamentos = modelRomaneio.getPagamentos().stream().mapToDouble(RomaneioPagamentoModel::getValorPagamento).sum();
+            try {
+                Venda venda = new Venda();
+                venda.setTerminalId(terminal());
+                venda.setAdquirente(adquirente());
+                venda.setFormaPagamentoId(formaPagamento(romaneioPagamento));
+                venda.setReferencia(modelRomaneio.getCodigoString());
+                venda.setQuantidadeParcelas(romaneioPagamento.getPagamentoModo().getParcelas());
+                venda.setValorTotalVendido(romaneioPagamento.getValorPagamento());
+                VendaVender vv = new VendaVender();
+                Data vendaData = vv.vender(venda);
+                int intencaoVenda = vendaData.getIntencaoVenda().getId();
+                //Realizando uma consulta no WebHook no projeto paygo-erpj  para obter o status do pagamento
+                // 1-Recusado , 2-Cancelado, 3-Creditado , 4 - aguardando Resposta
+                if (webHook(intencaoVenda) == 3) {
+                    ModoPagamentoFormaRecebimento fr = romaneioPagamento.getPagamentoModo().getFormaRecebimento();
+                    if (romaneioPagamento.getVenda() == 0) {
+                        romaneioPagamento = addDescricaoPagamento(romaneioPagamento, intencaoVenda,
+                                (ModoPagamentoFormaRecebimento.CREDITO.equals(fr) || ModoPagamentoFormaRecebimento.DEBITO.equals(fr)
+                                ? StatusProcessamento.APROVADO : null));
+                        romaneioPagamento.inserePagamento();
+                        soma += romaneioPagamento.getValorPagamento();
+                        romaneiosNaoPagos.remove(key);
+                        romaneioPagos.put(key, romaneioPagamento);
+                        //caso o pagamento seja aprovado, ele ja imprime 2 comprovantes
+                        for (int i = 0; i <= 2; i++) {
+                            ImprimeComprovante = new ImprimeComprovante();
+                            ImprimeComprovante.prrenche(intencaoVenda);
+                            i++;
+                        }
+                        trataBotao();
+                    } else if (intencaoVenda != 0) {
+                        romaneioPagamento = addDescricaoPagamento(romaneioPagamento, intencaoVenda,
+                                (ModoPagamentoFormaRecebimento.CREDITO.equals(fr) || ModoPagamentoFormaRecebimento.DEBITO.equals(fr)
+                                ? StatusProcessamento.APROVADO : null));
+                        romaneioPagamento.updatePagamento();
+                        romaneiosNaoPagos.remove(key);
+                        romaneioPagos.put(key, romaneioPagamento);
+                        soma += romaneioPagamento.getValorPagamento();
+                        //caso o pagamento seja aprovado, ele ja imprime 2 comprovantes
+                        for (int i = 0; i <= 2; i++) {
+                            ImprimeComprovante = new ImprimeComprovante();
+                            ImprimeComprovante.prrenche(intencaoVenda);
+                            i++;
+                        }
+                        trataBotao();
+                    }
+                } else {
+                    romaneioPagamento.setStatusPagamento(StatusProcessamento.RECUSADO);
+                    romaneioPagamento.updatePagamento();
+                }
+            } catch (IOException ex) {
+                ErrorUtil.mensagemErro(ex, "Erro ao tentar gerar o comprovante");
+            }
+        }
+    }
+		</pre>
+
+
+	<p class = "lead">Exemplo de request/response feito  no codigo acima em json</p>
+
+	<pre class="prettyprint lang-java">
+//request
+	{
+	  "formaPagamentoId": 21,
+	  "terminalId": "900",
+	  "referencia": "43210",
+	  "iniciarTransacaoAutomaticamente": true,
+	  "parcelamentoAdmin": null,
+	  "quantidadeParcelas": 1,
+	  "adquirente":"cielo",
+	  "valorTotalVendido": "10,00"
+	}
+//response
+{
+    "data": "29/01/2020 10:51:06.4276",
+    "intencaoVenda": {
+        "id": 81763,
+        "referencia": "43210",
+        "token": "913908",
+        "data": "29/01/2020 10:51:05.0000",
+        "hora": "10:51:05",
+        "quantidade": 0,
+        "valorOriginal": 10.0000,
+        "valorOriginalFormat": "10,00",
+        "valorAcrescimo": 0.0000,
+        "valorAcrescimoFormat": "0,00",
+        "valorDesconto": 0.0000,
+        "valorDescontoFormat": "0,00",
+        "valorFinal": 10.0000,
+        "valorFinalFormat": "10,00",
+        "gate2allToken": null,
+        "quantidadeParcelas": 1,
+        "urlPagamento": null,
+        "formaPagamento": {
+            "id": 21,
+            "nome": "TEF",
+            "modalidade": "Crédito",
+            "fluxoPagamento": {
+                "id": 21,
+                "nome": "TEF"
+            }
+        },
+        "terminal": {
+            "id": 900,
+            "nome": "Terminal 03"
+        },
+        "pagamentosExternos": [
+            {
+                "id": 64218,
+                "tipo": 5,
+                "idPagamento": "",
+                "origem": 5,
+                "tipoParcelamento": 2,
+                "pagamentoExternoStatus": {
+                    "id": 10,
+                    "nome": "Em Operacao"
+                }
+            }
+        ],
+        "intencaoVendaStatus": {
+            "id": 6,
+            "nome": "Em Pagamento"
+        },
+        "cliente": null,
+        "produtos": [],
+        "pedido": null
+    }
+}
+	</pre>
+
+       <p class="lead">Depois de realizar a resquest do Json acima, assim que o status da venda sofrer uma alteração, a PayGo ira notificar nosso calback <b>(https://paygo-dot-erpj-ws.appspot.com/cbw?)</b> com um POST recebendo a intencaoInvenda e referências que sofreram mudança de Status, ou seja ex: "Em Operacao" para "Aprovado", etc... 
+       </p>
+
+       	<pre class="prettyprint lang-java">
+     
+@WebServlet("/cbw")
+public class CallBackWaitter extends HttpServlet {
+
+	private static final long serialVersionUID = 29471240872904211L;
+	IntencaoPagamentoDao tarefa = null;
+	PayGoIntencaoPagamento payGo = new PayGoIntencaoPagamento();
+
+	public CallBackWaitter() {
+		super();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// cpfCnpj
+		String cpfCnpj = request.getParameter("cpfCnpj");
+		// intencaoVendaId
+		String intencaoVendaId = request.getParameter("intencaoVendaId");
+		// intencaoVendaReferencia
+		String intencaoVendaReferencia = request.getParameter("intencaoVendaReferencia");
+		// pedidoId
+		String pedidoId = request.getParameter("pedidoId");
+		// pedidoReferencia
+		String pedidoReferencia = request.getParameter("pedidoReferencia");
+
+		StringBuilder sb = new StringBuilder();
+		if (cpfCnpj != null) {
+			sb.append("\n CPF/CNPJ : ").append(cpfCnpj);
+		}
+
+		if (intencaoVendaId != null) {
+			sb.append("\n intencaoVendaId : ").append(intencaoVendaId);
+		}
+
+		if (intencaoVendaReferencia != null) {
+			sb.append("\n intencaoVendaReferencia : ").append(intencaoVendaReferencia);
+		}
+
+		if (pedidoId != null) {
+			sb.append("\n pedidoId : ").append(pedidoId);
+		}
+
+		if (pedidoReferencia != null) {
+			sb.append("\n pedidoReferencia : ").append(pedidoReferencia);
+		}
+
+		System.out.println("Params : " + request.getParameterMap());
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getHeaders(pedidoReferencia);
+
+		IntencaoVenda intencaoVenda = new IntencaoVenda();
+		intencaoVenda.setId(Integer.parseInt(intencaoVendaId));
+		IntencaoVendaGet pesquisaIntencao = new IntencaoVendaGet();
+		IntencaoVendaPesquisa ivp = new IntencaoVendaPesquisa(intencaoVenda);
+		Data getIntencaoVendaStatus = pesquisaIntencao.get(ivp);
+
+		// insere a response no objeto payGo
+		if (getIntencaoVendaStatus != null && getIntencaoVendaStatus.getIntencoesVendas() != null
+				&& !getIntencaoVendaStatus.getIntencoesVendas().isEmpty()) {
+
+			IntencaoVenda inten = getIntencaoVendaStatus.getIntencoesVendas().get(0);
+			System.out.println("IntecaoVendaId : " + inten.getId() + " status : " + inten.getIntencaoVendaStatus());
+
+			payGo.setCpfCnpj(cpfCnpj);
+			payGo.setIntencaoVendaId(intencaoVendaId);
+			payGo.setIntencaoVendaReferencia(intencaoVendaReferencia);
+			payGo.setPedidoId(pedidoId);
+			payGo.setPedidoReferencia(pedidoReferencia);
+			payGo.setIdStatus(Integer.toString(inten.getIntencaoVendaStatus().getId()));
+			payGo.setStatusIdVenda(inten.getIntencaoVendaStatus().getNome());
+
+			try {
+				// insere na colecao PayGo um novo pagamento com seu status recebido da request feito no ERP.
+				IntencaoPagamentoDao dao = new IntencaoPagamentoDao();
+				if (!dao.consultaSimples(payGo)) {
+					dao.salvarPagamentos(payGo);
+					System.out.println("Novo pagamento inserido");
+				} else {
+					dao.update(payGo);
+					System.out.println("Status Atualizado");
+				}
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				e.printStackTrace();
+			}
+		} 
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
+	}
+}
+		</pre> 
+	<p class = "lead">Resultado do Insert do objeto PayGo do projeto <b>paygo-erpj</b> inserido na coleção da "PayGo".</p>
+	   	
+	   	<img src = "../doc/imagens/imgaFireStore.png" width= 850 height = 500/>
+	   
+		<p class="lead">Código  no ERP (ProcessamentoCartaoDialog.view) que fica consultando nosso serviço, que retorna o status da Venda para o ERP.</p>
+
+  	<pre class="prettyprint lang-java">
+
+	private int webHook(int intencaoVenda) {
+        boolean status = false;
+        boolean chegou = false;
+
+        int retorno = 0;
+        wr = new WebhookReader();
+        DataWebhook dw;
+        while (!status) {
+            try {
+                try {
+                    Thread.sleep(2500);
+                } catch (InterruptedException ex) {
+                    ErrorUtil.mensagemErro(ex, "Erro thread sleep WebHook");
+                }
+                dw = wr.consultar(intencaoVenda);
+                if (dw == null) {
+                    chegou = false;
+                } else {
+                    chegou = true;
+                }
+                // 1-Recusado , 2-Cancelado, 3-Creditado , 4 - aguardando Resposta
+                if (chegou) {
+                    this.setVisible(false);
+                    if (dw.getStatusIdVenda().equals("Pagamento Recusado")) {
+                        JOptionPane.showInternalMessageDialog(Ambiente.getDesktop(), "Pagamento Recusado!", "Aviso", JOptionPane.WARNING_MESSAGE);
+                        retorno = 1;
+                    } else if (dw.getStatusIdVenda().equals("Cancelado")) {
+                        JOptionPane.showInternalMessageDialog(Ambiente.getDesktop(), "Pagamento cancelado!", "Aviso", JOptionPane.WARNING_MESSAGE);
+                        retorno = 2;
+                    } else if (dw.getStatusIdVenda().equals("Creditado")) {
+                        JOptionPane.showInternalMessageDialog(Ambiente.getDesktop(), "Pagamento recebido com sucesso!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                        retorno = 3;
+                    } else {
+                        System.out.println("Aguradando resposta do servidor");
+                        retorno = 4;
+                    }
+                    status = true;
+                }
+            } catch (IOException ex) {
+                ErrorUtil.mensagemErro(ex, "Erro ao consultar WebHook, projeto CBR?");
+            }
+        }
+        return retorno;
+    }
+  	</pre>
+  			<p class="lead">Código do serviço (https://paygo-dot-erpj-ws.appspot.com/cbr?) que recebe a chamada do ERP, consulta a coleção Paygo, e retorna o objeto PayGo para o ERP</p>
+
+  	<pre class="prettyprint lang-java">
+@WebServlet("/cbr")
+public class CallBackReader extends HttpServlet {
+	PayGoIntencaoPagamento payGo = new PayGoIntencaoPagamento();
+	IntencaoPagamentoDao dao = new IntencaoPagamentoDao();
+	private static final long serialVersionUID = 5523231465423049432L;
+
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String intencaoVendaId = request.getParameter("intencaoVenda");
+		System.out.println("Params : " + request.getParameterMap());
+		payGo.setIntencaoVendaId(intencaoVendaId);
+
+		try {
+			if (dao.consultaSimples(payGo)) {
+				payGo = dao.consulta(payGo);
+				Gson gson = GsonUtil.getGson();
+				String json = gson.toJson(payGo);
+				PrintWriter out = response.getWriter();
+				response.setContentType("application/json");
+				response.setCharacterEncoding("UTF-8");
+				out.print(json);
+				out.flush();
+
+				System.out.println("Enviado novo status para Erp");
+			} else {
+				System.out.println("Não há registro");
+			}
+
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+}
+  	</pre>
+  		<p class = "lead">Documento da API ControlPay : <a href="https://docs.controlpay.com.br/?version=latest ">Documentação API</a></p>
+
+		</div>
+		</body>
+		</html>
+	

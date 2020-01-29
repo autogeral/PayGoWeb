@@ -25,6 +25,7 @@ package br.com.autogeral.paygo.controlpay.web;
 
 import br.com.autogeral.paygo.controlpay.impressao.ImprimeComprovante;
 import br.com.autogeral.paygo.controlpay.impressao.ImprimeComprovanteCancelamento;
+import br.com.autogeral.paygo.controlpay.impressao.ImprimeComprovanteCancelamentoIntencaoVenda;
 import br.com.autogeral.paygo.controlpay.model.Data;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -38,9 +39,9 @@ import javax.print.PrintException;
 public class Imprimir {
 
     public static void main(String[] args) {
-        ImprimeComprovanteCancelamento ImprimeComprovante = new ImprimeComprovanteCancelamento();
+        ImprimeComprovanteCancelamentoIntencaoVenda ImprimeComprovante = new ImprimeComprovanteCancelamentoIntencaoVenda();
         try {
-            ImprimeComprovante.prrenche(1030517,80641) ;
+            ImprimeComprovante.prrenche(81462) ;
         } catch (PrintException ex) {
             Logger.getLogger(Imprimir.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
