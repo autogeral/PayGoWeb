@@ -47,8 +47,8 @@ public class IntencaoImpressaoId {
      *
      * @return
      */
-    private String getPath(int numIntencao) {
-        ControlPayConfig config = ControlPayConfig.getConfig();
+    private String getPath(int numIntencao, ControlPayConfig config) {
+      
         String servidor = config.getServidor();
         if (!servidor.startsWith("http")) {
             servidor = "https://" + servidor;
@@ -59,10 +59,10 @@ public class IntencaoImpressaoId {
         return servidor + PATH + config.getKey() + "&intencaoImpressaoId=" + numIntencao;
     }
 
-    public Data imprimi(IntencaoImpressao intencaoImpressao) throws IOException {
+    public Data imprimi(IntencaoImpressao intencaoImpressao, ControlPayConfig config) throws IOException {
 
         int numIntencao = intencaoImpressao.getIntencaoImpressao();
-        GetMethod method = new GetMethod(getPath(numIntencao));
+        GetMethod method = new GetMethod(getPath(numIntencao,config));
         method.addRequestHeader("Content-Type", "application/json");
         HttpClient client = new HttpClient();
 

@@ -1,0 +1,18 @@
+
+controlpay.servidor.produção = https://pay2allprod.azurewebsites.net
+controlpay.senha.tecnica = 314159
+controlpay.key.requisicao= %2fPVtTt6V%2fxBrL8r87E7b8jcqN6RA%2b%2f%2fOOya6RDZg05WXl%2fhZ6XpegN%2ftplWQuP0EGi%2ffHtSY9kMkimS0c0tNGUUrq1DwAC49yBQPdeHFnAUXjE7k
+controlpay.terminal = 00 
+
+
+key = tgy8LUCZhHpwwKtEyB5t%2bAmWo9ayJrBLaHC4qUWSUkdDX%2fy35tDDoko8rasNz6QrPDvXPtZH4a4RRU1uyd4C0Z96NaqOu%2bjNh%2fxTr%2f6A%2fJQ%3d
+servidor = pay2alldemo.azurewebsites.net
+terminal=900
+# Servidor
+servidor = pay2alldemo.azurewebsites.net
+# CPF/CNPJ - para o Login na plataforma
+cpfCnpj = 05437537000137
+#Senha para logar na plataforma
+senha = autogeral
+#Senha Tecnica para cancelamento
+senhaTecnica = 314159

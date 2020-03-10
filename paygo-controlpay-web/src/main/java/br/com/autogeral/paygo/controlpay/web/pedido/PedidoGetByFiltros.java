@@ -1,5 +1,5 @@
-
 package br.com.autogeral.paygo.controlpay.web.pedido;
+
 import br.com.autogeral.paygo.controlpay.model.Data;
 import br.com.autogeral.paygo.controlpay.model.Pedido;
 import br.com.autogeral.paygo.controlpay.web.ControlPayConfig;
@@ -15,10 +15,15 @@ import org.apache.commons.httpclient.methods.StringRequestEntity;
  * @author kaique.mota
  */
 public class PedidoGetByFiltros {
-        private static final String PATH = "/webapi/Pedido/GetByFiltros?key=";
+
+    private static final String PATH = "/webapi/Pedido/GetByFiltros?key=";
+    private ControlPayConfig config;
+
+    public PedidoGetByFiltros(ControlPayConfig config) {
+        this.config = config;
+    }
 
     private String getPath() {
-        ControlPayConfig config = ControlPayConfig.getConfig();
         String servidor = config.getServidor();
         if (!servidor.startsWith("http")) {
             servidor = "https://" + servidor;
@@ -30,7 +35,7 @@ public class PedidoGetByFiltros {
     }
 
     public Data get(Pedido p) throws IOException {
-       
+
         String json = WsHelper.getGson().toJson(p);
         RequestEntity requestEntity = new StringRequestEntity(
                 json,
@@ -50,5 +55,4 @@ public class PedidoGetByFiltros {
         return data;
     }
 
-    
 }

@@ -53,14 +53,19 @@ public class RoteiroHomologacao {
      */
     public static void main(String[] args) {
         try {
+            String key = "tgy8LUCZhHpwwKtEyB5t%2bAmWo9ayJrBLaHC4qUWSUkdDX%2fy35tDDoko8rasNz6QrPDvXPtZH4a4RRU1uyd4C0Z96NaqOu%2bjNh%2fxTr%2f6A%2fJQ%3d";
+            String terminal = "900";
+            String cpfCnpj = "05437537000137";
+            String senha = "autogeral";
+            String servidor = "pay2alldemo.azurewebsites.net";
+            String senhaTecnica = "314159";
+            ControlPayConfig config = new ControlPayConfig(key, servidor, terminal, cpfCnpj, senha, senhaTecnica);
 
-            IntencaoImpressao ii = new IntencaoImpressao();
-            Pedido p = new Pedido();
-            LoginLogin ll = new LoginLogin();
+            IntencaoImpressao ii = new IntencaoImpressao(config);
+            LoginLogin ll = new LoginLogin(config);
             LoginResultado loginData = ll.autenticar();
             if (loginData.getHttpStatus() == 200) {
-                ControlPayConfig.getConfig().setKey(loginData.getPessoa().getKey());
-                TerminalGetByPessoaId lgb = new TerminalGetByPessoaId();
+                TerminalGetByPessoaId lgb = new TerminalGetByPessoaId(config);
                 Data terminais = lgb.execute(loginData);
                 System.out.println("Status HTTP : " + terminais.getHttpStatus());
                 if (terminais.getHttpStatus() == 200 && !terminais.getTerminais().isEmpty()) {
@@ -68,12 +73,13 @@ public class RoteiroHomologacao {
                     Venda venda = new Venda();
                     venda.setTerminalId(Integer.toString(terminalId));
                     venda.setAdquirente("cielo");
-                  venda.setReferencia("REF 1234");
+                    venda.setReferencia("REF 1234");
 //                    venda.setPedidoId(2775);
                     venda.setFormaPagamentoId(21);
                     venda.setQuantidadeParcelas(1);
                     venda.setValorTotalVendido(100);
-                    VendaVender vv = new VendaVender();
+                    venda.setConteudo("@");
+                    VendaVender vv = new VendaVender(config);
                     Data vendaData = vv.vender(venda);
 
 //                  Data imprimi = ii.impri(venda);
@@ -88,7 +94,7 @@ public class RoteiroHomologacao {
 
                     if (vendaData != null && vendaData.getIntencaoVenda() != null) {
                         IntencaoVenda iv = vendaData.getIntencaoVenda();
-                        IntencaoVendaGet ivg = new IntencaoVendaGet();
+                        IntencaoVendaGet ivg = new IntencaoVendaGet(config);
                         IntencaoVendaPesquisa ivp = new IntencaoVendaPesquisa(iv);
                         vendaData = ivg.get(ivp);
 
@@ -102,14 +108,14 @@ public class RoteiroHomologacao {
 
                         System.out.println(listaComprovantes);
 
-                        for (String s : listaComprovantes) {
+                        listaComprovantes.forEach((s) -> {
                             if (venda.getConteudo() != null) {
-                                venda.getConteudo().concat("\n" + s);
+                                String concat = venda.getConteudo().concat("\n" + s);
 
                             } else {
                                 venda.setConteudo(s);
                             }
-                        }
+                        });
                         System.out.println(venda.getConteudo());
                         Data imprimi = ii.impri(venda);
                     }

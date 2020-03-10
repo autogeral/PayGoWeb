@@ -36,10 +36,17 @@ import java.io.IOException;
 public class InserirCliente {
 
     public static void main(String[] args) throws IOException {
+        String key = "tgy8LUCZhHpwwKtEyB5t%2bAmWo9ayJrBLaHC4qUWSUkdDX%2fy35tDDoko8rasNz6QrPDvXPtZH4a4RRU1uyd4C0Z96NaqOu%2bjNh%2fxTr%2f6A%2fJQ%3d";
+        String terminal = "900";
+        String cpfCnpj = "05437537000137";
+        String senha = "autogeral";
+        String servidor = "pay2alldemo.azurewebsites.net";
+        String senhaTecnica = "314159";
+        ControlPayConfig config = new ControlPayConfig(key, servidor, terminal, cpfCnpj, senha, senhaTecnica);
 
         Cliente c = new Cliente();
         Endereco end = new Endereco();
-        ClienteInsert ci = new ClienteInsert();
+        ClienteInsert ci = new ClienteInsert(config);
 
         c.setId(3);
         c.setCpfCnpj("05437537000137");
@@ -48,7 +55,7 @@ public class InserirCliente {
         c.setReferencia("Cliente");
         c.setPessoaJuridica(false);
         c.setPessoaId(1);
-     
+
         c.setEndereco(end);
         end.setTipoLogradouro("Rua");
         end.setLogradouro("Manoel Lessa");
@@ -58,13 +65,10 @@ public class InserirCliente {
         end.setBairro("Vila Nova");
         end.setCidade("São Roque");
         end.setUf("SP");
-     
 
         Data ins = ci.insert(c);
-     
 
-        
-       /*    pfg.setFormaPagamento(formaPagamento);
+        /*    pfg.setFormaPagamento(formaPagamento);
         pfg.setQuantidadeMaximaParcelas(1);
         pfg.setAdquirente("cielo");
 

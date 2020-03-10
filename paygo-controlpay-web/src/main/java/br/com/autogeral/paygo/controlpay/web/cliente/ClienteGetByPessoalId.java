@@ -37,12 +37,16 @@ import org.apache.commons.httpclient.methods.StringRequestEntity;
  *
  * @author kaique.mota
  */
-public class ClienteGetByPessoalId {
+public class ClienteGetByPessoalId  {
 
     private static final String PATH = "/webapi/Cliente/GetByPessoaId?key=";
+    private ControlPayConfig config;
+
+    public ClienteGetByPessoalId(ControlPayConfig config) {
+        this.config = config;
+    }
 
     private String getPath() {
-        ControlPayConfig config = ControlPayConfig.getConfig();
         String servidor = config.getServidor();
         if (!servidor.startsWith("http")) {
             servidor = "https://" + servidor;
@@ -72,4 +76,5 @@ public class ClienteGetByPessoalId {
         return data;
 
     }
+
 }

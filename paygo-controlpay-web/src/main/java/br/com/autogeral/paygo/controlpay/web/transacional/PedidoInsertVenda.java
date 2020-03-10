@@ -40,9 +40,13 @@ import org.apache.commons.httpclient.methods.StringRequestEntity;
 public class PedidoInsertVenda {
 
     private static final String PATH = "/webapi/Pedido/Insert/?key=";
+    private ControlPayConfig config;
+
+    public PedidoInsertVenda(ControlPayConfig config) {
+        this.config = config;
+    }
 
     private String getPath() {
-        ControlPayConfig config = ControlPayConfig.getConfig();
         String servidor = config.getServidor();
         if (!servidor.startsWith("http")) {
             servidor = "https://" + servidor;

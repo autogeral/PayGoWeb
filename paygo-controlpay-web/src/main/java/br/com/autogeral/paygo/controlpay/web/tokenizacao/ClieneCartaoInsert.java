@@ -40,9 +40,14 @@ import org.apache.commons.httpclient.methods.StringRequestEntity;
 public class ClieneCartaoInsert {
 
     private static final String PATH = "/webapi/ClienteCartao/Insert?key=";
+    private ControlPayConfig config;
 
+    public ClieneCartaoInsert(ControlPayConfig config) {
+        this.config = config;
+    }
+
+    
     private String getPath() {
-        ControlPayConfig config = ControlPayConfig.getConfig();
         String servidor = config.getServidor();
         if (!servidor.startsWith("http")) {
             servidor = "https://" + servidor;

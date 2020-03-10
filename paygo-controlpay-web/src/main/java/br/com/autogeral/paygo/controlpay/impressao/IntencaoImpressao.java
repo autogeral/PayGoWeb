@@ -41,9 +41,13 @@ import org.apache.commons.httpclient.methods.StringRequestEntity;
 public class IntencaoImpressao {
 
     private static final String PATH = "webapi/IntencaoImpressao/Insert?key=";
+    private ControlPayConfig config;
+
+    public IntencaoImpressao(ControlPayConfig config) {
+        this.config = config;
+    }
 
     private String getPath() {
-        ControlPayConfig config = ControlPayConfig.getConfig();
         String servidor = config.getServidor();
         if (!servidor.startsWith("http")) {
             servidor = "https://" + servidor;
@@ -55,11 +59,10 @@ public class IntencaoImpressao {
     }
 
     public Data impri(Venda v) throws IOException {
-        
+
         v.setAguardarClienteIniciarImpressao(true);
-        v.setTerminalId(ControlPayConfig.getConfig().getTerminal());
+        v.setTerminalId(config.getTerminal());
         v.setImpressoraId(301);
-        
 
         String json = WsHelper.getGson().toJson(v);
         RequestEntity requestEntity = new StringRequestEntity(
@@ -77,9 +80,9 @@ public class IntencaoImpressao {
         System.out.println(responseBody);
         Data data = WsHelper.unmarshal(responseBody, Data.class);
         data.setHttpStatus(result);
-        
-        
+
         return data;
     }
-
 }
+
+

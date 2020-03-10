@@ -40,9 +40,13 @@ import org.apache.commons.httpclient.methods.StringRequestEntity;
 public class ClienteInsert {
 
     private static final String PATH = "/webapi/Cliente/Insert?key=";
+    private ControlPayConfig config;
+
+    public ClienteInsert(ControlPayConfig config) {
+        this.config = config;
+    }
 
     private String getPath() {
-        ControlPayConfig config = ControlPayConfig.getConfig();
         String servidor = config.getServidor();
         if (!servidor.startsWith("http")) {
             servidor = "https://" + servidor;
@@ -55,11 +59,9 @@ public class ClienteInsert {
 
     public Data insert(Cliente cli ) throws IOException {
 
-       
         String json = WsHelper.getGson().toJson(cli);
-  
+
         RequestEntity requestEntity = new StringRequestEntity(json,"application/json", "UTF-8");
-       
 
         PostMethod method = new PostMethod(getPath());
         method.addRequestHeader("Content-Type", "application/json");
@@ -72,8 +74,6 @@ public class ClienteInsert {
         Data data = WsHelper.unmarshal(json, Data.class);
         data.setHttpStatus(result);
         return data;
-
-        
-      
     }
+
 }

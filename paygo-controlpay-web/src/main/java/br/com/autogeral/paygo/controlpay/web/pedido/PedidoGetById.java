@@ -35,17 +35,23 @@ import org.apache.commons.httpclient.methods.GetMethod;
  *
  * @author kaique.mota
  */
-public class PedidoGetById {
+public class PedidoGetById  {
 
     private static final String PATH = "webapi/Pedido/GetById?key=";
+    private ControlPayConfig config;
 
     /**
      * Retorna dados do numero do pedido que foi feito a requisição.
      *
      * @return
      */
+    
+    public PedidoGetById(ControlPayConfig config) {
+      
+        this.config = config;
+    }
+
     private String getPath(int pedidoId) {
-        ControlPayConfig config = ControlPayConfig.getConfig();
         String servidor = config.getServidor();
         if (!servidor.startsWith("http")) {
             servidor = "https://" + servidor;
@@ -73,4 +79,7 @@ public class PedidoGetById {
 
         return data;
     }
+
+ 
+
 }

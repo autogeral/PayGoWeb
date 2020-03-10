@@ -35,13 +35,19 @@ import java.io.IOException;
 public class IntencaoImpressaoGetId {
 
     public static void main(String[] args) throws IOException {
+        String key = "tgy8LUCZhHpwwKtEyB5t%2bAmWo9ayJrBLaHC4qUWSUkdDX%2fy35tDDoko8rasNz6QrPDvXPtZH4a4RRU1uyd4C0Z96NaqOu%2bjNh%2fxTr%2f6A%2fJQ%3d";
+        String terminal = "900";
+        String cpfCnpj = "05437537000137";
+        String senha = "autogeral";
+        String servidor = "pay2alldemo.azurewebsites.net";
+        String senhaTecnica = "314159";
+        ControlPayConfig config = new ControlPayConfig(key, servidor, terminal, cpfCnpj, senha, senhaTecnica);
 
-        
-            IntencaoImpressaoId intencaoImpressaoID = new IntencaoImpressaoId();
-            IntencaoImpressao intencaoImpressao = new IntencaoImpressao();
-            intencaoImpressao.setIntencaoImpressao(1);
-            Data imprimirGetId = intencaoImpressaoID.imprimi(intencaoImpressao);
-            
+        IntencaoImpressaoId intencaoImpressaoID = new IntencaoImpressaoId();
+        IntencaoImpressao intencaoImpressao = new IntencaoImpressao();
+        intencaoImpressao.setIntencaoImpressao(1);
+        Data imprimirGetId = intencaoImpressaoID.imprimi(intencaoImpressao, config);
+
     }
 
 }

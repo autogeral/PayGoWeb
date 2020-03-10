@@ -1,4 +1,3 @@
-
 package br.com.autogeral.paygo.controlpay.web;
 
 import br.com.autogeral.paygo.controlpay.model.Data;
@@ -20,10 +19,18 @@ import java.util.logging.Logger;
 public class ObtemIntencaoVenda {
 
     public static void main(String[] args) {
+        String key = "tgy8LUCZhHpwwKtEyB5t%2bAmWo9ayJrBLaHC4qUWSUkdDX%2fy35tDDoko8rasNz6QrPDvXPtZH4a4RRU1uyd4C0Z96NaqOu%2bjNh%2fxTr%2f6A%2fJQ%3d";
+        String terminal = "900";
+        String cpfCnpj = "05437537000137";
+        String senha = "autogeral";
+        String servidor = "pay2alldemo.azurewebsites.net";
+        String senhaTecnica = "314159";
+        ControlPayConfig config = new ControlPayConfig(key, servidor, terminal, cpfCnpj, senha, senhaTecnica);
+
         try {
             IntencaoVenda iv = new IntencaoVenda();
             iv.setId(78107);
-            IntencaoVendaGet ivg = new IntencaoVendaGet();
+            IntencaoVendaGet ivg = new IntencaoVendaGet(config);
             IntencaoVendaPesquisa ivp = new IntencaoVendaPesquisa(iv);
             Data data = ivg.get(ivp);
             List<String> listaComprovantes = new ArrayList<>();
@@ -32,7 +39,7 @@ public class ObtemIntencaoVenda {
                 intencaoVenda.getPagamentosExternos().stream().forEach(pagamento -> listaComprovantes.add(pagamento.getComprovanteAdquirente()
                 ));
             });
-            
+
             System.out.println(listaComprovantes);
 
             System.out.println("" + data.getData());

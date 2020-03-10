@@ -38,14 +38,19 @@ import org.apache.commons.httpclient.methods.GetMethod;
 public class PedidoCancelar {
 
     private static final String PATH = "/webapi/Pedido/Cancelar?key=";
+    private ControlPayConfig config;
 
     /**
      * Retorna dados do pedido que foi Cancelado.
      *
      * @return
      */
+    public PedidoCancelar(ControlPayConfig config) {
+
+        this.config = config;
+    }
+
     private String getPath(int pedidoId) {
-        ControlPayConfig config = ControlPayConfig.getConfig();
         String servidor = config.getServidor();
         if (!servidor.startsWith("http")) {
             servidor = "https://" + servidor;

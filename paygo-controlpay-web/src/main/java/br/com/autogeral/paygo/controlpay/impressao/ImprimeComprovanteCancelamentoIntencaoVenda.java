@@ -26,7 +26,7 @@ package br.com.autogeral.paygo.controlpay.impressao;
 import br.com.autogeral.paygo.controlpay.model.Data;
 import br.com.autogeral.paygo.controlpay.model.IntencaoVenda;
 import br.com.autogeral.paygo.controlpay.model.IntencaoVendaPesquisa;
-import br.com.autogeral.paygo.controlpay.model.PagamentoExterno;
+import br.com.autogeral.paygo.controlpay.web.ControlPayConfig;
 import br.com.autogeral.paygo.controlpay.web.transacional.IntencaoVendaGet;
 import java.awt.print.PrinterJob;
 import java.io.ByteArrayInputStream;
@@ -37,8 +37,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
-import static java.util.stream.Collectors.toList;
 import javax.print.Doc;
 import javax.print.DocFlavor;
 import javax.print.DocPrintJob;
@@ -51,6 +49,12 @@ import javax.print.SimpleDoc;
  * @author kaique.mota
  */
 public class ImprimeComprovanteCancelamentoIntencaoVenda {
+
+    private ControlPayConfig config;
+
+    public ImprimeComprovanteCancelamentoIntencaoVenda(ControlPayConfig config) {
+        this.config = config;
+    }
 
     private void imprimir(PrintService service, String conteudo) {
         InputStream stream = new ByteArrayInputStream(conteudo.getBytes());
@@ -84,7 +88,7 @@ public class ImprimeComprovanteCancelamentoIntencaoVenda {
     }
 
     public void prrenche(int numIntencaoVenda) throws PrintException, IOException {
-        ImprimeComprovante ti = new ImprimeComprovante();
+        ImprimeComprovante ti = new ImprimeComprovante(config);
         PrintService services[] = PrinterJob.lookupPrintServices();
         for (PrintService service : services) {
             System.out.println("Printer service name : " + service.getName());
@@ -93,10 +97,10 @@ public class ImprimeComprovanteCancelamentoIntencaoVenda {
                 intencaoVendaa = new IntencaoVenda();
                 intencaoVendaa.setId(numIntencaoVenda);
                 vendaPesquisa = new IntencaoVendaPesquisa(intencaoVendaa);
-                intencaoFiltro = new IntencaoVendaGet();
+                intencaoFiltro = new IntencaoVendaGet(config);
                 Data data = intencaoFiltro.get(vendaPesquisa);
 
-             List<String> listaComprovantesCancelados = new ArrayList<>();
+                List<String> listaComprovantesCancelados = new ArrayList<>();
 
                 for (IntencaoVenda i : data.getIntencoesVendas()) {
                     if (i.getIntencaoVendaStatus().getId() == 20) {

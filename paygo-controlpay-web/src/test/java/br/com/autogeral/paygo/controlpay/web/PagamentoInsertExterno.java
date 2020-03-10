@@ -33,18 +33,22 @@ import java.io.IOException;
  * @author kaique.mota
  */
 public class PagamentoInsertExterno {
-    
+
     public static void main(String[] args) throws IOException {
-        
-        
-        PagamentoExternoInserAdmin peia = new PagamentoExternoInserAdmin();
+        String key = "tgy8LUCZhHpwwKtEyB5t%2bAmWo9ayJrBLaHC4qUWSUkdDX%2fy35tDDoko8rasNz6QrPDvXPtZH4a4RRU1uyd4C0Z96NaqOu%2bjNh%2fxTr%2f6A%2fJQ%3d";
+        String terminal = "900";
+        String cpfCnpj = "05437537000137";
+        String senha = "autogeral";
+        String servidor = "pay2alldemo.azurewebsites.net";
+        String senhaTecnica = "314159";
+        ControlPayConfig config = new ControlPayConfig(key, servidor, terminal, cpfCnpj, senha, senhaTecnica);
+
+        PagamentoExternoInserAdmin peia = new PagamentoExternoInserAdmin(config);
         PagamentoExterno pe = new PagamentoExterno();
-        
-        
+
         pe.setTerminalId(900);
         Data paga = peia.pagamento(pe);
-        
-        
+
     }
-    
+
 }

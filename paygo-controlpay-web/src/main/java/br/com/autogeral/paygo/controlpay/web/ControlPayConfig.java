@@ -43,19 +43,25 @@ public class ControlPayConfig {
     private String senha;
     private String senhaTecnica;
 
- 
-    
-    
-    private ControlPayConfig() {}
-
-    public static ControlPayConfig getConfig() {
-        if (config == null) {
-            config = new ControlPayConfig();
-            config.load();
-        }
-        return config;
+    public ControlPayConfig(String key, String servidor, String terminal, String cpfCnpj, String senha, String senhaTecnica) {
+        this.key = key;
+        this.servidor = servidor;
+        this.terminal = terminal;
+        this.cpfCnpj = cpfCnpj;
+        this.senha = senha;
+        this.senhaTecnica = senhaTecnica;
     }
-    
+
+    public ControlPayConfig getConfig(ControlPayConfig config) {
+
+        if (config == null) {
+            ControlPayConfig configa = new ControlPayConfig(this.key, this.servidor, this.terminal, this.cpfCnpj, this.senha, this.senhaTecnica);
+            this.config = configa;
+            this.config.load();
+        }
+        return this.config = config;
+    }
+
     private void load() {
         String configFile = System.getProperty("controlPay.config", "controlPay.properties");
         File file = new File(configFile);
@@ -70,7 +76,7 @@ public class ControlPayConfig {
                 config.terminal = prop.getProperty("terminal");
                 config.cpfCnpj = prop.getProperty("cpfCnpj");
                 config.senha = prop.getProperty("senha");
-                config.senhaTecnica= prop.getProperty("senhaTecnica");
+                config.senhaTecnica = prop.getProperty("senhaTecnica");
             } catch (IOException ex) {
                 ex.printStackTrace(System.out);
             }
@@ -79,28 +85,31 @@ public class ControlPayConfig {
 
     /**
      * Chave do estabelecimento fornecedido pela PayGo / ControlPay
-     * @return 
+     *
+     * @return
      */
     public String getKey() {
         return key;
     }
-    
+
     public void setKey(String newKey) {
         this.key = newKey;
     }
 
     /**
-     * O servidor para o qual deve-se enviar as requisições
-     * O retorno deve compor a URL sem a parte do cominho
-     * @return 
+     * O servidor para o qual deve-se enviar as requisições O retorno deve
+     * compor a URL sem a parte do cominho
+     *
+     * @return
      */
     public String getServidor() {
         return servidor;
     }
-    
+
     /**
      * Numero do terminal fornecedido pela PayGo / ControlPay
-     * @return 
+     *
+     * @return
      */
     public String getTerminal() {
         return terminal;
@@ -109,7 +118,8 @@ public class ControlPayConfig {
     /**
      * Número do CPF ou CNPJ para autenticacao no web service</br>
      * Para uso em LoginLogin</br>
-     * @return 
+     *
+     * @return
      */
     public String getCpfCnpj() {
         return cpfCnpj;
@@ -118,12 +128,13 @@ public class ControlPayConfig {
     /**
      * Senha para autenticacao no web service</br>
      * Para uso em LoginLogin</br>
-     * @return 
+     *
+     * @return
      */
     public String getSenha() {
         return senha;
     }
-    
+
     public String getSenhaTecnica() {
         return senhaTecnica;
     }

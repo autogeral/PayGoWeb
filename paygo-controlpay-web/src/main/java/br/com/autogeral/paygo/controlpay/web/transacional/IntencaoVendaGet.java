@@ -41,9 +41,14 @@ import org.apache.commons.httpclient.methods.StringRequestEntity;
 public class IntencaoVendaGet {
 
     private static final String PATH = "/webapi/IntencaoVenda/GetByFiltros?key=";
+    private ControlPayConfig config;
+
+    public IntencaoVendaGet(ControlPayConfig config) {
+        this.config = config;
+    }
 
     private String getPath() {
-        ControlPayConfig config = ControlPayConfig.getConfig();
+
         String servidor = config.getServidor();
         if (!servidor.startsWith("http")) {
             servidor = "https://" + servidor;
@@ -74,5 +79,6 @@ public class IntencaoVendaGet {
         data.setHttpStatus(result);
         return data;
     }
+
 
 }

@@ -21,7 +21,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package br.com.autogeral.paygo.controlpay.web.operacional;
 
 import br.com.autogeral.paygo.controlpay.model.Login;
@@ -36,15 +35,20 @@ import org.apache.commons.httpclient.methods.StringRequestEntity;
 
 /**
  * 03/06/2019 13:42:22
+ *
  * @author Murilo Moraes Tuvani
  */
-public class LoginLogin {
-    
+public class LoginLogin  {
+
     private static final String PATH = "webapi/Login/Login/";
+    private ControlPayConfig config;
+
+    public LoginLogin(ControlPayConfig config) {
+        this.config = config;
+    }
 
     public LoginResultado autenticar() throws IOException {
         Login l = new Login();
-        ControlPayConfig config = ControlPayConfig.getConfig();
         l.setCpfCnpj(config.getCpfCnpj());
         l.setSenha(config.getSenha());
         String json = WsHelper.getGson().toJson(l);
@@ -52,7 +56,7 @@ public class LoginLogin {
                 json,
                 "application/json",
                 "UTF-8");
-        
+
         PostMethod method = new PostMethod(getPath());
         method.addRequestHeader("Content-Type", "application/json");
         method.setRequestEntity(requestEntity);
@@ -60,7 +64,7 @@ public class LoginLogin {
         int result = client.executeMethod(method);
 
         System.out.println("Códiog HTTP : " + result);
-        
+
         WsHelper.printHeaders(method);
         json = method.getResponseBodyAsString();
         System.out.println(json);
@@ -69,9 +73,8 @@ public class LoginLogin {
 
         return data;
     }
-    
+
     private String getPath() {
-        ControlPayConfig config = ControlPayConfig.getConfig();
         String servidor = config.getServidor();
         if (!servidor.startsWith("http")) {
             servidor = "https://" + servidor;
@@ -81,4 +84,6 @@ public class LoginLogin {
         }
         return servidor + PATH;
     }
+
+  
 }

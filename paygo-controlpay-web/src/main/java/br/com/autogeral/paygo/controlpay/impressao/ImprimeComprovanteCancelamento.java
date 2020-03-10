@@ -27,6 +27,7 @@ import br.com.autogeral.paygo.controlpay.model.Data;
 import br.com.autogeral.paygo.controlpay.model.IntencaoVenda;
 import br.com.autogeral.paygo.controlpay.model.IntencaoVendaPesquisa;
 import br.com.autogeral.paygo.controlpay.model.PagamentoExterno;
+import br.com.autogeral.paygo.controlpay.web.ControlPayConfig;
 import br.com.autogeral.paygo.controlpay.web.transacional.IntencaoVendaGet;
 import java.awt.print.PrinterJob;
 import java.io.ByteArrayInputStream;
@@ -50,6 +51,12 @@ import javax.print.SimpleDoc;
  * @author kaique.mota
  */
 public class ImprimeComprovanteCancelamento {
+
+    private ControlPayConfig config;
+
+    public ImprimeComprovanteCancelamento(ControlPayConfig config) {
+        this.config = config;
+    }
 
     private void imprimir(PrintService service, String conteudo) {
         InputStream stream = new ByteArrayInputStream(conteudo.getBytes());
@@ -83,7 +90,7 @@ public class ImprimeComprovanteCancelamento {
     }
 
     public void prrenche(int numRomaneio, int index) throws PrintException, IOException {
-        ImprimeComprovante ti = new ImprimeComprovante();
+        ImprimeComprovante ti = new ImprimeComprovante(config);
         PrintService services[] = PrinterJob.lookupPrintServices();
         for (PrintService service : services) {
             System.out.println("Printer service name : " + service.getName());
@@ -92,7 +99,7 @@ public class ImprimeComprovanteCancelamento {
                 intencaoVendaa = new IntencaoVenda();
                 intencaoVendaa.setReferencia(Integer.toString(numRomaneio));
                 vendaPesquisa = new IntencaoVendaPesquisa(intencaoVendaa);
-                intencaoFiltro = new IntencaoVendaGet();
+                intencaoFiltro = new IntencaoVendaGet(config);
                 Data data = intencaoFiltro.get(vendaPesquisa);
 
                 List<String> listaComprovantesCancelados = new ArrayList<>();

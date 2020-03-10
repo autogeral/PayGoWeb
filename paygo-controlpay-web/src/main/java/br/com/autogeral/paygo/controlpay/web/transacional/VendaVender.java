@@ -21,15 +21,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package br.com.autogeral.paygo.controlpay.web.transacional;
 
 import br.com.autogeral.paygo.controlpay.model.Data;
 import br.com.autogeral.paygo.controlpay.model.Venda;
 import br.com.autogeral.paygo.controlpay.web.ControlPayConfig;
 import br.com.autogeral.paygo.controlpay.web.WsHelper;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.PostMethod;
@@ -38,20 +35,25 @@ import org.apache.commons.httpclient.methods.StringRequestEntity;
 
 /**
  * 23/05/2019 17:56:32
+ *
  * @author Murilo de Moraes Tuvani
  */
 public class VendaVender {
-    
+
     private static final String PATH = "webapi/Venda/Vender/?key=";
-    
-    
+    private ControlPayConfig config;
+
     /**
-     * Retorna a URL compra para o envio da requisição
-     * para o endpoint de transacao de venda
-     * @return 
+     * Retorna a URL compra para o envio da requisição para o endpoint de
+     * transacao de venda
+     *
+     * @return
      */
+    public VendaVender(ControlPayConfig config) {
+        this.config = config;
+    }
+
     private String getPath() {
-        ControlPayConfig config = ControlPayConfig.getConfig();
         String servidor = config.getServidor();
         if (!servidor.startsWith("http")) {
             servidor = "https://" + servidor;
@@ -61,27 +63,27 @@ public class VendaVender {
         }
         return servidor + PATH + config.getKey();
     }
-    
+
     public Data vender(Venda venda) throws IOException {
-        venda.setTerminalId(ControlPayConfig.getConfig().getTerminal());
-        
+        venda.setTerminalId(config.getTerminal());
+
         String json = WsHelper.getGson().toJson(venda);
         RequestEntity requestEntity = new StringRequestEntity(
                 json,
                 "application/json",
                 "UTF-8");
-        
+
         PostMethod method = new PostMethod(getPath());
         method.addRequestHeader("Content-Type", "application/json");
         method.setRequestEntity(requestEntity);
         HttpClient client = new HttpClient();
         int result = client.executeMethod(method);
-       
+
         String responseBody = method.getResponseBodyAsString();
         System.out.println(responseBody);
         Data data = WsHelper.unmarshal(responseBody, Data.class);
         data.setHttpStatus(result);
         return data;
     }
-    
+
 }

@@ -40,9 +40,14 @@ import org.apache.commons.httpclient.methods.StringRequestEntity;
 public class PagamentoExternoInserAdmin {
 
     private static final String PATH = "/webapi/PagamentoExterno/InsertPagamentoExternoTipoAdmin?key=";
+    private ControlPayConfig config;
+
+    public PagamentoExternoInserAdmin(ControlPayConfig config) {
+        this.config = config;
+    }
 
     private String getPath() {
-        ControlPayConfig config = ControlPayConfig.getConfig();
+        
         String servidor = config.getServidor();
         if (!servidor.startsWith("http")) {
             servidor = "https://" + servidor;
@@ -54,7 +59,7 @@ public class PagamentoExternoInserAdmin {
     }
 
     public Data pagamento(PagamentoExterno pe) throws IOException {
-        pe.setSenhaTecnica(ControlPayConfig.getConfig().getSenhaTecnica());
+        pe.setSenhaTecnica(config.getSenhaTecnica());
     
 
         String json = WsHelper.getGson().toJson(pe);

@@ -1,0 +1,3 @@
+Java  8 ***
+//caso as duas lista sejam iguais 
+Boolean retornaTrue = Collections.disjoint(arquivosRecebidos, arquivosJaSalvos);

@@ -18,9 +18,13 @@ import org.apache.commons.httpclient.methods.StringRequestEntity;
 public class VendaCancelarVenda {
 
     private static final String PATH = "/webapi/Venda/CancelarVenda?key=";
+    private ControlPayConfig config;
+
+    public VendaCancelarVenda(ControlPayConfig config) {
+        this.config = config;
+    }
 
     private String getPath() {
-        ControlPayConfig config = ControlPayConfig.getConfig();
         String servidor = config.getServidor();
         if (!servidor.startsWith("http")) {
             servidor = "https://" + servidor;

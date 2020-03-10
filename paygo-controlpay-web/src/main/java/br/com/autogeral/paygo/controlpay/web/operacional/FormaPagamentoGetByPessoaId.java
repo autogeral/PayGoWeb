@@ -51,9 +51,13 @@ import org.apache.commons.httpclient.methods.GetMethod;
 public class FormaPagamentoGetByPessoaId {
 
     private static final String PATH = "/webapi/FormaPagamento/GetByPessoaId?key=";
+    private ControlPayConfig config;
+
+    public FormaPagamentoGetByPessoaId(ControlPayConfig config) {
+        this.config = config;
+    }
 
     private String getPath(int pessoaId) {
-        ControlPayConfig config = ControlPayConfig.getConfig();
         String servidor = config.getServidor();
         if (!servidor.startsWith("http")) {
             servidor = "https://" + servidor;

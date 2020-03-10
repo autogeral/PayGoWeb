@@ -40,14 +40,18 @@ import org.apache.commons.httpclient.methods.StringRequestEntity;
 public class ClienteCartaoById {
 
     private static final String PATH = "webapi/ClienteCartao/GetByClienteId?key=";
-    
+    private ControlPayConfig config;
+
     /**
      * API para consultar os cartões cadastrados para um cliente
      *
      * @return
      */
+    public ClienteCartaoById(ControlPayConfig config) {
+        this.config = config;
+    }
+
     private String getPath(int clienteId) {
-        ControlPayConfig config = ControlPayConfig.getConfig();
         String servidor = config.getServidor();
         if (!servidor.startsWith("http")) {
             servidor = "https://" + servidor;
@@ -61,7 +65,6 @@ public class ClienteCartaoById {
     public DataToken consulta(ClienteCartao cc) throws IOException {
         int clienteId = cc.getCliente().getId();
 
-        
         String json = WsHelper.getGson().toJson(cc);
         RequestEntity requestEntity = new StringRequestEntity(
                 json,
@@ -77,7 +80,7 @@ public class ClienteCartaoById {
         String responseBody = method.getResponseBodyAsString();
         System.out.println(responseBody);
         DataToken data = WsHelper.unmarshal(responseBody, DataToken.class);
-        
+
         data.setHttpStatus(result);
         return data;
 

@@ -23,10 +23,7 @@
  */
 package br.com.autogeral.paygo.controlpay.web;
 
-import br.com.autogeral.paygo.controlpay.impressao.ImprimeComprovante;
-import br.com.autogeral.paygo.controlpay.impressao.ImprimeComprovanteCancelamento;
 import br.com.autogeral.paygo.controlpay.impressao.ImprimeComprovanteCancelamentoIntencaoVenda;
-import br.com.autogeral.paygo.controlpay.model.Data;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,13 +35,19 @@ import javax.print.PrintException;
  */
 public class Imprimir {
 
-    public static void main(String[] args) {
-        ImprimeComprovanteCancelamentoIntencaoVenda ImprimeComprovante = new ImprimeComprovanteCancelamentoIntencaoVenda();
+    public static void main(String[] args) throws IOException {
+          String key ="tgy8LUCZhHpwwKtEyB5t%2bAmWo9ayJrBLaHC4qUWSUkdDX%2fy35tDDoko8rasNz6QrPDvXPtZH4a4RRU1uyd4C0Z96NaqOu%2bjNh%2fxTr%2f6A%2fJQ%3d";
+            String terminal = "900";
+            String cpfCnpj = "05437537000137";
+            String senha = "autogeral";
+            String servidor = "pay2alldemo.azurewebsites.net";
+            String senhaTecnica= "314159";
+            ControlPayConfig config = new ControlPayConfig(key, servidor, terminal, cpfCnpj, senha, senhaTecnica);
+            
+        ImprimeComprovanteCancelamentoIntencaoVenda ImprimeComprovante = new ImprimeComprovanteCancelamentoIntencaoVenda(config);
         try {
             ImprimeComprovante.prrenche(81462) ;
         } catch (PrintException ex) {
-            Logger.getLogger(Imprimir.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
             Logger.getLogger(Imprimir.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

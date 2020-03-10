@@ -31,7 +31,6 @@ import br.com.autogeral.paygo.controlpay.web.WsHelper;
 import java.io.IOException;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
-import org.apache.commons.httpclient.methods.PostMethod;
 
 /**
  * 03/06/2019 15:32:56
@@ -40,14 +39,18 @@ import org.apache.commons.httpclient.methods.PostMethod;
 public class TerminalGetByPessoaId {
     
     private static final String PATH = "webapi/Terminal/GetByPessoaId?key=";
-    
+    private ControlPayConfig config ;
     /**
      * Retorna a URL compra para o envio da requisição
      * para o endpoint de transacao de venda
      * @return 
      */
+    
+    public TerminalGetByPessoaId(ControlPayConfig config) {
+        this.config = config;
+    }
+
     private String getPath(int pessoaId) {
-        ControlPayConfig config = ControlPayConfig.getConfig();
         String servidor = config.getServidor();
         if (!servidor.startsWith("http")) {
             servidor = "https://" + servidor;
@@ -74,5 +77,6 @@ public class TerminalGetByPessoaId {
         
         return data;
     }
+
 
 }

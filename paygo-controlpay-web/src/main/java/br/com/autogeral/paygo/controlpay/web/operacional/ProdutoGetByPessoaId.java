@@ -1,4 +1,3 @@
-
 package br.com.autogeral.paygo.controlpay.web.operacional;
 
 import br.com.autogeral.paygo.controlpay.model.Data;
@@ -27,9 +26,14 @@ import org.apache.commons.httpclient.methods.StringRequestEntity;
 public class ProdutoGetByPessoaId {
 
     private static final String PATH = "webapi/Produto/GetByPessoaId?key=";
+    private ControlPayConfig config;
+
+    public ProdutoGetByPessoaId(ControlPayConfig config) {
+        this.config = config;
+    }
 
     private String getPath(int pessoaId) {
-        ControlPayConfig config = ControlPayConfig.getConfig();
+
         String servidor = config.getServidor();
         if (!servidor.startsWith("http")) {
             servidor = "https://" + servidor;
