@@ -143,4 +143,9 @@ public class ControlPayConfig {
         this.senhaTecnica = senhaTecnica;
     }
 
+    @Override
+    public String toString() {
+        return "ControlPayConfig{" + "key=" + key + ", servidor=" + servidor + ", terminal=" + terminal + ", cpfCnpj=" + cpfCnpj + ", senha=" + senha + ", senhaTecnica=" + senhaTecnica + '}';
+    }
+
 }

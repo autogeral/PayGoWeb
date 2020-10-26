@@ -57,7 +57,7 @@ public class RoteiroHomologacao {
             String terminal = "900";
             String cpfCnpj = "05437537000137";
             String senha = "autogeral";
-            String servidor = "pay2alldemo.azurewebsites.net";
+            String servidor = "https://apidemo.gate2all.com.br";
             String senhaTecnica = "314159";
             ControlPayConfig config = new ControlPayConfig(key, servidor, terminal, cpfCnpj, senha, senhaTecnica);
 

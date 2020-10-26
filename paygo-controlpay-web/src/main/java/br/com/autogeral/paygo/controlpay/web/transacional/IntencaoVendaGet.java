@@ -56,6 +56,7 @@ public class IntencaoVendaGet {
         if (!servidor.endsWith("/")) {
             servidor += "/";
         }
+        System.out.println(servidor + PATH + config.getKey());
         return servidor + PATH + config.getKey();
     }
 
@@ -66,7 +67,7 @@ public class IntencaoVendaGet {
                 json,
                 "application/json",
                 "UTF-8");
-
+        
         PostMethod method = new PostMethod(getPath());
         method.addRequestHeader("Content-Type", "application/json");
         method.setRequestEntity(requestEntity);

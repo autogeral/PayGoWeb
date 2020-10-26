@@ -19,17 +19,17 @@ import java.util.logging.Logger;
 public class ObtemIntencaoVenda {
 
     public static void main(String[] args) {
-        String key = "tgy8LUCZhHpwwKtEyB5t%2bAmWo9ayJrBLaHC4qUWSUkdDX%2fy35tDDoko8rasNz6QrPDvXPtZH4a4RRU1uyd4C0Z96NaqOu%2bjNh%2fxTr%2f6A%2fJQ%3d";
-        String terminal = "900";
+        String key = "AgpI3ega5mcubryw%2fPVtTt6V%2fxBrL8r87E7b8jcqN6RA%2b%2f%2fOOya6RDZg05WXl%2fhZ6XpegN%2ftplWQuP0EGi%2ffHtSY9kMkimS0c0tNGUUrq1DwAC49yBQPdeHFnAUXjE7k";
+        String terminal = "9594";
         String cpfCnpj = "05437537000137";
         String senha = "autogeral";
-        String servidor = "pay2alldemo.azurewebsites.net";
+        String servidor ="https://controlpay.ntk.com.br/";
         String senhaTecnica = "314159";
         ControlPayConfig config = new ControlPayConfig(key, servidor, terminal, cpfCnpj, senha, senhaTecnica);
 
         try {
             IntencaoVenda iv = new IntencaoVenda();
-            iv.setId(78107);
+            iv.setId(2489860);
             IntencaoVendaGet ivg = new IntencaoVendaGet(config);
             IntencaoVendaPesquisa ivp = new IntencaoVendaPesquisa(iv);
             Data data = ivg.get(ivp);
