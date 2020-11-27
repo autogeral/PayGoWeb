@@ -92,7 +92,8 @@ public class ImprimeComprovanteCancelamentoIntencaoVenda {
         PrintService services[] = PrinterJob.lookupPrintServices();
         for (PrintService service : services) {
             System.out.println("Printer service name : " + service.getName());
-            if (service.getName().startsWith("MP-")) {
+            if (service.getName().startsWith("MP-")
+            		|| service.getName().startsWith("ELG")) {
 
                 intencaoVendaa = new IntencaoVenda();
                 intencaoVendaa.setId(numIntencaoVenda);

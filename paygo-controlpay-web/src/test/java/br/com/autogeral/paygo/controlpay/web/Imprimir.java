@@ -36,12 +36,12 @@ import javax.print.PrintException;
 public class Imprimir {
 
     public static void main(String[] args) throws IOException {
-          String key ="tgy8LUCZhHpwwKtEyB5t%2bAmWo9ayJrBLaHC4qUWSUkdDX%2fy35tDDoko8rasNz6QrPDvXPtZH4a4RRU1uyd4C0Z96NaqOu%2bjNh%2fxTr%2f6A%2fJQ%3d";
-            String terminal = "900";
-            String cpfCnpj = "05437537000137";
-            String senha = "autogeral";
-            String servidor = "pay2alldemo.azurewebsites.net";
-            String senhaTecnica= "314159";
+    	 String key = "Iquz3TZ7n7U%2bja8y7qi40Koj%2fEV6UYWBU%2beSxyev1w0EoTvQIc8t2MHR%2bMOLXcvJPyC3HliQMvs8ZNPp4xCMZEtm%2fZGXate9%2fh%2ffkf5pXniC9uELSYOQ4nnz%2fbw1u%2fpx";
+         String terminal = "88";
+         String cpfCnpj = "05437537000307";
+         String senha = "autogeral";
+         String servidor = "controlpay.ntk.com.br";
+         String senhaTecnica = "314159";
             ControlPayConfig config = new ControlPayConfig(key, servidor, terminal, cpfCnpj, senha, senhaTecnica);
             
         ImprimeComprovanteCancelamentoIntencaoVenda ImprimeComprovante = new ImprimeComprovanteCancelamentoIntencaoVenda(config);
