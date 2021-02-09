@@ -26,9 +26,11 @@ package br.com.autogeral.paygo.controlpay.web.operacional;
 import br.com.autogeral.paygo.controlpay.model.Data;
 import br.com.autogeral.paygo.controlpay.model.Pessoa;
 import br.com.autogeral.paygo.controlpay.web.ControlPayConfig;
+import br.com.autogeral.paygo.controlpay.web.PermitAllCookiesSpec;
 import br.com.autogeral.paygo.controlpay.web.WsHelper;
 import java.io.IOException;
 import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.cookie.CookiePolicy;
 import org.apache.commons.httpclient.methods.GetMethod;
 
 /**
@@ -73,7 +75,10 @@ public class FormaPagamentoGetByPessoaId {
         int pessoaId = pessoa.getId();
         GetMethod method = new GetMethod(getPath(pessoaId));
         method.addRequestHeader("Content-Type", "application/json");
+        method.addRequestHeader("User-Agent", "Erpj/1.0");
         HttpClient client = new HttpClient();
+        CookiePolicy.registerCookieSpec("PermitAllCookiesSpec", PermitAllCookiesSpec.class); 
+        client.getParams().setCookiePolicy("PermitAllCookiesSpec");
 
         int result = client.executeMethod(method);
 
