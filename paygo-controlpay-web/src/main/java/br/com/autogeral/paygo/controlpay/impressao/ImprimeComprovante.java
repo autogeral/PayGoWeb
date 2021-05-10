@@ -10,10 +10,7 @@ import javax.print.PrintException;
 import javax.print.PrintService;
 import javax.print.SimpleDoc;
 import br.com.autogeral.paygo.controlpay.model.Data;
-import br.com.autogeral.paygo.controlpay.model.IntencaoVenda;
-import br.com.autogeral.paygo.controlpay.model.IntencaoVendaPesquisa;
 import br.com.autogeral.paygo.controlpay.web.ControlPayConfig;
-import br.com.autogeral.paygo.controlpay.web.transacional.IntencaoVendaGet;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -89,7 +86,7 @@ public class ImprimeComprovante  {
         }
     }
 
-    public void prrenche(int intencaoVendaId )throws PrintException, IOException {
+    public void prrenche(Data data)throws PrintException, IOException {
         ImprimeComprovante ti = new ImprimeComprovante(config);
         PrintService services[] = PrinterJob.lookupPrintServices();
         for (PrintService service : services) {
@@ -97,11 +94,11 @@ public class ImprimeComprovante  {
             if (service.getName().startsWith("MP-")
             		|| service.getName().startsWith("ELG")) {
 
-                IntencaoVenda iv = new IntencaoVenda();
-                iv.setId(intencaoVendaId);
-                IntencaoVendaGet ivg = new IntencaoVendaGet(config);
-                IntencaoVendaPesquisa ivp = new IntencaoVendaPesquisa(iv);
-                Data data = ivg.get(ivp);
+//                IntencaoVenda iv = new IntencaoVenda();
+//                iv.setId(intencaoVendaId);
+//                IntencaoVendaGet ivg = new IntencaoVendaGet(config);
+//                IntencaoVendaPesquisa ivp = new IntencaoVendaPesquisa(iv);
+//                Data data = ivg.get(ivp);
 
                 List<String> listaComprovantes = new ArrayList<>();
                 data.getIntencoesVendas().stream().forEach(intencaoVenda -> {
