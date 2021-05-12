@@ -22,5 +22,18 @@ Para que essa integração funcione no ERP, é preciso fazer algumas configuraç
   ou um CNPJ novo, além de solicitar na REDE ou STONE ou outra adquirente, o ponto de captura, precisamos pedir na PayGo para que liberem o terminal necessário e configurem
   o [painel de controle](https://portal.controlpay.com.br/Pages/Login.aspx?ReturnUrl=%2f) deles, através dos meios de comunicação: Tel 3003-9968, Cel 11-99471-1839 (Lucas)
   ou 11-3003-9968 (Suporte).
-- No banco de dados, temos que configurar a tabela caixas_lojas, informando os campos:
-* TERMINAL_CONTROLPAY
+- No banco de dados, temos que configurar a tabela caixas_lojas, onde cada terminal tem sua configuração, mesmo que seja CNPJ iguai, informando os campos:
+  1. **TERMINAL_CONTROLPAY** - é o código do terminal que sairá nos detalhes de pagamento, campo Terminal. Esse código conseguimos pegar no [painel de controle](https://portal.controlpay.com.br/Pages/Login.aspx?ReturnUrl=%2f) da PayGo, clicando no nome da empresa no canto superior direito da tela, Terminais, e clicando no terminal desejado. No canto superior esquerdo da tela, vai aparecer o Terminal ID do terminal desejado.
+  2. **SENHA_ADMINISTRATIVA_CONTROLPAY** - É a senha utilizada na requisição de estorno/cancelamento de uma venda (cartão). Em homologação e em produção, estamos com a mesma senha, que pode ser encontrada tanto no banco de produção quanto no arquivo leia-config-test que fica no ad01/ti/paygo.
+- Outra tabela que precisamos configurar é a lojas:
+  1. **CONTROLPAY_KEY** - Chave gerada pela PayGo, que nos autoriza a utilizar o serviço. Tanto de homologação quanto de produção, a PayGo que nos informa qual é para cada CNPJ.
+    Para saber sobre a key de um terminal já configurado, pode-se consultar o banco de dados de produção ou verificar no arquivo leia-config-test no ad01/ti/paygo, onde podemos encontrar o de teste também.
+  2. **SENHA_CONTROLPAY** - Mesma senha que a administrativa utilizada na tabela caixas_lojas.
+
+Para Homologação, se informamos um adquirente na requisição, podemos ter comportamentos diferentes da PayGo. Por padrão, enviamos como adquirente, a rede, e isso pode ser visto na classe ProcessamentoCartaoDialog no método adquirente(). Temos as seguintes opções e comportamentos para o ambiente de teste.
+- **rede** - Só conseguimos testar com valores redondos.
+- **DEMO** - Conseguimos testar com valores quebrados
+- **ITI** - Carteira digital, simula o PIX e retorna um QRCode.
+- Se deixarmos em branco esse valor, na tela do processamento do cartão, vai pedir para que o usuário escolha.
+
+Sendo assim, caso precise fazer testes com valores quebrados no modo de pagamento cartão, será necessário mudar o valor do adquirente para DEMO
