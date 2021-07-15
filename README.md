@@ -20,7 +20,7 @@ Para que essa integração funcione no ERP, é preciso fazer algumas configuraç
   com o Pedro Frayman, que é quem atende a parte de homologação da PayGo e pedir para liberar o terminal 00 de homologação para uma nova ativação.
   > Para produção, se é uma loja que já está utilizando TEF, as informações de cada terminal fica em uma planilha em ad01, pasta TI/PayGo. Caso seja terminal novo
   ou um CNPJ novo, além de solicitar na REDE ou STONE ou outra adquirente, o ponto de captura, precisamos pedir na PayGo para que liberem o terminal necessário e configurem
-  o [painel de controle](https://portal.controlpay.com.br/Pages/Login.aspx?ReturnUrl=%2f) deles, através dos meios de comunicação: Tel 3003-9968, Cel 11-99471-1839 (Lucas)
+  o [painel de controle](https://portal.controlpay.com.br/Pages/Login.aspx?ReturnUrl=%2f) deles, através dos meios de comunicação: Tel 3003-9968,
   ou 11-3003-9968 (Suporte).
 - No banco de dados, temos que configurar a tabela caixas_lojas, onde cada terminal tem sua configuração, mesmo que seja CNPJ iguai, informando os campos:
   1. **TERMINAL_CONTROLPAY** - é o código do terminal que sairá nos detalhes de pagamento, campo Terminal. Esse código conseguimos pegar no [painel de controle](https://portal.controlpay.com.br/Pages/Login.aspx?ReturnUrl=%2f) da PayGo, clicando no nome da empresa no canto superior direito da tela, Terminais, e clicando no terminal desejado. No canto superior esquerdo da tela, vai aparecer o Terminal ID do terminal desejado.
