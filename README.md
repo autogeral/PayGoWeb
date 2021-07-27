@@ -38,7 +38,7 @@ Para Homologação, se informamos um adquirente na requisição, podemos ter com
 
 Sendo assim, caso precise fazer testes com valores quebrados no modo de pagamento cartão, será necessário mudar o valor do adquirente para DEMO
 
-#Credenciar um CNPJ do zero
+# Credenciar um CNPJ do zero
 No caso de credenciamento com a adquirente **REDE**, ligamos no 08007200060 e digita 0 para selecionar a opção de credenciamento.
 Informar que já possuímos outras filiais credenciadas e esta será apenas mais uma. Podemos pedir para que copiem a configuração
 da matriz, passando o CNPJ da mesma, para a atendente.
