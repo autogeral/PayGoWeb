@@ -37,3 +37,22 @@ Para Homologação, se informamos um adquirente na requisição, podemos ter com
 - Se deixarmos em branco esse valor, na tela do processamento do cartão, vai pedir para que o usuário escolha.
 
 Sendo assim, caso precise fazer testes com valores quebrados no modo de pagamento cartão, será necessário mudar o valor do adquirente para DEMO
+
+##Credenciar um CNPJ do zero
+No caso de credenciamento com a adquirente **REDE**, ligamos no 08007200060 e digita 0 para selecionar a opção de credenciamento.
+Informar que já possuímos outras filiais credenciadas e esta será apenas mais uma. Podemos pedir para que copiem a configuração
+da matriz, passando o CNPJ da mesma, para a atendente.
+
+Será necessário ter as seguintes informações em mãos, para fazer o credenciamento:
+
+- Nome, CPF e Data de Nascimento de todos os proprietários da Auto Geral, como consta na receita/contrato social.
+- Endereço completo da nova unidade.
+- Estimativa de faturamento dessa nova unidade.
+- Precisará passar um email do responsável para que fique vinculado ao cnpj e que receberá o número lógico em até 24hrs.
+- Nome fantasia da nova unidade, que será utilizada no comprovante do cartão a cada transação realizada e também no portal
+da REDE para identificarmos a filial pelo nome. Ex: Auto Geral Boituva.
+
+Depois de fornecer essas informações, a REDE vai passar um código de estabelecimento (é bom salvar) e, em até 24hrs, irá enviar
+o número lógico gerado, para o email que foi informado no credenciamento.
+Com essas informações em mãos, entrar em contato com a subadquirente (PayGo por ex) e pedir para criarem os terminais.
+
