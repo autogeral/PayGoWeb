@@ -56,3 +56,6 @@ Depois de fornecer essas informações, a REDE vai passar um código de estabele
 o número lógico gerado, para o email que foi informado no credenciamento.
 Com essas informações em mãos, entrar em contato com a subadquirente (PayGo por ex) e pedir para criarem os terminais.
 
+# Contatos Comercial PayGo
+ - Raquel - 011-96634-8902
+ - Erika  - 011-98268-2223
