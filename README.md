@@ -38,7 +38,7 @@ Para Homologação, se informamos um adquirente na requisição, podemos ter com
 
 Sendo assim, caso precise fazer testes com valores quebrados no modo de pagamento cartão, será necessário mudar o valor do adquirente para DEMO
 
-# Credenciar um CNPJ do zero
+# Credenciar um CNPJ do zero (Adquirente)
 No caso de credenciamento com a adquirente **REDE**, ligamos no 08007200060 e digita 0 para selecionar a opção de credenciamento.
 Informar que já possuímos outras filiais credenciadas e esta será apenas mais uma. Podemos pedir para que copiem a configuração
 da matriz, passando o CNPJ da mesma, para a atendente.
@@ -51,6 +51,8 @@ Será necessário ter as seguintes informações em mãos, para fazer o credenci
 - Precisará passar um email do responsável para que fique vinculado ao cnpj e que receberá o número lógico em até 24hrs.
 - Nome fantasia da nova unidade, que será utilizada no comprovante do cartão a cada transação realizada e também no portal
 da REDE para identificarmos a filial pelo nome. Ex: Auto Geral Boituva.
+- Conta do banco onde a REDE possa transferir o dinheiro das transações feitas com o TEF. Se for ITAU, igual o que a matriz
+ja tem, é uma conta especifica que apenas recebe o dinheiro e repassa para outra do ITAU também.
 
 Depois de fornecer essas informações, a REDE vai passar um código de estabelecimento (é bom salvar) e, em até 24hrs, irá enviar
 o número lógico gerado, para o email que foi informado no credenciamento.
