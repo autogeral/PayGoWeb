@@ -64,7 +64,7 @@ Com essas informações em mãos, entrar, entrar no portal ntk da subadquirente 
 Para subir os pedidos, é necessário ter o login e senha do [portal ntk da PayGo](https://web.ntkonline.com.br/usuario/login).
 Ao acessar o portal, seguir os seguintes passos:
 
-- No menu procurar por Pedido/Fazer Pedido
+- No menu procurar por Pedido/Fazer Pedido.
 - Na tela que se abrir, passo 1, selecionar política.
   > Nossa política até o momento é com a REDE apenas, então selecionar a opção Política REDE.
 - Ao prosseguir, no passo 2, selecionar o produto Contro Pay, que é a forma como integramos com a PayGo.
@@ -80,11 +80,11 @@ continuar com os campos abaixo.
   2. Endereço de instalação, colocar o endereço da loja nova e no contato, um contato técnico, ou seja, alguém do nosso TI.
   Pode ser apenas nome, email, telefone da loja e um celular que pode ser o do Tuvani. Desmarcar a opção de **usar o mesmo endereço 
   para cobrança.**
-  3. Endereço de cobrança, colocar o da Matriz, pois nossa cobranças é unificada. Em contato (cobrança, colocar os dados de alguém do
+  3. Endereço de cobrança, colocar o da Matriz, pois nossa cobranças é unificada. Em contato (cobrança), colocar os dados de alguém do
   financeiro, referente ao contas a pagar. Nome, email (contas@autogeral.com.br), telefone da loja e celular, tem um número que é 
   do financeiro, pegar com a responsável.
   4. Pessoa física com poderes para representar e assinar pela empresa, colocar o mesmo contato técnico da instalação, pois a
-  assinatura já foi feita no primeiro contrato e não será necessário novamente para uma filial.
+  assinatura já foi feita no primeiro contrato e não será necessário novamente para uma Afilial.
 **OBS: Contato de conciliação, Url de callback e indicado pela adquirente, deixar em branco** 
 - REDE (PGWEB) Número de Filiação, colocar o número de estabelecimento, informado pela rede no ato do credenciamento via telefone.
 - Ao passar para o passo 5, apenas confirmar as informações no resumo e clicar em enviar pedido. Dentro de 2 dias é para estar disponível
