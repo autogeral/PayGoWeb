@@ -58,8 +58,40 @@ ja tem, é uma conta especifica que apenas recebe o dinheiro e repassa para outr
 
 Depois de fornecer essas informações, a REDE vai passar um código de estabelecimento (é bom salvar) e, em até 24hrs, irá enviar
 o número lógico gerado, para o email que foi informado no credenciamento.
-Com essas informações em mãos, entrar em contato com a subadquirente (PayGo por ex) e pedir para criarem os terminais.
+Com essas informações em mãos, entrar, entrar no portal ntk da subadquirente (PayGo) e subir o pedido dos terminais.
 
+# Subir pedido CNPJ novo para PayGo
+Para subir os pedidos, é necessário ter o login e senha do [portal ntk da PayGo](https://web.ntkonline.com.br/usuario/login).
+Ao acessar o portal, seguir os seguintes passos:
+
+- No menu procurar por Pedido/Fazer Pedido
+- Na tela que se abrir, passo 1, selecionar política.
+  > Nossa política até o momento é com a REDE apenas, então selecionar a opção Política REDE.
+- Ao prosseguir, no passo 2, selecionar o produto Contro Pay, que é a forma como integramos com a PayGo.
+- No passo 3, selecione a quantidade de terminais que se deseja criar para o CNPJ em questão.
+  > Para cada terminal, vai ser preciso selecionar mais abaixo, na tela do passo 3 ainda, qual o subproduto
+  que no caso é o PayGo Dedicado Cliente Windows, e no atributo, selecionamos a opção PinPad Outros, 
+  pois alugamos o pinpad direto da rede e não da controlPay. Só clicar em prosseguir para o passo 4.
+- No passo 4, informar o CNPJ da nova unidade, e clicar em carregar. Somente se o CNPJ for muito novo
+o sistema deles não irá encontrar nosso CNPJ e ai terá que ser feito o cadastro manualmente, na tela que vai 
+aparecer depois do sistema procurar pelo CNPJ e não encontrar. Depois de informar os dados, caso não ache sozinho
+continuar com os campos abaixo.
+  1. Nome do comprovante e fatura, colocar Auto Geral Piedade, por exemplo. Sempre com o nome da cidade da nova loja.
+  2. Endereço de instalação, colocar o endereço da loja nova e no contato, um contato técnico, ou seja, alguém do nosso TI.
+  Pode ser apenas nome, email, telefone da loja e um celular que pode ser o do Tuvani. Desmarcar a opção de **usar o mesmo endereço 
+  para cobrança.**
+  3. Endereço de cobrança, colocar o da Matriz, pois nossa cobranças é unificada. Em contato (cobrança, colocar os dados de alguém do
+  financeiro, referente ao contas a pagar. Nome, email (contas@autogeral.com.br), telefone da loja e celular, tem um número que é 
+  do financeiro, pegar com a responsável.
+  4. Pessoa física com poderes para representar e assinar pela empresa, colocar o mesmo contato técnico da instalação, pois a
+  assinatura já foi feita no primeiro contrato e não será necessário novamente para uma filial.
+**OBS: Contato de conciliação, Url de callback e indicado pela adquirente, deixar em branco** 
+- REDE (PGWEB) Número de Filiação, colocar o número de estabelecimento, informado pela rede no ato do credenciamento via telefone.
+- Ao passar para o passo 5, apenas confirmar as informações no resumo e clicar em enviar pedido. Dentro de 2 dias é para estar disponível
+o acesso para instalação dos terminais no [portal da control pay](https://portal.controlpay.com.br/Pages/Login.aspx?ReturnUrl=%2f). ao acessar com o cnpj da loja nova.
+  
+
+  
 # Contatos Comercial PayGo
  - Raquel - 011-96634-8902
  - Erika  - 011-98268-2223
