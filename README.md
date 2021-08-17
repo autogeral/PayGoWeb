@@ -89,8 +89,22 @@ continuar com os campos abaixo.
 - REDE (PGWEB) Número de Filiação, colocar o número de estabelecimento, informado pela rede no ato do credenciamento via telefone.
 - Ao passar para o passo 5, apenas confirmar as informações no resumo e clicar em enviar pedido. Dentro de 2 dias é para estar disponível
 o acesso para instalação dos terminais no [portal da control pay](https://portal.controlpay.com.br/Pages/Login.aspx?ReturnUrl=%2f). ao acessar com o cnpj da loja nova.
-  
-
+- Ao receber o email de confirmação do pedido ou caso consulte no [portal ntk](https://web.ntkonline.com.br/usuario/login) e veja que o pedido foi aprovado, já será possível acessar
+o [portal controlpay](https://portal.controlpay.com.br/Pages/Login.aspx?ReturnUrl=%2f) com o cnpj novo e a senha padrão que utilizamos, e configurar as seguintes informações no mesmo.
+  > O email com confirmação chega no endereço que foi passado no ato do pedido, só não sabemos se é ao cadastrar email de contato técnico ou de responsável jurídico.
+  Será preciso definir uma senha, ao acessar pela primeira vez através do link que for encaminhado para o email cadastrado na hora que realizamos o pedido.
+- As configurações necessárias no [portal controlpay](https://portal.controlpay.com.br/Pages/Login.aspx?ReturnUrl=%2f) são as seguintes:
+  1. No menu onde fica o nome da loja, procurar por Terminais, e em cada terminal clicar no editar. Neste passo vamos cadastrar uma impressora
+  para isso precisamos saber se a loja vai utilizar bematech ou outra, e qual outra, e assim damos um nome pra ela e salvamos.
+  Voltando na tela do terminal, selecionamos no combobox, a impressora cadastrada.
+  2. Na mesma tela do terminal, caso aja a opção de configurar Interface, clicar nessa opção e habilitar: **Permitir Venda Parcelada e Aguardar TEF**. 
+  3. Ainda na mesma tela, em Configurações de API, selecionar as opções: **Imprimir cupom logista e imprimir cupom cliente**. Repetir isso para os demais terminais a serem utilizados.
+  4. Voltando ao menu com nome da loja, mas agora no submenu Integrações / Config., procurar pela aba Integração. Nela temos que informar a url de callback nos 2 campos que aparecem.
+  Pegar a url de callback, no servidor onde nossa aplicação fica disponível.
+  5. Nesta mesma tela, mas agora na aba Chaves de Integração, caso não aparece uma, clicar em Nova Chave e no campo Nome colocar ou a razão social ou o CNPJ da nova unidade. Ao salvar
+  será gerada uma chave hash, que precisamos colocar no campo **CONTROLPAY_KEY** da tabela de lojas, onde a o codigo da loja seja referente a nova unidade.  
+  6. Por fim, é preciso entrar em contato com o suporte da PayGo, através dos números 3003-9968 ou whats 3003-6615 e pedir ID, Senha e PCD dos terminais do CNPJ da nova loja.
+  **OBS: Lembrando que a chave e os IDs, Senhas e PDCs também precisam ser colocados na nossa planilha que está no servidor, onde constam as informações de cada terminal de cada loja.**
   
 # Contatos Comercial PayGo
  - Raquel - 011-96634-8902
