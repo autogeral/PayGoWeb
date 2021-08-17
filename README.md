@@ -104,7 +104,8 @@ o [portal controlpay](https://portal.controlpay.com.br/Pages/Login.aspx?ReturnUr
   5. Nesta mesma tela, mas agora na aba Chaves de Integração, caso não aparece uma, clicar em Nova Chave e no campo Nome colocar ou a razão social ou o CNPJ da nova unidade. Ao salvar
   será gerada uma chave hash, que precisamos colocar no campo **CONTROLPAY_KEY** da tabela de lojas, onde a o codigo da loja seja referente a nova unidade.  
   6. Por fim, é preciso entrar em contato com o suporte da PayGo, através dos números 3003-9968 ou whats 3003-6615 e pedir ID, Senha e PCD dos terminais do CNPJ da nova loja.
-  **OBS: Lembrando que a chave e os IDs, Senhas e PDCs também precisam ser colocados na nossa planilha que está no servidor, onde constam as informações de cada terminal de cada loja.**
+
+**OBS: Lembrando que a chave e os IDs, Senhas e PDCs também precisam ser colocados na nossa planilha que está no servidor, onde constam as informações de cada terminal de cada loja.**
   
 # Contatos Comercial PayGo
  - Raquel - 011-96634-8902
