@@ -110,3 +110,6 @@ o [portal controlpay](https://portal.controlpay.com.br/Pages/Login.aspx?ReturnUr
 # Contatos Comercial PayGo
  - Raquel - 011-96634-8902
  - Erika  - 011-98268-2223
+
+# Contato suporte técnico REDE (adquirente)
+ - 08007284433 opção 3 e depois 6
