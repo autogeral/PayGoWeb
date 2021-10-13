@@ -112,4 +112,4 @@ o [portal controlpay](https://portal.controlpay.com.br/Pages/Login.aspx?ReturnUr
  - Erika  - 011-98268-2223
 
 # Contato suporte técnico REDE (adquirente)
- - 08007284433 opção 3 e depois 6
+ - 08007284433 opção 2 (maquininha com fio)
