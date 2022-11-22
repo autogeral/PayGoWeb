@@ -64,6 +64,8 @@ Com essas informações em mãos, entrar, entrar no portal ntk da subadquirente 
 Para subir os pedidos, é necessário ter o login e senha do [portal ntk da PayGo](https://web.ntkonline.com.br/usuario/login).
 Ao acessar o portal, seguir os seguintes passos:
 
+- Foi feito um novo documento que encontra-se na pasta 
+
 - No menu procurar por Pedido/Fazer Pedido.
 - Na tela que se abrir, passo 1, selecionar política.
   > Nossa política até o momento é com a REDE apenas, então selecionar a opção Política REDE.
