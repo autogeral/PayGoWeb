@@ -25,4 +25,4 @@ xrlxrl237
 usuario = murilo.autogeral
 
 e-mail = murilo@autogeral.com.br
-senha = AutoGeral@01
+senha = @SnjE3XyK95cCR
